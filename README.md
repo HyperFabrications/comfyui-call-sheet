@@ -6,7 +6,7 @@ Krea 2 pose prompts, sorted by shoot, right inside ComfyUI.
 - **Send to the canvas.** Each frame has **To node** (adds a Krea Pose Prompt node set to that frame, or updates the selected one) and **To text box** (fills the selected CLIP Text Encode). Each set has **Set to node**, which outputs the whole set as a list.
 - **Krea Pose Prompt node.** Pick a frame, then choose `single frame`, `whole set` or `whole tab`. Outputs `prompt` (one prompt, or all of them one per line), `prompt_list` (a list, so the graph runs once per prompt) and `count`.
 - **Krea Pose Person node.** Dropdowns for gender, build, height, hair, eyes, skin and complexion. Link its output to the Pose Prompt node's `person` input.
-- **Web version.** The same sheet as a web page on GitHub Pages, for use outside ComfyUI.
+- **Web version.** The same sheet as a web page at [ilikeredheads.github.io/comfyui-krea-pose-sheet](https://ilikeredheads.github.io/comfyui-krea-pose-sheet/), for use outside ComfyUI.
 
 ## Install
 
@@ -16,7 +16,7 @@ Krea 2 pose prompts, sorted by shoot, right inside ComfyUI.
 
 ```
 cd ComfyUI/custom_nodes
-git clone https://github.com/OWNER/comfyui-krea-pose-sheet
+git clone https://github.com/ilikeredheads/comfyui-krea-pose-sheet
 ```
 
 Restart ComfyUI. There are no extra Python packages to install.
@@ -81,7 +81,7 @@ In ComfyUI Manager, click **Update** on Krea Pose Sheet (or `git pull` in its fo
 
 ## GitHub Pages (one time)
 
-Settings → Pages → Source: **GitHub Actions**. The **Publish web sheet** action then deploys the sheet to `https://OWNER.github.io/comfyui-krea-pose-sheet/` on every change.
+Settings → Pages → Source: **GitHub Actions**. The **Publish web sheet** action then deploys the sheet to `https://ilikeredheads.github.io/comfyui-krea-pose-sheet/` on every change.
 
 ## Files
 
