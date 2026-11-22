@@ -4,6 +4,7 @@ import { promptFor, personText, subject, frameNo, loadEdits, saveEdit, withEdit 
 import { withScene, locked as sceneLocked, propOf } from "./scene_core.js";
 import { withOutfit, locked as outfitLocked, garmentOf } from "./outfit_core.js";
 import { avatarSVG } from "./figure.js";
+import { attachLabels, labelsOn } from "./labels.js";
 import { shortPerson } from "./builder.js";
 import { saveCustom, deleteCustom, exportCustom, importCustom } from "./custom.js";
 
@@ -276,7 +277,7 @@ export function openGallery({ data, scenes = null, outfits = null, thumbs = {}, 
         ${outfitRow(f, fresh)}
         ${ctx.person().on ? `<div class="kq-row kq-plabel"><label for="kq-person" class="kq-strong">Person</label><span class="kq-dim">goes where [trigger] is, in every prompt</span><span class="kq-grow"></span><span class="kq-pedited"></span></div>
         <textarea id="kq-person" class="kq-ptext" rows="2" spellcheck="true"></textarea>` : ""}
-        <div class="kq-row kq-plabel"><label for="kq-prompt" class="kq-strong">Prompt</label><span class="kq-edited"></span></div>
+        <div class="kq-row kq-plabel"><label for="kq-prompt" class="kq-strong">Prompt</label><span class="kq-edited"></span><span class="kq-grow"></span><button type="button" class="kq-link kq-ltoggle" data-x="labels" aria-pressed="${labelsOn()}">${labelsOn() ? "Hide labels" : "Show labels"}</button></div>
         <textarea id="kq-prompt" class="kq-text" spellcheck="true"></textarea>
         <div class="kq-row kq-hint"><span class="kq-faint">Keep [trigger] where your trigger or person should go.</span><span class="kq-grow"></span><span class="kq-words"></span></div>
         <div class="kq-receive"><span class="kq-dim kq-rhead">What the node receives</span><p class="kq-mono"></p></div>
@@ -308,6 +309,7 @@ export function openGallery({ data, scenes = null, outfits = null, thumbs = {}, 
     }
     const ta = box.querySelector("#kq-prompt");
     ta.value = textOf(f);
+    attachLabels(ta);
     ta.addEventListener("input", () => {
       clearTimeout(draftTimer);
       const val = ta.value;
@@ -521,7 +523,8 @@ export function openGallery({ data, scenes = null, outfits = null, thumbs = {}, 
       case "resetperson": { const p = ctx.person(); ctx.setPerson({ picks: p.picks || {}, on: true, text: "" }); renderPerson(); renderPanel(); break; }
       case "editperson": flushDraft(); openPerson(ctx, () => { renderPerson(); renderPanel(); }); break;
       case "star": favs.has(f.id) ? favs.delete(f.id) : favs.add(f.id); store.set("favs", JSON.stringify([...favs])); renderPanel(); if (st.tab === "starred") renderGrid(); else { const c = el.querySelector(`.kq-card[data-id="${CSS.escape(f.id)}"]`); if (c) c.outerHTML = card(f); } break;
-      case "resetedit": { const ta = q(".kq-text"); ta.value = f.text; saveDraft(f, f.text); updateDraftBits(f, f.text); ta.focus(); break; }
+      case "resetedit": { const ta = q(".kq-text"); ta.value = f.text; ta._kqLabels?.refresh(); saveDraft(f, f.text); updateDraftBits(f, f.text); ta.focus(); break; }
+      case "labels": { const lb = q(".kq-text")?._kqLabels; if (lb) { const on = lb.toggle(); x.setAttribute("aria-pressed", on); x.textContent = on ? "Hide labels" : "Show labels"; } break; }
       case "copy": flushDraft(); markUsed(f.id); navigator.clipboard.writeText(promptOf(f)).then(() => flash(x, "Copied"), () => flash(x, "Press Ctrl+C")); break;
       case "primary": flushDraft(); markUsed(f.id); if (primary.run(f, x)) close(); break;
       case "random": {
@@ -591,7 +594,7 @@ export function editPrompt({ frame, initial, onSave }) {
   el.innerHTML = `<div class="kq-box kpe-box">
     <div class="kq-ptitle"><h3>${esc(frame.title)}</h3><span class="kq-dim">${frameNo(frame.id)} · Your version is used everywhere you pick this frame</span></div>
     <textarea class="kq-text kpe-text" spellcheck="true" rows="12"></textarea>
-    <div class="kq-row"><span class="kpe-words kq-faint"></span><span class="kq-grow"></span>
+    <div class="kq-row"><span class="kpe-words kq-faint"></span><button type="button" class="kq-link kq-ltoggle" data-x="labels" aria-pressed="${labelsOn()}">${labelsOn() ? "Hide labels" : "Show labels"}</button><span class="kq-grow"></span>
       <button type="button" class="kq-ghost" data-x="reset">Reset to sheet text</button>
       <button type="button" class="kq-ghost" data-x="cancel">Cancel</button>
       <button type="button" class="kq-primary kq-sm" data-x="save">Save</button></div>
@@ -599,6 +602,7 @@ export function editPrompt({ frame, initial, onSave }) {
   document.body.appendChild(el);
   const ta = el.querySelector("textarea"), words = el.querySelector(".kpe-words");
   ta.value = initial || frame.text;
+  const lb = attachLabels(ta);
   const count = () => { const n = ta.value.trim().split(/\s+/).filter(Boolean).length; words.textContent = `${n} words${ta.value.includes("[trigger]") ? "" : " · no [trigger]"}`; };
   ta.addEventListener("input", count); count();
   const close = () => { document.removeEventListener("keydown", onKey, true); el.remove(); };
@@ -612,7 +616,8 @@ export function editPrompt({ frame, initial, onSave }) {
   el.addEventListener("click", e => {
     const x = e.target.closest("[data-x]");
     if (e.target === el || (x && x.dataset.x === "cancel")) { close(); return; }
-    if (x && x.dataset.x === "reset") { ta.value = frame.text; count(); ta.focus(); return; }
+    if (x && x.dataset.x === "reset") { ta.value = frame.text; lb.refresh(); count(); ta.focus(); return; }
+    if (x && x.dataset.x === "labels") { const on = lb.toggle(); x.setAttribute("aria-pressed", on); x.textContent = on ? "Hide labels" : "Show labels"; return; }
     if (x && x.dataset.x === "save") done(ta.value);
   });
   ta.focus();

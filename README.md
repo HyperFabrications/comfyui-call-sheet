@@ -24,14 +24,14 @@ In ComfyUI Manager, click **Update** on Call Sheet (or run `git pull` in its fol
 
 | Node | What it does |
 | --- | --- |
-| **Call Sheet Pose** | Pick a frame and output its prompt. Choose `single frame`, `whole set` or `whole tab`. Outputs `prompt` (one prompt, or all of them one per line), `prompt_list` (a list, so the graph runs once per prompt) and `count`. |
-| **Call Sheet Person** | Describe who is in the shot. Link it to the Pose node's `person` input. |
-| **Call Sheet Scene** | Build a setting once and use it with any pose. Link it to the Pose node's `scene` input. Its `text` output is the scene on its own. |
-| **Call Sheet Outfit** | Put together an outfit and use it with any pose. Link it to the Pose node's `outfit` input. Its `text` output is the outfit on its own. |
+| **Call Sheet Shot** | Pick a frame and output its prompt, a starting shot written the way Krea 2 reads it, ready for you to build on. Person, Outfit and Scene swap in their part of the shot. Choose `single frame`, `whole set` or `whole tab`. Outputs `prompt` (one prompt, or all of them one per line), `prompt_list` (a list, so the graph runs once per prompt) and `count`. |
+| **Call Sheet Person** | Describe who is in the shot. Link it to the Shot node's `person` input. |
+| **Call Sheet Scene** | Build a setting once and use it with any pose. Link it to the Shot node's `scene` input. Its `text` output is the scene on its own. |
+| **Call Sheet Outfit** | Put together an outfit and use it with any pose. Link it to the Shot node's `outfit` input. Its `text` output is the outfit on its own. |
 
 ## Picking a frame
 
-- **Frame picker.** Click the frame card on the Call Sheet Pose node (or **Open the pose gallery** in the sidebar) to browse every frame. Search, pick a tab, or use **Filter** for set, camera (overhead, close-up, low angle and more) and light (flash, window light, overcast and more). Click a card to load its prompt into an editable box, check what the node will receive, then press **Use this frame**. **‹ ›** on the node step through frames one at a time.
+- **Frame picker.** Click the frame card on the Call Sheet Shot node (or **Open the pose gallery** in the sidebar) to browse every frame. Search, pick a tab, or use **Filter** for set, camera (overhead, close-up, low angle and more) and light (flash, window light, overcast and more). Click a card to load its prompt into an editable box (faint labels mark the subject, pose, clothes, setting, camera, light and look; **Hide labels** turns them off), check what the node will receive, then press **Use this frame**. **‹ ›** on the node step through frames one at a time.
 - **Edit a prompt.** Type straight into the prompt box in the picker, or use **Edit prompt** on the node or **Edit** in the sidebar. Your version is used everywhere you pick that frame and is saved inside the workflow. **Reset** brings back the original.
 - **Preview images.** Render a frame, then press **Use last generation as preview** in the picker. That image shows on the frame's card and on the node from then on. Previews stay on your computer in the `thumbs` folder.
 - **Starred, Recent and Random.** Star frames to keep them in Starred, find the frames you used lately in Recent, or press **Random** for a surprise pick from what's shown.
@@ -73,9 +73,9 @@ In ComfyUI Manager, click **Update** on Call Sheet (or run `git pull` in its fol
 
 Open the **Call Sheet** tab in ComfyUI's left sidebar. Type your LoRA trigger once and every prompt fills it in. Turn **Style** off to strip film, grain and palette words when a LoRA should supply the look, use **Build a person** to describe who is in the shot, and ☆ to star favorites.
 
-- **To node** adds a Call Sheet Pose node set to that frame, or updates the selected one.
+- **To node** adds a Call Sheet Shot node set to that frame, or updates the selected one.
 - **To text box** fills the selected text node. If none is selected, it uses the one feeding your sampler's positive input, or the only text node on the canvas. The button tells you where the prompt went.
-- **Set to node** adds a Pose node that outputs the whole set as a list.
+- **Set to node** adds a Shot node that outputs the whole set as a list.
 
 ## Settings that work
 
