@@ -1,6 +1,6 @@
 # Call Sheet
 
-A Krea 2 shot builder for ComfyUI. Pick a pose, choose who is in the shot and where it happens, and Call Sheet writes the prompt. Everything runs inside ComfyUI: a sidebar, a frame picker, and nodes you can find by typing **call sheet** in the node search.
+A Krea 2 shot builder for ComfyUI. Pick a pose, choose who is in the shot, what they wear and where it happens, and Call Sheet writes the prompt. Everything runs inside ComfyUI: a sidebar, a frame picker, and nodes you can find by typing **call sheet** in the node search.
 
 > Call Sheet used to be called **Krea Pose Sheet**. Saved workflows still load, because only the names you see changed.
 
@@ -28,6 +28,7 @@ In ComfyUI Manager, click **Update** on Call Sheet (or run `git pull` in its fol
 | **Call Sheet Pose** | Pick a frame and output its prompt. Choose `single frame`, `whole set` or `whole tab`. Outputs `prompt` (one prompt, or all of them one per line), `prompt_list` (a list, so the graph runs once per prompt) and `count`. |
 | **Call Sheet Person** | Describe who is in the shot. Link it to the Pose node's `person` input. |
 | **Call Sheet Scene** | Build a setting once and use it with any pose. Link it to the Pose node's `scene` input. Its `text` output is the scene on its own. |
+| **Call Sheet Outfit** | Put together an outfit and use it with any pose. Link it to the Pose node's `outfit` input. Its `text` output is the outfit on its own. |
 
 ## Picking a frame
 
@@ -59,6 +60,15 @@ In ComfyUI Manager, click **Update** on Call Sheet (or run `git pull` in its fol
 - **Frames that need their own location.** Some poses rely on something in their setting, like a railing, a bed or a car. Those show a lock and keep their own setting, and **Works with scenes** in the picker shows only the frames a scene can move. **Use scene anyway** applies it to a locked frame with a warning. Your own prompts have a **Portable** switch for the same thing.
 - **Saved scenes.** **Save this scene** keeps your picks under a name, with **Import** and **Export** to share them.
 - With no scene linked, or **Use this scene** off, every prompt is exactly as before.
+
+## The outfit
+
+- **Outfit builder.** Press **Build outfit** on the Outfit node. Pick a top, bottoms or a one piece, outerwear, shoes and any number of accessories, each in one of 14 colors. A figure shows the outfit as you go, and **On a frame** shows it written into a real prompt.
+- **Whole outfit or just what I pick.** **Whole outfit** replaces everything she wears in the frame (makeup stays). **Just what I pick** swaps only the pieces you chose: pick a coat and the frame keeps its own top, jeans and shoes under it. A one piece replaces the top and bottoms, and outerwear goes over whatever she has on.
+- **Your own items.** In **Your items**, press **New item**, name it, choose what kind of piece it is and write how it reads. **Help me write it** offers starter ideas and asks for cut, color, fabric, the piece and one detail, then writes it for you. Items are saved on your computer in `custom_outfit_items.json`, never uploaded, with **Import**, **Export** and **×** to delete.
+- **Frames that rely on their clothes.** Some poses use a garment, like hands in trouser pockets or a skirt held out. Those keep their own clothes and show **Keeps its own clothes** in the picker. **Use outfit anyway** applies the outfit to that frame with a warning. Your own prompts work with outfits when they have a sentence starting with *Wearing*.
+- **Saved outfits.** **Save this outfit** keeps your picks under a name, with **Import** and **Export** to share them. Your own items travel with a saved outfit.
+- With no outfit linked, or **Use this outfit** off, every prompt is exactly as before. With both an outfit and a scene linked, the outfit goes on first, then the scene.
 
 ## The sidebar
 
@@ -103,5 +113,9 @@ The same sheet can be published as a web page. In the repo, go to Settings → P
 | `scene_data.py`, `web/scene_core.js` | Scene logic: swap the setting, clean plate (`scene_data.py` mirrors `scene_core.js`) |
 | `web/scene.js`, `web/scene_art.js` | The scene builder and its picture |
 | `places.py` | Your own places, saved locally |
+| `web/outfits.json` | Clothing options, colors and which frames keep their own clothes |
+| `outfit_data.py`, `web/outfit_core.js` | Outfit logic: read and swap the clothing line (`outfit_data.py` mirrors `outfit_core.js`) |
+| `web/outfit.js`, `web/outfit_art.js` | The outfit builder and its figure |
+| `outfit_items.py` | Your own clothing items, saved locally |
 | `site/index.html` | The GitHub Pages page |
 | `scripts/` | `release.py`, `validate.py`, `build_site.sh`, `sync_from_artifact.mjs` |

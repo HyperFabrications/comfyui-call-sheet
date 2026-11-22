@@ -2,8 +2,10 @@ import json
 
 from . import pose_data as P
 from . import scene_data as S
+from . import outfit_data as O
 from .custom import load_custom
 from .places import load_places
+from .outfit_items import load_items
 
 MODES = ["single frame", "whole set", "whole tab"]
 
@@ -24,6 +26,22 @@ def _find(frame_value):
         if f["id"] == fid:
             return f
     raise ValueError(f"Call Sheet frame '{frame_value}' was not found. Update the node pack or pick another frame.")
+
+
+def _ids(raw):
+    try:
+        v = json.loads(raw) if raw else []
+    except ValueError:
+        return []
+    return v if isinstance(v, list) else []
+
+
+def _state(raw):
+    try:
+        v = json.loads(raw) if raw else {}
+    except ValueError:
+        return {}
+    return v if isinstance(v, dict) else {}
 
 
 class KreaPosePrompt:
@@ -55,10 +73,12 @@ class KreaPosePrompt:
                 "edits": ("STRING", {"default": "", "tooltip": "Your own wording for frames, set with Edit prompt on the node. Leave empty to use the sheet's text."}),
                 "scene": ("KREA_SCENE", {"tooltip": "Link a Call Sheet Scene node to swap each frame's setting, or make clean plates. Frames whose pose needs their own location keep it."}),
                 "scene_overrides": ("STRING", {"default": "", "tooltip": "Frames that use the scene even though their pose relies on their own location. Set with Use scene anyway in the picker."}),
+                "outfit": ("KREA_OUTFIT", {"tooltip": "Link a Call Sheet Outfit node to change what she wears. Frames whose pose relies on a garment keep their own clothes."}),
+                "outfit_overrides": ("STRING", {"default": "", "tooltip": "Frames that use the outfit even though their pose relies on a garment. Set with Use outfit anyway in the picker."}),
             },
         }
 
-    def build(self, frame, mode, trigger, style, person=None, edits=None, scene=None, scene_overrides=None):
+    def build(self, frame, mode, trigger, style, person=None, edits=None, scene=None, scene_overrides=None, outfit=None, outfit_overrides=None):
         f = _find(frame)
         try:
             edit_map = json.loads(edits) if edits else {}
@@ -72,15 +92,13 @@ class KreaPosePrompt:
             picked = [x for x in _frames() if x["tab"] == f["tab"]]
         else:
             picked = [f]
-        try:
-            overrides = json.loads(scene_overrides) if scene_overrides else []
-            if not isinstance(overrides, list):
-                overrides = []
-        except ValueError:
-            overrides = []
+        overrides, wear = _ids(scene_overrides), _ids(outfit_overrides)
         prompts = []
         for x in picked:
             x = P.with_edit(x, edit_map)
+            text, changed = O.with_outfit(x, outfit, wear)
+            if changed:
+                x = {**x, "text": text, "bare": None}
             text, changed = S.with_scene(x, scene, overrides)
             if changed:
                 x = {**x, "text": text, "bare": None}
@@ -133,23 +151,40 @@ class KreaPoseScene:
         return {"required": {"scene": ("STRING", {"default": "{}", "tooltip": "Set with Build scene on the node."})}}
 
     def build(self, scene):
-        try:
-            state = json.loads(scene) if scene else {}
-            if not isinstance(state, dict):
-                state = {}
-        except ValueError:
-            state = {}
-        p = S.parts(state, S.places(P.load()["frames"], load_places()))
+        p = S.parts(_state(scene), S.places(P.load()["frames"], load_places()))
         return (p, S.scene_text(p) if p["on"] else "")
+
+
+class KreaPoseOutfit:
+    """Put together an outfit and link it to Call Sheet Pose to dress any frame in it. Swap the whole outfit or only the pieces you pick."""
+
+    CATEGORY = "Call Sheet"
+    FUNCTION = "build"
+    RETURN_TYPES = ("KREA_OUTFIT", "STRING")
+    RETURN_NAMES = ("outfit", "text")
+    OUTPUT_TOOLTIPS = (
+        "Link to the outfit input of Call Sheet Pose.",
+        "The outfit on its own, as a Wearing sentence.",
+    )
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {"required": {"outfit": ("STRING", {"default": "{}", "tooltip": "Set with Build outfit on the node."})}}
+
+    def build(self, outfit):
+        p = O.parts(_state(outfit), load_items())
+        return (p, O.outfit_text(p) if p["on"] else "")
 
 
 NODE_CLASS_MAPPINGS = {
     "KreaPosePrompt": KreaPosePrompt,
     "KreaPosePerson": KreaPosePerson,
     "KreaPoseScene": KreaPoseScene,
+    "KreaPoseOutfit": KreaPoseOutfit,
 }
 NODE_DISPLAY_NAME_MAPPINGS = {
     "KreaPosePrompt": "Call Sheet Pose",
     "KreaPosePerson": "Call Sheet Person",
     "KreaPoseScene": "Call Sheet Scene",
+    "KreaPoseOutfit": "Call Sheet Outfit",
 }

@@ -2,6 +2,7 @@
 // shows its prompt (editable), what the node will receive, and the buttons that act on it.
 import { promptFor, personText, subject, frameNo, loadEdits, saveEdit, withEdit } from "./core.js";
 import { withScene, locked as sceneLocked, propOf } from "./scene_core.js";
+import { withOutfit, locked as outfitLocked, garmentOf } from "./outfit_core.js";
 import { avatarSVG } from "./figure.js";
 import { shortPerson } from "./builder.js";
 import { saveCustom, deleteCustom, exportCustom, importCustom } from "./custom.js";
@@ -82,6 +83,7 @@ const ICON = {
   up: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M6 10l6-6 6 6M4 20h16"/></svg>`,
   lock: `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>`,
   scene: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 16l5-5 4 4 3-3 6 6"/></svg>`,
+  outfit: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3l4 3 4-3 5 4-3 4-2-1v11H8V10l-2 1-3-4z"/></svg>`,
   warn: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18v.5"/></svg>`,
   star: `<svg width="16" height="16" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.2-4.1 5.8-.8z"/></svg>`,
 };
@@ -94,7 +96,7 @@ let open = null;
 //   primary: { label, run(frame, btn) } — return true to close the picker.
 //   actions: [{ label, icon, run(frame, prompt, btn) }]
 //   openPerson(ctx, done): opens the person builder; done() refreshes the picker.
-export function openGallery({ data, scenes = null, thumbs = {}, current = null, ctx = localCtx(), primary = null, actions = [], setPreview = null, openPerson = null, onClose = null }) {
+export function openGallery({ data, scenes = null, outfits = null, thumbs = {}, current = null, ctx = localCtx(), primary = null, actions = [], setPreview = null, openPerson = null, onClose = null }) {
   if (open) open.close();
   const TABNAME = Object.fromEntries(data.tabs.map(t => [t.id, t.name]));
   const tagCache = new Map();
@@ -170,8 +172,14 @@ export function openGallery({ data, scenes = null, thumbs = {}, current = null, 
   // The scene (from a linked Krea Pose Scene node) and which locked frames use it anyway.
   const sceneNow = () => scenes && ctx.scene ? ctx.scene() : null;
   const overrides = () => ctx.overrides ? ctx.overrides() : [];
+  // The outfit (from a linked Call Sheet Outfit node) goes on first, then the scene.
+  const outfitNow = () => outfits && ctx.outfit ? ctx.outfit() : null;
+  const wearOverrides = () => ctx.outfitOverrides ? ctx.outfitOverrides() : [];
   const sceneFrame = (f, edits) => {
-    const fe = withEdit(f, edits), sc = sceneNow();
+    let fe = withEdit(f, edits);
+    const of = outfitNow();
+    if (of) { const [text, changed] = withOutfit(outfits, fe, of.parts, wearOverrides()); if (changed) fe = { ...fe, text, bare: undefined }; }
+    const sc = sceneNow();
     if (!sc) return fe;
     const [text, changed] = withScene(scenes, fe, sc.parts, overrides());
     return changed ? { ...fe, text, bare: undefined } : fe;
@@ -265,6 +273,7 @@ export function openGallery({ data, scenes = null, thumbs = {}, current = null, 
       </div>
       <div class="kq-pbody">
         ${sceneRow(f, mine, fresh)}
+        ${outfitRow(f, fresh)}
         ${ctx.person().on ? `<div class="kq-row kq-plabel"><label for="kq-person" class="kq-strong">Person</label><span class="kq-dim">goes where [trigger] is, in every prompt</span><span class="kq-grow"></span><span class="kq-pedited"></span></div>
         <textarea id="kq-person" class="kq-ptext" rows="2" spellcheck="true"></textarea>` : ""}
         <div class="kq-row kq-plabel"><label for="kq-prompt" class="kq-strong">Prompt</label><span class="kq-edited"></span></div>
@@ -332,6 +341,18 @@ export function openGallery({ data, scenes = null, thumbs = {}, current = null, 
       <button type="button" class="kq-ghost kq-tight kq-filled" data-x="override">Use scene anyway</button></div>`;
     return `<div class="kq-scene is-warn">${ICON.warn}<span class="kq-grow"><span>Scene on, location overridden</span><span class="kq-dim">The pose still mentions ${esc(propOf(scenes, f))}. Check it fits the new place.</span></span>
       <button type="button" class="kq-ghost kq-tight kq-filled" data-x="override">Keep its own</button></div>`;
+  }
+  function outfitRow(f, fresh) {
+    const of = outfitNow();
+    if (!of || fresh) return "";
+    const ov = wearOverrides().includes(f.id), lock = outfitLocked(outfits, f);
+    const what = of.parts.swap === "pick" ? "Swaps only the pieces you picked." : "Replaces what she wears in this frame.";
+    if (f.tab === "custom" && lock) return `<div class="kq-scene is-muted">${ICON.lock}<span class="kq-grow"><span>Keeps its own clothes</span><span class="kq-dim">Add a sentence that starts with Wearing to this prompt, and the outfit can change it.</span></span></div>`;
+    if (!lock) return `<div class="kq-scene">${ICON.outfit}<span class="kq-grow"><span>Outfit: ${esc(of.label)}</span><span class="kq-dim">${what}</span></span></div>`;
+    if (!ov) return `<div class="kq-scene is-muted">${ICON.lock}<span class="kq-grow"><span>Keeps its own clothes</span><span class="kq-dim">The pose uses ${esc(garmentOf(outfits, f))}, so the outfit is skipped here.</span></span>
+      <button type="button" class="kq-ghost kq-tight kq-filled" data-x="wearanyway">Use outfit anyway</button></div>`;
+    return `<div class="kq-scene is-warn">${ICON.warn}<span class="kq-grow"><span>Outfit on, clothes overridden</span><span class="kq-dim">The pose still mentions ${esc(garmentOf(outfits, f))}. Check it fits the new outfit.</span></span>
+      <button type="button" class="kq-ghost kq-tight kq-filled" data-x="wearanyway">Keep its own</button></div>`;
   }
   const refreshCard = f => { const c = el.querySelector(`.kq-card[data-id="${CSS.escape(f.id)}"]`); if (c) c.outerHTML = card(f); };
   function saveDraft(f, val) {
@@ -468,6 +489,7 @@ export function openGallery({ data, scenes = null, thumbs = {}, current = null, 
       case "filters": st.filters = !st.filters; renderFilters(); break;
       case "portable": st.portable = !st.portable; store.set("g:portable", st.portable ? "1" : "0"); renderFilters(); renderGrid(); markSelected(); break;
       case "override": ctx.setOverride(f.id, !overrides().includes(f.id)); renderPanel(); break;
+      case "wearanyway": ctx.setOutfitOverride(f.id, !wearOverrides().includes(f.id)); renderPanel(); break;
       case "portableone": {
         flushDraft(); x.disabled = true;
         saveCustom(data, { id: f.id, title: f.title, text: f.text, portable: !f.portable }).then(() => { refreshCard(f); markSelected(); renderPanel(); if (st.portable) renderGrid(); },
