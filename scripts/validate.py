@@ -53,6 +53,21 @@ try:
 except (OSError, json.JSONDecodeError) as e:
     errors.append(f"scenes.json could not be read: {e}")
 
+outfits_path = path.parent / "outfits.json"
+try:
+    outfits = json.loads(outfits_path.read_text(encoding="utf-8"))
+    untagged = [f["id"] for f in data.get("frames", []) if f.get("id") not in outfits.get("frames", {})]
+    if untagged:
+        print(f"Note: {len(untagged)} frame(s) have no outfit tag in outfits.json, so they keep their own clothes: {', '.join(untagged)}.")
+        print('      Add them under "frames" with "" if any outfit works, or with the garment the pose relies on (like "her coat pockets").')
+    colors = {c["value"] for c in outfits.get("colors", [])}
+    for c in outfits.get("categories", []):
+        for o in c.get("options", []):
+            if o.get("color") and o["color"] not in colors:
+                errors.append(f"outfits.json: {c['key']} option \"{o.get('value')}\" uses an unknown color \"{o['color']}\".")
+except (OSError, json.JSONDecodeError) as e:
+    errors.append(f"outfits.json could not be read: {e}")
+
 if errors:
     print("\n".join(errors))
     sys.exit(1)

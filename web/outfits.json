@@ -1,0 +1,615 @@
+{
+ "note": "Outfit options for the Call Sheet Outfit node. frames: \"\" means the pose works with any outfit; text names the garment the pose relies on, so the frame keeps its own clothes.",
+ "colors": [
+  {
+   "value": "black",
+   "word": "black",
+   "hex": "#1d1d20"
+  },
+  {
+   "value": "white",
+   "word": "white",
+   "hex": "#f2f2ee"
+  },
+  {
+   "value": "cream",
+   "word": "cream",
+   "hex": "#e9dfc8"
+  },
+  {
+   "value": "camel",
+   "word": "camel",
+   "hex": "#c19a6b"
+  },
+  {
+   "value": "gray",
+   "word": "heather gray",
+   "hex": "#9a9aa0"
+  },
+  {
+   "value": "charcoal",
+   "word": "charcoal",
+   "hex": "#45464b"
+  },
+  {
+   "value": "navy",
+   "word": "navy",
+   "hex": "#23304f"
+  },
+  {
+   "value": "indigo",
+   "word": "indigo",
+   "hex": "#3d5a80"
+  },
+  {
+   "value": "red",
+   "word": "cherry red",
+   "hex": "#b3262e"
+  },
+  {
+   "value": "pink",
+   "word": "blush pink",
+   "hex": "#e7b2bd"
+  },
+  {
+   "value": "sage",
+   "word": "sage green",
+   "hex": "#9cae8f"
+  },
+  {
+   "value": "olive",
+   "word": "olive",
+   "hex": "#6b6b3a"
+  },
+  {
+   "value": "brown",
+   "word": "chocolate brown",
+   "hex": "#5b3a29"
+  },
+  {
+   "value": "cobalt",
+   "word": "cobalt blue",
+   "hex": "#2348b5"
+  }
+ ],
+ "categories": [
+  {
+   "key": "top",
+   "label": "Top",
+   "hint": "",
+   "options": [
+    {
+     "value": "tee",
+     "name": "Tee",
+     "text": "a {c} cotton tee",
+     "color": "white",
+     "shape": "short"
+    },
+    {
+     "value": "tank",
+     "name": "Ribbed tank",
+     "text": "a {c} ribbed tank",
+     "color": "white",
+     "shape": "tank"
+    },
+    {
+     "value": "blouse",
+     "name": "Silk blouse",
+     "text": "a {c} silk blouse",
+     "color": "cream",
+     "shape": "long"
+    },
+    {
+     "value": "shirt",
+     "name": "Button up shirt",
+     "text": "a {c} button up shirt",
+     "color": "white",
+     "shape": "long"
+    },
+    {
+     "value": "sweater",
+     "name": "Chunky sweater",
+     "text": "a {c} chunky cable knit sweater",
+     "color": "cream",
+     "shape": "long"
+    },
+    {
+     "value": "turtleneck",
+     "name": "Turtleneck",
+     "text": "a {c} fine knit turtleneck",
+     "color": "black",
+     "shape": "long"
+    },
+    {
+     "value": "hoodie",
+     "name": "Hoodie",
+     "text": "an oversized {c} hoodie",
+     "color": "gray",
+     "shape": "long"
+    },
+    {
+     "value": "corset",
+     "name": "Corset top",
+     "text": "a {c} satin corset top",
+     "color": "black",
+     "shape": "tank"
+    },
+    {
+     "value": "crop",
+     "name": "Cropped sweater",
+     "text": "a {c} cropped sweater",
+     "color": "white",
+     "shape": "long"
+    }
+   ]
+  },
+  {
+   "key": "bottom",
+   "label": "Bottoms",
+   "hint": "",
+   "options": [
+    {
+     "value": "jeans",
+     "name": "Straight jeans",
+     "text": "{c} straight leg jeans",
+     "color": "indigo",
+     "shape": "jeans"
+    },
+    {
+     "value": "trousers",
+     "name": "Wide trousers",
+     "text": "wide leg {c} trousers",
+     "color": "charcoal",
+     "shape": "wide"
+    },
+    {
+     "value": "cargo",
+     "name": "Cargo pants",
+     "text": "loose {c} cargo pants",
+     "color": "olive",
+     "shape": "wide"
+    },
+    {
+     "value": "mini",
+     "name": "Pleated mini",
+     "text": "a {c} pleated mini skirt",
+     "color": "black",
+     "shape": "mini"
+    },
+    {
+     "value": "midi",
+     "name": "Satin midi skirt",
+     "text": "a {c} satin midi skirt",
+     "color": "camel",
+     "shape": "midi"
+    },
+    {
+     "value": "shorts",
+     "name": "Linen shorts",
+     "text": "{c} linen shorts",
+     "color": "cream",
+     "shape": "shorts"
+    },
+    {
+     "value": "leggings",
+     "name": "Leggings",
+     "text": "{c} leggings",
+     "color": "black",
+     "shape": "jeans"
+    }
+   ]
+  },
+  {
+   "key": "one",
+   "label": "One piece",
+   "hint": "Dresses, jumpsuits and suits. Replaces the top and bottoms",
+   "options": [
+    {
+     "value": "slip",
+     "name": "Slip dress",
+     "text": "a {c} silk slip dress",
+     "color": "black",
+     "shape": "midi"
+    },
+    {
+     "value": "sun",
+     "name": "Sundress",
+     "text": "a {c} cotton sundress",
+     "color": "white",
+     "shape": "knee"
+    },
+    {
+     "value": "wrap",
+     "name": "Wrap dress",
+     "text": "a {c} wrap dress",
+     "color": "red",
+     "shape": "knee"
+    },
+    {
+     "value": "gown",
+     "name": "Column gown",
+     "text": "a {c} satin column gown",
+     "color": "cobalt",
+     "shape": "gown"
+    },
+    {
+     "value": "minidress",
+     "name": "Knit mini dress",
+     "text": "a {c} knit mini dress",
+     "color": "camel",
+     "shape": "mini"
+    },
+    {
+     "value": "jump",
+     "name": "Jumpsuit",
+     "text": "a {c} tailored jumpsuit",
+     "color": "navy",
+     "shape": "jump"
+    },
+    {
+     "value": "suit",
+     "name": "Suit",
+     "text": "a {c} tailored suit",
+     "color": "navy",
+     "shape": "suit"
+    },
+    {
+     "value": "swim",
+     "name": "Swimsuit",
+     "text": "a {c} one piece swimsuit",
+     "color": "red",
+     "shape": "swim"
+    }
+   ]
+  },
+  {
+   "key": "outer",
+   "label": "Outerwear",
+   "hint": "Worn over the top or one piece",
+   "options": [
+    {
+     "value": "trench",
+     "name": "Trench coat",
+     "text": "a {c} trench coat",
+     "color": "camel",
+     "shape": "long"
+    },
+    {
+     "value": "wool",
+     "name": "Wool coat",
+     "text": "a long {c} wool coat",
+     "color": "camel",
+     "shape": "long"
+    },
+    {
+     "value": "leather",
+     "name": "Leather jacket",
+     "text": "a {c} leather biker jacket",
+     "color": "black",
+     "shape": "short"
+    },
+    {
+     "value": "denim",
+     "name": "Denim jacket",
+     "text": "a faded {c} denim jacket",
+     "color": "indigo",
+     "shape": "short"
+    },
+    {
+     "value": "blazer",
+     "name": "Blazer",
+     "text": "an oversized {c} blazer",
+     "color": "black",
+     "shape": "short"
+    },
+    {
+     "value": "puffer",
+     "name": "Puffer",
+     "text": "a {c} cropped puffer jacket",
+     "color": "white",
+     "shape": "puffer"
+    },
+    {
+     "value": "cardigan",
+     "name": "Long cardigan",
+     "text": "a long {c} knit cardigan",
+     "color": "gray",
+     "shape": "long"
+    }
+   ]
+  },
+  {
+   "key": "shoes",
+   "label": "Shoes",
+   "hint": "",
+   "options": [
+    {
+     "value": "sneakers",
+     "name": "Sneakers",
+     "text": "{c} leather sneakers",
+     "color": "white",
+     "shape": "low"
+    },
+    {
+     "value": "loafers",
+     "name": "Loafers",
+     "text": "{c} loafers",
+     "color": "black",
+     "shape": "low"
+    },
+    {
+     "value": "ankle",
+     "name": "Ankle boots",
+     "text": "{c} suede ankle boots",
+     "color": "brown",
+     "shape": "ankle"
+    },
+    {
+     "value": "knee",
+     "name": "Knee boots",
+     "text": "{c} knee high boots",
+     "color": "black",
+     "shape": "knee"
+    },
+    {
+     "value": "heels",
+     "name": "Heels",
+     "text": "{c} pointed heels",
+     "color": "black",
+     "shape": "low"
+    },
+    {
+     "value": "sandals",
+     "name": "Sandals",
+     "text": "{c} strappy sandals",
+     "color": "camel",
+     "shape": "low"
+    },
+    {
+     "value": "mules",
+     "name": "Mules",
+     "text": "{c} mules",
+     "color": "cream",
+     "shape": "low"
+    },
+    {
+     "value": "bare",
+     "name": "Bare feet",
+     "text": "bare feet",
+     "color": "",
+     "shape": "bare"
+    }
+   ]
+  },
+  {
+   "key": "acc",
+   "label": "Accessories",
+   "hint": "Pick as many as you like. Added at the end of the outfit",
+   "options": [
+    {
+     "value": "hoops",
+     "name": "Gold hoops",
+     "text": "gold hoop earrings",
+     "color": "",
+     "shape": "hoops"
+    },
+    {
+     "value": "pearls",
+     "name": "Pearl necklace",
+     "text": "a pearl necklace",
+     "color": "",
+     "shape": "pearls"
+    },
+    {
+     "value": "sunglasses",
+     "name": "Sunglasses",
+     "text": "{c} sunglasses",
+     "color": "black",
+     "shape": "glasses"
+    },
+    {
+     "value": "cap",
+     "name": "Baseball cap",
+     "text": "a {c} baseball cap",
+     "color": "navy",
+     "shape": "cap"
+    },
+    {
+     "value": "beret",
+     "name": "Beret",
+     "text": "a {c} wool beret",
+     "color": "red",
+     "shape": "beret"
+    },
+    {
+     "value": "scarf",
+     "name": "Silk scarf",
+     "text": "a {c} silk scarf",
+     "color": "cream",
+     "shape": "scarf"
+    },
+    {
+     "value": "bag",
+     "name": "Shoulder bag",
+     "text": "a {c} leather shoulder bag",
+     "color": "black",
+     "shape": "bag"
+    },
+    {
+     "value": "belt",
+     "name": "Belt",
+     "text": "a {c} leather belt",
+     "color": "brown",
+     "shape": "belt"
+    }
+   ]
+  }
+ ],
+ "frames": {
+  "1": "bare shoulders",
+  "2": "an implied nude look",
+  "3": "a paper wrap",
+  "4": "an implied nude look",
+  "5": "a paper wrap",
+  "6": "a paper wrap",
+  "7": "an implied nude look",
+  "8": "a paper wrap",
+  "9": "an implied nude look",
+  "10": "bare feet",
+  "11": "an implied nude look",
+  "12": "an implied nude look",
+  "13": "the bodysuit in the pose",
+  "14": "the t-shirt hem she bites",
+  "15": "the bodysuit in the pose",
+  "16": "the clothes in the pose",
+  "17": "the clothes in the pose",
+  "18": "the clothes in the pose",
+  "19": "the clothes in the pose",
+  "20": "the tank hem she lifts",
+  "21": "",
+  "22": "the thong she tugs",
+  "23": "",
+  "24": "the clothes in the pose",
+  "25": "the robe she holds open",
+  "S1": "",
+  "S2": "the skirt in the pose",
+  "S3": "the skirt in the pose",
+  "S4": "the skirt in the pose",
+  "S5": "clothes written into the pose itself",
+  "S6": "clothes written into the pose itself",
+  "S7": "clothes written into the pose itself",
+  "S8": "the skirt in the pose",
+  "S9": "clothes written into the pose itself",
+  "S10": "clothes written into the pose itself",
+  "S11": "the skirt in the pose",
+  "S12": "clothes written into the pose itself",
+  "S13": "clothes written into the pose itself",
+  "S14": "",
+  "S15": "clothes written into the pose itself",
+  "S16": "clothes written into the pose itself",
+  "S17": "clothes written into the pose itself",
+  "S18": "",
+  "S19": "",
+  "S20": "",
+  "S21": "",
+  "S22": "",
+  "C1": "the clothes in the pose",
+  "C2": "the slip strap",
+  "C3": "an implied nude look",
+  "C4": "a draped sheet",
+  "C5": "the clothes in the pose",
+  "C6": "a curtain wrap",
+  "C7": "the clothes in the pose",
+  "C8": "the clothes in the pose",
+  "C9": "her coat pockets",
+  "C10": "the clothes in the pose",
+  "C11": "the clothes in the pose",
+  "C12": "the coat and scarf in the pose",
+  "26": "the stocking she pulls up",
+  "27": "",
+  "28": "",
+  "29": "",
+  "30": "",
+  "31": "",
+  "32": "",
+  "33": "",
+  "34": "",
+  "35": "",
+  "36": "",
+  "37": "",
+  "S23": "",
+  "S24": "",
+  "S25": "her trouser pockets",
+  "S26": "her sweater sleeves",
+  "S27": "",
+  "S28": "the scarf she holds",
+  "S29": "",
+  "S30": "",
+  "S31": "",
+  "S32": "",
+  "P1": "",
+  "P2": "",
+  "P3": "",
+  "P4": "",
+  "P5": "",
+  "P6": "a full skirt",
+  "P7": "",
+  "P8": "",
+  "P9": "",
+  "P10": "",
+  "P11": "her jacket collar",
+  "P12": "",
+  "P13": "",
+  "P14": "",
+  "P15": "",
+  "P16": "",
+  "P17": "",
+  "P18": "",
+  "P19": "",
+  "P20": "",
+  "P21": "",
+  "P22": "the hat she holds",
+  "P23": "",
+  "P24": "",
+  "P25": "",
+  "P26": "",
+  "P27": "",
+  "M1": "",
+  "M2": "",
+  "M3": "the strap she tugs",
+  "M4": "",
+  "M5": "the hoodie hem she lifts",
+  "M6": "",
+  "M7": "the waistband she smooths",
+  "M8": "",
+  "M9": "the towel she holds",
+  "M10": "",
+  "S33": "",
+  "S34": "her blazer lapel",
+  "S35": "",
+  "S36": "",
+  "S37": "her coat pocket",
+  "S38": "",
+  "S39": "the back of her dress",
+  "S40": "",
+  "S41": "",
+  "S42": "",
+  "S43": "",
+  "S44": "",
+  "S45": "",
+  "S46": "",
+  "S47": "",
+  "S48": "",
+  "S49": "her coat pocket",
+  "S50": "",
+  "S51": "",
+  "S52": "",
+  "S53": "",
+  "S54": "",
+  "S55": "",
+  "S56": "",
+  "S57": "",
+  "S58": "",
+  "S59": "",
+  "S60": "",
+  "S61": "",
+  "S62": "",
+  "S63": "",
+  "S64": "the shoelace she ties",
+  "S65": "",
+  "S66": "",
+  "S67": "",
+  "S68": "",
+  "S69": "",
+  "S70": "",
+  "S71": "",
+  "S72": "her blazer pocket",
+  "S73": "",
+  "R1": "",
+  "R2": "",
+  "R3": "",
+  "R4": "",
+  "R5": "",
+  "R6": ""
+ }
+}

@@ -7,6 +7,9 @@ import { mergeCustom } from "./custom.js";
 import { openSceneBuilder, loadPlaces } from "./scene.js";
 import { sceneSVG, kindOf, timeOf } from "./scene_art.js";
 import { places as placeList, parts as sceneParts, locked as sceneLocked } from "./scene_core.js";
+import { openOutfitBuilder, loadItems } from "./outfit.js";
+import { outfitSVG } from "./outfit_art.js";
+import { parts as outfitParts, locked as outfitLocked, outfitText } from "./outfit_core.js";
 import { loadData, frameKey, frameNo, loadEdits, saveEdit, personText } from "./core.js";
 
 const HERE = new URL(".", import.meta.url);
@@ -90,7 +93,7 @@ function sendToPoseNode(app, frame, mode, state, btn) {
 // Uses the selected text node; if none is selected, the one feeding a sampler's positive input, or the only text node on the canvas.
 const TEXT_NAMES = ["text", "prompt", "positive", "text_g", "t5xxl", "string", "value"];
 function textWidget(node) {
-  if (!node || node.type === NODE_TYPE || node.type === "KreaPosePerson" || node.type === "KreaPoseScene" || node.mode === 4) return null;
+  if (!node || /^KreaPose/.test(node.type || "") || node.mode === 4) return null;
   const ws = (node.widgets || []).filter(w => !w.hidden && (w.type === "customtext" || w.options?.multiline || w.element?.tagName === "TEXTAREA" || (typeof w.value === "string" && TEXT_NAMES.includes(w.name))));
   return ws.find(w => TEXT_NAMES.includes(w.name) && (w.type === "customtext" || w.options?.multiline || w.element?.tagName === "TEXTAREA")) || ws[0] || null;
 }
@@ -169,6 +172,20 @@ function linkedScene(node) {
 function nodeOverrides(node) {
   try { const v = JSON.parse(node.widgets?.find(w => w.name === "scene_overrides")?.value || "[]"); return Array.isArray(v) ? v : []; } catch (e) { return []; }
 }
+// The outfit, from a linked Call Sheet Outfit node.
+const outfits = await loadData(new URL("outfits.json", HERE).href).catch(() => null);
+let myItems = (await loadItems()) || [];
+const OUTFIT_TYPE = "KreaPoseOutfit";
+const outfitState = node => { try { const v = JSON.parse(node.widgets?.find(w => w.name === "outfit")?.value || "{}"); return v && typeof v === "object" ? v : {}; } catch (e) { return {}; } };
+function linkedOutfit(node) {
+  const inp = node.inputs?.find(i => i.name === "outfit");
+  const link = inp && inp.link != null ? app.graph.links?.[inp.link] || app.graph.links?.get?.(inp.link) : null;
+  const src = link ? app.graph.getNodeById(link.origin_id) : null;
+  return src && src.type === OUTFIT_TYPE && src.mode !== 4 ? src : null;
+}
+function outfitOverrides(node) {
+  try { const v = JSON.parse(node.widgets?.find(w => w.name === "outfit_overrides")?.value || "[]"); return Array.isArray(v) ? v : []; } catch (e) { return []; }
+}
 // The look of a scene for the little previews: its location's kind and time.
 function sceneLook(s) {
   const pl = s.place ? allPlaces().find(p => p.id === s.place) : null;
@@ -216,6 +233,20 @@ function nodeCtx(node) {
       const st = sceneState(src), p = sceneParts(scenes, st, allPlaces());
       return p.on ? { parts: p, label: p.label || (p.extra ? "Your scene" : "") } : null;
     },
+    // The outfit comes from a linked Call Sheet Outfit node.
+    outfit: () => {
+      const src = linkedOutfit(node);
+      if (!src || !outfits) return null;
+      const p = outfitParts(outfits, outfitState(src), myItems);
+      return p.on && p.pieces.length ? { parts: p, label: p.swap === "pick" ? "just what you picked" : "whole outfit" } : null;
+    },
+    outfitOverrides: () => outfitOverrides(node),
+    setOutfitOverride: (id, on) => {
+      const o = outfitOverrides(node).filter(x => x !== id);
+      if (on) o.push(id);
+      setWidget(node, "outfit_overrides", o.length ? JSON.stringify(o) : "");
+      dirty();
+    },
     overrides: () => nodeOverrides(node),
     setOverride: (id, on) => {
       const o = nodeOverrides(node).filter(x => x !== id);
@@ -237,7 +268,7 @@ function galleryFor(node) {
   const cur = frameOf(w.value);
   const ctx = nodeCtx(node);
   return openGallery({
-    data, scenes, thumbs, current: cur ? cur.id : null, ctx, setPreview: setPreviewFromLastRender, openPerson: personOpener,
+    data, scenes, outfits, thumbs, current: cur ? cur.id : null, ctx, setPreview: setPreviewFromLastRender, openPerson: personOpener,
     primary: { label: "Use this frame", run: f => {
       w.value = frameKey(f); w.callback?.(w.value);
       const mode = node.widgets.find(x => x.name === "mode")?.value;
@@ -344,12 +375,60 @@ function addSceneCard(nodeType) {
   nodeType.prototype.onConfigure = function () { const r = onConfigure?.apply(this, arguments); this._kpsDraw?.(); return r; };
 }
 
+// The Call Sheet Outfit node: the figure in the outfit and a button that opens the outfit builder.
+function addOutfitCard(nodeType) {
+  const onNodeCreated = nodeType.prototype.onNodeCreated;
+  nodeType.prototype.onNodeCreated = function () {
+    const r = onNodeCreated?.apply(this, arguments);
+    const node = this;
+    const ow = node.widgets?.find(w => w.name === "outfit");
+    if (!ow || !node.addDOMWidget || !outfits) return r;
+    const wrap = document.createElement("div");
+    wrap.className = "kps kpn kpo";
+    wrap.innerHTML = `<button type="button" class="kpn-face kpo-face" title="Open the outfit builder"></button>
+      <div class="kpn-bar"><button type="button" class="kps-btn kps-accent kpn-browse">Build outfit</button></div>`;
+    const face = wrap.querySelector(".kpo-face");
+    const draw = () => {
+      const s = outfitState(node), p = outfitParts(outfits, s, myItems), txt = outfitText(p);
+      const title = !p.on ? "Outfit off" : !p.pieces.length ? "No outfit yet" : p.swap === "pick" ? "Just what I pick" : "Whole outfit";
+      face.innerHTML = `<span class="kpo-art">${outfitSVG(outfits, s, myItems, { on: p.on, size: 60, aria: title })}</span><span class="kpn-text"><span class="kpn-title">${esc(title)}</span>
+        <span class="kpn-snip">${esc(!p.on ? "Frames keep their own clothes." : txt || "Pick a top and bottoms or a one piece. Frames keep their own clothes until you do.")}</span></span>`;
+    };
+    const open = () => {
+      const out = node.outputs?.[0]?.links || [];
+      const target = out.map(id => app.graph.links?.[id] || app.graph.links?.get?.(id)).filter(Boolean).map(l => app.graph.getNodeById(l.target_id)).find(n => n && n.type === NODE_TYPE);
+      const fw = target?.widgets?.find(w => w.name === "frame");
+      openOutfitBuilder({
+        data, outfits, state: outfitState(node), sample: fw ? frameOf(fw.value) : null,
+        onChange: st => {
+          ow.value = JSON.stringify(st); ow.callback?.(ow.value);
+          loadItems().then(l => { if (l) myItems = l; draw(); for (const n of app.graph._nodes || []) if (n.type === NODE_TYPE) n._kpsDraw?.(); });
+          draw(); node.setDirtyCanvas?.(true, true);
+          for (const n of app.graph._nodes || []) if (n.type === NODE_TYPE) n._kpsDraw?.();
+        },
+      });
+    };
+    wrap.addEventListener("click", e => { if (e.target.closest(".kpo-face, .kpn-browse")) open(); });
+    wrap.addEventListener("pointerdown", e => e.stopPropagation());
+    const dom = node.addDOMWidget("outfit_card", "kps_outfit_card", wrap, { serialize: false, hideOnZoom: false });
+    dom.computeSize = () => [0, 130];
+    ow.hidden = true; ow.computeSize = () => [0, -4];
+    node._kpsDraw = draw;
+    draw();
+    node.setSize([Math.max(node.size[0], 320), node.computeSize()[1]]);
+    return r;
+  };
+  const onConfigure = nodeType.prototype.onConfigure;
+  nodeType.prototype.onConfigure = function () { const r = onConfigure?.apply(this, arguments); this._kpsDraw?.(); return r; };
+}
+
 app.registerExtension({
   name: "krea.PoseSheet",
 
   async beforeRegisterNodeDef(nodeType, nodeData) {
     if (nodeData.name === "KreaPosePerson") { addPersonCard(nodeType); return; }
     if (nodeData.name === SCENE_TYPE) { addSceneCard(nodeType); return; }
+    if (nodeData.name === OUTFIT_TYPE) { addOutfitCard(nodeType); return; }
     if (nodeData.name !== NODE_TYPE) return;
     const onNodeCreated = nodeType.prototype.onNodeCreated;
     nodeType.prototype.onNodeCreated = function () {
@@ -373,11 +452,17 @@ app.registerExtension({
         const what = sc.parts.plate ? "Clean plate" : "Scene";
         return `<span class="kpn-scene${lock && !sc.parts.plate ? " is-locked" : ""}">${lock && !sc.parts.plate ? "Keeps its own location" : `${what}${sc.label ? ": " + esc(sc.label) : ""}`}</span>`;
       };
+      const outfitLine = f => {
+        const o = outfits && nodeCtx(node).outfit();
+        if (!o) return "";
+        const lock = outfitLocked(outfits, f, outfitOverrides(node));
+        return `<span class="kpn-outfit${lock ? " is-locked" : ""}">${lock ? "Keeps its own clothes" : "Outfit: " + esc(o.label)}</span>`;
+      };
       const draw = () => {
         const f = frameOf(fw.value);
         const ed = f && nodeEdits(node)[f.id];
         face.innerHTML = f ? `${thumbHTML(f, thumbs)}<span class="kpn-text"><span class="kpn-title"><span class="kps-no">${frameNo(f.id)}</span> ${esc(f.title)}${ed ? ' <span class="kps-badge kps-upd">Edited</span>' : ""}</span>
-          <span class="kpg-set">${esc(data.tabs.find(t => t.id === f.tab)?.name || "")} · ${esc(data.sets[f.set] || "")}</span><span class="kpn-snip">${esc(snippet(ed ? { ...f, text: ed } : f))}</span>${sceneLine(f)}</span>`
+          <span class="kpg-set">${esc(data.tabs.find(t => t.id === f.tab)?.name || "")} · ${esc(data.sets[f.set] || "")}</span><span class="kpn-snip">${esc(snippet(ed ? { ...f, text: ed } : f))}</span><span class="kpn-tags">${sceneLine(f)}${outfitLine(f)}</span></span>`
           : `<span class="kpn-text"><span class="kpn-title">Pick a frame</span></span>`;
       };
       wrap.addEventListener("click", e => {
@@ -407,7 +492,7 @@ app.registerExtension({
       // The dropdown stays (hidden) so saved workflows and the API keep working.
       fw.hidden = true;
       fw.computeSize = () => [0, -4];
-      for (const name of ["edits", "scene_overrides"]) {
+      for (const name of ["edits", "scene_overrides", "outfit_overrides"]) {
         const hw = node.widgets.find(w => w.name === name);
         if (hw) { hw.hidden = true; hw.computeSize = () => [0, -4]; }
       }

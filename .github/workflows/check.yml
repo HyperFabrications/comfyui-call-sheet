@@ -19,3 +19,7 @@ jobs:
         run: python scripts/validate.py
       - name: Python and web prompts match
         run: node tests/parity.mjs
+      - name: Python and web scenes match
+        run: node tests/scene_parity.mjs
+      - name: Python and web outfits match
+        run: node tests/outfit_parity.mjs
