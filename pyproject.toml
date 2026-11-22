@@ -6,7 +6,7 @@ license = { file = "LICENSE" }
 dependencies = []
 
 [project.urls]
-Repository = "https://github.com/ilikeredheads/comfyui-call-sheet"
+Repository = "https://github.com/ilikeredheads/comfyui-krea-pose-sheet"
 
 [tool.comfy]
 PublisherId = "REPLACE_WITH_YOUR_PUBLISHER_ID"
