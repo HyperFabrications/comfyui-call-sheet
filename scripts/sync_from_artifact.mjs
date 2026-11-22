@@ -18,13 +18,17 @@ const o = ctx.__out;
 const keys = ["id", "tab", "set", "title", "text", "bare", "note", "src", "ex", "added", "upd"];
 const frames = o.DATA.map(d => Object.fromEntries(keys.filter(k => d[k] !== undefined).map(k => [k, d[k]])));
 const tabs = Object.keys(o.TABNAME).map(id => ({ id, name: o.TABNAME[id], sets: o.ORDER[id] }));
+// Traits that only the plugin has (like Age) are kept, at the end, so the Person node's dropdowns keep their order.
+const old = (() => { try { return JSON.parse(fs.readFileSync(new URL("../web/poses.json", import.meta.url), "utf8")); } catch (e) { return { traits: [] }; } })();
+const traits = o.TRAITS.map(([key, label, options]) => ({ key, label, options: options.map(([value, name]) => ({ value, name })) }));
+for (const t of old.traits || []) if (!traits.some(x => x.key === t.key)) traits.push(t);
 const out = {
   version: 1,
   updated: o.UPDATED,
   changelog: o.CHANGELOG.map(([date, text]) => ({ date, text })),
   tabs,
   sets: o.LABELS,
-  traits: o.TRAITS.map(([key, label, options]) => ({ key, label, options: options.map(([value, name]) => ({ value, name })) })),
+  traits,
   frames
 };
 fs.writeFileSync(new URL("../web/poses.json", import.meta.url), JSON.stringify(out, null, 2) + "\n");
