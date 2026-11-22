@@ -2,7 +2,6 @@
 
 A Krea 2 shot builder for ComfyUI. Pick a pose, choose who is in the shot, what they wear and where it happens, and Call Sheet writes the prompt. Everything runs inside ComfyUI: a sidebar, a frame picker, and nodes you can find by typing **call sheet** in the node search.
 
-> Call Sheet used to be called **Krea Pose Sheet**. Saved workflows still load, because only the names you see changed.
 
 ## Install
 
