@@ -24,7 +24,7 @@ def load_custom():
     for x in items:
         if isinstance(x, dict) and ID_RE.match(str(x.get("id", ""))) and str(x.get("text", "")).strip():
             out.append({"id": x["id"], "tab": "custom", "set": "custom", "title": str(x.get("title") or "Untitled").strip()[:80],
-                        "text": str(x["text"]), "added": x.get("added")})
+                        "text": str(x["text"]), "added": x.get("added"), "portable": bool(x.get("portable"))})
     return out
 
 
@@ -35,7 +35,7 @@ def _save(frames):
     os.replace(tmp, CUSTOM_PATH)
 
 
-def upsert(fid, title, text):
+def upsert(fid, title, text, portable=None):
     text = str(text or "").strip()
     if not text:
         raise ValueError("The prompt is empty.")
@@ -46,13 +46,15 @@ def upsert(fid, title, text):
             for f in frames:
                 if f["id"] == fid:
                     f["title"], f["text"] = title, text
+                    if portable is not None:
+                        f["portable"] = bool(portable)
                     break
             else:
-                frames.append({"id": fid, "tab": "custom", "set": "custom", "title": title, "text": text, "added": time.strftime("%Y-%m-%d")})
+                frames.append({"id": fid, "tab": "custom", "set": "custom", "title": title, "text": text, "added": time.strftime("%Y-%m-%d"), "portable": bool(portable)})
         else:
             n = max([int(f["id"][1:]) for f in frames] + [0]) + 1
             fid = f"U{n}"
-            frames.append({"id": fid, "tab": "custom", "set": "custom", "title": title, "text": text, "added": time.strftime("%Y-%m-%d")})
+            frames.append({"id": fid, "tab": "custom", "set": "custom", "title": title, "text": text, "added": time.strftime("%Y-%m-%d"), "portable": bool(portable)})
         _save(frames)
     return next(f for f in frames if f["id"] == fid)
 
@@ -71,7 +73,7 @@ def import_many(items):
                 continue
             n += 1
             frames.append({"id": f"U{n}", "tab": "custom", "set": "custom", "title": (str(x.get("title") or "").strip() or "Untitled")[:80],
-                           "text": text, "added": time.strftime("%Y-%m-%d")})
+                           "text": text, "added": time.strftime("%Y-%m-%d"), "portable": bool(x.get("portable"))})
             added += 1
         _save(frames)
     return added
@@ -98,10 +100,10 @@ if routes is not None:
 
     @routes.post("/krea_pose_sheet/custom")
     async def save_custom(request):
-        """Body: {id?, title, text}. Without an id, a new prompt is added."""
+        """Body: {id?, title, text, portable?}. Without an id, a new prompt is added."""
         body = await request.json()
         try:
-            frame = upsert(str(body.get("id") or ""), body.get("title"), body.get("text"))
+            frame = upsert(str(body.get("id") or ""), body.get("title"), body.get("text"), body.get("portable"))
         except ValueError as e:
             return web.json_response({"error": str(e)}, status=400)
         return web.json_response({"ok": True, "frame": frame})

@@ -3,6 +3,7 @@
 from .nodes import NODE_CLASS_MAPPINGS, NODE_DISPLAY_NAME_MAPPINGS
 from . import thumbs  # noqa: F401  (registers the preview image routes)
 from . import custom  # noqa: F401  (registers the Custom tab routes)
+from . import places  # noqa: F401  (registers the custom places routes)
 
 WEB_DIRECTORY = "./web"
 

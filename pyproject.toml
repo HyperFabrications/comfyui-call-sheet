@@ -1,7 +1,7 @@
 [project]
 name = "krea-pose-sheet"
 description = "Krea 2 pose prompts inside ComfyUI: a Pose Sheet sidebar with LoRA trigger, Style and Person switches, plus a Krea Pose Prompt node that outputs one prompt or a whole set as a list."
-version = "1.4.0"
+version = "1.5.0"
 license = { file = "LICENSE" }
 dependencies = []
 

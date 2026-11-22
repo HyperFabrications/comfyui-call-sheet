@@ -1,6 +1,7 @@
 // The frame picker: a searchable grid of frames. Click one to select it; the panel on the right
 // shows its prompt (editable), what the node will receive, and the buttons that act on it.
-import { promptFor, personText, subject, frameNo, loadEdits, saveEdit } from "./core.js";
+import { promptFor, personText, subject, frameNo, loadEdits, saveEdit, withEdit } from "./core.js";
+import { withScene, locked as sceneLocked, propOf } from "./scene_core.js";
 import { avatarSVG } from "./figure.js";
 import { shortPerson } from "./builder.js";
 import { saveCustom, deleteCustom, exportCustom, importCustom } from "./custom.js";
@@ -79,6 +80,9 @@ const ICON = {
   dup: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M4 16V5a1 1 0 0 1 1-1h11"/><path d="M14.5 12v6M11.5 15h6"/></svg>`,
   down: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12M6 10l6 6 6-6M4 20h16"/></svg>`,
   up: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M6 10l6-6 6 6M4 20h16"/></svg>`,
+  lock: `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>`,
+  scene: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 16l5-5 4 4 3-3 6 6"/></svg>`,
+  warn: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18v.5"/></svg>`,
   star: `<svg width="16" height="16" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.2-4.1 5.8-.8z"/></svg>`,
 };
 
@@ -90,7 +94,7 @@ let open = null;
 //   primary: { label, run(frame, btn) } — return true to close the picker.
 //   actions: [{ label, icon, run(frame, prompt, btn) }]
 //   openPerson(ctx, done): opens the person builder; done() refreshes the picker.
-export function openGallery({ data, thumbs = {}, current = null, ctx = localCtx(), primary = null, actions = [], setPreview = null, openPerson = null, onClose = null }) {
+export function openGallery({ data, scenes = null, thumbs = {}, current = null, ctx = localCtx(), primary = null, actions = [], setPreview = null, openPerson = null, onClose = null }) {
   if (open) open.close();
   const TABNAME = Object.fromEntries(data.tabs.map(t => [t.id, t.name]));
   const tagCache = new Map();
@@ -98,7 +102,7 @@ export function openGallery({ data, thumbs = {}, current = null, ctx = localCtx(
   let favs = new Set(); try { favs = new Set(JSON.parse(store.get("favs") || "[]")); } catch (e) {}
   const cur = current ? data.frames.find(f => f.id === current) : null;
   const st = {
-    q: "", tab: store.get("g:tab") || "all", set: "all", camera: "", light: "", filters: false,
+    q: "", tab: store.get("g:tab") || "all", set: "all", camera: "", light: "", filters: false, portable: !!scenes && store.get("g:portable") === "1",
     sel: cur ? cur.id : null,
   };
   if (cur && st.tab !== "all" && st.tab !== "starred" && cur.tab !== st.tab) st.tab = "all";
@@ -126,6 +130,7 @@ export function openGallery({ data, thumbs = {}, current = null, ctx = localCtx(
         <span class="kq-grow"></span>
         <span class="kq-faint kq-count"></span>
         <span class="kq-tabtools"></span>
+        ${scenes ? `<button type="button" class="kq-ghost" data-x="portable" title="Only frames whose pose works in any scene">${ICON.scene}<span>Works with scenes</span></button>` : ""}
         <button type="button" class="kq-ghost" data-x="random" title="Pick a random frame from what's shown">${ICON.dice}<span>Random</span></button>
         ${data.hasCustom ? `<button type="button" class="kq-ghost" data-x="newprompt"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>New prompt</span></button>` : ""}
         <button type="button" class="kq-ghost" data-x="filters" aria-expanded="false">${ICON.filter}<span>Filter</span></button>
@@ -151,7 +156,7 @@ export function openGallery({ data, thumbs = {}, current = null, ctx = localCtx(
   const inTab = f => st.tab === "all" || (st.tab === "starred" ? favs.has(f.id) : st.tab === "recent" ? recent.includes(f.id) : f.tab === st.tab);
   const visible = () => {
     const s = st.q.trim().toLowerCase();
-    return data.frames.filter(f => inTab(f) && (st.set === "all" || f.set === st.set) &&
+    return data.frames.filter(f => inTab(f) && (st.set === "all" || f.set === st.set) && (!st.portable || !sceneLocked(scenes, f)) &&
       (!st.camera || tagOf(f).camera.includes(st.camera)) &&
       (!st.light || tagOf(f).light.includes(st.light)) &&
       (!s || (f.id + " " + f.title + " " + f.text + " " + (data.sets[f.set] || "")).toLowerCase().includes(s)))
@@ -162,7 +167,16 @@ export function openGallery({ data, thumbs = {}, current = null, ctx = localCtx(
   const frameById = id => id === "__new" ? newDraft : data.frames.find(x => x.id === id);
   const textOf = f => { if (isCustom(f)) return f.text; const e = ctx.edits()[f.id]; return typeof e === "string" && e.trim() ? e : f.text; };
   const isEdited = f => textOf(f) !== f.text;
-  const promptOf = f => promptFor(f, { trigger: ctx.trigger(), person: ctx.person().text, style: ctx.style(), edits: ctx.edits() });
+  // The scene (from a linked Krea Pose Scene node) and which locked frames use it anyway.
+  const sceneNow = () => scenes && ctx.scene ? ctx.scene() : null;
+  const overrides = () => ctx.overrides ? ctx.overrides() : [];
+  const sceneFrame = (f, edits) => {
+    const fe = withEdit(f, edits), sc = sceneNow();
+    if (!sc) return fe;
+    const [text, changed] = withScene(scenes, fe, sc.parts, overrides());
+    return changed ? { ...fe, text, bare: undefined } : fe;
+  };
+  const promptOf = f => promptFor(sceneFrame(f, ctx.edits()), { trigger: ctx.trigger(), person: ctx.person().text, style: ctx.style() });
 
   // ----- header: trigger and person -----
   function renderTrigger(editing = false) {
@@ -207,6 +221,8 @@ export function openGallery({ data, thumbs = {}, current = null, ctx = localCtx(
     fb.querySelector("span").textContent = n ? `Filter · ${n}` : "Filter";
     fb.classList.toggle("is-on", !!n);
     fb.setAttribute("aria-expanded", String(st.filters));
+    q('[data-x="portable"]')?.classList.toggle("is-on", st.portable);
+    q('[data-x="portable"]')?.setAttribute("aria-pressed", String(st.portable));
     q(".kq-filters").hidden = !st.filters;
   }
 
@@ -216,7 +232,7 @@ export function openGallery({ data, thumbs = {}, current = null, ctx = localCtx(
     return `<button type="button" class="kq-card" data-id="${esc(f.id)}" aria-pressed="${f.id === st.sel}" data-tab="${f.tab}">
       ${thumbHTML(f, thumbs)}
       <span class="kq-meta">
-        <span class="kq-ctitle"><span class="kq-cname">${esc(f.title)}</span>${isCustom(f) ? `<span class="kq-cdel" data-del="${esc(f.id)}" role="button" tabindex="-1" title="Delete this prompt" aria-label="Delete ${esc(f.title)}">${ICON.close}</span>` : ""}${isEdited(f) ? '<span class="kq-dot" title="Edited"></span>' : ""}${favs.has(f.id) ? '<span class="kq-fav" title="Starred">★</span>' : ""}</span>
+        <span class="kq-ctitle"><span class="kq-cname">${esc(f.title)}</span>${scenes && sceneLocked(scenes, f) ? `<span class="kq-lock" title="Keeps its own location: the pose uses ${esc(propOf(scenes, f))}">${ICON.lock}</span>` : ""}${isCustom(f) ? `<span class="kq-cdel" data-del="${esc(f.id)}" role="button" tabindex="-1" title="Delete this prompt" aria-label="Delete ${esc(f.title)}">${ICON.close}</span>` : ""}${isEdited(f) ? '<span class="kq-dot" title="Edited"></span>' : ""}${favs.has(f.id) ? '<span class="kq-fav" title="Starred">★</span>' : ""}</span>
         <span class="kq-cmeta">${frameNo(f.id)} · ${esc(meta)}</span>
         ${thumbs[f.id] ? "" : `<span class="kq-snip">${esc(snippet({ ...f, text: textOf(f) }))}</span>`}
       </span>
@@ -248,6 +264,7 @@ export function openGallery({ data, thumbs = {}, current = null, ctx = localCtx(
         ${fresh ? "" : `<button type="button" class="kq-icon kq-star" data-x="star" aria-pressed="${fav}" aria-label="${fav ? "Unstar" : "Star"} this frame">${ICON.star}</button>`}
       </div>
       <div class="kq-pbody">
+        ${sceneRow(f, mine, fresh)}
         <div class="kq-row kq-plabel"><label for="kq-prompt" class="kq-strong">Prompt</label><span class="kq-edited"></span></div>
         <textarea id="kq-prompt" class="kq-text" spellcheck="true"></textarea>
         <div class="kq-row kq-hint"><span class="kq-faint">Keep [trigger] where your trigger or person should go.</span><span class="kq-grow"></span><span class="kq-words"></span></div>
@@ -283,6 +300,26 @@ export function openGallery({ data, thumbs = {}, current = null, ctx = localCtx(
     }
     updateDraftBits(f, ta.value);
   }
+  function sceneRow(f, mine, fresh) {
+    if (!scenes || fresh) return "";
+    const sc = sceneNow();
+    const ov = overrides().includes(f.id), lock = sceneLocked(scenes, f);
+    if (mine) {
+      return `<div class="kq-scene${f.portable ? "" : " is-muted"}">${f.portable ? ICON.scene : ICON.lock}<span class="kq-grow"><span>${f.portable ? "Works with scenes" : "Keeps its own location"}</span>
+        <span class="kq-dim">${f.portable ? "A linked scene replaces the setting in this prompt." : "Turn on if the pose doesn't need anything in its place."}</span></span>
+        <button type="button" class="kq-switch" data-x="portableone" aria-pressed="${!!f.portable}" aria-label="Works with scenes"><span></span></button></div>`;
+    }
+    if (!sc) return "";
+    if (sc.parts.plate) {
+      return `<div class="kq-scene">${ICON.scene}<span class="kq-grow"><span>Clean plate${sc.label && !(lock && !ov) ? ": " + esc(sc.label) : ""}</span>
+        <span class="kq-dim">${lock && !ov ? "This frame's own place, with nobody in it." : "This shot's look in the scene, with nobody in it."}</span></span></div>`;
+    }
+    if (!lock) return `<div class="kq-scene">${ICON.scene}<span class="kq-grow"><span>Scene${sc.label ? ": " + esc(sc.label) : ""}</span><span class="kq-dim">Replaces this frame's setting. The pose works anywhere.</span></span></div>`;
+    if (!ov) return `<div class="kq-scene is-muted">${ICON.lock}<span class="kq-grow"><span>Keeps its own location</span><span class="kq-dim">The pose uses ${esc(propOf(scenes, f))}, so the scene is skipped here.</span></span>
+      <button type="button" class="kq-ghost kq-tight kq-filled" data-x="override">Use scene anyway</button></div>`;
+    return `<div class="kq-scene is-warn">${ICON.warn}<span class="kq-grow"><span>Scene on, location overridden</span><span class="kq-dim">The pose still mentions ${esc(propOf(scenes, f))}. Check it fits the new place.</span></span>
+      <button type="button" class="kq-ghost kq-tight kq-filled" data-x="override">Keep its own</button></div>`;
+  }
   const refreshCard = f => { const c = el.querySelector(`.kq-card[data-id="${CSS.escape(f.id)}"]`); if (c) c.outerHTML = card(f); };
   function saveDraft(f, val) {
     if (!f || f.id === "__new") return;
@@ -308,7 +345,7 @@ export function openGallery({ data, thumbs = {}, current = null, ctx = localCtx(
     const ed = { ...ctx.edits() };
     const v = val === undefined ? q(".kq-text")?.value : val;
     if (typeof v === "string") { if (v.trim() && v.trim() !== f.text.trim()) ed[f.id] = v; else delete ed[f.id]; }
-    const text = promptFor(f, { trigger: ctx.trigger(), person: ctx.person().text, style: ctx.style(), edits: ed });
+    const text = promptFor(sceneFrame(f, ed), { trigger: ctx.trigger(), person: ctx.person().text, style: ctx.style() });
     const subj = subject(ctx.trigger(), ctx.person().text);
     const at = text.indexOf(subj);
     p.innerHTML = at >= 0 && subj !== "[trigger]" ? esc(text.slice(0, at)) + `<mark>${esc(subj)}</mark>` + esc(text.slice(at + subj.length)) : esc(text);
@@ -416,6 +453,14 @@ export function openGallery({ data, thumbs = {}, current = null, ctx = localCtx(
         break;
       }
       case "filters": st.filters = !st.filters; renderFilters(); break;
+      case "portable": st.portable = !st.portable; store.set("g:portable", st.portable ? "1" : "0"); renderFilters(); renderGrid(); markSelected(); break;
+      case "override": ctx.setOverride(f.id, !overrides().includes(f.id)); renderPanel(); break;
+      case "portableone": {
+        flushDraft(); x.disabled = true;
+        saveCustom(data, { id: f.id, title: f.title, text: f.text, portable: !f.portable }).then(() => { refreshCard(f); markSelected(); renderPanel(); if (st.portable) renderGrid(); },
+          () => { x.disabled = false; });
+        break;
+      }
       case "clearf": st.set = "all"; st.camera = ""; st.light = ""; renderFilters(); renderGrid(); break;
       case "trigger": renderTrigger(true); break;
       case "person": {

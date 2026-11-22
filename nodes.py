@@ -1,7 +1,9 @@
 import json
 
 from . import pose_data as P
+from . import scene_data as S
 from .custom import load_custom
+from .places import load_places
 
 MODES = ["single frame", "whole set", "whole tab"]
 
@@ -51,10 +53,12 @@ class KreaPosePrompt:
             "optional": {
                 "person": ("STRING", {"default": "", "placeholder": "person description (optional)", "tooltip": "Who is in the shot, typed here or linked from Krea Pose Person. Goes after the trigger, or replaces it if the trigger is empty."}),
                 "edits": ("STRING", {"default": "", "tooltip": "Your own wording for frames, set with Edit prompt on the node. Leave empty to use the sheet's text."}),
+                "scene": ("KREA_SCENE", {"tooltip": "Link a Krea Pose Scene node to swap each frame's setting, or make clean plates. Frames whose pose needs their own location keep it."}),
+                "scene_overrides": ("STRING", {"default": "", "tooltip": "Frames that use the scene even though their pose relies on their own location. Set with Use scene anyway in the picker."}),
             },
         }
 
-    def build(self, frame, mode, trigger, style, person=None, edits=None):
+    def build(self, frame, mode, trigger, style, person=None, edits=None, scene=None, scene_overrides=None):
         f = _find(frame)
         try:
             edit_map = json.loads(edits) if edits else {}
@@ -68,7 +72,19 @@ class KreaPosePrompt:
             picked = [x for x in _frames() if x["tab"] == f["tab"]]
         else:
             picked = [f]
-        prompts = [P.prompt_for(x, trigger, person or "", style, edit_map) for x in picked]
+        try:
+            overrides = json.loads(scene_overrides) if scene_overrides else []
+            if not isinstance(overrides, list):
+                overrides = []
+        except ValueError:
+            overrides = []
+        prompts = []
+        for x in picked:
+            x = P.with_edit(x, edit_map)
+            text, changed = S.with_scene(x, scene, overrides)
+            if changed:
+                x = {**x, "text": text, "bare": None}
+            prompts.append(P.prompt_for(x, trigger, person or "", style))
         return ("\n".join(prompts), prompts, len(prompts))
 
 
@@ -95,11 +111,40 @@ class KreaPosePerson:
         return (P.person_text(person),)
 
 
+class KreaPoseScene:
+    """Build a setting (or pick a place) and link it to Krea Pose Prompt to put any portable pose there. Can also make clean plates."""
+
+    CATEGORY = "Krea Pose Sheet"
+    FUNCTION = "build"
+    RETURN_TYPES = ("KREA_SCENE", "STRING")
+    RETURN_NAMES = ("scene", "text")
+    OUTPUT_TOOLTIPS = (
+        "Link to the scene input of Krea Pose Prompt.",
+        "The scene on its own: the setting lines, or a full empty scene prompt when Clean plate is on.",
+    )
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {"required": {"scene": ("STRING", {"default": "{}", "tooltip": "Set with Build scene on the node."})}}
+
+    def build(self, scene):
+        try:
+            state = json.loads(scene) if scene else {}
+            if not isinstance(state, dict):
+                state = {}
+        except ValueError:
+            state = {}
+        p = S.parts(state, S.places(P.load()["frames"], load_places()))
+        return (p, S.scene_text(p) if p["on"] else "")
+
+
 NODE_CLASS_MAPPINGS = {
     "KreaPosePrompt": KreaPosePrompt,
     "KreaPosePerson": KreaPosePerson,
+    "KreaPoseScene": KreaPoseScene,
 }
 NODE_DISPLAY_NAME_MAPPINGS = {
     "KreaPosePrompt": "Krea Pose Prompt",
     "KreaPosePerson": "Krea Pose Person",
+    "KreaPoseScene": "Krea Pose Scene",
 }

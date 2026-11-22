@@ -1,0 +1,466 @@
+{
+ "note": "Scene builder data. frames: '' means the pose works in any scene; text names what the pose relies on, so the frame keeps its own location. Frames not listed keep their own location.",
+ "placesSet": "Places",
+ "categories": [
+  {
+   "key": "location",
+   "label": "Location",
+   "hint": "Where the shot takes place",
+   "options": [
+    {
+     "value": "studio",
+     "name": "Studio sweep",
+     "text": "a seamless warm gray paper studio backdrop",
+     "kind": "studio"
+    },
+    {
+     "value": "loft",
+     "name": "Loft apartment",
+     "text": "a sunlit loft apartment with tall steel framed windows, a linen sofa and potted plants",
+     "kind": "interior"
+    },
+    {
+     "value": "bedroom",
+     "name": "Bedroom",
+     "text": "a quiet bedroom with rumpled white sheets and sheer curtains",
+     "kind": "interior"
+    },
+    {
+     "value": "cafe",
+     "name": "Café",
+     "text": "a small corner café with marble tables and a big front window",
+     "kind": "interior"
+    },
+    {
+     "value": "city",
+     "name": "City street",
+     "text": "a city street lined with storefronts, traffic and glass towers blurred behind",
+     "kind": "city"
+    },
+    {
+     "value": "rooftop",
+     "name": "Rooftop",
+     "text": "a rooftop terrace overlooking the city skyline",
+     "kind": "city"
+    },
+    {
+     "value": "beach",
+     "name": "Beach",
+     "text": "a wide sandy beach with low dunes and gentle waves rolling in",
+     "kind": "beach"
+    },
+    {
+     "value": "forest",
+     "name": "Forest trail",
+     "text": "a pine forest trail with ferns and tall trunks",
+     "kind": "forest"
+    },
+    {
+     "value": "meadow",
+     "name": "Wildflower field",
+     "text": "a field of tall wildflowers stretching to the horizon",
+     "kind": "field"
+    },
+    {
+     "value": "desert",
+     "name": "Desert road",
+     "text": "a desert road with red rock mesas in the distance",
+     "kind": "desert"
+    },
+    {
+     "value": "lake",
+     "name": "Mountain lake",
+     "text": "a still mountain lake ringed by snowy peaks",
+     "kind": "mountain"
+    },
+    {
+     "value": "garage",
+     "name": "Parking garage",
+     "text": "an empty concrete parking garage with painted pillars",
+     "kind": "garage"
+    }
+   ]
+  },
+  {
+   "key": "time",
+   "label": "Time of day",
+   "hint": "",
+   "options": [
+    {
+     "value": "sunrise",
+     "name": "Sunrise",
+     "text": "at sunrise",
+     "swatch": "#f2b48a"
+    },
+    {
+     "value": "morning",
+     "name": "Morning",
+     "text": "in the early morning",
+     "swatch": "#cfe0ef"
+    },
+    {
+     "value": "midday",
+     "name": "Midday",
+     "text": "at midday",
+     "swatch": "#8fc0ea"
+    },
+    {
+     "value": "golden",
+     "name": "Golden hour",
+     "text": "at golden hour",
+     "swatch": "#f0b35a"
+    },
+    {
+     "value": "sunset",
+     "name": "Sunset",
+     "text": "at sunset",
+     "swatch": "#e9785a"
+    },
+    {
+     "value": "bluehour",
+     "name": "Blue hour",
+     "text": "at blue hour",
+     "swatch": "#3d5a9a"
+    },
+    {
+     "value": "night",
+     "name": "Night",
+     "text": "at night",
+     "swatch": "#141a33"
+    }
+   ]
+  },
+  {
+   "key": "weather",
+   "label": "Weather",
+   "hint": "",
+   "options": [
+    {
+     "value": "clear",
+     "name": "Clear",
+     "text": "under clear skies"
+    },
+    {
+     "value": "clouds",
+     "name": "Scattered clouds",
+     "text": "with soft scattered clouds"
+    },
+    {
+     "value": "overcast",
+     "name": "Overcast",
+     "text": "under a flat overcast sky"
+    },
+    {
+     "value": "rain",
+     "name": "Rain",
+     "text": "in light rain with wet, reflective ground"
+    },
+    {
+     "value": "fog",
+     "name": "Fog",
+     "text": "in thick drifting fog"
+    },
+    {
+     "value": "snow",
+     "name": "Snow",
+     "text": "with snow gently falling"
+    },
+    {
+     "value": "wind",
+     "name": "Windy",
+     "text": "on a breezy, windswept day"
+    }
+   ]
+  },
+  {
+   "key": "lighting",
+   "label": "Lighting",
+   "hint": "Also replaces the frame's light line",
+   "options": [
+    {
+     "value": "natural",
+     "name": "Soft natural",
+     "text": "Soft natural light."
+    },
+    {
+     "value": "hard",
+     "name": "Hard sun",
+     "text": "Hard direct sunlight with crisp shadows."
+    },
+    {
+     "value": "window",
+     "name": "Window light",
+     "text": "Soft window light from the side."
+    },
+    {
+     "value": "backlit",
+     "name": "Backlit glow",
+     "text": "Warm backlight with a glowing rim."
+    },
+    {
+     "value": "neon",
+     "name": "Neon",
+     "text": "Pink and blue neon light mixing across the scene."
+    },
+    {
+     "value": "candle",
+     "name": "Warm lamps",
+     "text": "Warm practical lamps and candlelight."
+    },
+    {
+     "value": "softbox",
+     "name": "Studio softbox",
+     "text": "Clean, even softbox light."
+    }
+   ]
+  },
+  {
+   "key": "era",
+   "label": "Era",
+   "hint": "Added after the setting",
+   "options": [
+    {
+     "value": "50s",
+     "name": "1950s",
+     "text": "1950s Americana details throughout."
+    },
+    {
+     "value": "70s",
+     "name": "1970s",
+     "text": "1970s details and warm film tones throughout."
+    },
+    {
+     "value": "90s",
+     "name": "1990s",
+     "text": "1990s details throughout."
+    },
+    {
+     "value": "y2k",
+     "name": "Early 2000s",
+     "text": "Early 2000s Y2K details throughout."
+    },
+    {
+     "value": "future",
+     "name": "Futuristic",
+     "text": "Sleek futuristic details throughout."
+    }
+   ]
+  },
+  {
+   "key": "mood",
+   "label": "Mood",
+   "hint": "Added after the setting",
+   "options": [
+    {
+     "value": "calm",
+     "name": "Calm",
+     "text": "A calm, airy mood.",
+     "swatch": "#a9c7de"
+    },
+    {
+     "value": "romantic",
+     "name": "Romantic",
+     "text": "A soft, romantic mood.",
+     "swatch": "#e7a6b8"
+    },
+    {
+     "value": "moody",
+     "name": "Moody",
+     "text": "A moody, cinematic atmosphere.",
+     "swatch": "#4a5878"
+    },
+    {
+     "value": "playful",
+     "name": "Playful",
+     "text": "A bright, playful mood.",
+     "swatch": "#f0c75a"
+    },
+    {
+     "value": "nostalgic",
+     "name": "Nostalgic",
+     "text": "A warm, nostalgic mood.",
+     "swatch": "#c8955a"
+    },
+    {
+     "value": "eerie",
+     "name": "Eerie",
+     "text": "A quiet, eerie stillness.",
+     "swatch": "#5f7a6a"
+    },
+    {
+     "value": "lux",
+     "name": "Luxurious",
+     "text": "A polished, luxurious feel.",
+     "swatch": "#b99a5a"
+    }
+   ]
+  }
+ ],
+ "frames": {
+  "1": "",
+  "2": "a wall",
+  "3": "a paper backdrop",
+  "4": "a tabletop surface",
+  "5": "a paper backdrop",
+  "6": "",
+  "7": "",
+  "8": "curtains",
+  "9": "a seamless backdrop",
+  "10": "",
+  "11": "",
+  "12": "",
+  "13": "",
+  "14": "a mirror",
+  "15": "a bed",
+  "16": "an armchair",
+  "17": "a sofa",
+  "18": "a throw on furniture",
+  "19": "a shower curtain",
+  "20": "",
+  "21": "a doorframe",
+  "22": "a doorframe",
+  "23": "a shower curtain",
+  "24": "a bed",
+  "25": "a cabin doorway",
+  "S1": "a field",
+  "S2": "tall grass",
+  "S3": "grass",
+  "S4": "a field",
+  "S5": "tall grass",
+  "S6": "pampas grass",
+  "S7": "a meadow",
+  "S8": "grass",
+  "S9": "a field",
+  "S10": "grass",
+  "S11": "a field",
+  "S12": "",
+  "S13": "tall grass",
+  "S14": "",
+  "S15": "",
+  "S16": "",
+  "S17": "",
+  "S18": "a car seat",
+  "S19": "",
+  "S20": "a mirror",
+  "S21": "a mirror",
+  "S22": "a railing",
+  "C1": "a window ledge",
+  "C2": "a chaise",
+  "C3": "a bathtub",
+  "C4": "a bed",
+  "C5": "a vanity mirror",
+  "C6": "a window",
+  "C7": "a washing machine",
+  "C8": "a ladder",
+  "C9": "a rooftop ledge",
+  "C10": "bookshelves",
+  "C11": "a diner booth",
+  "C12": "a cliff edge",
+  "26": "a bed",
+  "27": "a bed",
+  "28": "a headboard",
+  "29": "a chaise",
+  "30": "a mattress",
+  "31": "a window",
+  "32": "a wall",
+  "33": "a bed",
+  "34": "a mattress",
+  "35": "a mirror",
+  "36": "a staircase",
+  "37": "a counter",
+  "S23": "",
+  "S24": "a brick wall",
+  "S25": "",
+  "S26": "",
+  "S27": "",
+  "S28": "",
+  "S29": "a window seat",
+  "S30": "a café table",
+  "S31": "a stool",
+  "S32": "a clover field",
+  "P1": "",
+  "P2": "",
+  "P3": "a diner stool",
+  "P4": "",
+  "P5": "",
+  "P6": "",
+  "P7": "a car",
+  "P8": "a chair",
+  "P9": "",
+  "P10": "a bed",
+  "P11": "",
+  "P12": "",
+  "P13": "a car",
+  "P14": "a car",
+  "P15": "a convertible",
+  "P16": "a car",
+  "P17": "a sofa",
+  "P18": "a kitchen counter",
+  "P19": "an armchair",
+  "P20": "a fur rug",
+  "P21": "an armchair",
+  "P22": "wet sand",
+  "P23": "",
+  "P24": "",
+  "P25": "",
+  "P26": "a picnic blanket on grass",
+  "P27": "",
+  "M1": "a mirror",
+  "M2": "a mirror",
+  "M3": "a mirror and bed",
+  "M4": "a mirror and bed",
+  "M5": "a mirror",
+  "M6": "a mirror",
+  "M7": "a mirror wall",
+  "M8": "a mirror and sofa",
+  "M9": "a bathroom mirror",
+  "M10": "a bathroom counter",
+  "S33": "",
+  "S34": "",
+  "S35": "",
+  "S36": "a wall",
+  "S37": "a seamless sweep",
+  "S38": "",
+  "S39": "",
+  "S40": "a chair",
+  "S41": "a chair",
+  "S42": "",
+  "S43": "",
+  "S44": "",
+  "S45": "",
+  "S46": "",
+  "S47": "a café table",
+  "S48": "a crosswalk",
+  "S49": "a subway pole",
+  "S50": "a painting",
+  "S51": "a railing",
+  "S52": "a flower stall",
+  "S53": "a staircase",
+  "S54": "a bench",
+  "S55": "stone steps",
+  "S56": "record crates",
+  "S57": "a car",
+  "S58": "a snowy street",
+  "S59": "grapevines",
+  "S60": "an armchair",
+  "S61": "front steps",
+  "S62": "a coffee table",
+  "S63": "a counter",
+  "S64": "a park path",
+  "S65": "a sofa",
+  "S66": "a sidewalk",
+  "S67": "a sidewalk",
+  "S68": "a window seat",
+  "S69": "a meadow",
+  "S70": "a beach",
+  "S71": "a wet sidewalk",
+  "S72": "a street",
+  "S73": "a window",
+  "R1": "a bed",
+  "R2": "a wall",
+  "R3": "a hallway",
+  "R4": "a pitch dark room",
+  "R5": "a doorway",
+  "R6": "a banister"
+ }
+}

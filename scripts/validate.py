@@ -43,6 +43,16 @@ for c in data.get("changelog", []):
     if not DATE.match(c.get("date", "")) or not c.get("text"):
         errors.append("Each changelog entry needs a date and text.")
 
+scenes_path = path.parent / "scenes.json"
+try:
+    scenes = json.loads(scenes_path.read_text(encoding="utf-8"))
+    untagged = [f["id"] for f in data.get("frames", []) if f.get("id") not in scenes.get("frames", {})]
+    if untagged:
+        print(f"Note: {len(untagged)} frame(s) have no scene tag in scenes.json, so they keep their own location: {', '.join(untagged)}.")
+        print('      Add them under "frames" with "" if the pose works anywhere, or with what the pose relies on (like "a bed").')
+except (OSError, json.JSONDecodeError) as e:
+    errors.append(f"scenes.json could not be read: {e}")
+
 if errors:
     print("\n".join(errors))
     sys.exit(1)

@@ -15,6 +15,11 @@ Krea 2 pose prompts, sorted by shoot, right inside ComfyUI.
 - **Pose Sheet sidebar.** Open the **Pose Sheet** tab in ComfyUI's left sidebar. Type your LoRA trigger once and every prompt fills it in. Use **Style** off to strip film, grain and palette words when a LoRA should supply the look, **Build a person** to describe who is in the shot, and ☆ to star favorites.
 - **Send to the canvas.** Each frame has **To node** (adds a Krea Pose Prompt node set to that frame, or updates the selected one) and **To text box** (fills the selected CLIP Text Encode). Each set has **Set to node**, which outputs the whole set as a list.
 - **Krea Pose Prompt node.** Pick a frame, then choose `single frame`, `whole set` or `whole tab`. Outputs `prompt` (one prompt, or all of them one per line), `prompt_list` (a list, so the graph runs once per prompt) and `count`.
+- **Krea Pose Scene node.** Build a setting once and use it with any pose. Link its `scene` output to the Pose Prompt node's `scene` input and press **Build scene**. Pick a location, time of day, weather, lighting, era and mood, or choose one of the **Places**. The frame's own setting (and its light line, if you picked lighting) is swapped for yours; the pose, clothes, camera and finish stay. The node's `text` output is the scene on its own.
+- **Your own places.** In **Places**, press **New place** and give it a name, a setting and an optional light line. **Help me write it** offers starter ideas and asks what's behind, what's underfoot and one small detail, then writes the setting for you. Places are saved on your computer in `custom_places.json`, never uploaded, with **Import**, **Export** and **×** to delete, like your custom prompts.
+- **Clean plate.** Turn on **Clean plate** to get the same shot with nobody in it: the frame's look, camera and light, in your scene, ending with "No people anywhere in the frame."
+- **Frames that need their own location.** Some poses rely on something in their setting (a railing, a bed, a car). Those show a lock and keep their own setting, and **Works with scenes** in the picker shows only the frames a scene can move. **Use scene anyway** on a locked frame applies it with a warning. Your own prompts have a **Portable** switch for the same thing. With no scene linked, or **Use this scene** off, every prompt is exactly as before.
+- **Saved scenes.** **Save this scene** keeps your picks under a name, with **Import** and **Export** to share them.
 - **Krea Pose Person node.** Dropdowns for gender, build, height, hair, eyes, skin and complexion. Link its output to the Pose Prompt node's `person` input.
 - **Web version (optional).** The same sheet can be published as a web page on GitHub Pages. See below.
 
@@ -65,6 +70,10 @@ Settings → Pages → Source: **GitHub Actions**, then run **Publish web sheet 
 | `custom.py`, `web/custom.js` | Your own prompts (Custom tab), saved locally |
 | `web/pose_sheet.js` | ComfyUI sidebar tab, node frame card and Send buttons |
 | `thumbs.py` | Saves and serves your preview images |
-| `nodes.py`, `pose_data.py` | The two nodes (`pose_data.py` mirrors `core.js`) |
+| `nodes.py`, `pose_data.py` | The nodes (`pose_data.py` mirrors `core.js`) |
+| `web/scenes.json` | Scene options and which frames keep their own location |
+| `scene_data.py`, `web/scene_core.js` | Scene logic: swap the setting, clean plate (`scene_data.py` mirrors `scene_core.js`) |
+| `web/scene.js`, `web/scene_art.js` | The scene builder and its picture |
+| `places.py` | Your own places, saved locally |
 | `site/index.html` | The GitHub Pages page |
 | `scripts/` | `release.py`, `validate.py`, `build_site.sh`, `sync_from_artifact.mjs` |
