@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Krea Pose Sheet</title>
+<meta name="description" content="Krea 2 pose prompts sorted by shoot, with a LoRA trigger field, a Style switch and a person builder.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="sheet.css">
+<style>
+:root {
+  --kps-bg: #eceae6; --kps-paper: #f8f7f4; --kps-ink: #1f1d1b; --kps-muted: #6c6762; --kps-line: #d6d2cc;
+  --kps-accent: #b3261e; --kps-accent-soft: #f3dcd9; --kps-code: #efede9; color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --kps-bg: #161514; --kps-paper: #1f1e1c; --kps-ink: #ebe7e2; --kps-muted: #9c958e; --kps-line: #34312e;
+    --kps-accent: #ef6b5f; --kps-accent-soft: #3a201d; --kps-code: #262422; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --kps-bg: #161514; --kps-paper: #1f1e1c; --kps-ink: #ebe7e2; --kps-muted: #9c958e; --kps-line: #34312e;
+  --kps-accent: #ef6b5f; --kps-accent-soft: #3a201d; --kps-code: #262422; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--kps-bg); color: var(--kps-ink); font: 15px/1.55 "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif; }
+.wrap { max-width: 920px; margin: 0 auto; padding: 0 16px; }
+header { padding: 32px 0 8px; }
+.eyebrow { font: 500 11px "IBM Plex Mono", monospace; letter-spacing: .14em; text-transform: uppercase; color: var(--kps-accent); }
+h1 { font: 700 clamp(30px, 5vw, 44px)/1.05 "Archivo Narrow", sans-serif; margin: 6px 0 8px; }
+.lede { color: var(--kps-muted); max-width: 62ch; margin: 0; }
+.updated { font: 500 11px "IBM Plex Mono", monospace; color: var(--kps-muted); letter-spacing: .06em; margin: 10px 0 0; }
+.updated b { color: var(--kps-accent); font-weight: 500; }
+details { margin: 14px 0 4px; background: var(--kps-paper); border: 1px solid var(--kps-line); border-radius: 8px; }
+summary { cursor: pointer; padding: 10px 16px; font-weight: 600; }
+.howto { padding: 0 16px 16px; display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); font-size: 14px; }
+.howto h3 { font: 500 11px "IBM Plex Mono", monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--kps-accent); margin: 0 0 6px; }
+.howto ul, .howto ol { margin: 0; padding-left: 18px; display: grid; gap: 3px; }
+.howto code { font: 12.5px "IBM Plex Mono", monospace; background: var(--kps-code); padding: 1px 4px; border-radius: 3px; }
+.howto a { color: var(--kps-accent); }
+#sheet .kps-bar { top: 0; }
+.err { padding: 24px; border: 1px dashed var(--kps-line); border-radius: 8px; color: var(--kps-muted); }
+</style>
+</head>
+<body>
+<header class="wrap">
+  <div class="eyebrow">Krea 2 prompt reference</div>
+  <h1>Pose Sheet</h1>
+  <p class="lede">Pose prompts sorted by shoot. Type your LoRA trigger once and every prompt fills it in, then copy any frame with one click. Also available inside ComfyUI as a sidebar and a node.</p>
+  <p class="updated">Last updated <b id="updDate"></b> · <span id="updNote"></span></p>
+  <details>
+    <summary>How to use this sheet</summary>
+    <div class="howto">
+      <div>
+        <h3>The controls</h3>
+        <ul>
+          <li><b>Trigger</b> fills your LoRA trigger into every prompt.</li>
+          <li><b>Style</b> off strips the look words (photo type, film, grain, palette) so a LoRA supplies the look.</li>
+          <li><b>Copy set</b> copies a whole set, one prompt per line, ready for a prompt list in ComfyUI.</li>
+          <li><b>Build a person</b> describes who is in the shot. <b>Person</b> adds them to every prompt.</li>
+          <li><b>☆</b> saves a frame to your Starred tab in this browser.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Settings that work</h3>
+        <ul>
+          <li>Krea 2 Turbo: 8 steps.</li>
+          <li>CFG <code>1.0</code> on the stock ComfyUI KSampler.</li>
+          <li>Render at full size (trained up to 2048×2048) instead of upscaling.</li>
+          <li>Match the canvas to the shot: wide for side views, tall for full length.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>In ComfyUI</h3>
+        <ul>
+          <li>Install <b>Krea Pose Sheet</b> from ComfyUI Manager, or clone the <a href="__REPO_URL__">GitHub repo</a> into <code>custom_nodes</code>.</li>
+          <li>Open the <b>Pose Sheet</b> tab in the left sidebar.</li>
+          <li>Add the <b>Krea Pose Prompt</b> node to feed prompts straight into your text encoder.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>What's new</h3>
+        <ul id="changelog"></ul>
+      </div>
+    </div>
+  </details>
+</header>
+<main class="wrap" id="sheet"></main>
+<script type="module">
+import { mountSheet } from "./sheet.js";
+import { loadData } from "./core.js";
+try {
+  const data = await loadData("./poses.json");
+  document.getElementById("updDate").textContent = new Date(data.updated + "T12:00:00").toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" });
+  document.getElementById("updNote").textContent = data.changelog[0]?.text || "";
+  document.getElementById("changelog").innerHTML = data.changelog.slice(0, 8).map(c => `<li><b>${c.date}</b> ${c.text.replace(/[&<>]/g, x => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[x]))}</li>`).join("");
+  mountSheet(document.getElementById("sheet"), data);
+} catch (e) {
+  document.getElementById("sheet").innerHTML = `<div class="err">The prompts didn't load. Refresh the page to try again.</div>`;
+  console.error(e);
+}
+</script>
+</body>
+</html>

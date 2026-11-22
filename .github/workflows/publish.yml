@@ -1,0 +1,33 @@
+name: Publish to Comfy Registry
+
+# Runs when the version in pyproject.toml changes on main, or by hand from the Actions tab.
+on:
+  push:
+    branches: [main]
+    paths: ["pyproject.toml"]
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check registry token
+        id: token
+        env:
+          TOKEN: ${{ secrets.REGISTRY_ACCESS_TOKEN }}
+        run: |
+          if [ -z "$TOKEN" ]; then
+            echo "::warning::REGISTRY_ACCESS_TOKEN secret is not set yet, so this release was not sent to the Comfy Registry. See README, 'Publish to the Comfy Registry'."
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ok=true" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Publish custom node
+        if: steps.token.outputs.ok == 'true'
+        uses: Comfy-Org/publish-node-action@v1
+        with:
+          personal_access_token: ${{ secrets.REGISTRY_ACCESS_TOKEN }}

@@ -1,0 +1,94 @@
+from . import pose_data as P
+
+MODES = ["single frame", "whole set", "whole tab"]
+
+
+def _frames():
+    return P.load()["frames"]
+
+
+def _frame_options():
+    return [P.frame_key(f) for f in _frames()]
+
+
+def _find(frame_value):
+    # Match on the id before " · " so a renamed title still finds its frame.
+    fid = frame_value.split(" · ", 1)[0].strip()
+    for f in _frames():
+        if f["id"] == fid:
+            return f
+    raise ValueError(f"Pose Sheet frame '{frame_value}' was not found. Update the node pack or pick another frame.")
+
+
+class KreaPosePrompt:
+    """Pick a frame from the Krea Pose Sheet and output it as a ready prompt, or a whole set as a list."""
+
+    CATEGORY = "Krea Pose Sheet"
+    FUNCTION = "build"
+    RETURN_TYPES = ("STRING", "STRING", "INT")
+    RETURN_NAMES = ("prompt", "prompt_list", "count")
+    OUTPUT_IS_LIST = (False, True, False)
+    OUTPUT_TOOLTIPS = (
+        "The chosen prompt. For a whole set or tab, every prompt one per line, like Copy set.",
+        "The same prompts as a list, so the rest of the graph runs once per prompt.",
+        "How many prompts were output.",
+    )
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "frame": (_frame_options(), {"tooltip": "The frame to use. In set or tab mode, this frame picks the set or tab."}),
+                "mode": (MODES, {"default": "single frame"}),
+                "trigger": ("STRING", {"default": "", "placeholder": "LoRA trigger (leave empty for none)", "tooltip": "Replaces [trigger] in every prompt."}),
+                "style": ("BOOLEAN", {"default": True, "label_on": "style on", "label_off": "style off",
+                                      "tooltip": "Off strips medium, film, grain and palette words so a LoRA supplies the look."}),
+            },
+            "optional": {
+                "person": ("STRING", {"default": "", "placeholder": "person description (optional)", "tooltip": "Who is in the shot, typed here or linked from Krea Pose Person. Goes after the trigger, or replaces it if the trigger is empty."}),
+            },
+        }
+
+    def build(self, frame, mode, trigger, style, person=None):
+        f = _find(frame)
+        if mode == "whole set":
+            picked = [x for x in _frames() if x["set"] == f["set"]]
+        elif mode == "whole tab":
+            picked = [x for x in _frames() if x["tab"] == f["tab"]]
+        else:
+            picked = [f]
+        prompts = [P.prompt_for(x, trigger, person or "", style) for x in picked]
+        return ("\n".join(prompts), prompts, len(prompts))
+
+
+class KreaPosePerson:
+    """Describe who is in the shot when you have no character LoRA. Leave a trait on Any to let Krea 2 decide."""
+
+    CATEGORY = "Krea Pose Sheet"
+    FUNCTION = "build"
+    RETURN_TYPES = ("STRING",)
+    RETURN_NAMES = ("person",)
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        req = {}
+        for t in P.load()["traits"]:
+            req[t["key"]] = (["Any"] + [o["name"] for o in t["options"]], {"default": "Any", "tooltip": t["label"]})
+        return {"required": req}
+
+    def build(self, **picks):
+        person = {}
+        for t in P.load()["traits"]:
+            name = picks.get(t["key"], "Any")
+            person[t["key"]] = next((o["value"] for o in t["options"] if o["name"] == name), "")
+        return (P.person_text(person),)
+
+
+NODE_CLASS_MAPPINGS = {
+    "KreaPosePrompt": KreaPosePrompt,
+    "KreaPosePerson": KreaPosePerson,
+}
+NODE_DISPLAY_NAME_MAPPINGS = {
+    "KreaPosePrompt": "Krea Pose Prompt",
+    "KreaPosePerson": "Krea Pose Person",
+}
