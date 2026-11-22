@@ -39,7 +39,9 @@ export function stripStyle(t) {
 export function personText(person) {
   const p = k => person[k] || "";
   if (!Object.values(person).some(Boolean)) return "";
-  const g = p("gender"), lead = [p("height"), "adult", g || "person"].filter(Boolean).join(" ");
+  const g = p("gender"), age = p("age"), decade = age === "thirties" || age === "forties";
+  const pron = g === "woman" ? "her" : g === "man" ? "his" : "their";
+  const lead = [p("height"), age && !decade ? age : "adult", g || "person"].filter(Boolean).join(" ") + (decade ? ` in ${pron} ${age}` : "");
   const art = /^[aeiou]/i.test(lead) ? "an" : "a";
   const bits = [];
   if (p("body")) bits.push(`${/^[aeiou]/i.test(p("body")) ? "an" : "a"} ${p("body")} build`);

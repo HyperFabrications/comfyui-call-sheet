@@ -56,8 +56,8 @@ export function localCtx() {
     trigger: () => store.get("trigger") || "",
     setTrigger: v => store.set("trigger", v),
     style: () => store.get("styleOn") !== "0",
-    person: () => { const p = picks(), on = store.get("personOn") === "1"; return { picks: p, on, text: on ? personText(p) : "" }; },
-    setPerson: ({ picks: p, on }) => { store.set("person", JSON.stringify(p)); store.set("personOn", on ? "1" : "0"); },
+    person: () => { const p = picks(), on = store.get("personOn") === "1", custom = store.get("personText") || ""; return { picks: p, on, custom, text: on ? (custom || personText(p)) : "" }; },
+    setPerson: ({ picks: p, on, text }) => { store.set("person", JSON.stringify(p)); store.set("personOn", on ? "1" : "0"); if (text !== undefined) store.set("personText", text || ""); },
     edits: () => loadEdits(),
     setEdit: (id, text) => saveEdit(id, text),
   };
@@ -265,6 +265,8 @@ export function openGallery({ data, scenes = null, thumbs = {}, current = null, 
       </div>
       <div class="kq-pbody">
         ${sceneRow(f, mine, fresh)}
+        ${ctx.person().on ? `<div class="kq-row kq-plabel"><label for="kq-person" class="kq-strong">Person</label><span class="kq-dim">goes where [trigger] is, in every prompt</span><span class="kq-grow"></span><span class="kq-pedited"></span></div>
+        <textarea id="kq-person" class="kq-ptext" rows="2" spellcheck="true"></textarea>` : ""}
         <div class="kq-row kq-plabel"><label for="kq-prompt" class="kq-strong">Prompt</label><span class="kq-edited"></span></div>
         <textarea id="kq-prompt" class="kq-text" spellcheck="true"></textarea>
         <div class="kq-row kq-hint"><span class="kq-faint">Keep [trigger] where your trigger or person should go.</span><span class="kq-grow"></span><span class="kq-words"></span></div>
@@ -284,7 +286,18 @@ export function openGallery({ data, scenes = null, thumbs = {}, current = null, 
         </div>
         <p class="kq-keys kq-faint">Arrow keys move · Enter uses the frame · Esc closes</p>`}
       </div>`;
-    const ta = box.querySelector("textarea");
+    const pt = box.querySelector(".kq-ptext");
+    if (pt) {
+      const pnote = () => { const c = ctx.person().custom; box.querySelector(".kq-pedited").innerHTML = c ? `<span class="kq-accent">Edited</span><button type="button" class="kq-link" data-x="resetperson">Reset</button>` : ""; };
+      pt.value = ctx.person().text; pnote();
+      pt.addEventListener("input", () => {
+        const p = ctx.person(), v = pt.value.trim(), built = personText(p.picks || {});
+        ctx.setPerson({ picks: p.picks || {}, on: true, text: v && v !== built ? v : "" });
+        pnote(); renderPerson(); updateReceive(f);
+      });
+      pt.addEventListener("keydown", e => { e.stopPropagation(); if (e.key === "Escape") { e.preventDefault(); pt.blur(); } });
+    }
+    const ta = box.querySelector("#kq-prompt");
     ta.value = textOf(f);
     ta.addEventListener("input", () => {
       clearTimeout(draftTimer);
@@ -385,7 +398,7 @@ export function openGallery({ data, scenes = null, thumbs = {}, current = null, 
     if (document.querySelector(".kpe, .kq-builder")) return;
     if (e.key === "Escape") {
       e.stopPropagation(); e.preventDefault();
-      if (e.target.matches && e.target.matches(".kq-text, .kq-trig-edit input, .kq-titlein")) { e.target.blur(); return; }
+      if (e.target.matches && e.target.matches(".kq-text, .kq-ptext, .kq-trig-edit input, .kq-titlein")) { e.target.blur(); return; }
       close(); return;
     }
     const map = { ArrowRight: 1, ArrowLeft: -1, ArrowDown: "row", ArrowUp: "-row" };
@@ -466,9 +479,10 @@ export function openGallery({ data, scenes = null, thumbs = {}, current = null, 
       case "person": {
         const p = ctx.person();
         if (!p.on && !Object.values(p.picks || {}).some(Boolean) && openPerson) { openPerson(ctx, () => { renderPerson(); renderPanel(); }); break; }
-        ctx.setPerson({ picks: p.picks, on: !p.on }); renderPerson(); updateReceive(f);
+        flushDraft(); ctx.setPerson({ picks: p.picks, on: !p.on }); renderPerson(); renderPanel();
         break;
       }
+      case "resetperson": { const p = ctx.person(); ctx.setPerson({ picks: p.picks || {}, on: true, text: "" }); renderPerson(); renderPanel(); break; }
       case "editperson": flushDraft(); openPerson(ctx, () => { renderPerson(); renderPanel(); }); break;
       case "star": favs.has(f.id) ? favs.delete(f.id) : favs.add(f.id); store.set("favs", JSON.stringify([...favs])); renderPanel(); if (st.tab === "starred") renderGrid(); else { const c = el.querySelector(`.kq-card[data-id="${CSS.escape(f.id)}"]`); if (c) c.outerHTML = card(f); } break;
       case "resetedit": { const ta = q(".kq-text"); ta.value = f.text; saveDraft(f, f.text); updateDraftBits(f, f.text); ta.focus(); break; }
