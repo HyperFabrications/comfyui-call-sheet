@@ -1,7 +1,8 @@
 // ComfyUI entry point: the Pose Sheet sidebar tab, the pose gallery, and the frame card on the Krea Pose Prompt node.
 import { mountSheet } from "./sheet.js";
-import { openGallery, thumbHTML, snippet, editPrompt } from "./gallery.js";
-import { loadData, frameKey, frameNo, loadEdits, saveEdit } from "./core.js";
+import { openGallery, localCtx, thumbHTML, snippet, editPrompt } from "./gallery.js";
+import { openBuilder } from "./builder.js";
+import { loadData, frameKey, frameNo, loadEdits, saveEdit, personText } from "./core.js";
 
 const HERE = new URL(".", import.meta.url);
 const NODE_TYPE = "KreaPosePrompt";
@@ -21,7 +22,7 @@ function addStyles() {
   const st = document.createElement("style");
   st.textContent = `.kps{--kps-bg:var(--comfy-menu-bg,#202020);--kps-paper:var(--comfy-input-bg,#2a2a2a);--kps-ink:var(--input-text,var(--fg-color,#ddd));
     --kps-muted:var(--descrip-text,#999);--kps-line:var(--border-color,#444);--kps-code:var(--comfy-menu-secondary-bg,#1a1a1a);
-    --kps-accent:#ef6b5f;--kps-accent-soft:#3a201d;--kps-body:inherit;--kps-display:inherit;}`;
+    --kps-accent:#8b9cf7;--kps-accent-soft:rgba(139,156,247,.14);--kps-body:inherit;--kps-display:inherit;}`;
   document.head.appendChild(st);
 }
 
@@ -115,12 +116,55 @@ const byKey = new Map(data.frames.map(f => [frameKey(f), f]));
 const byId = new Map(data.frames.map(f => [f.id, f]));
 const frameOf = value => byKey.get(value) || byId.get(String(value || "").split(" · ")[0].trim()) || null;
 
+const savedPicks = () => { try { return JSON.parse(localStorage.getItem("kps:person") || "{}") || {}; } catch (e) { return {}; } };
+
+// The picker opened from a node reads and writes that node's widgets.
+function nodeCtx(node) {
+  const w = n => node.widgets?.find(x => x.name === n);
+  const props = node.properties || (node.properties = {});
+  const dirty = () => { node._kpsDraw?.(); node.setDirtyCanvas?.(true, true); };
+  return {
+    trigger: () => String(w("trigger")?.value ?? ""),
+    setTrigger: v => { setWidget(node, "trigger", v); dirty(); },
+    style: () => w("style")?.value !== false,
+    person: () => {
+      const text = String(w("person")?.value || "").trim();
+      return { picks: props.kpsPicks || savedPicks(), on: !!text, text };
+    },
+    setPerson: ({ picks, on }) => {
+      props.kpsPicks = picks;
+      try { localStorage.setItem("kps:person", JSON.stringify(picks)); } catch (e) {}
+      setWidget(node, "person", on ? personText(picks) : "");
+      dirty();
+    },
+    // Your saved wording shows here too; the node's own copy wins.
+    edits: () => ({ ...loadEdits(), ...nodeEdits(node) }),
+    setEdit: (id, text) => { saveEdit(id, text); setNodeEdit(node, id, text); dirty(); },
+  };
+}
+
+function personOpener(ctx, done) {
+  const p = ctx.person();
+  openBuilder({ data, picks: p.picks, on: p.on || !Object.values(p.picks || {}).some(Boolean), trigger: ctx.trigger(),
+    onChange: ({ picks, on }) => { ctx.setPerson({ picks, on }); done(); } });
+}
+
 function galleryFor(node) {
   const w = node.widgets.find(x => x.name === "frame");
   const cur = frameOf(w.value);
+  const ctx = nodeCtx(node);
   return openGallery({
-    data, thumbs, current: cur ? cur.id : null, setPreview: setPreviewFromLastRender,
-    onPick: f => { w.value = frameKey(f); w.callback?.(w.value); node.setDirtyCanvas?.(true, true); },
+    data, thumbs, current: cur ? cur.id : null, ctx, setPreview: setPreviewFromLastRender, openPerson: personOpener,
+    primary: { label: "Use this frame", run: f => {
+      w.value = frameKey(f); w.callback?.(w.value);
+      const mode = node.widgets.find(x => x.name === "mode")?.value;
+      const ids = mode === "whole set" ? data.frames.filter(x => x.set === f.set).map(x => x.id) : mode === "whole tab" ? data.frames.filter(x => x.tab === f.tab).map(x => x.id) : [f.id];
+      const mine = ctx.edits();
+      for (const id of ids) if (mine[id]) setNodeEdit(node, id, mine[id]);
+      node._kpsDraw?.(); node.setDirtyCanvas?.(true, true);
+      return true;
+    } },
+    actions: [{ label: "To text box", title: "Put this prompt in the selected CLIP Text Encode (or any node with a text box)", run: (_f, p, btn) => sendToText(app, p, btn) }],
   });
 }
 
@@ -206,10 +250,12 @@ app.registerExtension({
     addStyles();
     refreshThumbs();
     let sheet = null;
-    const galleryActions = [
-      { label: "To node", run: (f, _p, btn) => sendToPoseNode(app, f, "single frame", sheet ? sheet.state() : { trigger: "", style: true, person: "" }, btn) },
-      { label: "To text box", run: (_f, p, btn) => sendToText(app, p, btn) },
-    ];
+    const sideGallery = () => refreshThumbs().then(() => openGallery({
+      data, thumbs, ctx: localCtx(), setPreview: setPreviewFromLastRender, openPerson: personOpener,
+      onClose: () => sheet?.reload(),
+      primary: { label: "Send to node", run: (f, btn) => { sheet?.reload(); sendToPoseNode(app, f, "single frame", sheet ? sheet.state() : { trigger: "", style: true, person: "" }, btn); return false; } },
+      actions: [{ label: "To text box", title: "Put this prompt in the selected CLIP Text Encode (or any node with a text box)", run: (_f, p, btn) => sendToText(app, p, btn) }],
+    }));
     const render = el => {
       el.innerHTML = "";
       const root = document.createElement("div");
@@ -217,7 +263,7 @@ app.registerExtension({
       el.appendChild(root);
       sheet = mountSheet(root, data, {
         compact: true,
-        onGallery: () => refreshThumbs().then(() => openGallery({ data, thumbs, actions: galleryActions, setPreview: setPreviewFromLastRender })),
+        onGallery: sideGallery,
         actions: [
           { label: "To node", title: "Add a Krea Pose Prompt node set to this frame, or update the selected one", run: (f, _p, btn) => sendToPoseNode(app, f, "single frame", sheet.state(), btn) },
           { label: "To text box", title: "Put this prompt in the selected CLIP Text Encode (or any node with a text box)", run: (_f, p, btn) => sendToText(app, p, btn) },

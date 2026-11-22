@@ -2,6 +2,7 @@
 // mountSheet(root, data, { actions, setActions, compact }) renders it into root.
 import { promptFor, personText, subject, frameNo, loadEdits, saveEdit } from "./core.js";
 import { editPrompt } from "./gallery.js";
+import { openBuilder, shortPerson } from "./builder.js";
 
 const store = {
   get(k) { try { return localStorage.getItem("kps:" + k); } catch (e) { return null; } },
@@ -54,14 +55,9 @@ export function mountSheet(root, data, opts = {}) {
       <div class="kps-row">
         <button type="button" class="kps-toggle" data-k="style" title="Turn off to strip medium, film and color words for LoRA use"><span class="kps-sw"></span><span class="kps-tl">Style</span></button>
         <button type="button" class="kps-toggle" data-k="person" title="Add the person from Build a person to every prompt"><span class="kps-sw"></span><span class="kps-tl">Person</span></button>
-        <button type="button" class="kps-btn" data-k="builder" aria-expanded="false">Build a person</button>
+        <button type="button" class="kps-btn" data-k="builder">Build a person</button>
       </div>
-      <div class="kps-builder" hidden>
-        <p class="kps-muted">No character LoRA? Pick a few traits. Leave anything on Any and Krea 2 decides. With Person on, this goes after your trigger, or in its place if the trigger is empty.</p>
-        <div class="kps-picks">${data.traits.map(t => `<label class="kps-pick"><span>${esc(t.label)}</span><select data-trait="${t.key}"><option value="">Any</option>${t.options.map(o => `<option value="${esc(o.value)}">${esc(o.name)}</option>`).join("")}</select></label>`).join("")}</div>
-        <pre class="kps-prompt" data-k="personText"></pre>
-        <div class="kps-row"><button type="button" class="kps-btn" data-k="personCopy">Copy description</button><button type="button" class="kps-btn" data-k="personReset">Reset</button><span class="kps-muted" data-k="personHint"></span></div>
-      </div>
+      <p class="kps-muted" data-k="personHint"></p>
       <div class="kps-chips" role="group" aria-label="Sets"></div>
     </div>
     <div class="kps-frames" aria-live="polite"></div>`;
@@ -69,7 +65,6 @@ export function mountSheet(root, data, opts = {}) {
   const q = s => root.querySelector(s);
   const trig = q('[data-k="trigger"]'), search = q('[data-k="search"]');
   trig.value = store.get("trigger") || "";
-  root.querySelectorAll("select[data-trait]").forEach(s => { s.value = person[s.dataset.trait] || ""; });
 
   const pdesc = () => personOn ? personText(person) : "";
   let edits = loadEdits();
@@ -85,8 +80,9 @@ export function mountSheet(root, data, opts = {}) {
     st.setAttribute("aria-pressed", String(styleOn)); st.querySelector(".kps-tl").textContent = styleOn ? "Style on" : "Style off";
     pe.setAttribute("aria-pressed", String(personOn)); pe.querySelector(".kps-tl").textContent = personOn ? "Person on" : "Person off";
     const d = personText(person);
-    q('[data-k="personText"]').textContent = d || "Pick a trait to start.";
+    q('[data-k="builder"]').textContent = d ? "Edit person" : "Build a person";
     const hint = [];
+    if (d) hint.push((personOn ? "Person: " : "Person (off): ") + shortPerson(data.traits, person) + ".");
     if (personOn && !d) hint.push("Pick at least one trait to add a person.");
     if (person.gender === "man") hint.push("Most prompts say her and she; swap pronouns after copying.");
     if (personOn && trig.value.trim()) hint.push("Your trigger stays first, so a LoRA still leads.");
@@ -159,13 +155,10 @@ export function mountSheet(root, data, opts = {}) {
     if (t.closest('[data-k="style"]')) { styleOn = !styleOn; store.set("styleOn", styleOn ? "1" : "0"); applyToggles(); render(); return; }
     if (t.closest('[data-k="person"]')) {
       personOn = !personOn; store.set("personOn", personOn ? "1" : "0");
-      if (personOn && !personText(person)) openBuilder(true);
+      if (personOn && !personText(person)) builder();
       applyToggles(); render(); return;
     }
-    if (t.closest('[data-k="builder"]')) { openBuilder(q(".kps-builder").hidden); return; }
-    if (t.closest('[data-k="personReset"]')) { person = {}; store.set("person", "{}"); root.querySelectorAll("select[data-trait]").forEach(s => { s.value = ""; }); applyToggles(); render(); return; }
-    const pc = t.closest('[data-k="personCopy"]');
-    if (pc) { const d = personText(person); if (d) copyText(d, pc, "Copy description"); return; }
+    if (t.closest('[data-k="builder"]')) { builder(); return; }
     const st = t.closest("[data-star]");
     if (st) {
       const id = st.dataset.star;
@@ -185,16 +178,21 @@ export function mountSheet(root, data, opts = {}) {
     const sa = t.closest("[data-setaction]");
     if (sa) { const fr = visible().filter(d => d.set === sa.dataset.setId); setActions[+sa.dataset.setaction].run(sa.dataset.setId, fr, fr.map(prompt), sa); }
   });
-  function openBuilder(open) {
-    q(".kps-builder").hidden = !open;
-    q('[data-k="builder"]').setAttribute("aria-expanded", String(open));
+  function builder() {
+    openBuilder({ data, picks: person, on: personOn, trigger: trig.value, onChange: ({ picks, on }) => {
+      person = picks; personOn = on;
+      store.set("person", JSON.stringify(person)); store.set("personOn", on ? "1" : "0");
+      applyToggles(); render();
+    } });
   }
-  root.addEventListener("change", e => {
-    const k = e.target.dataset && e.target.dataset.trait; if (!k) return;
-    person[k] = e.target.value; store.set("person", JSON.stringify(person));
-    if (personText(person) && !personOn) { personOn = true; store.set("personOn", "1"); }
-    applyToggles(); render();
-  });
+  // Pick up changes made elsewhere (the picker writes the same saved settings).
+  function reload() {
+    trig.value = store.get("trigger") || "";
+    personOn = store.get("personOn") === "1";
+    try { person = JSON.parse(store.get("person") || "{}") || {}; } catch (e) { person = {}; }
+    try { favs = new Set(JSON.parse(store.get("favs") || "[]")); } catch (e) {}
+    counts(); applyToggles(); render();
+  }
   trig.addEventListener("input", () => { store.set("trigger", trig.value); applyToggles(); render(); });
   search.addEventListener("input", render);
 
@@ -202,5 +200,7 @@ export function mountSheet(root, data, opts = {}) {
   return {
     state: () => ({ trigger: trig.value, style: styleOn, person: pdesc(), picks: { ...person }, edits: loadEdits() }),
     rerender: render,
+    reload,
+    openBuilder: builder,
   };
 }
