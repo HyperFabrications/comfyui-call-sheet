@@ -64,8 +64,22 @@ export function fill(text, subj) {
   return text.replace(/\[trigger\](,?)/g, (m, c) => subj.endsWith(",") ? subj : subj + c);
 }
 
-export function promptFor(frame, { trigger = "", person = "", style = true } = {}) {
-  return fill(base(frame, style), subject(trigger, person));
+// Your own wording for a frame replaces the sheet's text (edits: { frameId: text }).
+export const withEdit = (frame, edits) => edits && typeof edits[frame.id] === "string" && edits[frame.id].trim()
+  ? { ...frame, text: edits[frame.id], bare: undefined } : frame;
+
+export function promptFor(frame, { trigger = "", person = "", style = true, edits = null } = {}) {
+  return fill(base(withEdit(frame, edits), style), subject(trigger, person));
+}
+
+export function loadEdits() {
+  try { return JSON.parse(localStorage.getItem("kps:edits") || "{}") || {}; } catch (e) { return {}; }
+}
+export function saveEdit(id, text) {
+  const e = loadEdits();
+  if (text && text.trim()) e[id] = text; else delete e[id];
+  try { localStorage.setItem("kps:edits", JSON.stringify(e)); } catch (err) {}
+  return e;
 }
 
 export const frameNo = id => /^[A-Z]/.test(id) ? id[0] + id.slice(1).padStart(2, "0") : id.padStart(2, "0");

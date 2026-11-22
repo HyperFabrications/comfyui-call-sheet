@@ -1,3 +1,5 @@
+import json
+
 from . import pose_data as P
 
 MODES = ["single frame", "whole set", "whole tab"]
@@ -46,18 +48,25 @@ class KreaPosePrompt:
             },
             "optional": {
                 "person": ("STRING", {"default": "", "placeholder": "person description (optional)", "tooltip": "Who is in the shot, typed here or linked from Krea Pose Person. Goes after the trigger, or replaces it if the trigger is empty."}),
+                "edits": ("STRING", {"default": "", "tooltip": "Your own wording for frames, set with Edit prompt on the node. Leave empty to use the sheet's text."}),
             },
         }
 
-    def build(self, frame, mode, trigger, style, person=None):
+    def build(self, frame, mode, trigger, style, person=None, edits=None):
         f = _find(frame)
+        try:
+            edit_map = json.loads(edits) if edits else {}
+            if not isinstance(edit_map, dict):
+                edit_map = {}
+        except ValueError:
+            edit_map = {}
         if mode == "whole set":
             picked = [x for x in _frames() if x["set"] == f["set"]]
         elif mode == "whole tab":
             picked = [x for x in _frames() if x["tab"] == f["tab"]]
         else:
             picked = [f]
-        prompts = [P.prompt_for(x, trigger, person or "", style) for x in picked]
+        prompts = [P.prompt_for(x, trigger, person or "", style, edit_map) for x in picked]
         return ("\n".join(prompts), prompts, len(prompts))
 
 

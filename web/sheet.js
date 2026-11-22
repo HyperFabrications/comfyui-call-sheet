@@ -1,6 +1,7 @@
 // The Pose Sheet interface, shared by the ComfyUI sidebar and the web page.
 // mountSheet(root, data, { actions, setActions, compact }) renders it into root.
-import { promptFor, personText, subject, frameNo } from "./core.js";
+import { promptFor, personText, subject, frameNo, loadEdits, saveEdit } from "./core.js";
+import { editPrompt } from "./gallery.js";
 
 const store = {
   get(k) { try { return localStorage.getItem("kps:" + k); } catch (e) { return null; } },
@@ -44,6 +45,7 @@ export function mountSheet(root, data, opts = {}) {
   if (opts.compact) root.classList.add("kps-compact");
   root.innerHTML = `
     <div class="kps-bar">
+      ${opts.onGallery ? `<button type="button" class="kps-btn kps-accent kps-gallery-btn" data-k="gallery">Open the pose gallery</button>` : ""}
       <div class="kps-tabs" role="tablist" aria-label="Prompt set">${TABS.map(t => `<button type="button" role="tab" data-tab="${t}">${t === "all" ? "All" : t === "starred" ? "★ Starred" : esc(TABNAME[t])} <span class="kps-n" data-count="${t}"></span></button>`).join("")}</div>
       <div class="kps-row">
         <label class="kps-field kps-trigger"><span>Trigger</span><input type="text" data-k="trigger" placeholder="[trigger]" autocomplete="off" spellcheck="false"></label>
@@ -70,7 +72,8 @@ export function mountSheet(root, data, opts = {}) {
   root.querySelectorAll("select[data-trait]").forEach(s => { s.value = person[s.dataset.trait] || ""; });
 
   const pdesc = () => personOn ? personText(person) : "";
-  const prompt = d => promptFor(d, { trigger: trig.value, person: pdesc(), style: styleOn });
+  let edits = loadEdits();
+  const prompt = d => promptFor(d, { trigger: trig.value, person: pdesc(), style: styleOn, edits });
   const visible = () => {
     const s = search.value.trim().toLowerCase();
     return FR.filter(d => (tab === "all" || d.tab === tab || (tab === "starred" && favs.has(d.id))) && (set === "All" || d.set === set) &&
@@ -110,6 +113,7 @@ export function mountSheet(root, data, opts = {}) {
   }
 
   function render() {
+    edits = loadEdits();
     root.querySelectorAll(".kps-tabs button").forEach(b => b.setAttribute("aria-selected", String(b.dataset.tab === tab)));
     const inTab = FR.filter(d => tab === "all" || d.tab === tab || (tab === "starred" && favs.has(d.id)));
     q(".kps-chips").innerHTML = ["All", ...ORDER[tab]].map(s => {
@@ -131,11 +135,11 @@ export function mountSheet(root, data, opts = {}) {
       for (const d of items) {
         const text = prompt(d), words = text.split(/\s+/).length;
         h += `<article class="kps-frame" id="kps-f-${esc(d.id)}">
-          <div class="kps-top"><span class="kps-no">${frameNo(d.id)}</span><h4>${esc(d.title)}</h4>${isNew(d) ? '<span class="kps-badge">New</span>' : isUpd(d) ? '<span class="kps-badge kps-upd">Updated</span>' : ""}
+          <div class="kps-top"><span class="kps-no">${frameNo(d.id)}</span><h4>${esc(d.title)}</h4>${isNew(d) ? '<span class="kps-badge">New</span>' : isUpd(d) ? '<span class="kps-badge kps-upd">Updated</span>' : ""}${edits[d.id] ? '<span class="kps-badge kps-upd">Edited</span>' : ""}
           <span class="kps-words">${words} words</span></div>
           <pre class="kps-prompt">${highlight(text)}</pre>
           ${d.note ? `<p class="kps-note"><b>Why it works:</b> ${esc(d.note)}</p>` : ""}
-          <div class="kps-actions"><button type="button" class="kps-star" data-star="${esc(d.id)}" aria-pressed="${favs.has(d.id)}" aria-label="Star ${esc(d.title)}">${favs.has(d.id) ? "★" : "☆"}</button><button type="button" class="kps-btn" data-copy="${esc(d.id)}">Copy prompt</button>${actions.map((a, i) => `<button type="button" class="kps-btn kps-accent" data-action="${i}" data-id="${esc(d.id)}" title="${esc(a.title || "")}">${esc(a.label)}</button>`).join("")}
+          <div class="kps-actions"><button type="button" class="kps-star" data-star="${esc(d.id)}" aria-pressed="${favs.has(d.id)}" aria-label="Star ${esc(d.title)}">${favs.has(d.id) ? "★" : "☆"}</button><button type="button" class="kps-btn" data-copy="${esc(d.id)}">Copy prompt</button><button type="button" class="kps-btn" data-edit="${esc(d.id)}">Edit</button>${actions.map((a, i) => `<button type="button" class="kps-btn kps-accent" data-action="${i}" data-id="${esc(d.id)}" title="${esc(a.title || "")}">${esc(a.label)}</button>`).join("")}
           ${d.ex || d.src ? `<span class="kps-refs">${d.ex ? `<a href="${esc(d.ex)}" target="_blank" rel="noopener noreferrer">Example</a>` : ""}${d.src ? `<a href="${esc(d.src)}" target="_blank" rel="noopener noreferrer">Source</a>` : ""}</span>` : ""}</div>
         </article>`;
       }
@@ -145,6 +149,9 @@ export function mountSheet(root, data, opts = {}) {
 
   root.addEventListener("click", e => {
     const t = e.target;
+    if (t.closest('[data-k="gallery"]')) { opts.onGallery(); return; }
+    const pr = opts.compact && t.closest(".kps-frame .kps-prompt");
+    if (pr && !String(getSelection && getSelection()).length) { pr.closest(".kps-frame").classList.toggle("is-open"); return; }
     const tb = t.closest(".kps-tabs button");
     if (tb) { tab = tb.dataset.tab; set = "All"; store.set("tab", tab); render(); return; }
     const ch = t.closest(".kps-chip");
@@ -171,6 +178,8 @@ export function mountSheet(root, data, opts = {}) {
     if (cs) { copyText(visible().filter(d => d.set === cs.dataset.copyset).map(prompt).join("\n"), cs, "Copy set"); return; }
     const cp = t.closest("[data-copy]");
     if (cp) { copyText(prompt(FR.find(d => d.id === cp.dataset.copy)), cp, "Copy prompt"); return; }
+    const ed = t.closest("[data-edit]");
+    if (ed) { const d = FR.find(x => x.id === ed.dataset.edit); editPrompt({ frame: d, initial: loadEdits()[d.id], onSave: txt => { saveEdit(d.id, txt); render(); } }); return; }
     const ac = t.closest("[data-action]");
     if (ac) { const d = FR.find(x => x.id === ac.dataset.id); actions[+ac.dataset.action].run(d, prompt(d), ac); return; }
     const sa = t.closest("[data-setaction]");
@@ -191,7 +200,7 @@ export function mountSheet(root, data, opts = {}) {
 
   counts(); applyToggles(); render();
   return {
-    state: () => ({ trigger: trig.value, style: styleOn, person: pdesc(), picks: { ...person } }),
+    state: () => ({ trigger: trig.value, style: styleOn, person: pdesc(), picks: { ...person }, edits: loadEdits() }),
     rerender: render,
   };
 }
