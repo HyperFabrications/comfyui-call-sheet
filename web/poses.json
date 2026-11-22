@@ -1,0 +1,1440 @@
+{
+  "version": 1,
+  "updated": "2026-11-21",
+  "changelog": [
+    {
+      "date": "2026-11-21",
+      "text": "Build a person now opens from the top bar anywhere on the page."
+    },
+    {
+      "date": "2026-11-21",
+      "text": "Build a person: pick gender, build, height, hair, eyes, skin and complexion, then add that person to every prompt."
+    },
+    {
+      "date": "2026-11-21",
+      "text": "New Light & Angle tab with recipes for true side views and dark, back lit scenes."
+    },
+    {
+      "date": "2026-11-21",
+      "text": "Style switch, Copy set buttons, Starred tab and this guide."
+    },
+    {
+      "date": "2026-11-21",
+      "text": "SFW 18 to 22 no longer describe the person, so your LoRA's likeness wins."
+    }
+  ],
+  "tabs": [
+    {
+      "id": "boudoir",
+      "name": "Boudoir",
+      "sets": [
+        "Studio",
+        "Paper",
+        "Home",
+        "Bathroom",
+        "WebB"
+      ]
+    },
+    {
+      "id": "sfw",
+      "name": "SFW",
+      "sets": [
+        "Field",
+        "Projection",
+        "Portrait",
+        "Selfie",
+        "Outdoor",
+        "WebS"
+      ]
+    },
+    {
+      "id": "suggestive",
+      "name": "Suggestive",
+      "sets": [
+        "Flirt",
+        "Mirror"
+      ]
+    },
+    {
+      "id": "pinup",
+      "name": "Pin Up",
+      "sets": [
+        "Pin",
+        "PinCar",
+        "PinLounge",
+        "PinOut"
+      ]
+    },
+    {
+      "id": "claude",
+      "name": "Made By Claude",
+      "sets": [
+        "CB",
+        "CS"
+      ]
+    },
+    {
+      "id": "recipes",
+      "name": "Light & Angle",
+      "sets": [
+        "Angle",
+        "Dark"
+      ]
+    }
+  ],
+  "sets": {
+    "Angle": "Camera angle fixes",
+    "Dark": "Dark and back lit",
+    "Studio": "Seamless studio",
+    "Paper": "Paper wraps",
+    "Home": "Bedroom and home",
+    "Bathroom": "Bathroom flash",
+    "Field": "Field and church",
+    "Projection": "Projector portraits",
+    "Portrait": "Studio portraits",
+    "Selfie": "Phone selfies",
+    "Outdoor": "Outdoor candids",
+    "CB": "Boudoir",
+    "CS": "SFW",
+    "WebB": "Web finds",
+    "WebS": "Web finds",
+    "Pin": "Pin-up classics",
+    "PinCar": "Cars and garages",
+    "PinLounge": "Lounge and home",
+    "PinOut": "Beach and outdoors",
+    "Flirt": "Flirty portraits",
+    "Mirror": "Mirror selfies"
+  },
+  "traits": [
+    {
+      "key": "gender",
+      "label": "Gender",
+      "options": [
+        {
+          "value": "woman",
+          "name": "Woman"
+        },
+        {
+          "value": "man",
+          "name": "Man"
+        },
+        {
+          "value": "androgynous person",
+          "name": "Androgynous"
+        }
+      ]
+    },
+    {
+      "key": "body",
+      "label": "Body type",
+      "options": [
+        {
+          "value": "slim",
+          "name": "Slim"
+        },
+        {
+          "value": "petite",
+          "name": "Petite"
+        },
+        {
+          "value": "athletic",
+          "name": "Athletic"
+        },
+        {
+          "value": "toned",
+          "name": "Toned"
+        },
+        {
+          "value": "average",
+          "name": "Average"
+        },
+        {
+          "value": "curvy",
+          "name": "Curvy"
+        },
+        {
+          "value": "hourglass",
+          "name": "Hourglass"
+        },
+        {
+          "value": "soft, full figured",
+          "name": "Full figured"
+        },
+        {
+          "value": "plus size",
+          "name": "Plus size"
+        },
+        {
+          "value": "muscular",
+          "name": "Muscular"
+        },
+        {
+          "value": "broad shouldered",
+          "name": "Broad shouldered"
+        },
+        {
+          "value": "lanky",
+          "name": "Lanky"
+        }
+      ]
+    },
+    {
+      "key": "height",
+      "label": "Height",
+      "options": [
+        {
+          "value": "short",
+          "name": "Short"
+        },
+        {
+          "value": "average height",
+          "name": "Average"
+        },
+        {
+          "value": "tall",
+          "name": "Tall"
+        },
+        {
+          "value": "very tall",
+          "name": "Very tall"
+        }
+      ]
+    },
+    {
+      "key": "length",
+      "label": "Hair length",
+      "options": [
+        {
+          "value": "very short cropped",
+          "name": "Very short"
+        },
+        {
+          "value": "pixie cut",
+          "name": "Pixie"
+        },
+        {
+          "value": "chin length",
+          "name": "Chin length (bob)"
+        },
+        {
+          "value": "shoulder length",
+          "name": "Shoulder length"
+        },
+        {
+          "value": "long",
+          "name": "Long"
+        },
+        {
+          "value": "very long",
+          "name": "Very long"
+        },
+        {
+          "value": "shaved",
+          "name": "Shaved"
+        }
+      ]
+    },
+    {
+      "key": "htype",
+      "label": "Hair type",
+      "options": [
+        {
+          "value": "straight",
+          "name": "Straight"
+        },
+        {
+          "value": "sleek straight",
+          "name": "Sleek"
+        },
+        {
+          "value": "wavy",
+          "name": "Wavy"
+        },
+        {
+          "value": "loose beachy wavy",
+          "name": "Beach waves"
+        },
+        {
+          "value": "curly",
+          "name": "Curly"
+        },
+        {
+          "value": "tight coily",
+          "name": "Coily"
+        },
+        {
+          "value": "braided",
+          "name": "Braided"
+        },
+        {
+          "value": "locs",
+          "name": "Locs"
+        },
+        {
+          "value": "tousled",
+          "name": "Tousled"
+        }
+      ]
+    },
+    {
+      "key": "hcolor",
+      "label": "Hair color",
+      "options": [
+        {
+          "value": "jet black",
+          "name": "Jet black"
+        },
+        {
+          "value": "dark brown",
+          "name": "Dark brown"
+        },
+        {
+          "value": "chestnut brown",
+          "name": "Chestnut"
+        },
+        {
+          "value": "light brown",
+          "name": "Light brown"
+        },
+        {
+          "value": "honey blonde",
+          "name": "Honey blonde"
+        },
+        {
+          "value": "golden blonde",
+          "name": "Golden blonde"
+        },
+        {
+          "value": "platinum blonde",
+          "name": "Platinum"
+        },
+        {
+          "value": "strawberry blonde",
+          "name": "Strawberry blonde"
+        },
+        {
+          "value": "auburn",
+          "name": "Auburn"
+        },
+        {
+          "value": "copper red",
+          "name": "Copper red"
+        },
+        {
+          "value": "silver gray",
+          "name": "Silver gray"
+        },
+        {
+          "value": "pastel pink",
+          "name": "Pastel pink"
+        },
+        {
+          "value": "deep burgundy",
+          "name": "Burgundy"
+        }
+      ]
+    },
+    {
+      "key": "eyes",
+      "label": "Eye color",
+      "options": [
+        {
+          "value": "dark brown",
+          "name": "Dark brown"
+        },
+        {
+          "value": "warm brown",
+          "name": "Brown"
+        },
+        {
+          "value": "hazel",
+          "name": "Hazel"
+        },
+        {
+          "value": "amber",
+          "name": "Amber"
+        },
+        {
+          "value": "green",
+          "name": "Green"
+        },
+        {
+          "value": "gray",
+          "name": "Gray"
+        },
+        {
+          "value": "gray-green",
+          "name": "Gray green"
+        },
+        {
+          "value": "blue",
+          "name": "Blue"
+        },
+        {
+          "value": "pale ice blue",
+          "name": "Ice blue"
+        }
+      ]
+    },
+    {
+      "key": "skin",
+      "label": "Skin color",
+      "options": [
+        {
+          "value": "very fair porcelain",
+          "name": "Porcelain"
+        },
+        {
+          "value": "fair",
+          "name": "Fair"
+        },
+        {
+          "value": "light",
+          "name": "Light"
+        },
+        {
+          "value": "light olive",
+          "name": "Light olive"
+        },
+        {
+          "value": "olive",
+          "name": "Olive"
+        },
+        {
+          "value": "golden tan",
+          "name": "Golden tan"
+        },
+        {
+          "value": "light brown",
+          "name": "Light brown"
+        },
+        {
+          "value": "medium brown",
+          "name": "Medium brown"
+        },
+        {
+          "value": "warm deep brown",
+          "name": "Deep brown"
+        },
+        {
+          "value": "very deep ebony",
+          "name": "Ebony"
+        }
+      ]
+    },
+    {
+      "key": "complexion",
+      "label": "Complexion",
+      "options": [
+        {
+          "value": "clear, even",
+          "name": "Clear"
+        },
+        {
+          "value": "faintly freckled",
+          "name": "Light freckles"
+        },
+        {
+          "value": "densely freckled",
+          "name": "Heavy freckles"
+        },
+        {
+          "value": "rosy cheeked",
+          "name": "Rosy cheeks"
+        },
+        {
+          "value": "sun-kissed",
+          "name": "Sun kissed"
+        },
+        {
+          "value": "dewy, glowing",
+          "name": "Dewy"
+        },
+        {
+          "value": "matte",
+          "name": "Matte"
+        },
+        {
+          "value": "natural, lightly textured",
+          "name": "Natural texture"
+        },
+        {
+          "value": "beauty marked",
+          "name": "Beauty marks"
+        }
+      ]
+    }
+  ],
+  "frames": [
+    {
+      "id": "1",
+      "tab": "boudoir",
+      "set": "Studio",
+      "title": "Overhead, upside down",
+      "text": "[trigger] in a soft boudoir photograph, lying on her back with her head toward the camera so the frame reads upside down, bare shoulders, lips slightly parted, gazing straight up into the lens. Hair spread loosely around her head on a pale surface. Tight overhead close-up, 85mm lens feel, shallow depth of field. Soft diffused window light from above, muted warm tones, gentle film grain and low contrast."
+    },
+    {
+      "id": "2",
+      "tab": "boudoir",
+      "set": "Studio",
+      "title": "Arm over head, wall sun",
+      "text": "[trigger] in an airy boudoir photograph, standing nude against a plain white wall, one forearm resting across the top of her head, the other hand raised beside her jaw, hips shifted to one side, eyes half closed. Medium full shot from slightly below, eye level lens. Hard window sunlight casts bright rectangular patches across the wall to the right. Soft pale gray and white palette, clean matte finish."
+    },
+    {
+      "id": "3",
+      "tab": "boudoir",
+      "set": "Paper",
+      "title": "Paper sheet, reclined",
+      "text": "[trigger] in a boudoir photograph, lying on a white seamless paper backdrop with a loose sheet of paper pulled across her torso and hips, one hand pressed to her temple, the other holding the paper to her chest, knees bent to the side. A large roll of paper curls across the top of the frame. High angle tilted overhead shot, wide lens. Soft window light, creamy whites, subtle grain."
+    },
+    {
+      "id": "4",
+      "tab": "boudoir",
+      "set": "Studio",
+      "title": "Leaning on both hands",
+      "text": "[trigger] in an implied nude boudoir photograph, leaning forward on both hands on a white surface, shoulders angled toward the camera, chest concealed, calm direct gaze into the lens. Plain light gray backdrop. Medium shot at eye level, 50mm lens feel, soft focus falloff. Soft window light from the left with faint hand shadows on the surface. Muted warm whites, low contrast, light grain."
+    },
+    {
+      "id": "5",
+      "tab": "boudoir",
+      "set": "Paper",
+      "title": "Torn paper, glance away",
+      "text": "[trigger] in a boudoir photograph, lying on her back on white paper, one hand gripping the edge of a torn paper sheet folded over her torso, the other hand resting on her chest, glancing sideways out of frame with lips parted. Crumpled paper edges frame the left side. Close overhead medium shot, 50mm lens feel. Soft even daylight, ivory and cream palette, gentle film grain."
+    },
+    {
+      "id": "6",
+      "tab": "boudoir",
+      "set": "Paper",
+      "title": "Paper dress, sun stripes",
+      "text": "[trigger] in a boudoir photograph, seated on the floor with legs folded to one side, crumpled white paper wrapped around her torso and hips like a strapless dress, leaning back on one hand, looking up into the lens. Crinkled paper backdrop rises behind her. High angle shot looking down, wide lens. Hard sunlight through a window throws bright slanted stripes across her legs and the floor. Cool white palette, soft grain."
+    },
+    {
+      "id": "7",
+      "tab": "boudoir",
+      "set": "Studio",
+      "title": "Over the shoulder",
+      "text": "[trigger] in an intimate boudoir portrait, implied nude, body turned away with a bare shoulder raised toward the camera, looking back over the shoulder into the lens. Plain pale gray backdrop. Close medium shot, 85mm lens feel, shallow depth of field. Soft diffused window light from the left, gentle shadow on the far side. Muted warm and desaturated tones, low contrast, fine film grain."
+    },
+    {
+      "id": "8",
+      "tab": "boudoir",
+      "set": "Paper",
+      "title": "Paper wrap at the curtains",
+      "text": "[trigger] in a bright boudoir photograph, standing in front of floor length sheer white curtains, a large crumpled sheet of white paper held against her body as a wrap, head tilted back with eyes closed, one hand at her jaw, the other spread on her hip. Low angle medium shot, wide lens. Strong backlight from the window glowing through the curtains, airy overexposed highlights, soft cream palette."
+    },
+    {
+      "id": "9",
+      "tab": "boudoir",
+      "set": "Studio",
+      "title": "Overhead, arms crossed",
+      "text": "[trigger] in a boudoir photograph, lying on her back on a seamless backdrop, arms crossed over her chest, one knee raised, head toward the camera so she looks up into the lens from an upside down angle. Hair fanned around her head. Direct overhead full body shot, 35mm lens feel. Soft even studio light, pale warm gray backdrop, gentle grain."
+    },
+    {
+      "id": "10",
+      "tab": "boudoir",
+      "set": "Studio",
+      "title": "Feet detail",
+      "text": "[trigger] in a minimal boudoir detail shot, lying on her side with legs bent and bare feet crossed, soles facing the camera. Plain light gray seamless backdrop. Tight close-up on the feet and calves, low angle at floor level, 85mm lens feel, shallow depth of field. Soft diffused side light. Muted warm tones, matte finish, visible film grain."
+    },
+    {
+      "id": "11",
+      "tab": "boudoir",
+      "set": "Studio",
+      "title": "Standing, hands low",
+      "text": "[trigger] in a fine art boudoir photograph, standing nude with hands crossed low in front of her hips, knees together with one heel lifted, head tilted down and eyes lowered. Dark polish on the toenails. Plain pale gray backdrop with a soft patch of window light on the wall to the right. Full length shot at eye level, 50mm lens feel. Soft diffused light, cool muted palette, light grain."
+    },
+    {
+      "id": "12",
+      "tab": "boudoir",
+      "set": "Studio",
+      "title": "Antique hairbrush",
+      "text": "[trigger] in a boudoir photograph, implied nude, lying on her side on the floor propped on one elbow, gazing down at an antique tarnished silver hairbrush cradled in both hands. Plain light gray backdrop. Medium close shot from a low angle, 85mm lens feel, shallow depth of field. Soft window light from the right. Muted warm tones, desaturated finish, gentle grain."
+    },
+    {
+      "id": "13",
+      "tab": "boudoir",
+      "set": "Home",
+      "title": "Bodysuit crouch",
+      "text": "[trigger] in a casual boudoir photo, crouching on one knee in a black ribbed sleeveless mock neck bodysuit and white block heel ankle boots, head tilted, hand resting on her knee. Small apartment bedroom with herringbone wood floor, wooden dresser, white paneled door, wall calendar print, shag rug and a work desk. Low angle wide shot, phone camera look. Indoor overhead lighting, neutral tones."
+    },
+    {
+      "id": "14",
+      "tab": "boudoir",
+      "set": "Home",
+      "title": "Mirror selfie",
+      "text": "[trigger] in a candid boudoir mirror selfie, holding a phone up to a full length mirror, biting the hem of an oversized white t-shirt lifted to her ribs, wearing a gray cotton thong with a wide logo waistband and black knee high boots. Lived in bedroom with a mid-century wooden dresser, framed print, clothes piled on the dresser and a patterned red and navy rug. Warm lamp light, slightly dim phone camera finish."
+    },
+    {
+      "id": "15",
+      "tab": "boudoir",
+      "set": "Home",
+      "title": "Flash on the bed",
+      "text": "[trigger] in a playful boudoir photo, lying on a bed in a white scoop neck one-piece bodysuit, one arm raised overhead making a peace sign, one knee bent, tugging at the leg opening. Blue patterned quilt, white pillows, a cluttered nightstand and a poster on the floor below. Overhead tilted shot, 35mm wide lens. Direct on-camera flash, bright whites and cool blues, 35mm film color and grain."
+    },
+    {
+      "id": "16",
+      "tab": "boudoir",
+      "set": "Home",
+      "title": "Armchair, from behind",
+      "text": "[trigger] in a soft boudoir photograph, seen from behind, kneeling on a cream bouclé armchair, glancing down over her shoulder, wearing only a pale pink string thong, hair in a low bun. Sheer peach curtains hang in front of tall paned windows. Medium shot at eye level, 50mm lens feel. Diffused daylight filtering through the curtains, warm peach and cream palette, clean finish."
+    },
+    {
+      "id": "17",
+      "tab": "boudoir",
+      "set": "Home",
+      "title": "Pink sofa, look back",
+      "text": "[trigger] in a boudoir photo, kneeling on a blush pink leather sofa with hands on the backrest, looking back over her shoulder into the lens, wearing a cropped white satin top with flared bell sleeves, a white thong and white block heel sandals. White curtains behind. Medium shot from a slight high angle, 35mm lens feel. Direct on-camera flash, glossy satin highlights, pale pink and white palette, crisp finish."
+    },
+    {
+      "id": "18",
+      "tab": "boudoir",
+      "set": "Home",
+      "title": "Sheepskin and pearls",
+      "text": "[trigger] in a romantic boudoir photograph, reclining back over a sheepskin throw with arms stretched overhead and head tipped back, wearing a peach lace bralette with a strand of pearls draped across the neckline and ruffled tie side briefs. Rumpled cream sheets, a sheer white curtain and a gold patterned rug. High angle medium shot, 35mm lens feel. Warm natural window light, honey and cream tones, soft film finish."
+    },
+    {
+      "id": "19",
+      "tab": "boudoir",
+      "set": "Bathroom",
+      "title": "Glasses bite",
+      "text": "[trigger] in a gritty boudoir photo, standing in a small bathroom against a glossy brown vinyl shower curtain, white square tile wall and towel bar on the left, wearing a blue ribbed cropped tank and a white thong, biting the temple of black eyeglasses, the other hand hooked in the waistband. Medium shot at eye level, 35mm lens feel. Harsh direct flash with specular shine on the curtain, dark warm palette, heavy grain."
+    },
+    {
+      "id": "20",
+      "tab": "boudoir",
+      "set": "Bathroom",
+      "title": "Lifted tank, flash",
+      "text": "[trigger] in a gritty boudoir photo, wearing round black eyeglasses, a blue ribbed cropped tank lifted at the hem by one hand and a white thong, other arm swung out to the side, lips parted, staring into the lens. Glossy brown vinyl shower curtain behind. Low angle medium shot, 35mm lens feel. Harsh direct on-camera flash, hard shadows and shine on the curtain, deep brown palette, heavy film grain."
+    },
+    {
+      "id": "21",
+      "tab": "boudoir",
+      "set": "Bathroom",
+      "title": "Gripping the doorframe",
+      "text": "[trigger] in a gritty boudoir photo, standing in a narrow bathroom doorway gripping both sides of the white door frame, leaning slightly forward with one knee raised, lips parted, staring down into the lens. Wearing round black eyeglasses, a blue ribbed cropped tank and a white thong. Dim bathroom behind with tile, a sink and a dark shower curtain. Low angle medium shot, 35mm lens feel. Harsh direct flash, cool shadows, heavy film grain."
+    },
+    {
+      "id": "22",
+      "tab": "boudoir",
+      "set": "Bathroom",
+      "title": "Doorway by the fridge",
+      "text": "[trigger] in a candid boudoir photo, leaning against the white frame of an open bathroom doorway, one hand tugging the side of a white thong, the other tucked behind her back, ankles crossed and heels lifted, wearing a blue ribbed cropped tank. Beside her a white refrigerator covered in instant photos and magnets, brown shower curtain and toilet visible in the bathroom behind. Full length shot at eye level, 35mm lens feel. Direct flash, cool muted tones, film grain."
+    },
+    {
+      "id": "23",
+      "tab": "boudoir",
+      "set": "Bathroom",
+      "title": "Arms up, shower curtain",
+      "text": "[trigger] in a gritty boudoir photo, standing against a brown vinyl shower curtain with both arms raised overhead, one hand reaching up with fingers spread, head tilted back, lips parted, gazing down into the lens through round black eyeglasses. Wearing a blue ribbed cropped tank and a white thong. Shower rod and white tile at the upper left. Low angle medium close shot, 35mm lens feel. Harsh direct flash, deep brown and slate blue palette, film grain."
+    },
+    {
+      "id": "24",
+      "tab": "boudoir",
+      "set": "Home",
+      "title": "Folded forward on the bed",
+      "text": "[trigger] in a clean boudoir photograph, seen from behind, kneeling on a white bed and folded forward with her head resting on one forearm, feet tucked together at the edge of the mattress, wearing a rust red scoop back bralette and matching thong. Crisp white sheets and pillows, a cream quilted blanket across the foot of the bed. Direct overhead shot, 35mm lens feel. Soft even daylight, white and rust palette, crisp natural finish."
+    },
+    {
+      "id": "25",
+      "tab": "boudoir",
+      "set": "Home",
+      "title": "Cabin doorway, red robe",
+      "text": "[trigger] in a sunlit boudoir photo, standing in the open front doorway of a wood cabin, holding a sheer deep red robe open off her shoulders, wearing a dark red lace bra and matching briefs, white knee socks and black knee high boots, looking down. Black paneled door with a fall flower wreath, covered porch with timber beams, a propane tank and scattered autumn leaves behind. Full length shot at eye level, phone camera look. Strong afternoon backlight, warm reds and golds."
+    },
+    {
+      "id": "S1",
+      "tab": "sfw",
+      "set": "Field",
+      "title": "Kneeling, head bowed",
+      "text": "[trigger] in a moody outdoor portrait, kneeling in an overgrown field with hands resting on her knees, head bowed and eyes lowered, hair blowing across her face. Wearing a white chiffon tie neck blouse with ruffled cuffs, a brown plaid midi skirt and sheer black tights. A blurred abandoned brick church with slate roofs and a tower behind. Medium shot at eye level, 50mm lens feel, shallow depth of field. Flat overcast daylight, muted greens and browns, soft film grain."
+    },
+    {
+      "id": "S2",
+      "tab": "sfw",
+      "set": "Field",
+      "title": "Windblown, eyes closed",
+      "text": "[trigger] in a windswept outdoor portrait, standing in tall grass with eyes closed and head tilted, hair streaming sideways in the wind, one arm wrapped across her waist, the other hand catching the hem of a billowing brown plaid skirt. White chiffon tie neck blouse with ruffled cuffs and sheer black tights. Blurred brick building with steep slate roofs behind. Medium shot from slightly below, 50mm lens feel, shallow depth of field. Overcast sky, muted greens, soft grain."
+    },
+    {
+      "id": "S3",
+      "tab": "sfw",
+      "set": "Field",
+      "title": "Seated overhead, hair flying",
+      "text": "[trigger] in a dreamy outdoor portrait, seated on patchy grass, head tipped toward one shoulder with eyes closed, hair whipping out to the side in the wind, hands resting in her lap on a brown plaid skirt. White chiffon tie neck blouse and sheer black tights. Grass and bare dirt fill the frame. High angle shot looking down, 35mm lens feel. Soft overcast daylight, deep greens and warm browns, gentle film grain."
+    },
+    {
+      "id": "S4",
+      "tab": "sfw",
+      "set": "Field",
+      "title": "Profile, face hidden",
+      "text": "[trigger] in an outdoor portrait, standing in profile in a field, face completely hidden by hair blown across it, one hand on her hip gathering a brown plaid skirt, one knee lifted. White chiffon blouse with ruffled cuffs and sheer black tights. Blurred abandoned brick church with a tower behind. Medium shot at eye level, 50mm lens feel, shallow depth of field, strong background blur. Overcast daylight, muted greens and copper tones, soft grain."
+    },
+    {
+      "id": "S5",
+      "tab": "sfw",
+      "set": "Field",
+      "title": "Looking up from tall grass",
+      "text": "[trigger] in an intimate outdoor portrait, crouching low in tall dry grass and looking up into the lens, lips slightly parted, hair falling loosely across one eye. White long sleeve blouse and a brown plaid skirt. Grass blades blur in the foreground and background. High angle close medium shot, 50mm lens feel, very shallow depth of field. Dim dusky overcast light, olive and tawny palette, soft film grain."
+    },
+    {
+      "id": "S6",
+      "tab": "sfw",
+      "set": "Field",
+      "title": "Walking through pampas",
+      "text": "[trigger] in a cinematic outdoor photo, seen from behind at a three quarter angle, walking through tall feathery pampas grass, one hand raised to her face, hair blowing forward. White long sleeve blouse and a brown plaid skirt. A shrub with deep red autumn leaves and the gothic arched windows of an abandoned brick building behind. Medium full shot at eye level, 50mm lens feel. Overcast daylight, muted greens with rust red accents, soft grain."
+    },
+    {
+      "id": "S7",
+      "tab": "sfw",
+      "set": "Field",
+      "title": "Crouched in the meadow",
+      "text": "[trigger] in an outdoor photo, crouching low in a wild meadow of tall seeded grass, leaning on one arm and glancing off to the side, hair falling across her face. White tie neck blouse with ruffled cuffs, a brown plaid skirt and sheer black tights. A bleached driftwood branch in the grass, trees and a stormy blue sky far behind. High angle wide shot, 50mm lens feel, shallow depth of field. Dim overcast dusk light, olive and brown palette, film grain."
+    },
+    {
+      "id": "S8",
+      "tab": "sfw",
+      "set": "Field",
+      "title": "Seated, head resting",
+      "text": "[trigger] in a quiet outdoor portrait, seated on grass with her head resting toward one shoulder, eyes closed, hair caught by the wind, one hand lying softly on a brown plaid skirt. White chiffon tie neck blouse with ruffled cuffs and sheer black tights. Patchy grass and small weeds around her. High angle shot looking down, 35mm lens feel. Soft overcast daylight, rich greens and neutral whites, gentle grain."
+    },
+    {
+      "id": "S9",
+      "tab": "sfw",
+      "set": "Field",
+      "title": "Kneeling, hair forward",
+      "text": "[trigger] in a moody outdoor portrait, kneeling and sitting back on her heels in a field, head bowed so her hair falls forward over her face, hands resting on her thighs. White chiffon tie neck blouse with ruffled cuffs, a brown plaid skirt and sheer black tights. Blurred abandoned brick church with slate roofs and a round tower behind. Medium shot at eye level, 50mm lens feel, shallow depth of field. Overcast daylight, muted greens and browns, soft grain."
+    },
+    {
+      "id": "S10",
+      "tab": "sfw",
+      "set": "Field",
+      "title": "Clock tower, low angle",
+      "text": "[trigger] in a windswept outdoor portrait, seated low in grass with knees drawn up, head tilted with eyes closed, hair streaming sideways in the wind, hands folded on her knee. White chiffon tie neck blouse, brown plaid skirt and sheer black tights. A tall brick clock tower with a pointed slate spire rises behind against a pale sky. Low angle medium shot, 35mm lens feel, shallow depth of field. Flat overcast light, muted palette, soft grain."
+    },
+    {
+      "id": "S11",
+      "tab": "sfw",
+      "set": "Field",
+      "title": "Holding the skirt",
+      "text": "[trigger] in an outdoor portrait, standing in a field with head tilted back, hair blown across her face, both hands holding down a brown plaid skirt as the wind lifts it. White chiffon blouse with ruffled cuffs and sheer black tights. Abandoned brick church with a clock tower and spire blurred behind. Medium shot at eye level, 50mm lens feel, shallow depth of field. Overcast daylight, muted greens and browns, soft grain."
+    },
+    {
+      "id": "S12",
+      "tab": "sfw",
+      "set": "Field",
+      "title": "Look back by the poles",
+      "text": "[trigger] in an outdoor portrait, turning to look back over her shoulder into the lens, arms wrapped around herself, hair blowing behind her. White long sleeve blouse and a swinging brown plaid midi skirt. Overgrown field with tall golden grass, a mossy wall, concrete blocks and wooden utility poles behind. Medium full shot at eye level, 50mm lens feel, shallow depth of field. Bright flat overcast sky, soft greens and tans, light grain."
+    },
+    {
+      "id": "S13",
+      "tab": "sfw",
+      "set": "Field",
+      "title": "Hands in hair",
+      "text": "[trigger] in an outdoor portrait, kneeling in tall dry grass with both hands raised into her hair, eyes lowered, lips parted. White chiffon tie neck blouse with wide sleeves and a brown plaid skirt spread around her. Seed heads frame the edges. High angle medium shot, 50mm lens feel, shallow depth of field. Soft dusky overcast light, golden olive palette, film grain."
+    },
+    {
+      "id": "S14",
+      "tab": "sfw",
+      "set": "Projection",
+      "title": "Projection, direct gaze",
+      "text": "[trigger] in a dark projection portrait, looking straight into the lens with lips pressed together, an abstract projected image casting bands of lavender, gold and white light across her face. Wearing a deep red top with lace sleeves and dangling starfish and pink pearl earrings. Dark gray wall behind catching blurred colored projection. Close medium shot at eye level, 50mm lens feel. Projector as the only light source, deep shadows, moody low key finish."
+    },
+    {
+      "id": "S15",
+      "tab": "sfw",
+      "set": "Projection",
+      "title": "Rainbow streak",
+      "text": "[trigger] in a dark projection portrait, head tilted, looking into the lens with hair falling over one eye, streaks of rainbow projected light sweeping diagonally across her cheek and lips. Deep red lace top and starfish earrings with pink pearl drops. Dark wall behind with a soft blurred projected glow. Close up at eye level, 85mm lens feel, shallow depth of field. Single projector light, rich shadows, low key finish."
+    },
+    {
+      "id": "S16",
+      "tab": "sfw",
+      "set": "Projection",
+      "title": "Looking up, lavender bands",
+      "text": "[trigger] in a dark projection portrait, gazing up and off to the side with lips parted, horizontal bands of lavender and white projected light across her face, a warm orange glow spilling onto her neck. Deep red lace top. Dark wall behind with a blurred violet projection. Close medium shot at eye level, 50mm lens feel. Projector light only, deep blue black shadows, moody low key finish."
+    },
+    {
+      "id": "S17",
+      "tab": "sfw",
+      "set": "Projection",
+      "title": "Floral projection",
+      "text": "[trigger] in a dark projection portrait, head slightly bowed, looking up into the lens, a projected image of blurred flowers and warm amber tones falling across her face and the wall behind. Deep red top with lace sleeves and dangling earrings. Medium close shot at eye level, 50mm lens feel, shallow depth of field. Projector as the main light, warm highlights against dark shadows, low key finish."
+    },
+    {
+      "id": "S18",
+      "tab": "sfw",
+      "set": "Selfie",
+      "title": "Car seat selfie",
+      "text": "[trigger] in a casual phone selfie, reclined in the front passenger seat of a parked car with one hand raised into her hair and one knee drawn up, giving a soft closed mouth smile. Wearing a fitted black cropped t-shirt with a small white line art cherub graphic, charcoal black cargo pants, white leather sneakers, a silver rosary style necklace and layered silver chain bracelets. Cream perforated leather seats and black door trim, a red sedan and a silver pickup truck in the parking lot outside. High angle arm's length selfie with a wide phone lens, her outstretched arm entering the lower right corner, deep focus. Hard afternoon sunlight through the windshield, crisp warm highlights and sharp shadows, natural saturated color.",
+      "upd": "2026-11-21"
+    },
+    {
+      "id": "S19",
+      "tab": "sfw",
+      "set": "Portrait",
+      "title": "Lace bralette, over the shoulder",
+      "text": "[trigger] in an editorial portrait, body turned in profile with arms extended down and forward out of frame, looking back over her shoulder into the lens with a calm, direct gaze. Wearing a white floral lace bralette with thin straps and a white ruffled eyelet skirt, flushed terracotta blush and glossy peach lips. Plain seamless dusty mauve pink studio wall. Medium shot at eye level, 85mm lens feel, shallow depth of field, generous negative space on the left. Soft diffused frontal light with almost no shadow. Muted warm palette, lifted matte blacks, low contrast, fine 35mm film grain, wide white print border.",
+      "upd": "2026-11-21"
+    },
+    {
+      "id": "S20",
+      "tab": "sfw",
+      "set": "Selfie",
+      "title": "Bathroom mirror selfie",
+      "text": "[trigger] in a casual mirror selfie, holding a black phone up to the mirror and smiling while glancing toward the screen. Wearing a fitted black cropped t-shirt with a sparkly rhinestone leaping cat logo on the chest, heather gray sweatpants, a small silver ear stud and stacked red string and silver charm bracelets. Glossy white wall tiles laid on the diagonal with a gray scrollwork border tile, dark charcoal marble look tiles below, a wooden door frame with a white handle and a blush pink wall at the right edge. Medium close shot at a slightly high angle, framed from the hips up, deep focus. Soft overhead indoor light, slightly cool, gentle shadows. Faint water spots on the mirror, slightly soft phone camera finish, natural color.",
+      "upd": "2026-11-21"
+    },
+    {
+      "id": "S21",
+      "tab": "sfw",
+      "set": "Selfie",
+      "title": "Straw in mouth, mirror",
+      "text": "[trigger] in a casual mirror selfie, standing with one hand on her hip and the other holding up a mint green phone, a lavender plastic straw held between her lips, glancing sideways at the mirror with a deadpan expression. Wearing a slate gray scoop neck tank with the hem gathered up at her waist and low rise pink striped boxer shorts with a small burgundy bow at the waistband. Plain off white wall and a white door with dark hinges behind. Medium shot from the thighs up at eye level, phone camera look, deep focus. Dim warm indoor light, soft shadows. Muted warm tones, slightly soft and grainy phone finish.",
+      "upd": "2026-11-21"
+    },
+    {
+      "id": "S22",
+      "tab": "sfw",
+      "set": "Outdoor",
+      "title": "Railing at sunset",
+      "text": "[trigger] in a candid outdoor photo, leaning sideways against a black metal railing with one hand gripping the rail, head tilted to rest on her raised shoulder, smiling softly into the lens. Wearing a charcoal gray waffle knit henley with white buttons, a black pleated corduroy mini skirt, sheer black tights, slouchy gray knit leg warmers, chunky black platform lace up shoes and a black shoulder bag. Golden autumn shrubs behind the railing, a fenced concrete reservoir reflecting the sky, evergreen branches and distant high rise towers. Full length shot at eye level, phone camera look, deep focus. Sunset sky glowing yellow and peach, soft warm ambient light on her. Amber, charcoal and evergreen palette, crisp natural finish.",
+      "upd": "2026-11-21"
+    },
+    {
+      "id": "C1",
+      "tab": "claude",
+      "set": "CB",
+      "title": "Hotel window, morning",
+      "text": "[trigger] in a soft boudoir photograph, sitting sideways on a wide hotel window ledge with knees drawn up, wearing only an oversized white men's dress shirt slipping off one shoulder, holding a coffee cup in both hands and gazing out at the city. Rumpled white bed blurred in the foreground. Medium shot at eye level, 50mm lens feel, shallow depth of field. Bright morning backlight through sheer curtains, soft haze, cream and pale blue palette, light film grain."
+    },
+    {
+      "id": "C2",
+      "tab": "claude",
+      "set": "CB",
+      "title": "Velvet chaise",
+      "text": "[trigger] in a moody boudoir photograph, reclining on an emerald velvet chaise in a black silk slip with one strap fallen from the shoulder, one arm draped along the backrest, looking into the lens. Dark green walls, a brass floor lamp and a stack of old books. Medium full shot from a low angle, 35mm lens feel. Single warm tungsten lamp from the right, deep falloff into shadow, rich green and amber palette, fine grain."
+    },
+    {
+      "id": "C3",
+      "tab": "claude",
+      "set": "CB",
+      "title": "Milk bath",
+      "text": "[trigger] in a fine art boudoir photograph, implied nude, lying back in a white clawfoot tub filled with milky water, shoulders and knees just above the surface, pale pink rose petals floating around her, eyes closed. White subway tile and a small window behind. Direct overhead shot, 35mm lens feel. Soft diffused daylight from the window, milky whites and blush pink, low contrast, gentle grain."
+    },
+    {
+      "id": "C4",
+      "tab": "claude",
+      "set": "CB",
+      "title": "Sheet tangle, top down",
+      "text": "[trigger] in an intimate boudoir photograph, lying on her stomach across rumpled white linen with a sheet draped over her hips, bare back toward the camera, chin resting on folded arms, glancing up into the lens. Overhead full length shot, 35mm lens feel. Soft morning window light raking across the folds of the sheets from the left, warm whites, delicate shadows, light film grain."
+    },
+    {
+      "id": "C5",
+      "tab": "claude",
+      "set": "CB",
+      "title": "Vintage vanity",
+      "text": "[trigger] in a glamorous boudoir photograph, seated at a vintage vanity in a cream lace bodysuit, fastening a pearl earring, her face reflected in a round mirror ringed with warm bulbs. Perfume bottles, a velvet jewelry box and a silk robe over the chair. Medium shot over her shoulder, 50mm lens feel, focus on the reflection. Warm bulb light from the mirror, golden and ivory palette, soft glow."
+    },
+    {
+      "id": "C6",
+      "tab": "claude",
+      "set": "CB",
+      "title": "Rain window silhouette",
+      "text": "[trigger] in a cinematic boudoir photograph, implied nude, standing at a tall rain streaked window with a sheer gray curtain wrapped loosely around her body, one hand pressed to the glass, face turned in profile. Dim apartment interior. Medium full shot from behind and to the side, 35mm lens feel. Cool blue dusk light through the wet glass with soft streaks of city light, near silhouette, slate blue palette, film grain."
+    },
+    {
+      "id": "C7",
+      "tab": "claude",
+      "set": "CS",
+      "title": "Laundromat at night",
+      "text": "[trigger] in a candid night photograph, sitting on top of a running washing machine in an oversized cream cable knit sweater, plaid skirt and white socks with loafers, legs swinging, reading a paperback. Rows of front loading machines, a vending machine and a dark street outside the window. Medium full shot at eye level, 35mm lens feel. Flat green tinted fluorescent overhead light, mint and cream palette, 35mm film grain."
+    },
+    {
+      "id": "C8",
+      "tab": "claude",
+      "set": "CS",
+      "title": "Orchard ladder",
+      "text": "[trigger] in a warm outdoor photograph, standing halfway up a wooden orchard ladder reaching for an apple, wearing a loose linen dress with rolled sleeves and a woven basket on her arm, smiling down at the camera. Apple trees heavy with red fruit, long grass below. Low angle medium full shot, 50mm lens feel, shallow depth of field. Golden hour sun backlighting the leaves, warm amber and green palette, soft film finish."
+    },
+    {
+      "id": "C9",
+      "tab": "claude",
+      "set": "CS",
+      "title": "Rooftop at blue hour",
+      "text": "[trigger] in a cinematic city photograph, standing on a gravel rooftop near the ledge in a long camel trench coat billowing in the wind, hands in her pockets, looking out over the skyline. Water towers and lit office windows behind. Full length shot from a low angle, 35mm lens feel. Blue hour sky with warm city lights below, cool blue and tungsten orange contrast, subtle grain."
+    },
+    {
+      "id": "C10",
+      "tab": "claude",
+      "set": "CS",
+      "title": "Library stacks",
+      "text": "[trigger] in a quiet interior photograph, leaning against tall wooden bookshelves in a narrow library aisle, reading an open hardcover, wearing a chunky brown cardigan, a white collared blouse and wire rim glasses. Rows of old leather spines stretch into soft focus. Medium shot down the aisle, 85mm lens feel, shallow depth of field. Warm light from a green banker's lamp at the end of the aisle, dust in the air, brown and gold palette, fine grain."
+    },
+    {
+      "id": "C11",
+      "tab": "claude",
+      "set": "CS",
+      "title": "Diner booth in the rain",
+      "text": "[trigger] in a nostalgic night photograph, sitting in a red vinyl diner booth with her chin in her hand, a strawberry milkshake with two straws in front of her, wearing a denim jacket over a striped tee. Rain streaked window beside her with a pink and blue neon sign glowing outside. Medium shot at table height, 35mm lens feel. Neon light spilling through the wet glass mixed with warm overhead light, saturated reds and pinks, 35mm film grain."
+    },
+    {
+      "id": "C12",
+      "tab": "claude",
+      "set": "CS",
+      "title": "Lighthouse cliff",
+      "text": "[trigger] in a windswept coastal photograph, standing on a grassy cliff edge in a long navy wool coat and a cream knit scarf, hair blowing across her face, looking out to sea. A white lighthouse on the headland behind and gray waves breaking below. Wide full length shot from slightly below, 35mm lens feel. Overcast diffused daylight, muted navy, sage and stone palette, soft grain."
+    },
+    {
+      "id": "26",
+      "tab": "boudoir",
+      "set": "WebB",
+      "title": "Pulling up a stocking",
+      "text": "[trigger] in a soft boudoir photograph, seated on the edge of a bed, leaning forward to draw a sheer black stocking up over one knee with both hands, eyes lowered. Wearing a black lace bodysuit and a satin robe slipping off one shoulder. Rumpled ivory sheets and a tufted headboard behind. Medium shot from a low angle, 50mm lens feel, shallow depth of field. Soft window light from the left, ivory and black palette, fine film grain.",
+      "src": "https://expertphotography.com/boudoir-poses",
+      "ex": "https://expertphotography.com/img/2022/02/Boudoir-Poses-Captblack76.jpg"
+    },
+    {
+      "id": "27",
+      "tab": "boudoir",
+      "set": "WebB",
+      "title": "Stomach down, ankles crossed",
+      "text": "[trigger] in a playful boudoir photograph, lying on her stomach diagonally across a bed, propped on her forearms with knees bent and ankles crossed in the air, chin resting on one hand, smiling into the lens. Wearing a blush pink satin camisole and matching shorts. White duvet and scattered pillows. Eye level shot from the foot of the bed, 85mm lens feel, shallow depth of field. Bright diffused morning light, blush and white palette, clean finish.",
+      "src": "https://expertphotography.com/boudoir-poses",
+      "ex": "https://expertphotography.com/img/2022/02/Boudoir-Poses-Igor-Vetushko.jpg"
+    },
+    {
+      "id": "28",
+      "tab": "boudoir",
+      "set": "WebB",
+      "title": "Legs up the headboard",
+      "text": "[trigger] in a boudoir photograph, lying on her back across a bed with both legs raised and resting crossed against a wooden headboard, one arm stretched overhead, the other hand resting on her stomach, face turned toward the camera. Wearing an oversized white button up shirt and white knee socks. Cream linen bedding. Side angle medium full shot at mattress height, 35mm lens feel. Warm late afternoon window light, honey and cream tones, soft film grain.",
+      "src": "https://expertphotography.com/boudoir-poses",
+      "ex": "https://expertphotography.com/img/2022/02/Boudoir-Poses-Max5799.jpg"
+    },
+    {
+      "id": "29",
+      "tab": "boudoir",
+      "set": "WebB",
+      "title": "Chaise recline, one leg long",
+      "text": "[trigger] in a moody boudoir photograph, leaning back along a burgundy velvet chaise with one leg extended and the other knee bent, one elbow propped on the armrest, hand at her temple, steady gaze into the lens. Wearing a champagne silk slip dress. Dark paneled wall and a heavy curtain behind. Medium full shot at eye level, 50mm lens feel. Single soft key light from the right, deep shadow falloff, burgundy and gold palette, fine grain.",
+      "src": "https://expertphotography.com/boudoir-poses",
+      "ex": "https://expertphotography.com/img/2022/03/Boudoir-Poses-Damien.jpg"
+    },
+    {
+      "id": "30",
+      "tab": "boudoir",
+      "set": "WebB",
+      "title": "Kneeling, glance back",
+      "text": "[trigger] in an intimate boudoir photograph, kneeling upright on a mattress with her back partly to the camera, hands resting on her thighs, glancing back over one shoulder. Wearing an ivory lace bralette and high waisted briefs, a sheer robe pooled around her elbows. White sheets and a pale plaster wall. Medium shot at eye level, 85mm lens feel, shallow depth of field. Soft side light from a window on the right, warm whites, low contrast, gentle grain.",
+      "src": "https://expertphotography.com/boudoir-poses",
+      "ex": "https://expertphotography.com/img/2022/03/Boudoir-Poses-Igor-Vetushko-2.jpg"
+    },
+    {
+      "id": "31",
+      "tab": "boudoir",
+      "set": "WebB",
+      "title": "Window silhouette, side on",
+      "text": "[trigger] in a fine art boudoir photograph, standing side on in front of a tall bright window, one hand lightly holding the edge of a sheer curtain, the other arm relaxed, chin lifted. Wearing a lace bodysuit, her outline reading as a near silhouette. Bare wood floor and plain walls. Full length shot at eye level, 35mm lens feel. Strong backlight through the window with glowing overexposed highlights and soft rim light along her profile, monochrome warm gray palette.",
+      "src": "https://expertphotography.com/boudoir-poses",
+      "ex": "https://expertphotography.com/img/2022/03/Boudoir-Poses-Thiago-Reboucas-2.jpg"
+    },
+    {
+      "id": "32",
+      "tab": "boudoir",
+      "set": "WebB",
+      "title": "Wall lean, arms raised",
+      "text": "[trigger] in a boudoir photograph, standing with her back against a white wall, both arms raised with wrists crossed above her head, one knee bent with the foot flat on the wall, head tilted, eyes closed. Wearing a black satin bralette and matching high waisted briefs. Medium full shot from slightly below, 50mm lens feel. Hard sunlight through blinds casting diagonal stripes of shadow across her and the wall, high contrast black and white finish, visible grain.",
+      "src": "https://expertphotography.com/boudoir-poses",
+      "ex": "https://expertphotography.com/img/2022/03/Boudoir-Poses-Slava_14.jpg"
+    },
+    {
+      "id": "33",
+      "tab": "boudoir",
+      "set": "WebB",
+      "title": "Knees to chest",
+      "text": "[trigger] in a quiet boudoir photograph, seated on a bed with knees drawn up to her chest and arms wrapped around her shins, cheek resting on one knee, soft gaze into the lens. Wearing an oversized cream knit sweater falling off one shoulder and thigh high socks. Rumpled gray linen sheets and a bare wall. Medium shot at eye level, 85mm lens feel, shallow depth of field. Soft overcast window light, muted oatmeal and gray palette, light grain.",
+      "src": "https://expertphotography.com/boudoir-poses",
+      "ex": "https://expertphotography.com/img/2022/03/Boudoir-Poses-Moncell-Allen.jpg"
+    },
+    {
+      "id": "34",
+      "tab": "boudoir",
+      "set": "WebB",
+      "title": "Bed edge, rear view",
+      "text": "[trigger] in a boudoir photograph, seen from behind, sitting on the edge of a mattress with her spine straight, hands resting on the bed beside her hips, face turned in profile toward one shoulder. Wearing a low back black lace bodysuit, hair swept over the far shoulder. White bedding and sheer curtains ahead of her. Medium shot at eye level, 50mm lens feel. Diffused window light from the front wrapping around her outline, soft white and black palette, fine grain.",
+      "src": "https://expertphotography.com/boudoir-poses",
+      "ex": "https://expertphotography.com/img/2022/03/Boudoir-Poses-Yohann-Libot-2.jpg"
+    },
+    {
+      "id": "35",
+      "tab": "boudoir",
+      "set": "WebB",
+      "title": "Mirror, fixing hair",
+      "text": "[trigger] in a boudoir photograph, standing in front of an ornate full length mirror, both hands raised to gather her hair, her face visible in the reflection looking back at the camera. Wearing a dusty rose silk robe open over a matching lace set. Vintage dresser, a vase of dried flowers and a patterned rug. Medium full shot over her shoulder, 35mm lens feel, focus on the reflection. Warm lamp light mixed with soft daylight, rose and gold palette, soft film finish.",
+      "src": "https://expertphotography.com/boudoir-poses",
+      "ex": "https://expertphotography.com/img/2022/03/Boudoir-Poses-Sagar-Kumar-2.jpg"
+    },
+    {
+      "id": "36",
+      "tab": "boudoir",
+      "set": "WebB",
+      "title": "Reclined on the stairs",
+      "text": "[trigger] in an editorial boudoir photograph, reclining sideways on a wooden staircase, one elbow on a higher step with her head resting on that hand, legs stretched down the steps with ankles crossed. Wearing a black silk slip and sheer black stockings. White balusters and a dark handrail above her. Low angle medium full shot from the foot of the stairs, 35mm lens feel. Soft light from a landing window above, cool neutral palette, subtle grain.",
+      "src": "https://shotkit.com/boudoir-poses/"
+    },
+    {
+      "id": "37",
+      "tab": "boudoir",
+      "set": "WebB",
+      "title": "Perched on the counter",
+      "text": "[trigger] in a boudoir photograph, perched on the edge of a marble bathroom counter, leaning back on both hands with legs extended and crossed at the ankle, toes pointed, head tipped back. Wearing a white ribbed bodysuit and an open white linen shirt. Round mirror, brass taps and a folded towel beside her. Low angle full length shot, 35mm lens feel. Soft diffused light from a frosted window, bright whites and warm brass accents, clean finish.",
+      "src": "https://shotkit.com/boudoir-poses/"
+    },
+    {
+      "id": "S23",
+      "tab": "sfw",
+      "set": "WebS",
+      "title": "Hair flip",
+      "text": "[trigger] in an energetic outdoor portrait, tossing her head so her hair arcs through the air, laughing with eyes closed, shoulders relaxed. Wearing a white ribbed tank and light wash jeans. Open beach with pale sand and a hazy horizon behind. Medium shot at eye level, 85mm lens feel, shallow depth of field, fast shutter freezing the strands. Low golden hour sun from behind rim lighting the hair, warm sand and sky blue palette, light grain.",
+      "src": "https://expertphotography.com/photographers-guide-female-portrait-poses",
+      "ex": "https://expertphotography.com/img/2018/02/female-poses-hair-flip.jpg"
+    },
+    {
+      "id": "S24",
+      "tab": "sfw",
+      "set": "WebS",
+      "title": "Shoulder to the wall",
+      "text": "[trigger] in a street portrait, leaning one shoulder against a painted brick wall, arms loosely folded, one ankle crossed over the other, relaxed half smile at the lens. Wearing a black leather jacket over a gray hoodie, straight leg jeans and white sneakers. Terracotta orange wall with a sidewalk running into soft focus. Medium full shot at eye level, 50mm lens feel. Open shade with soft even light, terracotta and charcoal palette, crisp natural finish.",
+      "src": "https://expertphotography.com/photographers-guide-female-portrait-poses",
+      "ex": "https://expertphotography.com/img/2018/02/female-poses-leaning-on-wall.jpg"
+    },
+    {
+      "id": "S25",
+      "tab": "sfw",
+      "set": "WebS",
+      "title": "Hands in pockets",
+      "text": "[trigger] in a casual city portrait, standing with both hands tucked into the pockets of wide leg trousers, weight on one leg, chin slightly raised, looking past the camera. Wearing a cream turtleneck, a long tan wool coat and loafers. Crosswalk and blurred storefronts behind. Full length shot from a slightly low angle, 50mm lens feel, shallow depth of field. Overcast daylight, soft and even, camel and stone palette, subtle film grain.",
+      "src": "https://expertphotography.com/photographers-guide-female-portrait-poses",
+      "ex": "https://expertphotography.com/img/2018/02/female-poses-hands-in-pocket.jpg"
+    },
+    {
+      "id": "S26",
+      "tab": "sfw",
+      "set": "WebS",
+      "title": "Cosy self hug",
+      "text": "[trigger] in a warm lifestyle portrait, hugging her arms around herself with her hands tucked into the long sleeves of a chunky oatmeal sweater, shoulders raised, smiling with her chin tucked into a plaid scarf. Autumn park path with fallen leaves blurred behind. Close medium shot at eye level, 85mm lens feel, shallow depth of field. Soft late afternoon backlight through the trees, amber and russet palette, gentle grain.",
+      "src": "https://expertphotography.com/photographers-guide-female-portrait-poses",
+      "ex": "https://expertphotography.com/img/2018/02/female-poses-self-hug.jpg"
+    },
+    {
+      "id": "S27",
+      "tab": "sfw",
+      "set": "WebS",
+      "title": "Walking toward camera",
+      "text": "[trigger] in a candid street photograph, walking toward the camera mid stride, one hand brushing hair from her face, the other holding a paper coffee cup, glancing off to the side. Wearing a striped button up shirt, a denim midi skirt and ankle boots, a canvas tote on her shoulder. Tree lined sidewalk with parked bicycles. Full length shot at eye level, 85mm lens feel, compressed background blur. Dappled morning sunlight, fresh green and denim blue palette, natural finish.",
+      "src": "https://expertphotography.com/photographers-guide-female-portrait-poses",
+      "ex": "https://expertphotography.com/img/2018/02/female-poses-walking.jpg"
+    },
+    {
+      "id": "S28",
+      "tab": "sfw",
+      "set": "WebS",
+      "title": "Hiding behind a scarf",
+      "text": "[trigger] in a winter portrait, holding a thick knitted scarf up over the lower half of her face with both mittened hands, only her eyes showing, looking straight into the lens. Wearing a mustard yellow scarf, a navy peacoat and a gray beanie. Snowy street with soft falling flakes and blurred warm shop lights. Close up at eye level, 85mm lens feel, very shallow depth of field. Flat cool daylight with warm bokeh behind, navy and mustard palette, fine grain.",
+      "src": "https://expertphotography.com/photographers-guide-female-portrait-poses",
+      "ex": "https://expertphotography.com/img/2018/02/female-poses-behind-scarf.jpg"
+    },
+    {
+      "id": "S29",
+      "tab": "sfw",
+      "set": "WebS",
+      "title": "Knees up on the window seat",
+      "text": "[trigger] in a relaxed lifestyle portrait, sitting on a wide window seat with knees drawn up and arms wrapped around her legs, chin resting on her knees, looking out through the glass. Wearing a gray crewneck sweatshirt, black leggings and thick wool socks. Cushions, a folded blanket and a mug on the sill. Medium shot at eye level, 50mm lens feel. Soft overcast window light from the side, cool gray and cream palette, quiet low contrast finish.",
+      "src": "https://expertphotography.com/photographers-guide-female-portrait-poses",
+      "ex": "https://expertphotography.com/img/2018/02/female-poses-knees-up.jpg"
+    },
+    {
+      "id": "S30",
+      "tab": "sfw",
+      "set": "WebS",
+      "title": "Elbows on the cafe table",
+      "text": "[trigger] in a cafe portrait, seated at a small marble table with both elbows on the tabletop, hands loosely clasped under her chin, smiling at the lens. Wearing a sage green cardigan over a white tee and thin gold hoop earrings. A cappuccino and an open notebook in front of her, blurred shelves and hanging plants behind. Medium close shot at table height, 50mm lens feel, shallow depth of field. Soft window light from the left, sage, cream and warm wood palette.",
+      "src": "https://expertphotography.com/photographers-guide-female-portrait-poses",
+      "ex": "https://expertphotography.com/img/2018/02/female-poses-elbows-table.jpg"
+    },
+    {
+      "id": "S31",
+      "tab": "sfw",
+      "set": "WebS",
+      "title": "Crossed legs on a stool",
+      "text": "[trigger] in a studio portrait, seated on a wooden stool with one leg crossed over the other, both hands resting on the upper knee, back straight, calm direct gaze. Wearing a black blazer over a white tee, tailored trousers and pointed black flats. Seamless warm gray backdrop. Full length shot at eye level, 85mm lens feel. Large soft key light from the front left with gentle shadow falloff, neutral gray and black palette, clean editorial finish.",
+      "src": "https://expertphotography.com/photographers-guide-female-portrait-poses",
+      "ex": "https://expertphotography.com/img/2018/02/female-poses-crossed-legs.jpg"
+    },
+    {
+      "id": "S32",
+      "tab": "sfw",
+      "set": "WebS",
+      "title": "Hair fanned out, overhead",
+      "text": "[trigger] in a dreamy overhead portrait, lying on her back in a field of clover with her hair fanned out around her head, one hand resting beside her face, eyes closed, a faint smile. Wearing a white cotton sundress with thin straps. Small white flowers scattered through the grass around her. Direct overhead close medium shot, 35mm lens feel. Soft open shade with even light, fresh green and white palette, gentle film grain.",
+      "src": "https://expertphotography.com/photographers-guide-female-portrait-poses",
+      "ex": "https://expertphotography.com/img/2024/07/Female-Poses-Hair-Out-Karl-Hedin-1.jpg"
+    },
+    {
+      "id": "P1",
+      "tab": "pinup",
+      "set": "Pin",
+      "title": "Kneeling S curve",
+      "text": "[trigger] in a vintage pin-up photograph, kneeling side on with her head turned to the camera, back arched, one arm reaching down to her knee and the other hand on her waist, winking with a playful smile. Wearing a red polka dot halter top, high waisted navy shorts, a red hair scarf and red lipstick. Seamless pale yellow studio backdrop. Medium full shot at eye level, 50mm lens feel. Bright even studio light with a soft shadow on the backdrop, saturated primary colors, 1950s print finish.",
+      "src": "https://shotkit.com/pinup-poses/"
+    },
+    {
+      "id": "P2",
+      "tab": "pinup",
+      "set": "Pin",
+      "title": "Hand on the waist",
+      "text": "[trigger] in a classic pin-up photograph, standing turned slightly side on with a gentle back arch, one hand on her waist and the other resting just above her bent knee, looking over at the lens with raised eyebrows and a surprised smile. Wearing a fitted cherry print wiggle dress, seamed stockings and red peep toe heels. Mint green studio backdrop. Full length shot at eye level, 50mm lens feel. Bright frontal studio light, glossy saturated color, vintage postcard finish.",
+      "src": "https://shotkit.com/pinup-poses/"
+    },
+    {
+      "id": "P3",
+      "tab": "pinup",
+      "set": "Pin",
+      "title": "Diner bar stool",
+      "text": "[trigger] in a retro pin-up photograph, perched on a chrome diner stool with one heel hooked on the footrest and the other leg extended, back straight, one hand under her chin and the other on the seat. Wearing a white tied blouse, a high waisted red circle skirt and black heels. Checkered floor and a soda fountain counter behind. Medium full shot at eye level, 35mm lens feel. Bright warm diner light, cherry red, chrome and cream palette, glossy finish.",
+      "src": "https://shotkit.com/pinup-poses/"
+    },
+    {
+      "id": "P4",
+      "tab": "pinup",
+      "set": "Pin",
+      "title": "Legs to the camera",
+      "text": "[trigger] in a playful pin-up photograph, sitting on the floor facing the camera with her legs stretched toward the lens and crossed at the ankle, toes pointed, leaning back on both hands and laughing. Wearing a sailor style navy romper with white trim, seamed stockings and white heels. Seamless sky blue backdrop. Low angle wide shot from near floor level, 35mm lens feel, legs elongated by perspective. Bright even studio light, navy, white and sky blue palette, crisp vintage finish.",
+      "src": "https://shotkit.com/pinup-poses/"
+    },
+    {
+      "id": "P5",
+      "tab": "pinup",
+      "set": "Pin",
+      "title": "Blowing a kiss",
+      "text": "[trigger] in a flirty pin-up portrait, leaning toward the camera and blowing a kiss from her open palm, eyes half closed. Wearing a sweetheart neckline gingham top, short white gloves, a flower tucked behind her ear and bold red lipstick. Soft pink studio backdrop. Close medium shot at eye level, 85mm lens feel, shallow depth of field. Bright frontal beauty light with a soft halo on the backdrop, candy pink and red palette, glossy retro finish.",
+      "src": "https://fixthephoto.com/pin-up-poses.html"
+    },
+    {
+      "id": "P6",
+      "tab": "pinup",
+      "set": "Pin",
+      "title": "Skirt swish",
+      "text": "[trigger] in a lively pin-up photograph, standing on one leg with the other foot kicked up behind her, both hands lifting the sides of a full knee length skirt as it swirls, laughing over her shoulder. Wearing a teal swing dress with a white petticoat, a wide belt and red heels. Boardwalk with a striped awning and a pale summer sky. Full length shot from a slightly low angle, 35mm lens feel. Bright midday sun, hard cheerful shadows, teal, red and cream palette.",
+      "src": "https://fixthephoto.com/pin-up-poses.html"
+    },
+    {
+      "id": "P7",
+      "tab": "pinup",
+      "set": "Pin",
+      "title": "Classic car lean",
+      "text": "[trigger] in a vintage pin-up photograph, leaning back against the front fender of a glossy turquoise 1950s car, one heel propped on the bumper, one hand shading her eyes and the other on the hood. Wearing a tied gingham shirt, high waisted denim shorts and cat eye sunglasses pushed up in her hair. Empty desert road and a faded gas station sign behind. Medium full shot at eye level, 35mm lens feel. Hard late afternoon sun, turquoise, chrome and dusty gold palette, warm film color.",
+      "src": "https://fixthephoto.com/pin-up-poses.html"
+    },
+    {
+      "id": "P8",
+      "tab": "suggestive",
+      "set": "Flirt",
+      "title": "Reversed chair",
+      "text": "[trigger] in a confident portrait, sitting backward on a wooden chair with her forearms folded along the top of the backrest, chin resting on her arms, looking up at the lens with a slight smirk. Wearing a white ribbed tank, loose faded jeans and bare feet. Empty loft with a concrete floor and a tall window. Medium shot at eye level, 50mm lens feel. Soft side light from the window, deep gentle shadows, muted gray and denim palette, fine grain.",
+      "src": "https://expertphotography.com/photographers-guide-female-portrait-poses",
+      "ex": "https://expertphotography.com/img/2024/07/Female-Poses-Reverse-Chair-Anhelina-Osaulenko-1.jpg"
+    },
+    {
+      "id": "P9",
+      "tab": "suggestive",
+      "set": "Flirt",
+      "title": "Low squat",
+      "text": "[trigger] in a streetwear portrait, in a low squat with feet planted wide and forearms resting on her knees, head tilted, steady stare into the lens. Wearing an oversized black bomber jacket, a white crop top, baggy cargo pants and chunky white sneakers. Parking garage with painted yellow lines and concrete pillars. Low angle full body shot, 24mm wide lens feel. Hard overhead fluorescent light with a warm sunset glow from the open side, concrete gray and yellow palette, slight grain.",
+      "src": "https://expertphotography.com/photographers-guide-female-portrait-poses",
+      "ex": "https://expertphotography.com/img/2018/02/female-poses-baddie-squat-pose.jpg"
+    },
+    {
+      "id": "P10",
+      "tab": "suggestive",
+      "set": "Flirt",
+      "title": "Head off the bed edge",
+      "text": "[trigger] in a dreamy portrait, lying on her back across a bed with her head at the edge so her hair spills down over the side, one hand resting on her collarbone, looking at the camera upside down with parted lips. Wearing an oversized faded black tee and striped shorts. Rumpled floral bedding. Close medium shot from low beside the bed, 50mm lens feel, shallow depth of field. Soft window light, warm pastel palette, hazy film finish.",
+      "src": "https://expertphotography.com/photographers-guide-female-portrait-poses",
+      "ex": "https://expertphotography.com/img/2018/02/female-poses-edge-of-bed.jpg"
+    },
+    {
+      "id": "P11",
+      "tab": "suggestive",
+      "set": "Flirt",
+      "title": "Over the shoulder, jacket down",
+      "text": "[trigger] in a flirty portrait, body turned away from the camera, looking back over her nearer shoulder with a slow smile, one hand lifting the collar of her jacket. Wearing an off the shoulder black knit top under a denim jacket slipped down to her elbows, small gold hoops. Rooftop at dusk with string lights blurred behind. Medium close shot at eye level, 85mm lens feel, shallow depth of field. Warm string light bokeh with cool dusk fill, amber and indigo palette, soft grain.",
+      "src": "https://expertphotography.com/photographers-guide-female-portrait-poses",
+      "ex": "https://expertphotography.com/img/2018/02/female-poses-looking-over-the-shoulder.jpeg"
+    },
+    {
+      "id": "P12",
+      "tab": "suggestive",
+      "set": "Flirt",
+      "title": "Hands behind the neck",
+      "text": "[trigger] in a sunlit portrait, standing with both hands clasped behind her neck and elbows wide, weight on one hip, eyes closed and face tilted up to the sun. Wearing a white cropped tee and a low slung linen wrap skirt over a swimsuit. Beach dunes with tall grass and a strip of sea behind. Medium shot from slightly below, 50mm lens feel. Warm low evening sun from the side, long soft shadows, sand, white and sea green palette, light film grain.",
+      "src": "https://expertphotography.com/photographers-guide-female-portrait-poses",
+      "ex": "https://expertphotography.com/img/2018/02/female-poses-hand-behind-the-neck.jpg"
+    },
+    {
+      "id": "P13",
+      "tab": "pinup",
+      "set": "PinCar",
+      "title": "Arm on the steering wheel",
+      "text": "[trigger] in a glamorous pin-up photograph, draped across the bench seat of a 1950s car, one arm resting on the big steering wheel and the other along the seat back, chin lifted with a knowing smile. Wearing a red halter dress with white polka dots, white cat eye sunglasses and a silk scarf tied over her hair. Cream and red leather interior with a chrome dashboard. Medium shot through the open driver door, 35mm lens feel. Bright sun through the windshield with soft fill inside, cherry red and cream palette, glossy vintage color.",
+      "src": "https://www.photowhoa.com/blog/pinup-poses/",
+      "ex": "https://www.photowhoa.com/wp-content/uploads/2024/06/glam-shoot-inside-a-car.webp"
+    },
+    {
+      "id": "P14",
+      "tab": "pinup",
+      "set": "PinCar",
+      "title": "Lipstick in the rearview",
+      "text": "[trigger] in a pin-up photograph, leaning toward the rearview mirror of a classic convertible applying red lipstick, glancing back over her shoulder at the camera mid motion. Wearing a fitted white blouse with a popped collar, a navy pencil skirt, pearl earrings and a silk scarf over her hair. Chrome mirror, a pale blue dashboard and a blurred roadside diner behind. Close medium shot from the passenger side, 50mm lens feel, shallow depth of field. Warm late afternoon sun, pale blue, red and chrome palette, soft film finish.",
+      "src": "https://www.photowhoa.com/blog/pinup-poses/",
+      "ex": "https://www.photowhoa.com/wp-content/uploads/2024/06/pinup-pose-while-doing-make-up-in-car.webp"
+    },
+    {
+      "id": "P15",
+      "tab": "pinup",
+      "set": "PinCar",
+      "title": "Convertible at the beach",
+      "text": "[trigger] in a sunny pin-up photograph, sitting up on the back of a cherry red convertible with her feet on the rear seat, one arm resting on the door, face turned out toward the ocean. Wearing a white high waisted two piece swimsuit, an open striped beach shirt and a wide straw sun hat. Parked on pale sand with gentle surf and a clear sky behind. Full length shot at eye level, 35mm lens feel. Bright midday sun with crisp shadows, cherry red, white and turquoise palette, saturated postcard finish.",
+      "src": "https://www.photowhoa.com/blog/pinup-poses/",
+      "ex": "https://www.photowhoa.com/wp-content/uploads/2025/02/blonde-woman-relaxing-on-a-red-convertible-car.webp"
+    },
+    {
+      "id": "P16",
+      "tab": "pinup",
+      "set": "PinCar",
+      "title": "Wrench in the garage",
+      "text": "[trigger] in a retro pin-up photograph, standing beside the open hood of a vintage hot rod, one hand holding a wrench up by her shoulder, the other on her hip, one knee bent, grinning at the lens. Wearing rolled denim coveralls tied at the waist over a white tank, a red bandana headband and black work boots. Garage with red tool chests, a pegboard of tools and hanging work lamps. Medium full shot at eye level, 35mm lens feel. Warm tungsten work lamps with daylight from the open garage door, oil black, denim and red palette, slight grain.",
+      "src": "https://fixthephoto.com/pin-up-poses.html"
+    },
+    {
+      "id": "P17",
+      "tab": "pinup",
+      "set": "PinLounge",
+      "title": "Sofa lounge, arm over the back",
+      "text": "[trigger] in a retro glamour pin-up photograph, reclining along a mustard velvet sofa, one arm draped over the backrest and the other hand resting on her hip, legs stretched out with ankles crossed, looking at the lens through lowered lashes. Wearing a black satin corset top, high waisted tap shorts, seamed stockings and black heels. Patterned wallpaper, a brass floor lamp and a record player on a side table. Medium full shot at eye level, 50mm lens feel. Warm lamp light from the left, mustard, black and teal palette, soft vintage glow.",
+      "src": "https://www.photowhoa.com/blog/pinup-poses/",
+      "ex": "https://www.photowhoa.com/wp-content/uploads/2024/06/pinup-poses-while-lounging.webp"
+    },
+    {
+      "id": "P18",
+      "tab": "pinup",
+      "set": "PinLounge",
+      "title": "Kitchen counter cupcake",
+      "text": "[trigger] in a playful pin-up photograph, leaning back against a kitchen counter with one ankle crossed over the other, holding a frosted cupcake up in one hand, the other hand on the counter edge, biting her lip with a mischievous look. Wearing a pastel yellow gingham dress, a ruffled white half apron and red heels. Mint green cabinets, a chrome toaster and a checkered floor. Full length shot at eye level, 35mm lens feel. Bright even daylight from a window over the sink, mint, yellow and cherry red palette, clean retro finish.",
+      "src": "https://www.photowhoa.com/blog/pinup-poses/",
+      "ex": "https://www.photowhoa.com/wp-content/uploads/2024/06/pinup-pose-in-kitchen-interior.webp"
+    },
+    {
+      "id": "P19",
+      "tab": "pinup",
+      "set": "PinLounge",
+      "title": "Rotary telephone",
+      "text": "[trigger] in a glamorous pin-up photograph, perched on the arm of a tufted pink armchair with legs crossed, twirling the cord of a vintage rotary telephone around one finger with the receiver at her ear, laughing with her head tipped back. Wearing a powder blue satin robe with feather trim and matching heeled slippers. Vanity table with perfume bottles and a round mirror behind. Medium shot at eye level, 50mm lens feel. Soft glamour light from the front with a gentle glow, powder blue and blush pink palette, classic Hollywood finish.",
+      "src": "https://www.photowhoa.com/blog/pinup-poses/",
+      "ex": "https://www.photowhoa.com/wp-content/uploads/2024/06/pinup-poses-with-props.webp"
+    },
+    {
+      "id": "P20",
+      "tab": "pinup",
+      "set": "PinLounge",
+      "title": "Side lying on the fur rug",
+      "text": "[trigger] in a classic pin-up photograph, lying on her side on a white faux fur rug, propped up on one elbow with her head resting on her hand, top knee slightly bent, the other hand on her hip, smiling at the lens. Wearing a red satin one piece playsuit and matching heels. Seamless deep teal studio backdrop. Low angle full length shot at floor level, 50mm lens feel. Bright frontal studio light with a soft shadow beneath her, red, white and teal palette, glossy vintage finish.",
+      "src": "https://www.photowhoa.com/blog/pinup-poses/",
+      "ex": "https://www.photowhoa.com/wp-content/uploads/2024/06/lying-down-pinup-poses.webp"
+    },
+    {
+      "id": "P21",
+      "tab": "pinup",
+      "set": "PinLounge",
+      "title": "Legs over the armrest",
+      "text": "[trigger] in a cheerful pin-up photograph, sitting sideways in a round green armchair with both legs hooked over one armrest, toes pointed, one arm behind her head and the other holding a paperback, peeking over it at the camera. Wearing a striped sailor top, high waisted red shorts and white ankle socks with saddle shoes. Living room with a starburst clock and a tripod floor lamp. Medium full shot at eye level, 35mm lens feel. Warm afternoon window light, avocado green, red and cream palette, mid-century print finish.",
+      "src": "https://fixthephoto.com/pin-up-poses.html"
+    },
+    {
+      "id": "P22",
+      "tab": "pinup",
+      "set": "PinOut",
+      "title": "Beach, hand on hip",
+      "text": "[trigger] in a retro beach pin-up photograph, standing on wet sand with one hand on her hip and feet slightly apart, the other hand holding the brim of a sun hat, head tilted up toward the sun with eyes closed and a wide smile. Wearing a navy and white polka dot high waisted bikini and red lipstick. Beach umbrella, a striped towel and rolling surf behind. Full length shot from a slightly low angle, 35mm lens feel. Bright high summer sun, hard shadows, navy, white and sand palette, saturated vintage postcard finish.",
+      "src": "https://www.photowhoa.com/blog/pinup-poses/",
+      "ex": "https://www.photowhoa.com/wp-content/uploads/2024/06/pinup-poses-on-the-beach-1.webp"
+    },
+    {
+      "id": "P23",
+      "tab": "pinup",
+      "set": "Pin",
+      "title": "Peek-a-boo behind a fan",
+      "text": "[trigger] in a teasing pin-up portrait, peeking out from behind an open lace hand fan held across the lower half of her face, eyebrows raised, eyes turned toward the lens, the other hand resting at her collarbone. Wearing a black off the shoulder wiggle dress, long black gloves and a pearl necklace. Deep red velvet curtain behind. Close medium shot at eye level, 85mm lens feel, shallow depth of field. Soft frontal beauty light with a subtle hair light, black, red and pearl palette, glossy studio finish.",
+      "src": "https://www.photowhoa.com/blog/pinup-poses/",
+      "ex": "https://www.photowhoa.com/wp-content/uploads/2024/06/peek-a-boo-pinup-poses.webp"
+    },
+    {
+      "id": "P24",
+      "tab": "pinup",
+      "set": "Pin",
+      "title": "Leg lift, mock surprise",
+      "text": "[trigger] in a classic pin-up photograph, standing tall with one knee bent and that foot lifted behind her, both hands pressed to her cheeks in mock surprise, mouth open in a playful gasp. Wearing a pink sweetheart neckline swing dress with a white collar, seamed stockings and black heels. Seamless baby blue studio backdrop. Full length shot at eye level, 50mm lens feel. Bright even studio light, soft shadow on the backdrop, pink and baby blue palette, crisp 1950s print finish.",
+      "src": "https://www.photowhoa.com/blog/pinup-poses/",
+      "ex": "https://www.photowhoa.com/wp-content/uploads/2024/06/pinup-poses-leg-lift.webp"
+    },
+    {
+      "id": "P25",
+      "tab": "pinup",
+      "set": "Pin",
+      "title": "Power pose",
+      "text": "[trigger] in a bold pin-up portrait, turned side on in an upper body shot, one arm raised and flexed, chin set with a determined look at the lens, the other hand on her hip. Wearing olive green coveralls with rolled sleeves and a tan work cap. Workshop wall with hanging tools blurred behind. Medium close shot at eye level, 85mm lens feel, shallow depth of field. Bright frontal light with a warm rim from a work lamp, olive, tan and rust palette, matte vintage finish.",
+      "src": "https://shotkit.com/pinup-poses/"
+    },
+    {
+      "id": "P26",
+      "tab": "pinup",
+      "set": "PinOut",
+      "title": "Picnic blanket, legs aside",
+      "text": "[trigger] in a sweet pin-up photograph, sitting on a gingham picnic blanket with her legs stretched out to one side, leaning on one hand pressed into the grass, the other hand lifting a cherry toward her mouth, glancing at the lens. Wearing a white off the shoulder peasant blouse, a full red skirt spread around her and a straw hat. Wicker basket, a pie and glass soda bottles beside her, meadow and trees behind. Medium full shot from a slightly high angle, 50mm lens feel. Soft dappled sunlight, red, white and grass green palette, warm film finish.",
+      "src": "https://www.photowhoa.com/blog/pinup-poses/",
+      "ex": "https://www.photowhoa.com/wp-content/uploads/2024/06/sitting-pinup-pose-in-the-wild.webp"
+    },
+    {
+      "id": "P27",
+      "tab": "pinup",
+      "set": "PinOut",
+      "title": "Garden watering can",
+      "text": "[trigger] in a cheerful pin-up photograph, bending forward slightly with a tin watering can in both hands, one foot kicked up behind her, looking back over her shoulder at the camera with a bright smile. Wearing short denim overalls over a red checked shirt, a straw hat and yellow rubber boots. Cottage garden with sunflowers, a white picket fence and terracotta pots. Full length shot at eye level, 35mm lens feel. Bright morning sun, cheerful hard shadows, sunflower yellow, red and green palette, saturated vintage finish.",
+      "src": "https://fixthephoto.com/pin-up-poses.html"
+    },
+    {
+      "id": "M1",
+      "tab": "suggestive",
+      "set": "Mirror",
+      "title": "Floor sit, leaning mirror",
+      "text": "[trigger] in a suggestive mirror selfie, sitting on the floor in front of a full length mirror leaning against the wall, legs folded to one side, phone held at chest height in one hand, the other hand pushed into her hair, lips parted, eyes on the phone screen. Wearing an oversized white button up shirt slipping off one shoulder and white knee socks. Bedroom with an unmade bed, a rattan nightstand and clothes draped over a chair. Full body reflection from a low angle, phone camera look, deep focus. Soft morning window light from the side, warm cream palette, slightly grainy phone finish."
+    },
+    {
+      "id": "M2",
+      "tab": "suggestive",
+      "set": "Mirror",
+      "title": "Back to the mirror, look over shoulder",
+      "text": "[trigger] in a flirty mirror selfie, standing with her back to a tall bedroom mirror, twisting to look over her shoulder at the phone held up beside her face, weight on one leg with the hip pushed out, free hand resting on her waist. Wearing a cropped white ribbed tank and heather gray lounge shorts. Bed with rumpled sage green sheets, a string of warm fairy lights and a trailing plant on a shelf. Full length reflection at eye level, phone camera look. Warm lamp light mixed with fairy light glow, sage and cream palette, soft phone finish."
+    },
+    {
+      "id": "M3",
+      "tab": "suggestive",
+      "set": "Mirror",
+      "title": "Kneeling on the bed, phone over face",
+      "text": "[trigger] in a suggestive mirror selfie, kneeling upright on the bed facing a mirrored closet door, knees apart, phone held in front of her face so only her eyes show above it, the other hand tugging a fallen strap back toward her shoulder. Wearing a champagne satin slip dress. White duvet, a stack of pillows and a bedside lamp reflected behind her. Medium full reflection at eye level, phone camera look, deep focus. Warm bedside lamp light from the right, soft shadows, champagne and ivory palette, dim cozy phone finish."
+    },
+    {
+      "id": "M4",
+      "tab": "suggestive",
+      "set": "Mirror",
+      "title": "On her stomach, feet up",
+      "text": "[trigger] in a playful mirror selfie, lying on her stomach across the bed beside a floor mirror, propped on one elbow with the phone held out toward the glass, knees bent and feet crossed in the air, chin on her shoulder, a sleepy smile. Wearing a matching mocha ribbed lounge set of a cropped tank and high cut shorts. Linen bedding, an open laptop pushed aside and a window with sheer curtains. Reflection framed from a low angle at mattress height, phone camera look. Bright diffused afternoon daylight, oatmeal and mocha palette, clean natural finish."
+    },
+    {
+      "id": "M5",
+      "tab": "suggestive",
+      "set": "Mirror",
+      "title": "Hoodie lift, LED bedroom",
+      "text": "[trigger] in a moody mirror selfie, standing close to a bedroom mirror with one knee bent, lifting the hem of an oversized charcoal hoodie with one hand to show her waist, the phone held up covering most of her face, head tilted. Wearing the hoodie over black cotton boy shorts and white crew socks. Low bed on the floor, a record player, posters of abstract shapes and an LED strip glowing along the ceiling. Three quarter reflection at eye level, phone camera look. Dim room lit by magenta and violet LED light, deep shadows, moody phone grain."
+    },
+    {
+      "id": "M6",
+      "tab": "suggestive",
+      "set": "Mirror",
+      "title": "Entryway, going out dress",
+      "text": "[trigger] in a confident mirror selfie, standing in front of an arched floor mirror in an apartment entryway, one leg stepped forward, one hand on her hip, the phone held low at hip height so her whole face shows, chin down with a steady look into the reflection. Wearing a short black satin dress with thin straps, strappy heels and a small shoulder bag. Hardwood floor, a console table with keys and a vase, coats on hooks. Full length reflection from a low angle, phone camera look. Warm overhead hallway light, black, gold and warm wood palette, crisp evening finish."
+    },
+    {
+      "id": "M7",
+      "tab": "suggestive",
+      "set": "Mirror",
+      "title": "Dance studio mirror wall",
+      "text": "[trigger] in a mirror selfie taken in a dance studio mirror wall, turned side on with one knee bent and heel lifted, back gently arched, phone held at shoulder height, free hand smoothing her waistband, looking at the screen. Wearing a dusty blue sports bra and matching high waisted leggings, white sneakers, a towel over one shoulder. Empty studio with a pale wood floor, a ballet barre and tall windows reflected behind her. Full length reflection at eye level, phone camera look, deep focus. Bright even daylight from the windows, pale wood and dusty blue palette, clean finish."
+    },
+    {
+      "id": "M8",
+      "tab": "suggestive",
+      "set": "Mirror",
+      "title": "Loft, perched on the sofa arm",
+      "text": "[trigger] in a sultry mirror selfie, perched on the arm of a sofa in front of a huge leaning mirror in an open loft, legs crossed, leaning back on one hand, the phone raised in the other, head tipped to the side with a slow smile. Wearing a black high cut bodysuit under an open oversized ivory blazer, sheer black tights and gold hoop earrings. Exposed brick, tall factory windows, a floor lamp and a shag rug. Full body reflection at eye level, phone camera look. Golden hour sun streaking across the brick and floor, warm amber and black palette, soft phone finish."
+    },
+    {
+      "id": "M9",
+      "tab": "suggestive",
+      "set": "Mirror",
+      "title": "Bathroom, towel and steam",
+      "text": "[trigger] in a suggestive mirror selfie, standing at a bathroom mirror wrapped in a white bath towel, one hand holding the towel closed at her chest, the phone held beside her cheek, damp shoulders, looking up into the reflection through her lashes. A cleared streak across the fogged glass frames her. White subway tile, a glass shower door beaded with water and a small shelf of bottles. Medium reflection from the waist up at eye level, phone camera look. Soft warm vanity light from above the mirror, hazy steam in the air, white and warm gray palette."
+    },
+    {
+      "id": "M10",
+      "tab": "suggestive",
+      "set": "Mirror",
+      "title": "Bathroom counter, flash on",
+      "text": "[trigger] in a playful mirror selfie, sitting on the edge of a bathroom counter beside the sink, turned toward the mirror with one knee drawn up and the other leg hanging down, phone held up with the flash on, tongue between her teeth in a grin. Wearing a black lace trimmed camisole and matching satin shorts, stacked silver rings and a thin chain necklace. Round mirror, pink tile, a toothbrush cup and a hanging towel. Three quarter reflection at eye level, phone camera look. Direct phone flash bursting in the mirror with hard shadows, pink and black palette, glossy night out finish."
+    },
+    {
+      "id": "R1",
+      "tab": "recipes",
+      "set": "Angle",
+      "title": "True side view of a bed",
+      "text": "[trigger] lying on her side on a neatly made double bed, head on the pillow, one arm tucked under it, gazing toward the camera. Camera beside the bed at mattress height, lens square to the long side of the mattress, headboard touching the left edge of the frame and the foot of the bed at the right edge, the full length of the mattress running straight across the image. Straight on profile view at eye level, 50mm lens feel, flat orthographic style framing. Soft daylight from a window behind the camera. Warm white linen, natural finish.",
+      "note": "Krea 2 drifts to a three quarter view from the foot of the bed. Pin the headboard and foot to opposite edges of the frame, keep camera words before style words, and use a 16:9 or 21:9 canvas. Words like \"bedroom interior\" or \"wide angle\" pull the camera back into a corner.",
+      "added": "2026-11-21"
+    },
+    {
+      "id": "R2",
+      "tab": "recipes",
+      "set": "Angle",
+      "title": "Full profile against a wall",
+      "text": "[trigger] standing in full profile facing the left edge of the frame, shoulders square to the left wall of the frame, chin level, hands loose at her sides. Plain warm gray plaster wall behind her running parallel to the lens. Camera at chest height directly beside her, lens perpendicular to her body, full length shot with her centered and generous space ahead of her face, 50mm lens feel. Hard window light from the left edge of the frame tracing the front of her profile. Muted gray palette, fine grain.",
+      "note": "The same trick for a standing figure: say which edge of the frame she faces and where the camera stands, so a turned in three quarter pose has nowhere to fit.",
+      "added": "2026-11-21"
+    },
+    {
+      "id": "R3",
+      "tab": "recipes",
+      "set": "Dark",
+      "title": "Eyeshine at the end of the hall",
+      "text": "[trigger] standing motionless at the far end of a dark farmhouse hallway, almost entirely swallowed by shadow. The only light is a cold moonlit window behind her and slightly to the left, carving a thin rim of pale blue light along one cheekbone, one shoulder and one hand. Her face and body sit 90 percent in black, the shadows empty of detail, her eyes glowing with retroreflective eyeshine like an animal caught in a flashlight beam, two pinpoints of pale green light that are the brightest point in the frame. Eye level shot, 50mm lens feel. Hard backlight, deep chiaroscuro, heavy falloff, crushed blacks, negative fill. Quiet and unsettling. Muted desaturated palette, slight film grain.",
+      "note": "Front light creeps in because portraits pull toward a key light by the camera. Name one source behind or beside her and say where the dark falls. Too visible? Move her farther away or add \"silhouette\".",
+      "added": "2026-11-21"
+    },
+    {
+      "id": "R4",
+      "tab": "recipes",
+      "set": "Dark",
+      "title": "Under light from a phone",
+      "text": "[trigger] standing in a pitch dark bedroom, holding a phone at waist height with its screen facing up, the cold glow catching the underside of her chin, her lips and the bridge of her nose, everything above her eyes falling into black. Close medium shot at eye level, 50mm lens feel. Dim blue white screen light from below as the only source, heavy falloff, crushed blacks. Tense and still. Desaturated palette, fine grain.",
+      "note": "Light from below reads wrong in a good way. Keep the screen the only source and say that everything above the eyes falls into black.",
+      "added": "2026-11-21"
+    },
+    {
+      "id": "R5",
+      "tab": "recipes",
+      "set": "Dark",
+      "title": "Slash of light through a door",
+      "text": "[trigger] standing just behind a door left ajar in a dark hallway, a single sliver of streetlight through the gap laying one narrow vertical strip of light across half her face and one eye, the rest of her body lost in black. Medium close shot through the gap, 50mm lens feel, the dark edge of the door filling the left third of the frame. Hard sodium orange streetlight as the only source, heavy falloff. Tense and quiet. Muted palette, film grain.",
+      "note": "A narrow, hard strip of light shows only what you choose. Name the gap it comes through and exactly what it crosses.",
+      "added": "2026-11-21"
+    },
+    {
+      "id": "R6",
+      "tab": "recipes",
+      "set": "Dark",
+      "title": "Half hidden by the banister",
+      "text": "[trigger] standing at the top of a dark staircase, half hidden behind the wooden spindles of the banister, only her outline and the faint pale green glow of her eyes readable. Low angle from the bottom of the stairs looking up through the spindles, 35mm lens feel, the nearest spindles soft in the foreground. Faint cold moonlight from a landing window behind her, near silhouette, crushed blacks. Quiet and unsettling. Desaturated palette, film grain.",
+      "note": "Partial cover reads creepier than a fully shown figure. Put something solid between the camera and the subject: a banister, doorframe or curtain.",
+      "added": "2026-11-21"
+    }
+  ]
+}
