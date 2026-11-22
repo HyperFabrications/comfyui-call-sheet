@@ -43,7 +43,10 @@ export function openBuilder({ data, picks = {}, on = true, trigger = "", onChang
       <button type="button" class="kq-primary kq-sm" data-x="use">${esc(doneLabel)}</button>
     </header>
     <div class="kqb-body">
-      <nav class="kqb-nav" aria-label="Categories"></nav>
+      <div class="kqb-left">
+        <nav class="kqb-nav" aria-label="Categories"></nav>
+        <section class="kqb-presets" aria-label="Saved people"></section>
+      </div>
       <section class="kqb-opts">
         <div class="kqb-title"><h3></h3><span class="kq-dim"></span></div>
         <div class="kqb-grid"></div>
@@ -68,6 +71,29 @@ export function openBuilder({ data, picks = {}, on = true, trigger = "", onChang
   const q = s => el.querySelector(s);
 
   const emit = () => onChange({ picks: { ...st.picks }, on: st.on });
+  const PKEY = "kps:presets";
+  const loadPresets = () => { try { const a = JSON.parse(localStorage.getItem(PKEY) || "[]"); return Array.isArray(a) ? a : []; } catch (e) { return []; } };
+  const savePresets = a => { try { localStorage.setItem(PKEY, JSON.stringify(a)); } catch (e) {} };
+  const genericName = list => { let n = list.length + 1; while (list.some(p => p.name === `Person ${n}`)) n++; return `Person ${n}`; };
+  let naming = false;
+  function renderPresets() {
+    const list = loadPresets(), box = q(".kqb-presets");
+    const has = Object.values(st.picks).some(Boolean);
+    box.innerHTML = `<div class="kqb-ph"><span>Saved people</span></div>
+      ${list.length ? list.map((p, i) => `<div class="kqb-preset"><button type="button" data-preset="${i}" title="Load ${esc(p.name)}">${esc(p.name)}</button><button type="button" class="kqb-pdel" data-pdel="${i}" aria-label="Delete ${esc(p.name)}">×</button></div>`).join("") : `<p class="kq-faint kqb-pnone">Save a person to reuse them later.</p>`}
+      ${naming ? `<label class="kqb-pname"><input type="text" maxlength="40" placeholder="${esc(genericName(list))}" aria-label="Preset name"><button type="button" class="kq-ghost kq-tight kq-filled" data-x="psave">Save</button></label>`
+        : `<button type="button" class="kq-ghost kq-tight kqb-padd" data-x="pnew"${has ? "" : " disabled"}>+ Save this person</button>`}`;
+    if (naming) {
+      const inp = box.querySelector("input");
+      inp.addEventListener("keydown", e => { e.stopPropagation(); if (e.key === "Enter") { e.preventDefault(); commitPreset(inp.value); } if (e.key === "Escape") { e.preventDefault(); naming = false; renderPresets(); } });
+      inp.focus();
+    }
+  }
+  function commitPreset(name) {
+    const list = loadPresets();
+    list.push({ name: (name || "").trim() || genericName(list), picks: { ...st.picks } });
+    savePresets(list); naming = false; renderPresets();
+  }
 
   function renderNav() {
     q(".kqb-nav").innerHTML = T.map(t => {
@@ -99,13 +125,13 @@ export function openBuilder({ data, picks = {}, on = true, trigger = "", onChang
     desc.classList.toggle("is-off", !st.on);
     desc.innerHTML = d ? `${trigger.trim() ? `<span class="kq-faint">${esc(trigger.trim())}, </span>` : ""}${esc(d)}` : `<span class="kq-faint">Pick a trait to start.</span>`;
   }
-  const renderAll = () => { renderNav(); renderOpts(); renderSide(); };
+  const renderAll = () => { renderNav(); renderOpts(); renderSide(); renderPresets(); };
 
   function set(k, v) {
     st.picks[k] = v;
     if (!v) delete st.picks[k];
     if (v && !st.on) st.on = true;
-    emit(); renderNav(); renderOpts(); renderSide();
+    emit(); renderNav(); renderOpts(); renderSide(); if (!naming) renderPresets();
   }
   function close() {
     document.removeEventListener("keydown", onKey, true);
@@ -125,12 +151,21 @@ export function openBuilder({ data, picks = {}, on = true, trigger = "", onChang
       if (k === "close") close();
       else if (k === "use") { st.on = true; emit(); close(); }
       else if (k === "reset") { st.picks = {}; emit(); renderAll(); }
+      else if (k === "pnew") { naming = true; renderPresets(); }
+      else if (k === "psave") commitPreset(q(".kqb-pname input").value);
       else if (k === "toggle") { st.on = !st.on; emit(); renderSide(); }
       else if (k === "copy") {
         const d = personText(st.picks), lbl = x.querySelector("span");
         if (d) navigator.clipboard.writeText(d).then(() => { lbl.textContent = "Copied"; setTimeout(() => { lbl.textContent = "Copy"; }, 1400); }, () => { lbl.textContent = "Press Ctrl+C"; });
       }
       return;
+    }
+    const pr = t.closest("[data-preset]");
+    if (pr) { const p = loadPresets()[+pr.dataset.preset]; if (p) { st.picks = { ...p.picks }; st.on = true; emit(); renderAll(); } return; }
+    const pd = t.closest("[data-pdel]");
+    if (pd) {
+      if (!pd.classList.contains("is-armed")) { pd.classList.add("is-armed"); pd.textContent = "Delete?"; setTimeout(() => { if (pd.isConnected) { pd.classList.remove("is-armed"); pd.textContent = "×"; } }, 3000); return; }
+      const list = loadPresets(); list.splice(+pd.dataset.pdel, 1); savePresets(list); renderPresets(); return;
     }
     const c = t.closest("[data-cat]");
     if (c) { st.cat = c.dataset.cat; renderNav(); renderOpts(); return; }

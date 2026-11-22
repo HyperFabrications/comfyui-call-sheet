@@ -57,6 +57,26 @@ def upsert(fid, title, text):
     return next(f for f in frames if f["id"] == fid)
 
 
+def import_many(items):
+    """Add every prompt in items as a new one. Never replaces what you already have. Returns how many were added."""
+    added = 0
+    with _lock:
+        frames = load_custom()
+        n = max([int(f["id"][1:]) for f in frames] + [0])
+        for x in items if isinstance(items, list) else []:
+            if not isinstance(x, dict):
+                continue
+            text = str(x.get("text") or "").strip()
+            if not text:
+                continue
+            n += 1
+            frames.append({"id": f"U{n}", "tab": "custom", "set": "custom", "title": (str(x.get("title") or "").strip() or "Untitled")[:80],
+                           "text": text, "added": time.strftime("%Y-%m-%d")})
+            added += 1
+        _save(frames)
+    return added
+
+
 def remove(fid):
     with _lock:
         frames = [f for f in load_custom() if f["id"] != fid]
@@ -85,6 +105,19 @@ if routes is not None:
         except ValueError as e:
             return web.json_response({"error": str(e)}, status=400)
         return web.json_response({"ok": True, "frame": frame})
+
+    @routes.post("/krea_pose_sheet/custom/import")
+    async def import_custom(request):
+        """Body: an exported file ({frames: [...]}) or a plain list of {title, text}. Always appends."""
+        try:
+            body = await request.json()
+        except ValueError:
+            return web.json_response({"error": "That file isn't a prompt export."}, status=400)
+        items = body.get("frames") if isinstance(body, dict) else body
+        if not isinstance(items, list):
+            return web.json_response({"error": "That file isn't a prompt export."}, status=400)
+        added = import_many(items)
+        return web.json_response({"ok": True, "added": added, "frames": load_custom()})
 
     @routes.delete("/krea_pose_sheet/custom/{fid}")
     async def delete_custom(request):

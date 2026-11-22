@@ -34,3 +34,27 @@ export async function deleteCustom(data, id) {
   const i = data.frames.findIndex(x => x.id === id);
   if (i >= 0) data.frames.splice(i, 1);
 }
+
+// Download your custom prompts as a file you can keep or share.
+export function exportCustom(data) {
+  const frames = data.frames.filter(f => f.tab === "custom").map(({ title, text, added }) => ({ title, text, added }));
+  const blob = new Blob([JSON.stringify({ kind: "krea-pose-sheet-custom", version: 1, frames }, null, 2)], { type: "application/json" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = `krea-custom-prompts-${new Date().toISOString().slice(0, 10)}.json`;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+  return frames.length;
+}
+
+// Add the prompts from an exported file. Always appends; nothing you have is replaced. Returns how many were added.
+export async function importCustom(data, file) {
+  let body;
+  try { body = JSON.parse(await file.text()); } catch (e) { throw new Error("That file isn't a prompt export."); }
+  const r = await fetch("/krea_pose_sheet/custom/import", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(j.error || "Couldn't import");
+  for (let i = data.frames.length - 1; i >= 0; i--) if (data.frames[i].tab === "custom") data.frames.splice(i, 1);
+  data.frames.push(...j.frames);
+  return j.added;
+}
