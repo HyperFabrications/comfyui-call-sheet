@@ -473,6 +473,36 @@
           "name": "Beauty marks"
         }
       ]
+    },
+    {
+      "key": "age",
+      "label": "Age",
+      "options": [
+        {
+          "value": "young adult",
+          "name": "Young adult (20s)"
+        },
+        {
+          "value": "thirties",
+          "name": "30s"
+        },
+        {
+          "value": "forties",
+          "name": "40s"
+        },
+        {
+          "value": "middle aged",
+          "name": "Middle aged (50s)"
+        },
+        {
+          "value": "older",
+          "name": "Older (60s)"
+        },
+        {
+          "value": "elderly",
+          "name": "Elderly (70s+)"
+        }
+      ]
     }
   ],
   "frames": [

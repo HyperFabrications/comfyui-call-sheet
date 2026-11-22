@@ -194,12 +194,16 @@ function nodeCtx(node) {
     style: () => w("style")?.value !== false,
     person: () => {
       const text = String(w("person")?.value || "").trim();
-      return { picks: props.kpsPicks || savedPicks(), on: !!text, text };
+      const picks = props.kpsPicks || savedPicks(), built = personText(picks);
+      // Typed straight into the node's person box counts as your own wording too.
+      const custom = props.kpsPersonText || (text && text !== built ? text : "");
+      return { picks, on: !!text, text, custom };
     },
-    setPerson: ({ picks, on }) => {
+    setPerson: ({ picks, on, text }) => {
       props.kpsPicks = picks;
+      if (text !== undefined) props.kpsPersonText = text || "";
       try { localStorage.setItem("kps:person", JSON.stringify(picks)); } catch (e) {}
-      setWidget(node, "person", on ? personText(picks) : "");
+      setWidget(node, "person", on ? (props.kpsPersonText || personText(picks)) : "");
       dirty();
     },
     // Your saved wording shows here too; the node's own copy wins.
@@ -224,8 +228,8 @@ function nodeCtx(node) {
 
 function personOpener(ctx, done) {
   const p = ctx.person();
-  openBuilder({ data, picks: p.picks, on: p.on || !Object.values(p.picks || {}).some(Boolean), trigger: ctx.trigger(),
-    onChange: ({ picks, on }) => { ctx.setPerson({ picks, on }); done(); } });
+  openBuilder({ data, picks: p.picks, text: p.custom || "", on: p.on || !Object.values(p.picks || {}).some(Boolean), trigger: ctx.trigger(),
+    onChange: ({ picks, text, on }) => { ctx.setPerson({ picks, on, text }); done(); } });
 }
 
 function galleryFor(node) {
@@ -262,14 +266,17 @@ function addPersonCard(nodeType) {
     wrap.innerHTML = `<button type="button" class="kpn-face kpp-face" title="Open the person builder"></button>
       <div class="kpn-bar"><button type="button" class="kps-btn kps-accent kpn-browse">Build person</button></div>`;
     const face = wrap.querySelector(".kpp-face");
+    const ww = node.widgets?.find(w => w.name === "wording");
+    if (ww) { ww.hidden = true; ww.computeSize = () => [0, -4]; }
     const draw = () => {
-      const p = picks(), d = personText(p);
+      const p = picks(), d = String(ww?.value || "").trim() || personText(p);
       face.innerHTML = `${avatarSVG(p, 44)}<span class="kpn-text"><span class="kpn-title">${esc(shortPerson(data.traits, p) || "Anyone")}</span>
         <span class="kpn-snip">${esc(d || "Nothing picked yet, so Krea 2 decides who is in the shot.")}</span></span>`;
     };
     const open = () => openBuilder({
-      data, picks: picks(), on: true, toggle: false, doneLabel: "Done",
-      onChange: ({ picks: p }) => {
+      data, picks: picks(), text: String(ww?.value || "").trim(), on: true, toggle: false, doneLabel: "Done",
+      onChange: ({ picks: p, text }) => {
+        if (ww) { ww.value = text || ""; ww.callback?.(ww.value); }
         for (const [t, w] of traitWs) { const o = t.options.find(x => x.value === p[t.key]); w.value = o ? o.name : "Any"; w.callback?.(w.value); }
         draw(); node.setDirtyCanvas?.(true, true);
       },
@@ -447,16 +454,16 @@ app.registerExtension({
         compact: true,
         onGallery: sideGallery,
         actions: [
-          { label: "To node", title: "Add a Krea Pose Prompt node set to this frame, or update the selected one", run: (f, _p, btn) => sendToPoseNode(app, f, "single frame", sheet.state(), btn) },
+          { label: "To node", title: "Add a Call Sheet Pose node set to this frame, or update the selected one", run: (f, _p, btn) => sendToPoseNode(app, f, "single frame", sheet.state(), btn) },
           { label: "To text box", title: "Put this prompt in the selected CLIP Text Encode (or any node with a text box)", run: (_f, p, btn) => sendToText(app, p, btn) },
         ],
         setActions: [
-          { label: "Set to node", title: "Add a Krea Pose Prompt node that outputs this whole set as a list", run: (_s, frames, _p, btn) => frames.length && sendToPoseNode(app, frames[0], "whole set", sheet.state(), btn) },
+          { label: "Set to node", title: "Add a Call Sheet Pose node that outputs this whole set as a list", run: (_s, frames, _p, btn) => frames.length && sendToPoseNode(app, frames[0], "whole set", sheet.state(), btn) },
         ],
       });
     };
-    const reg = { id: "krea-pose-sheet", icon: "pi pi-images", title: "Pose Sheet", tooltip: "Krea Pose Sheet", type: "custom", render };
+    const reg = { id: "krea-pose-sheet", icon: "pi pi-images", title: "Call Sheet", tooltip: "Call Sheet", type: "custom", render };
     if (app.extensionManager?.registerSidebarTab) app.extensionManager.registerSidebarTab(reg);
-    else console.warn("[Krea Pose Sheet] This ComfyUI frontend has no sidebar API; update ComfyUI to see the Pose Sheet panel. The nodes still work.");
+    else console.warn("[Call Sheet] This ComfyUI frontend has no sidebar API; update ComfyUI to see the Call Sheet panel. The nodes still work.");
   },
 });

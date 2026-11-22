@@ -1,4 +1,4 @@
-"""Krea Pose Sheet for ComfyUI: a sidebar of Krea 2 pose prompts plus nodes that output them."""
+"""Call Sheet, a Krea 2 shot builder for ComfyUI: a sidebar of Krea 2 pose prompts plus nodes that output them."""
 
 from .nodes import NODE_CLASS_MAPPINGS, NODE_DISPLAY_NAME_MAPPINGS
 from . import thumbs  # noqa: F401  (registers the preview image routes)

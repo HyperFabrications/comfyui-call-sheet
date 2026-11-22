@@ -63,7 +63,10 @@ def person_text(person):
     p = lambda k: person.get(k) or ""
     if not any(person.values()):
         return ""
-    lead = " ".join(x for x in [p("height"), "adult", p("gender") or "person"] if x)
+    g, age = p("gender"), p("age")
+    decade = age in ("thirties", "forties")
+    pron = "her" if g == "woman" else "his" if g == "man" else "their"
+    lead = " ".join(x for x in [p("height"), age if age and not decade else "adult", g or "person"] if x) + (f" in {pron} {age}" if decade else "")
     art = "an" if re.match(r"^[aeiou]", lead, re.I) else "a"
     bits = []
     if p("body"):

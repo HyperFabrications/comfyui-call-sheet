@@ -66,7 +66,8 @@ export function mountSheet(root, data, opts = {}) {
   const trig = q('[data-k="trigger"]'), search = q('[data-k="search"]');
   trig.value = store.get("trigger") || "";
 
-  const pdesc = () => personOn ? personText(person) : "";
+  const words = () => store.get("personText") || personText(person);
+  const pdesc = () => personOn ? words() : "";
   let edits = loadEdits();
   const prompt = d => promptFor(d, { trigger: trig.value, person: pdesc(), style: styleOn, edits });
   const visible = () => {
@@ -79,10 +80,10 @@ export function mountSheet(root, data, opts = {}) {
     const st = q('[data-k="style"]'), pe = q('[data-k="person"]');
     st.setAttribute("aria-pressed", String(styleOn)); st.querySelector(".kps-tl").textContent = styleOn ? "Style on" : "Style off";
     pe.setAttribute("aria-pressed", String(personOn)); pe.querySelector(".kps-tl").textContent = personOn ? "Person on" : "Person off";
-    const d = personText(person);
+    const d = words();
     q('[data-k="builder"]').textContent = d ? "Edit person" : "Build a person";
     const hint = [];
-    if (d) hint.push((personOn ? "Person: " : "Person (off): ") + shortPerson(data.traits, person) + ".");
+    if (d) hint.push((personOn ? "Person: " : "Person (off): ") + (shortPerson(data.traits, person) || d) + ".");
     if (personOn && !d) hint.push("Pick at least one trait to add a person.");
     if (person.gender === "man") hint.push("Most prompts say her and she; swap pronouns after copying.");
     if (personOn && trig.value.trim()) hint.push("Your trigger stays first, so a LoRA still leads.");
@@ -155,7 +156,7 @@ export function mountSheet(root, data, opts = {}) {
     if (t.closest('[data-k="style"]')) { styleOn = !styleOn; store.set("styleOn", styleOn ? "1" : "0"); applyToggles(); render(); return; }
     if (t.closest('[data-k="person"]')) {
       personOn = !personOn; store.set("personOn", personOn ? "1" : "0");
-      if (personOn && !personText(person)) builder();
+      if (personOn && !words()) builder();
       applyToggles(); render(); return;
     }
     if (t.closest('[data-k="builder"]')) { builder(); return; }
@@ -179,9 +180,9 @@ export function mountSheet(root, data, opts = {}) {
     if (sa) { const fr = visible().filter(d => d.set === sa.dataset.setId); setActions[+sa.dataset.setaction].run(sa.dataset.setId, fr, fr.map(prompt), sa); }
   });
   function builder() {
-    openBuilder({ data, picks: person, on: personOn, trigger: trig.value, onChange: ({ picks, on }) => {
+    openBuilder({ data, picks: person, text: store.get("personText") || "", on: personOn, trigger: trig.value, onChange: ({ picks, text, on }) => {
       person = picks; personOn = on;
-      store.set("person", JSON.stringify(person)); store.set("personOn", on ? "1" : "0");
+      store.set("person", JSON.stringify(person)); store.set("personOn", on ? "1" : "0"); store.set("personText", text || "");
       applyToggles(); render();
     } });
   }

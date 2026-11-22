@@ -23,13 +23,13 @@ def _find(frame_value):
     for f in _frames():
         if f["id"] == fid:
             return f
-    raise ValueError(f"Pose Sheet frame '{frame_value}' was not found. Update the node pack or pick another frame.")
+    raise ValueError(f"Call Sheet frame '{frame_value}' was not found. Update the node pack or pick another frame.")
 
 
 class KreaPosePrompt:
-    """Pick a frame from the Krea Pose Sheet and output it as a ready prompt, or a whole set as a list."""
+    """Pick a frame from the Call Sheet and output it as a ready prompt, or a whole set as a list."""
 
-    CATEGORY = "Krea Pose Sheet"
+    CATEGORY = "Call Sheet"
     FUNCTION = "build"
     RETURN_TYPES = ("STRING", "STRING", "INT")
     RETURN_NAMES = ("prompt", "prompt_list", "count")
@@ -51,9 +51,9 @@ class KreaPosePrompt:
                                       "tooltip": "Off strips medium, film, grain and palette words so a LoRA supplies the look."}),
             },
             "optional": {
-                "person": ("STRING", {"default": "", "placeholder": "person description (optional)", "tooltip": "Who is in the shot, typed here or linked from Krea Pose Person. Goes after the trigger, or replaces it if the trigger is empty."}),
+                "person": ("STRING", {"default": "", "placeholder": "person description (optional)", "tooltip": "Who is in the shot, typed here or linked from Call Sheet Person. Goes after the trigger, or replaces it if the trigger is empty."}),
                 "edits": ("STRING", {"default": "", "tooltip": "Your own wording for frames, set with Edit prompt on the node. Leave empty to use the sheet's text."}),
-                "scene": ("KREA_SCENE", {"tooltip": "Link a Krea Pose Scene node to swap each frame's setting, or make clean plates. Frames whose pose needs their own location keep it."}),
+                "scene": ("KREA_SCENE", {"tooltip": "Link a Call Sheet Scene node to swap each frame's setting, or make clean plates. Frames whose pose needs their own location keep it."}),
                 "scene_overrides": ("STRING", {"default": "", "tooltip": "Frames that use the scene even though their pose relies on their own location. Set with Use scene anyway in the picker."}),
             },
         }
@@ -91,7 +91,7 @@ class KreaPosePrompt:
 class KreaPosePerson:
     """Describe who is in the shot when you have no character LoRA. Leave a trait on Any to let Krea 2 decide."""
 
-    CATEGORY = "Krea Pose Sheet"
+    CATEGORY = "Call Sheet"
     FUNCTION = "build"
     RETURN_TYPES = ("STRING",)
     RETURN_NAMES = ("person",)
@@ -101,9 +101,14 @@ class KreaPosePerson:
         req = {}
         for t in P.load()["traits"]:
             req[t["key"]] = (["Any"] + [o["name"] for o in t["options"]], {"default": "Any", "tooltip": t["label"]})
-        return {"required": req}
+        return {
+            "required": req,
+            "optional": {"wording": ("STRING", {"default": "", "tooltip": "Your own wording for the person, set in the person builder. Leave empty to build it from the picks."})},
+        }
 
-    def build(self, **picks):
+    def build(self, wording="", **picks):
+        if wording and wording.strip():
+            return (wording.strip(),)
         person = {}
         for t in P.load()["traits"]:
             name = picks.get(t["key"], "Any")
@@ -112,14 +117,14 @@ class KreaPosePerson:
 
 
 class KreaPoseScene:
-    """Build a setting (or pick a place) and link it to Krea Pose Prompt to put any portable pose there. Can also make clean plates."""
+    """Build a setting (or pick a place) and link it to Call Sheet Pose to put any portable pose there. Can also make clean plates."""
 
-    CATEGORY = "Krea Pose Sheet"
+    CATEGORY = "Call Sheet"
     FUNCTION = "build"
     RETURN_TYPES = ("KREA_SCENE", "STRING")
     RETURN_NAMES = ("scene", "text")
     OUTPUT_TOOLTIPS = (
-        "Link to the scene input of Krea Pose Prompt.",
+        "Link to the scene input of Call Sheet Pose.",
         "The scene on its own: the setting lines, or a full empty scene prompt when Clean plate is on.",
     )
 
@@ -144,7 +149,7 @@ NODE_CLASS_MAPPINGS = {
     "KreaPoseScene": KreaPoseScene,
 }
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "KreaPosePrompt": "Krea Pose Prompt",
-    "KreaPosePerson": "Krea Pose Person",
-    "KreaPoseScene": "Krea Pose Scene",
+    "KreaPosePrompt": "Call Sheet Pose",
+    "KreaPosePerson": "Call Sheet Person",
+    "KreaPoseScene": "Call Sheet Scene",
 }

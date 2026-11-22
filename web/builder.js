@@ -1,5 +1,6 @@
 // Build a person: categories on the left, options in the middle, a live figure on the right.
-// openBuilder({ data, picks, on, trigger, onChange({ picks, on }) }). Changes apply as you make them.
+// openBuilder({ data, picks, text, on, trigger, onChange({ picks, text, on }) }). Changes apply as you make them.
+// text is your own wording for the person; empty means the wording is built from the picks.
 import { personText } from "./core.js";
 import { SWATCH, figureSVG } from "./figure.js";
 
@@ -22,10 +23,14 @@ export function shortPerson(traits, picks) {
 
 let current = null;
 
-export function openBuilder({ data, picks = {}, on = true, trigger = "", onChange = () => {}, toggle = true, doneLabel = "Use in prompts" }) {
+// Age sits right after Gender in the builder (it is last in the data so the Person node's dropdowns keep their order).
+export const traitOrder = traits => { const a = traits.filter(t => t.key !== "age"), age = traits.find(t => t.key === "age"); if (age) a.splice(Math.max(0, a.findIndex(t => t.key === "gender")) + 1, 0, age); return a; };
+
+export function openBuilder({ data, picks = {}, text = "", on = true, trigger = "", onChange = () => {}, toggle = true, doneLabel = "Use in prompts" }) {
   if (current) current.close();
-  const T = data.traits;
-  const st = { cat: T[0].key, picks: { ...picks }, on };
+  const T = traitOrder(data.traits);
+  const st = { cat: T[0].key, picks: { ...picks }, text: text || "", on };
+  const wording = () => st.text || personText(st.picks);
   const nameOf = (t, v) => { const o = t.options.find(x => x.value === v); return o ? o.name : "Any"; };
 
   const el = document.createElement("div");
@@ -61,7 +66,8 @@ export function openBuilder({ data, picks = {}, on = true, trigger = "", onChang
         <div class="kqb-send">
           <div class="kq-row"><span class="kq-strong">${toggle ? "Include in prompts" : "Person description"}</span><span class="kq-dim kqb-where"></span><span class="kq-grow"></span>
             ${toggle ? `<button type="button" class="kq-switch" data-x="toggle" aria-label="Include this person in prompts"><span></span></button>` : ""}</div>
-          <p class="kq-mono kqb-desc"></p>
+          <textarea class="kq-mono kqb-desc" rows="3" spellcheck="true" aria-label="Person wording" placeholder="Pick a trait to start, or type who is in the shot."></textarea>
+          <div class="kq-row kqb-dnote"><span class="kq-faint kqb-dhint"></span><span class="kq-grow"></span><span class="kqb-edited"></span></div>
           <button type="button" class="kq-ghost kq-tight" data-x="copy">${COPY}<span>Copy</span></button>
         </div>
       </aside>
@@ -70,7 +76,7 @@ export function openBuilder({ data, picks = {}, on = true, trigger = "", onChang
   document.body.appendChild(el);
   const q = s => el.querySelector(s);
 
-  const emit = () => onChange({ picks: { ...st.picks }, on: st.on });
+  const emit = () => onChange({ picks: { ...st.picks }, text: st.text, on: st.on });
   const PKEY = "kps:presets";
   const loadPresets = () => { try { const a = JSON.parse(localStorage.getItem(PKEY) || "[]"); return Array.isArray(a) ? a : []; } catch (e) { return []; } };
   const savePresets = a => { try { localStorage.setItem(PKEY, JSON.stringify(a)); } catch (e) {} };
@@ -78,7 +84,7 @@ export function openBuilder({ data, picks = {}, on = true, trigger = "", onChang
   let naming = false;
   function renderPresets() {
     const list = loadPresets(), box = q(".kqb-presets");
-    const has = Object.values(st.picks).some(Boolean);
+    const has = Object.values(st.picks).some(Boolean) || !!st.text;
     box.innerHTML = `<div class="kqb-ph"><span>Saved people</span></div>
       ${list.length ? list.map((p, i) => `<div class="kqb-preset"><button type="button" data-preset="${i}" title="Load ${esc(p.name)}">${esc(p.name)}</button><button type="button" class="kqb-pdel" data-pdel="${i}" aria-label="Delete ${esc(p.name)}">×</button></div>`).join("") : `<p class="kq-faint kqb-pnone">Save a person to reuse them later.</p>`}
       ${naming ? `<label class="kqb-pname"><input type="text" maxlength="40" placeholder="${esc(genericName(list))}" aria-label="Preset name"><button type="button" class="kq-ghost kq-tight kq-filled" data-x="psave">Save</button></label>`
@@ -91,7 +97,7 @@ export function openBuilder({ data, picks = {}, on = true, trigger = "", onChang
   }
   function commitPreset(name) {
     const list = loadPresets();
-    list.push({ name: (name || "").trim() || genericName(list), picks: { ...st.picks } });
+    list.push({ name: (name || "").trim() || genericName(list), picks: { ...st.picks }, ...(st.text ? { text: st.text } : {}) });
     savePresets(list); naming = false; renderPresets();
   }
 
@@ -115,21 +121,28 @@ export function openBuilder({ data, picks = {}, on = true, trigger = "", onChang
     q('[data-step="1"]').textContent = next.label + " →";
     q(".kqb-prog").textContent = `${i + 1} of ${T.length}`;
   }
+  function renderNote() {
+    const edited = !!st.text;
+    q(".kqb-edited").innerHTML = edited ? `<span class="kq-accent">Edited</span> <button type="button" class="kq-link" data-x="resettext">Reset</button>` : "";
+    q(".kqb-dhint").textContent = edited ? "Changing a trait rewrites this." : (trigger.trim() ? `Goes after "${trigger.trim()}".` : "Type here to word it your own way.");
+  }
   function renderSide() {
-    const d = personText(st.picks);
+    const d = wording();
     q(".kqb-fig").innerHTML = figureSVG(st.picks, { label: d ? "Preview of " + d : "Neutral figure, nothing picked" });
     q(".kqb-chips").innerHTML = T.filter(t => st.picks[t.key]).map(t => `<button type="button" class="kq-chip" data-clear="${t.key}" aria-label="Clear ${esc(t.label)}">${esc(nameOf(t, st.picks[t.key]))}<span aria-hidden="true">×</span></button>`).join("");
     q('[data-x="toggle"]')?.setAttribute("aria-pressed", String(st.on));
     q(".kqb-where").textContent = !toggle ? "sent from this node's person output" : st.on ? (trigger.trim() ? "after your trigger" : "in place of [trigger]") : "off";
     const desc = q(".kqb-desc");
     desc.classList.toggle("is-off", !st.on);
-    desc.innerHTML = d ? `${trigger.trim() ? `<span class="kq-faint">${esc(trigger.trim())}, </span>` : ""}${esc(d)}` : `<span class="kq-faint">Pick a trait to start.</span>`;
+    if (document.activeElement !== desc) desc.value = d;
+    renderNote();
   }
   const renderAll = () => { renderNav(); renderOpts(); renderSide(); renderPresets(); };
 
   function set(k, v) {
     st.picks[k] = v;
     if (!v) delete st.picks[k];
+    st.text = "";
     if (v && !st.on) st.on = true;
     emit(); renderNav(); renderOpts(); renderSide(); if (!naming) renderPresets();
   }
@@ -150,18 +163,19 @@ export function openBuilder({ data, picks = {}, on = true, trigger = "", onChang
       const k = x.dataset.x;
       if (k === "close") close();
       else if (k === "use") { st.on = true; emit(); close(); }
-      else if (k === "reset") { st.picks = {}; emit(); renderAll(); }
+      else if (k === "reset") { st.picks = {}; st.text = ""; emit(); renderAll(); }
+      else if (k === "resettext") { st.text = ""; q(".kqb-desc").value = personText(st.picks); emit(); renderSide(); renderPresets(); }
       else if (k === "pnew") { naming = true; renderPresets(); }
       else if (k === "psave") commitPreset(q(".kqb-pname input").value);
       else if (k === "toggle") { st.on = !st.on; emit(); renderSide(); }
       else if (k === "copy") {
-        const d = personText(st.picks), lbl = x.querySelector("span");
+        const d = wording(), lbl = x.querySelector("span");
         if (d) navigator.clipboard.writeText(d).then(() => { lbl.textContent = "Copied"; setTimeout(() => { lbl.textContent = "Copy"; }, 1400); }, () => { lbl.textContent = "Press Ctrl+C"; });
       }
       return;
     }
     const pr = t.closest("[data-preset]");
-    if (pr) { const p = loadPresets()[+pr.dataset.preset]; if (p) { st.picks = { ...p.picks }; st.on = true; emit(); renderAll(); } return; }
+    if (pr) { const p = loadPresets()[+pr.dataset.preset]; if (p) { st.picks = { ...p.picks }; st.text = p.text || ""; st.on = true; emit(); renderAll(); } return; }
     const pd = t.closest("[data-pdel]");
     if (pd) {
       if (!pd.classList.contains("is-armed")) { pd.classList.add("is-armed"); pd.textContent = "Delete?"; setTimeout(() => { if (pd.isConnected) { pd.classList.remove("is-armed"); pd.textContent = "×"; } }, 3000); return; }
@@ -177,6 +191,14 @@ export function openBuilder({ data, picks = {}, on = true, trigger = "", onChang
     if (cl) set(cl.dataset.clear, "");
   });
   el.addEventListener("pointerdown", e => e.stopPropagation());
+  const descEl = q(".kqb-desc");
+  descEl.addEventListener("input", () => {
+    const v = descEl.value, built = personText(st.picks);
+    st.text = v.trim() && v.trim() !== built ? v.trim() : "";
+    if (st.text && !st.on) st.on = true;
+    emit(); renderNote(); q('[data-x="toggle"]')?.setAttribute("aria-pressed", String(st.on)); if (!naming) renderPresets();
+  });
+  descEl.addEventListener("keydown", e => { e.stopPropagation(); if (e.key === "Escape") { e.preventDefault(); descEl.blur(); } });
   document.addEventListener("keydown", onKey, true);
   renderAll();
   q(".kqb-nav button[aria-current=true]")?.focus({ preventScroll: true });
