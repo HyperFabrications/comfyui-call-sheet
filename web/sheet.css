@@ -280,6 +280,9 @@
 .kpn-bar .kps-btn { padding: 3px 9px; }
 .kpn-bar .kpn-browse { flex: 1 1 auto; }
 
+.kpp-face { align-items: center; }
+.kpp-face svg { flex: 0 0 auto; }
+
 /* ---------- Sidebar: short cards that open on click ---------- */
 .kps-compact .kps-frame:not(.is-open) .kps-prompt { max-height: calc(3 * 1.6em + 20px); overflow: hidden; cursor: pointer; -webkit-mask-image: linear-gradient(#000 60%, transparent); mask-image: linear-gradient(#000 60%, transparent); }
 .kps-compact .kps-frame.is-open .kps-prompt { cursor: text; }
