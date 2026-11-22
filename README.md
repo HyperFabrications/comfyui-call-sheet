@@ -6,13 +6,13 @@ A Krea 2 shot builder for ComfyUI. Pick a pose, choose who is in the shot, what 
 
 ## Install
 
-**ComfyUI Manager:** click **Install via Git URL**, paste `https://github.com/ilikeredheads/comfyui-call-sheet`, then restart ComfyUI.
+**ComfyUI Manager:** click **Install via Git URL**, paste `https://github.com/HyperFabrications/comfyui-call-sheet`, then restart ComfyUI.
 
 **By hand:**
 
 ```
 cd ComfyUI/custom_nodes
-git clone https://github.com/ilikeredheads/comfyui-call-sheet
+git clone https://github.com/HyperFabrications/comfyui-call-sheet
 ```
 
 Restart ComfyUI. There are no extra Python packages to install.
@@ -87,7 +87,7 @@ Open the **Call Sheet** tab in ComfyUI's left sidebar. Type your LoRA trigger on
 
 ## Optional: web page on GitHub Pages
 
-The same sheet can be published as a web page. In the repo, go to Settings → Pages → Source: **GitHub Actions**, then run **Publish web sheet to GitHub Pages** from the Actions tab. The sheet appears at `https://ilikeredheads.github.io/comfyui-call-sheet/`.
+The same sheet can be published as a web page. In the repo, go to Settings → Pages → Source: **GitHub Actions**, then run **Publish web sheet to GitHub Pages** from the Actions tab. The sheet appears at `https://hyperfabrications.github.io/comfyui-call-sheet/`.
 
 ## Optional: publish to the Comfy Registry
 
