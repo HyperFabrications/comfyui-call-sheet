@@ -4,6 +4,10 @@
   "changelog": [
     {
       "date": "2026-11-22",
+      "text": "34 prompts reworded so more of them work with scenes and outfits. The pose, the clothes and the place now sit in their own sentences."
+    },
+    {
+      "date": "2026-11-22",
       "text": "41 new SFW prompts in three new sets: fashion poses, places, and everyday poses."
     },
     {
@@ -595,7 +599,7 @@
       "tab": "boudoir",
       "set": "Home",
       "title": "Bodysuit crouch",
-      "text": "[trigger] in a casual boudoir photo, crouching on one knee in a black ribbed sleeveless mock neck bodysuit and white block heel ankle boots, head tilted, hand resting on her knee. Small apartment bedroom with herringbone wood floor, wooden dresser, white paneled door, wall calendar print, shag rug and a work desk. Low angle wide shot, phone camera look. Indoor overhead lighting, neutral tones."
+      "text": "[trigger] in a casual boudoir photo, crouching on one knee, head tilted, hand resting on her knee. Wearing a black ribbed sleeveless mock neck bodysuit and white block heel ankle boots. Small apartment bedroom with herringbone wood floor, wooden dresser, white paneled door, wall calendar print, shag rug and a work desk. Low angle wide shot, phone camera look. Indoor overhead lighting, neutral tones."
     },
     {
       "id": "14",
@@ -616,21 +620,21 @@
       "tab": "boudoir",
       "set": "Home",
       "title": "Armchair, from behind",
-      "text": "[trigger] in a soft boudoir photograph, seen from behind, kneeling on a cream bouclé armchair, glancing down over her shoulder, wearing only a pale pink string thong, hair in a low bun. Sheer peach curtains hang in front of tall paned windows. Medium shot at eye level, 50mm lens feel. Diffused daylight filtering through the curtains, warm peach and cream palette, clean finish."
+      "text": "[trigger] in a soft boudoir photograph, seen from behind, kneeling on a cream bouclé armchair, glancing down over her shoulder, hair in a low bun. Wearing only a pale pink string thong. Sheer peach curtains hang in front of tall paned windows. Medium shot at eye level, 50mm lens feel. Diffused daylight filtering through the curtains, warm peach and cream palette, clean finish."
     },
     {
       "id": "17",
       "tab": "boudoir",
       "set": "Home",
       "title": "Pink sofa, look back",
-      "text": "[trigger] in a boudoir photo, kneeling on a blush pink leather sofa with hands on the backrest, looking back over her shoulder into the lens, wearing a cropped white satin top with flared bell sleeves, a white thong and white block heel sandals. White curtains behind. Medium shot from a slight high angle, 35mm lens feel. Direct on-camera flash, glossy satin highlights, pale pink and white palette, crisp finish."
+      "text": "[trigger] in a boudoir photo, kneeling on a blush pink leather sofa with hands on the backrest, looking back over her shoulder into the lens. Wearing a cropped white satin top with flared bell sleeves, a white thong and white block heel sandals. White curtains behind. Medium shot from a slight high angle, 35mm lens feel. Direct on-camera flash, glossy satin highlights, pale pink and white palette, crisp finish."
     },
     {
       "id": "18",
       "tab": "boudoir",
       "set": "Home",
       "title": "Sheepskin and pearls",
-      "text": "[trigger] in a romantic boudoir photograph, reclining back over a sheepskin throw with arms stretched overhead and head tipped back, wearing a peach lace bralette with a strand of pearls draped across the neckline and ruffled tie side briefs. Rumpled cream sheets, a sheer white curtain and a gold patterned rug. High angle medium shot, 35mm lens feel. Warm natural window light, honey and cream tones, soft film finish."
+      "text": "[trigger] in a romantic boudoir photograph, reclining back over a sheepskin throw with arms stretched overhead and head tipped back. Wearing a peach lace bralette with a strand of pearls draped across the neckline and ruffled tie side briefs. Rumpled cream sheets, a sheer white curtain and a gold patterned rug. High angle medium shot, 35mm lens feel. Warm natural window light, honey and cream tones, soft film finish."
     },
     {
       "id": "19",
@@ -672,7 +676,7 @@
       "tab": "boudoir",
       "set": "Home",
       "title": "Folded forward on the bed",
-      "text": "[trigger] in a clean boudoir photograph, seen from behind, kneeling on a white bed and folded forward with her head resting on one forearm, feet tucked together at the edge of the mattress, wearing a rust red scoop back bralette and matching thong. Crisp white sheets and pillows, a cream quilted blanket across the foot of the bed. Direct overhead shot, 35mm lens feel. Soft even daylight, white and rust palette, crisp natural finish."
+      "text": "[trigger] in a clean boudoir photograph, seen from behind, kneeling on a white bed and folded forward with her head resting on one forearm, feet tucked together at the edge of the mattress. Wearing a rust red scoop back bralette and matching thong. Crisp white sheets and pillows, a cream quilted blanket across the foot of the bed. Direct overhead shot, 35mm lens feel. Soft even daylight, white and rust palette, crisp natural finish."
     },
     {
       "id": "25",
@@ -686,91 +690,91 @@
       "tab": "sfw",
       "set": "Field",
       "title": "Kneeling, head bowed",
-      "text": "[trigger] in a moody outdoor portrait, kneeling in an overgrown field with hands resting on her knees, head bowed and eyes lowered, hair blowing across her face. Wearing a white chiffon tie neck blouse with ruffled cuffs, a brown plaid midi skirt and sheer black tights. A blurred abandoned brick church with slate roofs and a tower behind. Medium shot at eye level, 50mm lens feel, shallow depth of field. Flat overcast daylight, muted greens and browns, soft film grain."
+      "text": "[trigger] in a moody outdoor portrait, kneeling with hands resting on her knees, head bowed and eyes lowered, hair blowing across her face. Wearing a white chiffon tie neck blouse with ruffled cuffs, a brown plaid midi skirt and sheer black tights. An overgrown field with a blurred abandoned brick church with slate roofs and a tower behind. Medium shot at eye level, 50mm lens feel, shallow depth of field. Flat overcast daylight, muted greens and browns, soft film grain."
     },
     {
       "id": "S2",
       "tab": "sfw",
       "set": "Field",
       "title": "Windblown, eyes closed",
-      "text": "[trigger] in a windswept outdoor portrait, standing in tall grass with eyes closed and head tilted, hair streaming sideways in the wind, one arm wrapped across her waist, the other hand catching the hem of a billowing brown plaid skirt. White chiffon tie neck blouse with ruffled cuffs and sheer black tights. Blurred brick building with steep slate roofs behind. Medium shot from slightly below, 50mm lens feel, shallow depth of field. Overcast sky, muted greens, soft grain."
+      "text": "[trigger] in a windswept outdoor portrait, standing with eyes closed and head tilted, hair streaming sideways in the wind, one arm wrapped across her waist, the other hand catching the hem of a billowing brown plaid skirt. Wearing a white chiffon tie neck blouse with ruffled cuffs and sheer black tights. Tall grass with a blurred brick building with steep slate roofs behind. Medium shot from slightly below, 50mm lens feel, shallow depth of field. Overcast sky, muted greens, soft grain."
     },
     {
       "id": "S3",
       "tab": "sfw",
       "set": "Field",
       "title": "Seated overhead, hair flying",
-      "text": "[trigger] in a dreamy outdoor portrait, seated on patchy grass, head tipped toward one shoulder with eyes closed, hair whipping out to the side in the wind, hands resting in her lap on a brown plaid skirt. White chiffon tie neck blouse and sheer black tights. Grass and bare dirt fill the frame. High angle shot looking down, 35mm lens feel. Soft overcast daylight, deep greens and warm browns, gentle film grain."
+      "text": "[trigger] in a dreamy outdoor portrait, seated on the ground, head tipped toward one shoulder with eyes closed, hair whipping out to the side in the wind, hands resting in her lap. Wearing a white chiffon tie neck blouse, a brown plaid skirt and sheer black tights. Grass and bare dirt fill the frame. High angle shot looking down, 35mm lens feel. Soft overcast daylight, deep greens and warm browns, gentle film grain."
     },
     {
       "id": "S4",
       "tab": "sfw",
       "set": "Field",
       "title": "Profile, face hidden",
-      "text": "[trigger] in an outdoor portrait, standing in profile in a field, face completely hidden by hair blown across it, one hand on her hip gathering a brown plaid skirt, one knee lifted. White chiffon blouse with ruffled cuffs and sheer black tights. Blurred abandoned brick church with a tower behind. Medium shot at eye level, 50mm lens feel, shallow depth of field, strong background blur. Overcast daylight, muted greens and copper tones, soft grain."
+      "text": "[trigger] in an outdoor portrait, standing in profile, face completely hidden by hair blown across it, one hand on her hip gathering a brown plaid skirt, one knee lifted. Wearing a white chiffon blouse with ruffled cuffs and sheer black tights. A field with a blurred abandoned brick church with a tower behind. Medium shot at eye level, 50mm lens feel, shallow depth of field, strong background blur. Overcast daylight, muted greens and copper tones, soft grain."
     },
     {
       "id": "S5",
       "tab": "sfw",
       "set": "Field",
       "title": "Looking up from tall grass",
-      "text": "[trigger] in an intimate outdoor portrait, crouching low in tall dry grass and looking up into the lens, lips slightly parted, hair falling loosely across one eye. White long sleeve blouse and a brown plaid skirt. Grass blades blur in the foreground and background. High angle close medium shot, 50mm lens feel, very shallow depth of field. Dim dusky overcast light, olive and tawny palette, soft film grain."
+      "text": "[trigger] in an intimate outdoor portrait, crouching low and looking up into the lens, lips slightly parted, hair falling loosely across one eye. Wearing a white long sleeve blouse and a brown plaid skirt. Tall dry grass, its blades blurring in the foreground and background. High angle close medium shot, 50mm lens feel, very shallow depth of field. Dim dusky overcast light, olive and tawny palette, soft film grain."
     },
     {
       "id": "S6",
       "tab": "sfw",
       "set": "Field",
       "title": "Walking through pampas",
-      "text": "[trigger] in a cinematic outdoor photo, seen from behind at a three quarter angle, walking through tall feathery pampas grass, one hand raised to her face, hair blowing forward. White long sleeve blouse and a brown plaid skirt. A shrub with deep red autumn leaves and the gothic arched windows of an abandoned brick building behind. Medium full shot at eye level, 50mm lens feel. Overcast daylight, muted greens with rust red accents, soft grain."
+      "text": "[trigger] in a cinematic outdoor photo, seen from behind at a three quarter angle, walking slowly away, one hand raised to her face, hair blowing forward. Wearing a white long sleeve blouse and a brown plaid skirt. Tall feathery pampas grass, a shrub with deep red autumn leaves and the gothic arched windows of an abandoned brick building behind. Medium full shot at eye level, 50mm lens feel. Overcast daylight, muted greens with rust red accents, soft grain."
     },
     {
       "id": "S7",
       "tab": "sfw",
       "set": "Field",
       "title": "Crouched in the meadow",
-      "text": "[trigger] in an outdoor photo, crouching low in a wild meadow of tall seeded grass, leaning on one arm and glancing off to the side, hair falling across her face. White tie neck blouse with ruffled cuffs, a brown plaid skirt and sheer black tights. A bleached driftwood branch in the grass, trees and a stormy blue sky far behind. High angle wide shot, 50mm lens feel, shallow depth of field. Dim overcast dusk light, olive and brown palette, film grain."
+      "text": "[trigger] in an outdoor photo, crouching low and leaning on one arm and glancing off to the side, hair falling across her face. Wearing a white tie neck blouse with ruffled cuffs, a brown plaid skirt and sheer black tights. A wild meadow of tall seeded grass with a bleached driftwood branch, trees and a stormy blue sky far behind. High angle wide shot, 50mm lens feel, shallow depth of field. Dim overcast dusk light, olive and brown palette, film grain."
     },
     {
       "id": "S8",
       "tab": "sfw",
       "set": "Field",
       "title": "Seated, head resting",
-      "text": "[trigger] in a quiet outdoor portrait, seated on grass with her head resting toward one shoulder, eyes closed, hair caught by the wind, one hand lying softly on a brown plaid skirt. White chiffon tie neck blouse with ruffled cuffs and sheer black tights. Patchy grass and small weeds around her. High angle shot looking down, 35mm lens feel. Soft overcast daylight, rich greens and neutral whites, gentle grain."
+      "text": "[trigger] in a quiet outdoor portrait, seated on the ground with her head resting toward one shoulder, eyes closed, hair caught by the wind, one hand lying softly in her lap. Wearing a white chiffon tie neck blouse with ruffled cuffs, a brown plaid skirt and sheer black tights. Patchy grass and small weeds around her. High angle shot looking down, 35mm lens feel. Soft overcast daylight, rich greens and neutral whites, gentle grain."
     },
     {
       "id": "S9",
       "tab": "sfw",
       "set": "Field",
       "title": "Kneeling, hair forward",
-      "text": "[trigger] in a moody outdoor portrait, kneeling and sitting back on her heels in a field, head bowed so her hair falls forward over her face, hands resting on her thighs. White chiffon tie neck blouse with ruffled cuffs, a brown plaid skirt and sheer black tights. Blurred abandoned brick church with slate roofs and a round tower behind. Medium shot at eye level, 50mm lens feel, shallow depth of field. Overcast daylight, muted greens and browns, soft grain."
+      "text": "[trigger] in a moody outdoor portrait, kneeling and sitting back on her heels, head bowed so her hair falls forward over her face, hands resting on her thighs. Wearing a white chiffon tie neck blouse with ruffled cuffs, a brown plaid skirt and sheer black tights. A field with a blurred abandoned brick church with slate roofs and a round tower behind. Medium shot at eye level, 50mm lens feel, shallow depth of field. Overcast daylight, muted greens and browns, soft grain."
     },
     {
       "id": "S10",
       "tab": "sfw",
       "set": "Field",
       "title": "Clock tower, low angle",
-      "text": "[trigger] in a windswept outdoor portrait, seated low in grass with knees drawn up, head tilted with eyes closed, hair streaming sideways in the wind, hands folded on her knee. White chiffon tie neck blouse, brown plaid skirt and sheer black tights. A tall brick clock tower with a pointed slate spire rises behind against a pale sky. Low angle medium shot, 35mm lens feel, shallow depth of field. Flat overcast light, muted palette, soft grain."
+      "text": "[trigger] in a windswept outdoor portrait, seated low on the ground with knees drawn up, head tilted with eyes closed, hair streaming sideways in the wind, hands folded on her knee. Wearing a white chiffon tie neck blouse, a brown plaid skirt and sheer black tights. Grass with a tall brick clock tower with a pointed slate spire rises behind against a pale sky. Low angle medium shot, 35mm lens feel, shallow depth of field. Flat overcast light, muted palette, soft grain."
     },
     {
       "id": "S11",
       "tab": "sfw",
       "set": "Field",
       "title": "Holding the skirt",
-      "text": "[trigger] in an outdoor portrait, standing in a field with head tilted back, hair blown across her face, both hands holding down a brown plaid skirt as the wind lifts it. White chiffon blouse with ruffled cuffs and sheer black tights. Abandoned brick church with a clock tower and spire blurred behind. Medium shot at eye level, 50mm lens feel, shallow depth of field. Overcast daylight, muted greens and browns, soft grain."
+      "text": "[trigger] in an outdoor portrait, standing with head tilted back, hair blown across her face, both hands holding down a brown plaid skirt as the wind lifts it. Wearing a white chiffon blouse with ruffled cuffs and sheer black tights. A field with an abandoned brick church with a clock tower and spire blurred behind. Medium shot at eye level, 50mm lens feel, shallow depth of field. Overcast daylight, muted greens and browns, soft grain."
     },
     {
       "id": "S12",
       "tab": "sfw",
       "set": "Field",
       "title": "Look back by the poles",
-      "text": "[trigger] in an outdoor portrait, turning to look back over her shoulder into the lens, arms wrapped around herself, hair blowing behind her. White long sleeve blouse and a swinging brown plaid midi skirt. Overgrown field with tall golden grass, a mossy wall, concrete blocks and wooden utility poles behind. Medium full shot at eye level, 50mm lens feel, shallow depth of field. Bright flat overcast sky, soft greens and tans, light grain."
+      "text": "[trigger] in an outdoor portrait, turning to look back over her shoulder into the lens, arms wrapped around herself, hair blowing behind her. Wearing a white long sleeve blouse and a swinging brown plaid midi skirt. Overgrown field with tall golden grass, a mossy wall, concrete blocks and wooden utility poles behind. Medium full shot at eye level, 50mm lens feel, shallow depth of field. Bright flat overcast sky, soft greens and tans, light grain."
     },
     {
       "id": "S13",
       "tab": "sfw",
       "set": "Field",
       "title": "Hands in hair",
-      "text": "[trigger] in an outdoor portrait, kneeling in tall dry grass with both hands raised into her hair, eyes lowered, lips parted. White chiffon tie neck blouse with wide sleeves and a brown plaid skirt spread around her. Seed heads frame the edges. High angle medium shot, 50mm lens feel, shallow depth of field. Soft dusky overcast light, golden olive palette, film grain."
+      "text": "[trigger] in an outdoor portrait, kneeling with both hands raised into her hair, eyes lowered, lips parted. Wearing a white chiffon tie neck blouse with wide sleeves and a brown plaid skirt spread around her. Tall dry grass with seed heads framing the edges. High angle medium shot, 50mm lens feel, shallow depth of field. Soft dusky overcast light, golden olive palette, film grain."
     },
     {
       "id": "S14",
@@ -784,21 +788,21 @@
       "tab": "sfw",
       "set": "Projection",
       "title": "Rainbow streak",
-      "text": "[trigger] in a dark projection portrait, head tilted, looking into the lens with hair falling over one eye, streaks of rainbow projected light sweeping diagonally across her cheek and lips. Deep red lace top and starfish earrings with pink pearl drops. Dark wall behind with a soft blurred projected glow. Close up at eye level, 85mm lens feel, shallow depth of field. Single projector light, rich shadows, low key finish."
+      "text": "[trigger] in a dark projection portrait, head tilted, looking into the lens with hair falling over one eye, streaks of rainbow projected light sweeping diagonally across her cheek and lips. Wearing a deep red lace top and starfish earrings with pink pearl drops. Dark wall behind with a soft blurred projected glow. Close up at eye level, 85mm lens feel, shallow depth of field. Single projector light, rich shadows, low key finish."
     },
     {
       "id": "S16",
       "tab": "sfw",
       "set": "Projection",
       "title": "Looking up, lavender bands",
-      "text": "[trigger] in a dark projection portrait, gazing up and off to the side with lips parted, horizontal bands of lavender and white projected light across her face, a warm orange glow spilling onto her neck. Deep red lace top. Dark wall behind with a blurred violet projection. Close medium shot at eye level, 50mm lens feel. Projector light only, deep blue black shadows, moody low key finish."
+      "text": "[trigger] in a dark projection portrait, gazing up and off to the side with lips parted, horizontal bands of lavender and white projected light across her face, a warm orange glow spilling onto her neck. Wearing a deep red lace top. Dark wall behind with a blurred violet projection. Close medium shot at eye level, 50mm lens feel. Projector light only, deep blue black shadows, moody low key finish."
     },
     {
       "id": "S17",
       "tab": "sfw",
       "set": "Projection",
       "title": "Floral projection",
-      "text": "[trigger] in a dark projection portrait, head slightly bowed, looking up into the lens, a projected image of blurred flowers and warm amber tones falling across her face and the wall behind. Deep red top with lace sleeves and dangling earrings. Medium close shot at eye level, 50mm lens feel, shallow depth of field. Projector as the main light, warm highlights against dark shadows, low key finish."
+      "text": "[trigger] in a dark projection portrait, head slightly bowed, looking up into the lens, a projected image of blurred flowers and warm amber tones falling across her face and the wall behind. Wearing a deep red top with lace sleeves and dangling earrings. Medium close shot at eye level, 50mm lens feel, shallow depth of field. Projector as the main light, warm highlights against dark shadows, low key finish."
     },
     {
       "id": "S18",
@@ -845,7 +849,7 @@
       "tab": "claude",
       "set": "CB",
       "title": "Hotel window, morning",
-      "text": "[trigger] in a soft boudoir photograph, sitting sideways on a wide hotel window ledge with knees drawn up, wearing only an oversized white men's dress shirt slipping off one shoulder, holding a coffee cup in both hands and gazing out at the city. Rumpled white bed blurred in the foreground. Medium shot at eye level, 50mm lens feel, shallow depth of field. Bright morning backlight through sheer curtains, soft haze, cream and pale blue palette, light film grain."
+      "text": "[trigger] in a soft boudoir photograph, sitting sideways on a wide hotel window ledge with knees drawn up, holding a coffee cup in both hands and gazing out at the city. Wearing only an oversized white men's dress shirt slipping off one shoulder. Rumpled white bed blurred in the foreground. Medium shot at eye level, 50mm lens feel, shallow depth of field. Bright morning backlight through sheer curtains, soft haze, cream and pale blue palette, light film grain."
     },
     {
       "id": "C2",
@@ -873,7 +877,7 @@
       "tab": "claude",
       "set": "CB",
       "title": "Vintage vanity",
-      "text": "[trigger] in a glamorous boudoir photograph, seated at a vintage vanity in a cream lace bodysuit, fastening a pearl earring, her face reflected in a round mirror ringed with warm bulbs. Perfume bottles, a velvet jewelry box and a silk robe over the chair. Medium shot over her shoulder, 50mm lens feel, focus on the reflection. Warm bulb light from the mirror, golden and ivory palette, soft glow."
+      "text": "[trigger] in a glamorous boudoir photograph, seated at a vintage vanity, fastening a pearl earring, her face reflected in a round mirror ringed with warm bulbs. Wearing a cream lace bodysuit. Perfume bottles, a velvet jewelry box and a silk robe over the chair. Medium shot over her shoulder, 50mm lens feel, focus on the reflection. Warm bulb light from the mirror, golden and ivory palette, soft glow."
     },
     {
       "id": "C6",
@@ -887,14 +891,14 @@
       "tab": "claude",
       "set": "CS",
       "title": "Laundromat at night",
-      "text": "[trigger] in a candid night photograph, sitting on top of a running washing machine in an oversized cream cable knit sweater, plaid skirt and white socks with loafers, legs swinging, reading a paperback. Rows of front loading machines, a vending machine and a dark street outside the window. Medium full shot at eye level, 35mm lens feel. Flat green tinted fluorescent overhead light, mint and cream palette, 35mm film grain."
+      "text": "[trigger] in a candid night photograph, sitting on top of a running washing machine, legs swinging, reading a paperback. Wearing an oversized cream cable knit sweater, a plaid skirt and white socks with loafers. Rows of front loading machines, a vending machine and a dark street outside the window. Medium full shot at eye level, 35mm lens feel. Flat green tinted fluorescent overhead light, mint and cream palette, 35mm film grain."
     },
     {
       "id": "C8",
       "tab": "claude",
       "set": "CS",
       "title": "Orchard ladder",
-      "text": "[trigger] in a warm outdoor photograph, standing halfway up a wooden orchard ladder reaching for an apple, wearing a loose linen dress with rolled sleeves and a woven basket on her arm, smiling down at the camera. Apple trees heavy with red fruit, long grass below. Low angle medium full shot, 50mm lens feel, shallow depth of field. Golden hour sun backlighting the leaves, warm amber and green palette, soft film finish."
+      "text": "[trigger] in a warm outdoor photograph, standing halfway up a wooden orchard ladder reaching for an apple with a woven basket on her arm, smiling down at the camera. Wearing a loose linen dress with rolled sleeves. Apple trees heavy with red fruit, long grass below. Low angle medium full shot, 50mm lens feel, shallow depth of field. Golden hour sun backlighting the leaves, warm amber and green palette, soft film finish."
     },
     {
       "id": "C9",
@@ -908,21 +912,21 @@
       "tab": "claude",
       "set": "CS",
       "title": "Library stacks",
-      "text": "[trigger] in a quiet interior photograph, leaning against tall wooden bookshelves in a narrow library aisle, reading an open hardcover, wearing a chunky brown cardigan, a white collared blouse and wire rim glasses. Rows of old leather spines stretch into soft focus. Medium shot down the aisle, 85mm lens feel, shallow depth of field. Warm light from a green banker's lamp at the end of the aisle, dust in the air, brown and gold palette, fine grain."
+      "text": "[trigger] in a quiet interior photograph, leaning against tall wooden bookshelves in a narrow library aisle, reading an open hardcover. Wearing a chunky brown cardigan, a white collared blouse and wire rim glasses. Rows of old leather spines stretch into soft focus. Medium shot down the aisle, 85mm lens feel, shallow depth of field. Warm light from a green banker's lamp at the end of the aisle, dust in the air, brown and gold palette, fine grain."
     },
     {
       "id": "C11",
       "tab": "claude",
       "set": "CS",
       "title": "Diner booth in the rain",
-      "text": "[trigger] in a nostalgic night photograph, sitting in a red vinyl diner booth with her chin in her hand, a strawberry milkshake with two straws in front of her, wearing a denim jacket over a striped tee. Rain streaked window beside her with a pink and blue neon sign glowing outside. Medium shot at table height, 35mm lens feel. Neon light spilling through the wet glass mixed with warm overhead light, saturated reds and pinks, 35mm film grain."
+      "text": "[trigger] in a nostalgic night photograph, sitting in a red vinyl diner booth with her chin in her hand, a strawberry milkshake with two straws in front of her. Wearing a denim jacket over a striped tee. Rain streaked window beside her with a pink and blue neon sign glowing outside. Medium shot at table height, 35mm lens feel. Neon light spilling through the wet glass mixed with warm overhead light, saturated reds and pinks, 35mm film grain."
     },
     {
       "id": "C12",
       "tab": "claude",
       "set": "CS",
       "title": "Lighthouse cliff",
-      "text": "[trigger] in a windswept coastal photograph, standing on a grassy cliff edge in a long navy wool coat and a cream knit scarf, hair blowing across her face, looking out to sea. A white lighthouse on the headland behind and gray waves breaking below. Wide full length shot from slightly below, 35mm lens feel. Overcast diffused daylight, muted navy, sage and stone palette, soft grain."
+      "text": "[trigger] in a windswept coastal photograph, standing with hair blowing across her face, looking out into the distance. Wearing a long navy wool coat and a cream knit scarf. A grassy cliff edge above the sea, a white lighthouse on the headland behind and gray waves breaking below. Wide full length shot from slightly below, 35mm lens feel. Overcast diffused daylight, muted navy, sage and stone palette, soft grain."
     },
     {
       "id": "26",
@@ -1305,7 +1309,7 @@
       "tab": "pinup",
       "set": "PinOut",
       "title": "Beach, hand on hip",
-      "text": "[trigger] in a retro beach pin-up photograph, standing on wet sand with one hand on her hip and feet slightly apart, the other hand holding the brim of a sun hat, head tilted up toward the sun with eyes closed and a wide smile. Wearing a navy and white polka dot high waisted bikini and red lipstick. Beach umbrella, a striped towel and rolling surf behind. Full length shot from a slightly low angle, 35mm lens feel. Bright high summer sun, hard shadows, navy, white and sand palette, saturated vintage postcard finish.",
+      "text": "[trigger] in a retro beach pin-up photograph, standing with one hand on her hip and feet slightly apart, the other hand holding the brim of a sun hat, head tilted up toward the sun with eyes closed and a wide smile. Wearing a navy and white polka dot high waisted bikini and red lipstick. Wet sand with a beach umbrella, a striped towel and rolling surf behind. Full length shot from a slightly low angle, 35mm lens feel. Bright high summer sun, hard shadows, navy, white and sand palette, saturated vintage postcard finish.",
       "src": "https://www.photowhoa.com/blog/pinup-poses/",
       "ex": "https://www.photowhoa.com/wp-content/uploads/2024/06/pinup-poses-on-the-beach-1.webp"
     },
@@ -1463,7 +1467,7 @@
       "tab": "sfw",
       "set": "Fashion",
       "title": "Studio walk, hand in pocket",
-      "text": "[trigger] in a fashion campaign photograph, walking straight toward the camera mid stride on a long white seamless sweep, one hand in the pocket of a belted stone trench coat, the other arm swinging loosely, head level with a calm, serious expression. Trench worn open over a black knit dress, black leather knee boots. Full length shot at hip height, 85mm lens feel, slight motion in the coat hem. Broad soft overhead light. Stone and black palette, clean minimal finish.",
+      "text": "[trigger] in a fashion campaign photograph, walking straight toward the camera mid stride, one hand in the pocket of a belted stone trench coat, the other arm swinging loosely, head level with a calm, serious expression. Wearing the trench open over a black knit dress and black leather knee boots. A long white seamless sweep. Full length shot at hip height, 85mm lens feel, slight motion in the coat hem. Broad soft overhead light. Stone and black palette, clean minimal finish.",
       "src": "https://shotkit.com/fashion-poses/",
       "added": "2026-11-22"
     },
@@ -1561,7 +1565,7 @@
       "tab": "sfw",
       "set": "Places",
       "title": "Crosswalk mid stride",
-      "text": "[trigger] in a street style photograph, crossing a wide city crosswalk mid stride, one foot lifting off the white stripes, an iced coffee in one hand and a leather tote over the other shoulder, looking ahead past the camera. Wearing a cropped oatmeal blazer, a white tee, straight black trousers and white sneakers. Yellow taxis, traffic lights and glass towers blurred behind. Full length shot from street level, 85mm lens feel, shallow depth of field. Bright late afternoon sun from the side. Oatmeal and black palette with taxi yellow accents, crisp finish.",
+      "text": "[trigger] in a street style photograph, walking mid stride, one foot lifting off the ground, an iced coffee in one hand and a leather tote over the other shoulder, looking ahead past the camera. Wearing a cropped oatmeal blazer, a white tee, straight black trousers and white sneakers. A wide city crosswalk with yellow taxis, traffic lights and glass towers blurred behind. Full length shot from street level, 85mm lens feel, shallow depth of field. Bright late afternoon sun from the side. Oatmeal and black palette with taxi yellow accents, crisp finish.",
       "added": "2026-11-22"
     },
     {
@@ -1593,7 +1597,7 @@
       "tab": "sfw",
       "set": "Places",
       "title": "Flower market stall",
-      "text": "[trigger] in a lively market photograph, standing between buckets of tulips and peonies at a flower stall, holding a wrapped bunch of ranunculus to her chest with both arms and smiling down at them. Wearing a butter yellow cardigan, a white tee and wide leg ecru trousers. Striped canopy, chalk price tags and crates of flowers around her. Medium shot at eye level, 50mm lens feel, shallow depth of field, flowers soft in the foreground. Soft overcast light under the canopy. Butter yellow, coral and green palette, fresh natural finish.",
+      "text": "[trigger] in a lively market photograph, standing and holding a wrapped bunch of ranunculus to her chest with both arms and smiling down at them. Wearing a butter yellow cardigan, a white tee and wide leg ecru trousers. A flower stall with buckets of tulips and peonies, a striped canopy, chalk price tags and crates of flowers around her. Medium shot at eye level, 50mm lens feel, shallow depth of field, flowers soft in the foreground. Soft overcast light under the canopy. Butter yellow, coral and green palette, fresh natural finish.",
       "added": "2026-11-22"
     },
     {
@@ -1705,7 +1709,7 @@
       "tab": "sfw",
       "set": "Everyday",
       "title": "Adjusting sunglasses",
-      "text": "[trigger] in a sunny street photograph, standing on a sidewalk with one hand sliding a pair of tortoiseshell sunglasses down her nose, looking over the top of them into the lens, the other hand holding a crossbody bag strap. Wearing a white button up shirt open over a ribbed tank and light wash jeans. Storefronts with striped awnings blurred behind. Medium shot at eye level, 85mm lens feel, shallow depth of field. Bright midday sun with a hard shadow under the sunglasses. White, denim and warm tan palette, crisp summer finish.",
+      "text": "[trigger] in a sunny street photograph, standing with one hand sliding a pair of tortoiseshell sunglasses down her nose, looking over the top of them into the lens, the other hand holding a crossbody bag strap. Wearing a white button up shirt open over a ribbed tank and light wash jeans. A sidewalk with storefronts and striped awnings blurred behind. Medium shot at eye level, 85mm lens feel, shallow depth of field. Bright midday sun with a hard shadow under the sunglasses. White, denim and warm tan palette, crisp summer finish.",
       "added": "2026-11-22"
     },
     {
@@ -1713,7 +1717,7 @@
       "tab": "sfw",
       "set": "Everyday",
       "title": "Groceries on the hip",
-      "text": "[trigger] in a candid lifestyle photograph, walking down a quiet residential sidewalk carrying a paper grocery bag on one hip with a baguette and leeks sticking out of the top, keys dangling from the other hand, smiling to herself. Wearing a navy quilted vest over a gray sweatshirt, straight jeans and loafers. Brownstones and autumn trees behind. Full length shot at eye level, 50mm lens feel. Soft late afternoon light from the side. Navy, kraft brown and orange leaf palette, warm film finish.",
+      "text": "[trigger] in a candid lifestyle photograph, walking along carrying a paper grocery bag on one hip with a baguette and leeks sticking out of the top, keys dangling from the other hand, smiling to herself. Wearing a navy quilted vest over a gray sweatshirt, straight jeans and loafers. A quiet residential sidewalk with brownstones and autumn trees behind. Full length shot at eye level, 50mm lens feel. Soft late afternoon light from the side. Navy, kraft brown and orange leaf palette, warm film finish.",
       "added": "2026-11-22"
     },
     {
