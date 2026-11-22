@@ -96,8 +96,15 @@ def fill(text, subj):
     return re.sub(r"\[trigger\](,?)", lambda m: subj if subj.endswith(",") else subj + m.group(1), text)
 
 
-def prompt_for(frame, trigger="", person="", style=True):
-    return fill(base(frame, style), subject(trigger, person))
+def with_edit(frame, edits):
+    t = (edits or {}).get(frame["id"])
+    if isinstance(t, str) and t.strip():
+        return {**frame, "text": t, "bare": None}
+    return frame
+
+
+def prompt_for(frame, trigger="", person="", style=True, edits=None):
+    return fill(base(with_edit(frame, edits), style), subject(trigger, person))
 
 
 def frame_key(f):
