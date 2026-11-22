@@ -39,10 +39,13 @@ function setWidget(node, name, value) {
   return true;
 }
 
-function flash(btn, text) {
-  const old = btn.textContent;
-  btn.textContent = text; btn.classList.add("done");
-  setTimeout(() => { btn.textContent = old; btn.classList.remove("done"); }, 1600);
+function flash(btn, text, ms = 1600) {
+  if (!btn) return;
+  const lbl = btn.querySelector("span:last-child") || btn;
+  if (btn._kpsOld == null) btn._kpsOld = lbl.textContent;
+  clearTimeout(btn._kpsT);
+  lbl.textContent = text; btn.classList.add("done");
+  btn._kpsT = setTimeout(() => { lbl.textContent = btn._kpsOld; btn._kpsOld = null; btn.classList.remove("done"); }, ms);
 }
 
 function nodeEdits(node) {
@@ -83,13 +86,46 @@ function sendToPoseNode(app, frame, mode, state, btn) {
   flash(btn, isNew ? "Node added" : "Node updated");
 }
 
-// Fill a selected text box (CLIP Text Encode and similar) with the finished prompt.
+// Fill a text box (CLIP Text Encode and similar) with the finished prompt.
+// Uses the selected text node; if none is selected, the one feeding a sampler's positive input, or the only text node on the canvas.
+const TEXT_NAMES = ["text", "prompt", "positive", "text_g", "t5xxl", "string", "value"];
+function textWidget(node) {
+  if (!node || node.type === NODE_TYPE || node.type === "KreaPosePerson" || node.type === "KreaPoseScene" || node.mode === 4) return null;
+  const ws = (node.widgets || []).filter(w => !w.hidden && (w.type === "customtext" || w.options?.multiline || w.element?.tagName === "TEXTAREA" || (typeof w.value === "string" && TEXT_NAMES.includes(w.name))));
+  return ws.find(w => TEXT_NAMES.includes(w.name) && (w.type === "customtext" || w.options?.multiline || w.element?.tagName === "TEXTAREA")) || ws[0] || null;
+}
+function feedsPositive(app, node) {
+  for (const out of node.outputs || []) for (const id of out.links || []) {
+    const l = app.graph.links?.get ? app.graph.links.get(id) : app.graph.links?.[id];
+    const t = l && app.graph.getNodeById(l.target_id);
+    const inp = t?.inputs?.[l.target_slot];
+    if (inp && /positive|conditioning|prompt|text/i.test(inp.name) && !/negative/i.test(inp.name)) return true;
+  }
+  return false;
+}
+function textTarget(app) {
+  const sel = selectedNodes(app).filter(n => textWidget(n));
+  if (sel.length) return sel[0];
+  const all = (app.graph?._nodes || app.graph?.nodes || []).filter(n => textWidget(n));
+  if (all.length === 1) return all[0];
+  const pos = all.filter(n => feedsPositive(app, n));
+  return pos.length === 1 ? pos[0] : null;
+}
 function sendToText(app, text, btn) {
-  const node = selectedNodes(app).find(n => n.widgets?.some(w => w.name === "text" || w.name === "prompt"));
-  if (!node) { flash(btn, "Select a text node first"); return; }
-  setWidget(node, "text", text) || setWidget(node, "prompt", text);
+  const node = textTarget(app);
+  if (!node) {
+    const any = (app.graph?._nodes || app.graph?.nodes || []).some(n => textWidget(n));
+    flash(btn, any ? "Select the text node first" : "Add a text node first", 2600);
+    return;
+  }
+  const w = textWidget(node);
+  w.value = text;
+  w.callback?.(text);
+  if (w.element && "value" in w.element) w.element.value = text;
+  node.setDirtyCanvas?.(true, true);
   app.graph.setDirtyCanvas(true, true);
-  flash(btn, "Sent");
+  app.canvas?.selectNode?.(node);
+  flash(btn, "Sent to " + String(node.title || node.type).replace(/\s*\(.*\)\s*$/, "").slice(0, 26), 2200);
 }
 
 // ---- preview images ----
