@@ -97,8 +97,8 @@
 .kpg-tabs button[aria-selected="true"] { background: var(--k-ink); color: var(--k-paper); border-color: var(--k-ink); }
 .kpg-sel { font: 13px var(--k-body); color: var(--k-ink); background: var(--k-paper); border: 1px solid var(--k-line); border-radius: 6px; height: 32px; padding: 0 8px; max-width: 260px; }
 .kpg-body { flex: 1 1 auto; min-height: 0; display: grid; grid-template-columns: minmax(0, 1fr) 380px; }
-.kpg-grid { overflow-y: auto; padding: 14px 16px 24px; display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 12px; align-content: start; }
-.kpg-card { all: unset; box-sizing: border-box; cursor: pointer; display: flex; flex-direction: column; background: var(--k-paper); border: 2px solid var(--k-line); border-radius: 10px; overflow: hidden; transition: border-color .12s, transform .12s; }
+.kpg-grid { overflow-y: auto; padding: 14px 16px 24px; display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); grid-auto-rows: max-content; gap: 12px; align-content: start; }
+.kpg-card { all: unset; box-sizing: border-box; cursor: pointer; min-height: min-content; flex-shrink: 0; display: flex; flex-direction: column; background: var(--k-paper); border: 2px solid var(--k-line); border-radius: 10px; overflow: hidden; transition: border-color .12s, transform .12s; }
 .kpg-card:hover, .kpg-card.is-focus { border-color: var(--k-accent); }
 .kpg-card:focus-visible { outline: 2px solid var(--k-accent); outline-offset: 2px; }
 .kpg-card.is-current { box-shadow: 0 0 0 2px var(--k-accent) inset; }
