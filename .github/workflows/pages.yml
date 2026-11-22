@@ -1,9 +1,10 @@
 name: Publish web sheet to GitHub Pages
 
+# Manual for now. To deploy on every change once Pages is turned on, add:
+#   push:
+#     branches: [main]
+#     paths: ["web/**", "site/**"]
 on:
-  push:
-    branches: [main]
-    paths: ["web/**", "site/**", "scripts/build_site.sh", ".github/workflows/pages.yml"]
   workflow_dispatch:
 
 permissions:

@@ -6,11 +6,11 @@ Krea 2 pose prompts, sorted by shoot, right inside ComfyUI.
 - **Send to the canvas.** Each frame has **To node** (adds a Krea Pose Prompt node set to that frame, or updates the selected one) and **To text box** (fills the selected CLIP Text Encode). Each set has **Set to node**, which outputs the whole set as a list.
 - **Krea Pose Prompt node.** Pick a frame, then choose `single frame`, `whole set` or `whole tab`. Outputs `prompt` (one prompt, or all of them one per line), `prompt_list` (a list, so the graph runs once per prompt) and `count`.
 - **Krea Pose Person node.** Dropdowns for gender, build, height, hair, eyes, skin and complexion. Link its output to the Pose Prompt node's `person` input.
-- **Web version.** The same sheet as a web page at [ilikeredheads.github.io/comfyui-krea-pose-sheet](https://ilikeredheads.github.io/comfyui-krea-pose-sheet/), for use outside ComfyUI.
+- **Web version (optional).** The same sheet can be published as a web page on GitHub Pages. See below.
 
 ## Install
 
-**ComfyUI Manager:** search for **Krea Pose Sheet** and click Install, then restart ComfyUI.
+**ComfyUI Manager:** click **Install via Git URL**, paste `https://github.com/ilikeredheads/comfyui-krea-pose-sheet`, then restart ComfyUI.
 
 **By hand:**
 
@@ -34,7 +34,7 @@ Every prompt lives in one file: [`web/poses.json`](web/poses.json). The sidebar,
 
 ### The easy way: ask Claude
 
-Tell Claude in the Krea 2 Prompts project what to change ("add these three poses to the Selfie set", "fix the wording on S20"). Claude edits `poses.json`, runs the checks, bumps the version and pushes. GitHub then rebuilds the web page and publishes the new version to the Comfy Registry automatically.
+Tell Claude in the Krea 2 Prompts project what to change ("add these three poses to the Selfie set", "fix the wording on S20"). Claude edits `poses.json`, runs the checks, bumps the version and pushes to GitHub.
 
 ### By hand on github.com
 
@@ -56,7 +56,7 @@ Tell Claude in the Krea 2 Prompts project what to change ("add these three poses
    - Use `"added"` for a new frame and `"upd"` for an edited one. They show a New or Updated badge for 21 days.
    - Optional: `"note"` (a "Why it works" line), `"bare"` (hand-written Style off text), `"src"` and `"ex"` (links).
 3. Add a line at the top of `changelog` and set `updated` to today's date.
-4. Open `pyproject.toml` and raise `version` (for example `1.0.0` to `1.1.0`). This is what tells the Comfy Registry there's a new release.
+4. Open `pyproject.toml` and raise `version` (for example `1.0.0` to `1.1.0`).
 5. Commit. The **Check data** action flags typos such as a missing comma or an unknown set.
 
 ### From a terminal
@@ -72,16 +72,16 @@ git commit -am "Add elevator selfies" && git push
 
 In ComfyUI Manager, click **Update** on Krea Pose Sheet (or `git pull` in its folder), then restart ComfyUI.
 
-## Publish to the Comfy Registry (one time)
+## Optional: publish to the Comfy Registry
 
 1. Sign in at [registry.comfy.org](https://registry.comfy.org) with GitHub and create a publisher. Put its id in `pyproject.toml` as `PublisherId`.
 2. On the registry, create an API key for that publisher.
 3. In this repo on GitHub: Settings → Secrets and variables → Actions → New repository secret, named `REGISTRY_ACCESS_TOKEN`, with the key as its value.
 4. From then on, every push to `main` that changes the version in `pyproject.toml` publishes automatically. You can also run **Publish to Comfy Registry** by hand from the Actions tab.
 
-## GitHub Pages (one time)
+## Optional: web page on GitHub Pages
 
-Settings → Pages → Source: **GitHub Actions**. The **Publish web sheet** action then deploys the sheet to `https://ilikeredheads.github.io/comfyui-krea-pose-sheet/` on every change.
+Settings → Pages → Source: **GitHub Actions**, then run **Publish web sheet to GitHub Pages** from the Actions tab. The sheet appears at `https://ilikeredheads.github.io/comfyui-krea-pose-sheet/`.
 
 ## Files
 
