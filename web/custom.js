@@ -19,8 +19,8 @@ export async function mergeCustom(data) {
 }
 
 // Save a new prompt (no id) or update one. Keeps data.frames in step and returns the saved frame.
-export async function saveCustom(data, { id = "", title = "", text = "" }) {
-  const r = await fetch(API, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id, title, text }) });
+export async function saveCustom(data, { id = "", title = "", text = "", portable }) {
+  const r = await fetch(API, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id, title, text, portable }) });
   const j = await r.json().catch(() => ({}));
   if (!r.ok) throw new Error(j.error || "Couldn't save the prompt");
   const f = j.frame, i = data.frames.findIndex(x => x.id === f.id);
@@ -37,7 +37,7 @@ export async function deleteCustom(data, id) {
 
 // Download your custom prompts as a file you can keep or share.
 export function exportCustom(data) {
-  const frames = data.frames.filter(f => f.tab === "custom").map(({ title, text, added }) => ({ title, text, added }));
+  const frames = data.frames.filter(f => f.tab === "custom").map(({ title, text, added, portable }) => ({ title, text, added, portable: !!portable }));
   const blob = new Blob([JSON.stringify({ kind: "krea-pose-sheet-custom", version: 1, frames }, null, 2)], { type: "application/json" });
   const a = document.createElement("a");
   a.href = URL.createObjectURL(blob);

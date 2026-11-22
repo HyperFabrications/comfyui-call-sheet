@@ -4,6 +4,9 @@ import { openGallery, localCtx, thumbHTML, snippet, editPrompt } from "./gallery
 import { openBuilder, shortPerson } from "./builder.js";
 import { avatarSVG } from "./figure.js";
 import { mergeCustom } from "./custom.js";
+import { openSceneBuilder, loadPlaces } from "./scene.js";
+import { sceneSVG, kindOf, timeOf } from "./scene_art.js";
+import { places as placeList, parts as sceneParts, locked as sceneLocked } from "./scene_core.js";
 import { loadData, frameKey, frameNo, loadEdits, saveEdit, personText } from "./core.js";
 
 const HERE = new URL(".", import.meta.url);
@@ -115,6 +118,27 @@ async function setPreviewFromLastRender(fid) {
 const app = await getApp();
 const data = await loadData(new URL("poses.json", HERE).href);
 await mergeCustom(data);
+const scenes = await loadData(new URL("scenes.json", HERE).href).catch(() => null);
+let myPlaces = (await loadPlaces()) || [];
+const allPlaces = () => scenes ? placeList(scenes, data.frames, myPlaces) : [];
+const SCENE_TYPE = "KreaPoseScene";
+const sceneState = node => { try { const v = JSON.parse(node.widgets?.find(w => w.name === "scene")?.value || "{}"); return v && typeof v === "object" ? v : {}; } catch (e) { return {}; } };
+// The Krea Pose Scene node linked to a prompt node's scene input, if any.
+function linkedScene(node) {
+  const inp = node.inputs?.find(i => i.name === "scene");
+  const link = inp && inp.link != null ? app.graph.links?.[inp.link] || app.graph.links?.get?.(inp.link) : null;
+  const src = link ? app.graph.getNodeById(link.origin_id) : null;
+  return src && src.type === SCENE_TYPE && src.mode !== 4 ? src : null;
+}
+function nodeOverrides(node) {
+  try { const v = JSON.parse(node.widgets?.find(w => w.name === "scene_overrides")?.value || "[]"); return Array.isArray(v) ? v : []; } catch (e) { return []; }
+}
+// The look of a scene for the little previews: its location's kind and time.
+function sceneLook(s) {
+  const pl = s.place ? allPlaces().find(p => p.id === s.place) : null;
+  const loc = s.location && scenes ? scenes.categories[0].options.find(o => o.value === s.location) : null;
+  return { kind: pl ? kindOf(pl.title + " " + pl.bg) : loc ? loc.kind : "none", time: pl ? timeOf(pl.light + " " + pl.bg) : "" };
+}
 // Looked up live, so prompts you add in the Custom tab are found too.
 const frameOf = value => {
   const v = String(value || "");
@@ -145,6 +169,20 @@ function nodeCtx(node) {
     // Your saved wording shows here too; the node's own copy wins.
     edits: () => ({ ...loadEdits(), ...nodeEdits(node) }),
     setEdit: (id, text) => { saveEdit(id, text); setNodeEdit(node, id, text); dirty(); },
+    // The scene comes from a linked Krea Pose Scene node.
+    scene: () => {
+      const src = linkedScene(node);
+      if (!src || !scenes) return null;
+      const st = sceneState(src), p = sceneParts(scenes, st, allPlaces());
+      return p.on ? { parts: p, label: p.label || (p.extra ? "Your scene" : "") } : null;
+    },
+    overrides: () => nodeOverrides(node),
+    setOverride: (id, on) => {
+      const o = nodeOverrides(node).filter(x => x !== id);
+      if (on) o.push(id);
+      setWidget(node, "scene_overrides", o.length ? JSON.stringify(o) : "");
+      dirty();
+    },
   };
 }
 
@@ -159,7 +197,7 @@ function galleryFor(node) {
   const cur = frameOf(w.value);
   const ctx = nodeCtx(node);
   return openGallery({
-    data, thumbs, current: cur ? cur.id : null, ctx, setPreview: setPreviewFromLastRender, openPerson: personOpener,
+    data, scenes, thumbs, current: cur ? cur.id : null, ctx, setPreview: setPreviewFromLastRender, openPerson: personOpener,
     primary: { label: "Use this frame", run: f => {
       w.value = frameKey(f); w.callback?.(w.value);
       const mode = node.widgets.find(x => x.name === "mode")?.value;
@@ -214,11 +252,61 @@ function addPersonCard(nodeType) {
   nodeType.prototype.onConfigure = function () { const r = onConfigure?.apply(this, arguments); this._kpsDraw?.(); return r; };
 }
 
+// The Krea Pose Scene node: a little picture of the scene and a button that opens the scene builder.
+function addSceneCard(nodeType) {
+  const onNodeCreated = nodeType.prototype.onNodeCreated;
+  nodeType.prototype.onNodeCreated = function () {
+    const r = onNodeCreated?.apply(this, arguments);
+    const node = this;
+    const sw = node.widgets?.find(w => w.name === "scene");
+    if (!sw || !node.addDOMWidget || !scenes) return r;
+    const wrap = document.createElement("div");
+    wrap.className = "kps kpn kpsc";
+    wrap.innerHTML = `<button type="button" class="kpn-face kpsc-face" title="Open the scene builder"></button>
+      <div class="kpn-bar"><button type="button" class="kps-btn kps-accent kpn-browse">Build scene</button></div>`;
+    const face = wrap.querySelector(".kpsc-face");
+    const draw = () => {
+      const s = sceneState(node), p = sceneParts(scenes, s, allPlaces()), look = sceneLook(s);
+      const title = !p.on ? "Scene off" : p.plate ? "Clean plate" + (p.label ? " · " + p.label : "") : p.label || (p.extra ? "Frame's own place, adjusted" : "No scene yet");
+      const txt = [p.bg, p.extra, p.light].filter(Boolean).join(" ");
+      face.innerHTML = `<span class="kpsc-art">${sceneSVG(s, { ...look, on: p.on, plate: p.plate, aria: title })}</span><span class="kpn-text"><span class="kpn-title">${esc(title)}</span>
+        <span class="kpn-snip">${esc(!p.on ? "Frames keep their own setting." : txt || "Pick a location or a place. Frames keep their own setting until you do.")}</span></span>`;
+    };
+    const open = () => {
+      // Show the scene on the frame of a prompt node this scene feeds, when there is one.
+      const out = node.outputs?.[0]?.links || [];
+      const target = out.map(id => app.graph.links?.[id] || app.graph.links?.get?.(id)).filter(Boolean).map(l => app.graph.getNodeById(l.target_id)).find(n => n && n.type === NODE_TYPE);
+      const fw = target?.widgets?.find(w => w.name === "frame");
+      openSceneBuilder({
+        data, scenes, state: sceneState(node), sample: fw ? frameOf(fw.value) : null,
+        onChange: st => {
+          sw.value = JSON.stringify(st); sw.callback?.(sw.value);
+          loadPlaces().then(l => { if (l) myPlaces = l; draw(); });
+          draw(); node.setDirtyCanvas?.(true, true);
+          for (const n of app.graph._nodes || []) if (n.type === NODE_TYPE) n._kpsDraw?.();
+        },
+      });
+    };
+    wrap.addEventListener("click", e => { if (e.target.closest(".kpsc-face, .kpn-browse")) open(); });
+    wrap.addEventListener("pointerdown", e => e.stopPropagation());
+    const dom = node.addDOMWidget("scene_card", "kps_scene_card", wrap, { serialize: false, hideOnZoom: false });
+    dom.computeSize = () => [0, 150];
+    sw.hidden = true; sw.computeSize = () => [0, -4];
+    node._kpsDraw = draw;
+    draw();
+    node.setSize([Math.max(node.size[0], 320), node.computeSize()[1]]);
+    return r;
+  };
+  const onConfigure = nodeType.prototype.onConfigure;
+  nodeType.prototype.onConfigure = function () { const r = onConfigure?.apply(this, arguments); this._kpsDraw?.(); return r; };
+}
+
 app.registerExtension({
   name: "krea.PoseSheet",
 
   async beforeRegisterNodeDef(nodeType, nodeData) {
     if (nodeData.name === "KreaPosePerson") { addPersonCard(nodeType); return; }
+    if (nodeData.name === SCENE_TYPE) { addSceneCard(nodeType); return; }
     if (nodeData.name !== NODE_TYPE) return;
     const onNodeCreated = nodeType.prototype.onNodeCreated;
     nodeType.prototype.onNodeCreated = function () {
@@ -235,11 +323,18 @@ app.registerExtension({
         <button type="button" class="kps-btn" data-step="1" title="Next frame">›</button>
         <button type="button" class="kps-btn kpn-edit" title="Rewrite this frame's prompt for this node">Edit prompt</button></div>`;
       const face = wrap.querySelector(".kpn-face");
+      const sceneLine = f => {
+        const sc = scenes && nodeCtx(node).scene();
+        if (!sc) return "";
+        const lock = sceneLocked(scenes, f, nodeOverrides(node));
+        const what = sc.parts.plate ? "Clean plate" : "Scene";
+        return `<span class="kpn-scene${lock && !sc.parts.plate ? " is-locked" : ""}">${lock && !sc.parts.plate ? "Keeps its own location" : `${what}${sc.label ? ": " + esc(sc.label) : ""}`}</span>`;
+      };
       const draw = () => {
         const f = frameOf(fw.value);
         const ed = f && nodeEdits(node)[f.id];
         face.innerHTML = f ? `${thumbHTML(f, thumbs)}<span class="kpn-text"><span class="kpn-title"><span class="kps-no">${frameNo(f.id)}</span> ${esc(f.title)}${ed ? ' <span class="kps-badge kps-upd">Edited</span>' : ""}</span>
-          <span class="kpg-set">${esc(data.tabs.find(t => t.id === f.tab)?.name || "")} · ${esc(data.sets[f.set] || "")}</span><span class="kpn-snip">${esc(snippet(ed ? { ...f, text: ed } : f))}</span></span>`
+          <span class="kpg-set">${esc(data.tabs.find(t => t.id === f.tab)?.name || "")} · ${esc(data.sets[f.set] || "")}</span><span class="kpn-snip">${esc(snippet(ed ? { ...f, text: ed } : f))}</span>${sceneLine(f)}</span>`
           : `<span class="kpn-text"><span class="kpn-title">Pick a frame</span></span>`;
       };
       wrap.addEventListener("click", e => {
@@ -269,8 +364,12 @@ app.registerExtension({
       // The dropdown stays (hidden) so saved workflows and the API keep working.
       fw.hidden = true;
       fw.computeSize = () => [0, -4];
-      const ew = node.widgets.find(w => w.name === "edits");
-      if (ew) { ew.hidden = true; ew.computeSize = () => [0, -4]; }
+      for (const name of ["edits", "scene_overrides"]) {
+        const hw = node.widgets.find(w => w.name === name);
+        if (hw) { hw.hidden = true; hw.computeSize = () => [0, -4]; }
+      }
+      const occ = node.onConnectionsChange;
+      node.onConnectionsChange = function () { const o = occ?.apply(this, arguments); setTimeout(draw, 0); return o; };
       // Put the card where the dropdown was.
       const iw = node.widgets.indexOf(dom), ifw = node.widgets.indexOf(fw);
       if (iw > ifw + 1) { node.widgets.splice(iw, 1); node.widgets.splice(ifw + 1, 0, dom); }
@@ -298,7 +397,7 @@ app.registerExtension({
     refreshThumbs();
     let sheet = null;
     const sideGallery = () => refreshThumbs().then(() => openGallery({
-      data, thumbs, ctx: localCtx(), setPreview: setPreviewFromLastRender, openPerson: personOpener,
+      data, scenes, thumbs, ctx: localCtx(), setPreview: setPreviewFromLastRender, openPerson: personOpener,
       onClose: () => sheet?.reload(),
       primary: { label: "Send to node", run: (f, btn) => { sheet?.reload(); sendToPoseNode(app, f, "single frame", sheet ? sheet.state() : { trigger: "", style: true, person: "" }, btn); return false; } },
       actions: [{ label: "To text box", title: "Put this prompt in the selected CLIP Text Encode (or any node with a text box)", run: (_f, p, btn) => sendToText(app, p, btn) }],

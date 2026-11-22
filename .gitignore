@@ -6,3 +6,5 @@ node_modules/
 thumbs/
 custom_prompts.json
 custom_prompts.json.tmp
+custom_places.json
+custom_places.json.tmp
