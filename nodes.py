@@ -1,12 +1,14 @@
 import json
 
 from . import pose_data as P
+from .custom import load_custom
 
 MODES = ["single frame", "whole set", "whole tab"]
 
 
 def _frames():
-    return P.load()["frames"]
+    # The sheet's frames plus your own prompts from the Custom tab (read fresh, so new ones work without a restart).
+    return P.load()["frames"] + load_custom()
 
 
 def _frame_options():

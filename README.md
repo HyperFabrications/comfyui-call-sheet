@@ -6,6 +6,7 @@ Krea 2 pose prompts, sorted by shoot, right inside ComfyUI.
 - **Preview images.** Render a frame, then press **Use last generation as preview** in the picker. That image shows on the frame's card and on the node from then on. Previews stay on your computer in the `thumbs` folder.
 - **Edit prompt.** Type straight into the prompt box in the picker, or use **Edit prompt** on the node or **Edit** in the sidebar. Your version is used everywhere you pick that frame and saved inside the workflow, and **Reset** brings back the original.
 - **Trigger and person.** The picker's header shows your trigger (click it to change it) and the person in your prompts, with a switch to turn them off. **Edit** opens the person builder: pick a category on the left, choose an option, and a neutral figure on the right updates as you go.
+- **Your own prompts.** Press **New prompt** in the picker to write your own and save it to the **Custom** tab. Name it, write it with [trigger] where your trigger or person should go, and it works in the node like any other frame. Custom prompts are saved on your computer in `custom_prompts.json` in the plugin folder, never uploaded, and kept when you update.
 - **Pose Sheet sidebar.** Open the **Pose Sheet** tab in ComfyUI's left sidebar. Type your LoRA trigger once and every prompt fills it in. Use **Style** off to strip film, grain and palette words when a LoRA should supply the look, **Build a person** to describe who is in the shot, and ☆ to star favorites.
 - **Send to the canvas.** Each frame has **To node** (adds a Krea Pose Prompt node set to that frame, or updates the selected one) and **To text box** (fills the selected CLIP Text Encode). Each set has **Set to node**, which outputs the whole set as a list.
 - **Krea Pose Prompt node.** Pick a frame, then choose `single frame`, `whole set` or `whole tab`. Outputs `prompt` (one prompt, or all of them one per line), `prompt_list` (a list, so the graph runs once per prompt) and `count`.
@@ -56,6 +57,7 @@ Settings → Pages → Source: **GitHub Actions**, then run **Publish web sheet 
 | `web/sheet.js`, `web/sheet.css` | The sheet interface, shared by the sidebar and the web page |
 | `web/gallery.js` | The frame picker and the prompt editor |
 | `web/builder.js`, `web/figure.js` | The person builder and its figure |
+| `custom.py`, `web/custom.js` | Your own prompts (Custom tab), saved locally |
 | `web/pose_sheet.js` | ComfyUI sidebar tab, node frame card and Send buttons |
 | `thumbs.py` | Saves and serves your preview images |
 | `nodes.py`, `pose_data.py` | The two nodes (`pose_data.py` mirrors `core.js`) |

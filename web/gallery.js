@@ -3,6 +3,7 @@
 import { promptFor, personText, subject, frameNo, loadEdits, saveEdit } from "./core.js";
 import { avatarSVG } from "./figure.js";
 import { shortPerson } from "./builder.js";
+import { saveCustom, deleteCustom } from "./custom.js";
 
 const store = {
   get(k) { try { return localStorage.getItem("kps:" + k); } catch (e) { return null; } },
@@ -88,7 +89,8 @@ let open = null;
 export function openGallery({ data, thumbs = {}, current = null, ctx = localCtx(), primary = null, actions = [], setPreview = null, openPerson = null, onClose = null }) {
   if (open) open.close();
   const TABNAME = Object.fromEntries(data.tabs.map(t => [t.id, t.name]));
-  const tagCache = new Map(data.frames.map(f => [f.id, tagsFor(f)]));
+  const tagCache = new Map();
+  const tagOf = f => { let t = tagCache.get(f.id); if (!t) { t = tagsFor(f); tagCache.set(f.id, t); } return t; };
   let favs = new Set(); try { favs = new Set(JSON.parse(store.get("favs") || "[]")); } catch (e) {}
   const cur = current ? data.frames.find(f => f.id === current) : null;
   const st = {
@@ -119,6 +121,7 @@ export function openGallery({ data, thumbs = {}, current = null, ctx = localCtx(
         <div class="kq-tabs" role="tablist"></div>
         <span class="kq-grow"></span>
         <span class="kq-faint kq-count"></span>
+        ${data.hasCustom ? `<button type="button" class="kq-ghost" data-x="newprompt"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>New prompt</span></button>` : ""}
         <button type="button" class="kq-ghost" data-x="filters" aria-expanded="false">${ICON.filter}<span>Filter</span></button>
       </div>
       <div class="kq-filters" hidden>
@@ -140,11 +143,14 @@ export function openGallery({ data, thumbs = {}, current = null, ctx = localCtx(
   const visible = () => {
     const s = st.q.trim().toLowerCase();
     return data.frames.filter(f => inTab(f) && (st.set === "all" || f.set === st.set) &&
-      (!st.camera || tagCache.get(f.id).camera.includes(st.camera)) &&
-      (!st.light || tagCache.get(f.id).light.includes(st.light)) &&
+      (!st.camera || tagOf(f).camera.includes(st.camera)) &&
+      (!st.light || tagOf(f).light.includes(st.light)) &&
       (!s || (f.id + " " + f.title + " " + f.text + " " + (data.sets[f.set] || "")).toLowerCase().includes(s)));
   };
-  const textOf = f => { const e = ctx.edits()[f.id]; return typeof e === "string" && e.trim() ? e : f.text; };
+  const isCustom = f => !!f && f.tab === "custom";
+  let newDraft = null; // a prompt being written in the Custom tab, not saved yet
+  const frameById = id => id === "__new" ? newDraft : data.frames.find(x => x.id === id);
+  const textOf = f => { if (isCustom(f)) return f.text; const e = ctx.edits()[f.id]; return typeof e === "string" && e.trim() ? e : f.text; };
   const isEdited = f => textOf(f) !== f.text;
   const promptOf = f => promptFor(f, { trigger: ctx.trigger(), person: ctx.person().text, style: ctx.style(), edits: ctx.edits() });
 
@@ -158,7 +164,7 @@ export function openGallery({ data, thumbs = {}, current = null, ctx = localCtx(
       const done = save => {
         if (finished) return; finished = true;
         if (save) ctx.setTrigger(inp.value.trim());
-        setTimeout(() => { renderTrigger(); updateReceive(data.frames.find(x => x.id === st.sel)); }, 0);
+        setTimeout(() => { renderTrigger(); updateReceive(frameById(st.sel)); }, 0);
       };
       inp.addEventListener("keydown", e => { e.stopPropagation(); if (e.key === "Enter") { e.preventDefault(); done(true); } if (e.key === "Escape") { e.preventDefault(); done(false); } });
       inp.addEventListener("blur", () => done(true), { once: true });
@@ -194,7 +200,7 @@ export function openGallery({ data, thumbs = {}, current = null, ctx = localCtx(
   }
 
   function card(f) {
-    const tg = tagCache.get(f.id);
+    const tg = tagOf(f);
     const meta = [data.sets[f.set], ...tg.camera.slice(0, 1), ...tg.light.slice(0, 1)].filter(Boolean).join(" · ");
     return `<button type="button" class="kq-card" data-id="${esc(f.id)}" aria-pressed="${f.id === st.sel}" data-tab="${f.tab}">
       ${thumbHTML(f, thumbs)}
@@ -210,7 +216,7 @@ export function openGallery({ data, thumbs = {}, current = null, ctx = localCtx(
     const list = visible();
     q(".kq-count").textContent = `${list.length} shown`;
     q(".kq-grid").innerHTML = list.length ? list.map(card).join("") :
-      `<div class="kq-empty">${st.tab === "starred" && !favs.size ? "Nothing starred yet. Star a frame in the panel to keep it here." : "No frames match. Clear the search or a filter."}</div>`;
+      `<div class="kq-empty">${st.tab === "starred" && !favs.size ? "Nothing starred yet. Star a frame in the panel to keep it here." : st.tab === "custom" && !st.q && !data.frames.some(isCustom) ? "No custom prompts yet. Press New prompt to write your own." : "No frames match. Clear the search or a filter."}</div>`;
   }
   const markSelected = () => el.querySelectorAll(".kq-card").forEach(c => c.setAttribute("aria-pressed", String(c.dataset.id === st.sel)));
 
@@ -218,17 +224,17 @@ export function openGallery({ data, thumbs = {}, current = null, ctx = localCtx(
   let draftTimer = null;
   function renderPanel() {
     const box = q(".kq-panel");
-    const f = data.frames.find(x => x.id === st.sel);
+    const f = frameById(st.sel);
     if (!f) {
       box.innerHTML = `<div class="kq-none"><p class="kq-strong">No frame selected</p><p class="kq-dim">Pick a frame to edit its prompt here.</p></div>`;
       return;
     }
-    const fav = favs.has(f.id);
+    const fav = favs.has(f.id), mine = isCustom(f), fresh = f.id === "__new";
     box.innerHTML = `
       <div class="kq-phead">
         ${thumbs[f.id] ? `<img class="kq-pthumb" src="${esc(thumbs[f.id])}" alt="">` : `<span class="kq-pthumb kq-pthumb-empty">${ICON.image}</span>`}
-        <div class="kq-ptitle"><h3>${esc(f.title)}</h3><span class="kq-dim">${frameNo(f.id)} · ${esc(TABNAME[f.tab] || "")} · ${esc(data.sets[f.set] || "")}</span></div>
-        <button type="button" class="kq-icon kq-star" data-x="star" aria-pressed="${fav}" aria-label="${fav ? "Unstar" : "Star"} this frame">${ICON.star}</button>
+        <div class="kq-ptitle">${mine ? `<input class="kq-titlein" type="text" maxlength="80" placeholder="Name this prompt" value="${esc(fresh ? "" : f.title)}" aria-label="Prompt name">` : `<h3>${esc(f.title)}</h3>`}<span class="kq-dim">${fresh ? "New prompt · saved on this computer" : `${frameNo(f.id)} · ${esc(TABNAME[f.tab] || "")} · ${esc(data.sets[f.set] || "")}`}</span></div>
+        ${fresh ? "" : `<button type="button" class="kq-icon kq-star" data-x="star" aria-pressed="${fav}" aria-label="${fav ? "Unstar" : "Star"} this frame">${ICON.star}</button>`}
       </div>
       <div class="kq-pbody">
         <div class="kq-row kq-plabel"><label for="kq-prompt" class="kq-strong">Prompt</label><span class="kq-edited"></span><span class="kq-grow"></span><span class="kq-faint kq-words"></span></div>
@@ -237,13 +243,16 @@ export function openGallery({ data, thumbs = {}, current = null, ctx = localCtx(
         <div class="kq-receive"><span class="kq-dim">What the node receives</span><p class="kq-mono"></p></div>
         ${f.note ? `<p class="kq-note"><span class="kq-dim">Why it works.</span> ${esc(f.note)}</p>` : ""}
       </div>
-      <div class="kq-pfoot">
+      <div class="kq-pfoot">${fresh ? `
+        <button type="button" class="kq-primary" data-x="savenew">Save to Custom</button>
+        <div class="kq-row kq-actions"><button type="button" class="kq-ghost" data-x="cancelnew"><span>Cancel</span></button></div>` : `
         ${primary ? `<button type="button" class="kq-primary" data-x="primary">${esc(primary.label)}</button>` : ""}
         <div class="kq-row kq-actions">
           ${setPreview ? `<button type="button" class="kq-ghost kq-wide" data-x="preview">${ICON.image}<span>${thumbs[f.id] ? "Replace preview with last generation" : "Use last generation as preview"}</span></button>` : ""}
           <button type="button" class="kq-ghost" data-x="copy">${ICON.copy}<span>Copy</span></button>
           ${actions.map((a, i) => `<button type="button" class="kq-ghost" data-act="${i}" title="${esc(a.title || "")}">${ICON[a.icon] || ICON.arrow}<span>${esc(a.label)}</span></button>`).join("")}
-        </div>
+          ${mine ? `<button type="button" class="kq-ghost kq-danger" data-x="delete"><span>Delete</span></button>` : ""}
+        </div>`}
       </div>`;
     const ta = box.querySelector("textarea");
     ta.value = textOf(f);
@@ -254,16 +263,28 @@ export function openGallery({ data, thumbs = {}, current = null, ctx = localCtx(
       updateDraftBits(f, val);
     });
     ta.addEventListener("keydown", e => { e.stopPropagation(); if (e.key === "Escape") { e.preventDefault(); ta.blur(); } });
+    const ti = box.querySelector(".kq-titlein");
+    if (ti) {
+      ti.addEventListener("keydown", e => { e.stopPropagation(); if (e.key === "Enter") { e.preventDefault(); ta.focus(); } });
+      ti.addEventListener("input", () => { if (fresh) return; clearTimeout(draftTimer); draftTimer = setTimeout(() => saveDraft(f, ta.value), 300); });
+    }
     updateDraftBits(f, ta.value);
   }
+  const refreshCard = f => { const c = el.querySelector(`.kq-card[data-id="${CSS.escape(f.id)}"]`); if (c) c.outerHTML = card(f); };
   function saveDraft(f, val) {
+    if (!f || f.id === "__new") return;
+    if (isCustom(f)) {
+      const title = (q(".kq-titlein")?.value || f.title).trim() || "Untitled";
+      if (!val.trim() || (val === f.text && title === f.title)) return;
+      saveCustom(data, { id: f.id, title, text: val }).then(() => { refreshCard(f); markSelected(); }, () => {});
+      return;
+    }
     ctx.setEdit(f.id, val.trim() === f.text.trim() ? "" : val);
-    const c = el.querySelector(`.kq-card[data-id="${CSS.escape(f.id)}"]`);
-    if (c) c.outerHTML = card(f);
+    refreshCard(f);
     updateReceive(f);
   }
   function updateDraftBits(f, val) {
-    const edited = val.trim() !== f.text.trim();
+    const edited = !isCustom(f) && val.trim() !== f.text.trim();
     const n = val.trim().split(/\s+/).filter(Boolean).length;
     q(".kq-words").textContent = `${n} words${val.includes("[trigger]") ? "" : " · no [trigger]"}`;
     q(".kq-edited").innerHTML = edited ? `<span class="kq-accent">Edited</span><button type="button" class="kq-link" data-x="resetedit">Reset</button>` : "";
@@ -283,15 +304,16 @@ export function openGallery({ data, thumbs = {}, current = null, ctx = localCtx(
   function select(id, focusCard) {
     if (!id || id === st.sel) return;
     clearTimeout(draftTimer);
-    const ta = q(".kq-text"), prev = data.frames.find(x => x.id === st.sel);
+    const ta = q(".kq-text"), prev = frameById(st.sel);
     if (ta && prev) saveDraft(prev, ta.value);
+    if (st.sel === "__new") newDraft = null;
     st.sel = id; markSelected(); renderPanel();
     if (focusCard) { const c = el.querySelector(`.kq-card[data-id="${CSS.escape(id)}"]`); if (c) { c.focus(); c.scrollIntoView({ block: "nearest" }); } }
   }
   function flushDraft() {
     clearTimeout(draftTimer);
-    const ta = q(".kq-text"), f = data.frames.find(x => x.id === st.sel);
-    if (ta && f) ctx.setEdit(f.id, ta.value.trim() === f.text.trim() ? "" : ta.value);
+    const ta = q(".kq-text"), f = frameById(st.sel);
+    if (ta && f) saveDraft(f, ta.value);
   }
   function close() {
     flushDraft();
@@ -313,7 +335,7 @@ export function openGallery({ data, thumbs = {}, current = null, ctx = localCtx(
     if (document.querySelector(".kpe, .kq-builder")) return;
     if (e.key === "Escape") {
       e.stopPropagation(); e.preventDefault();
-      if (e.target.matches && e.target.matches(".kq-text, .kq-trig-edit input")) { e.target.blur(); return; }
+      if (e.target.matches && e.target.matches(".kq-text, .kq-trig-edit input, .kq-titlein")) { e.target.blur(); return; }
       close(); return;
     }
     const map = { ArrowRight: 1, ArrowLeft: -1, ArrowDown: "row", ArrowUp: "-row" };
@@ -332,12 +354,36 @@ export function openGallery({ data, thumbs = {}, current = null, ctx = localCtx(
     const cd = t.closest(".kq-card");
     if (cd) { select(cd.dataset.id); return; }
     const ac = t.closest("[data-act]");
-    if (ac) { flushDraft(); const f = data.frames.find(x => x.id === st.sel); actions[+ac.dataset.act].run(f, promptOf(f), ac); return; }
+    if (ac) { flushDraft(); const f = frameById(st.sel); actions[+ac.dataset.act].run(f, promptOf(f), ac); return; }
     const x = t.closest("[data-x]");
     if (!x) return;
-    const f = data.frames.find(y => y.id === st.sel);
+    const f = frameById(st.sel);
     switch (x.dataset.x) {
       case "close": close(); break;
+      case "newprompt": {
+        flushDraft();
+        st.tab = "custom"; store.set("g:tab", st.tab); st.q = ""; search.value = "";
+        newDraft = { id: "__new", tab: "custom", set: "custom", title: "", text: "[trigger] " };
+        st.sel = "__new"; renderFilters(); renderGrid(); renderPanel();
+        const ta = q(".kq-text"); ta.focus(); ta.setSelectionRange(ta.value.length, ta.value.length);
+        break;
+      }
+      case "cancelnew": newDraft = null; st.sel = (visible()[0] || {}).id || null; markSelected(); renderPanel(); break;
+      case "savenew": {
+        const ta = q(".kq-text"), title = q(".kq-titlein").value.trim();
+        if (!ta.value.replace("[trigger]", "").trim()) { flash(x, "Write the prompt first"); ta.focus(); break; }
+        x.disabled = true;
+        saveCustom(data, { title, text: ta.value }).then(nf => { newDraft = null; st.sel = nf.id; renderGrid(); markSelected(); renderPanel(); },
+          err => { x.disabled = false; flash(x, err.message || "Couldn't save"); });
+        break;
+      }
+      case "delete": {
+        if (!x.dataset.armed) { x.dataset.armed = "1"; flash(x, "Click again to delete", 3000); setTimeout(() => { delete x.dataset.armed; }, 3000); break; }
+        clearTimeout(draftTimer);
+        deleteCustom(data, f.id).then(() => { st.sel = null; renderGrid(); st.sel = (visible()[0] || {}).id || null; markSelected(); renderPanel(); },
+          () => flash(x, "Couldn't delete"));
+        break;
+      }
       case "filters": st.filters = !st.filters; renderFilters(); break;
       case "clearf": st.set = "all"; st.camera = ""; st.light = ""; renderFilters(); renderGrid(); break;
       case "trigger": renderTrigger(true); break;
