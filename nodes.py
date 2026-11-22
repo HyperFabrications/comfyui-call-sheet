@@ -45,7 +45,7 @@ def _state(raw):
 
 
 class KreaPosePrompt:
-    """Pick a frame from the Call Sheet and output it as a ready prompt, or a whole set as a list."""
+    """Pick a starting shot from the Call Sheet and output it as a prompt to build on, or a whole set as a list."""
 
     CATEGORY = "Call Sheet"
     FUNCTION = "build"
@@ -141,14 +141,14 @@ class KreaPosePerson:
 
 
 class KreaPoseScene:
-    """Build a setting (or pick a place) and link it to Call Sheet Pose to put any portable pose there. Can also make clean plates."""
+    """Build a setting (or pick a place) and link it to Call Sheet Shot to put any portable pose there. Can also make clean plates."""
 
     CATEGORY = "Call Sheet"
     FUNCTION = "build"
     RETURN_TYPES = ("KREA_SCENE", "STRING")
     RETURN_NAMES = ("scene", "text")
     OUTPUT_TOOLTIPS = (
-        "Link to the scene input of Call Sheet Pose.",
+        "Link to the scene input of Call Sheet Shot.",
         "The scene on its own: the setting lines, or a full empty scene prompt when Clean plate is on.",
     )
 
@@ -167,14 +167,14 @@ class KreaPoseScene:
 
 
 class KreaPoseOutfit:
-    """Put together an outfit and link it to Call Sheet Pose to dress any frame in it. Swap the whole outfit or only the pieces you pick."""
+    """Put together an outfit and link it to Call Sheet Shot to dress any frame in it. Swap the whole outfit or only the pieces you pick."""
 
     CATEGORY = "Call Sheet"
     FUNCTION = "build"
     RETURN_TYPES = ("KREA_OUTFIT", "STRING")
     RETURN_NAMES = ("outfit", "text")
     OUTPUT_TOOLTIPS = (
-        "Link to the outfit input of Call Sheet Pose.",
+        "Link to the outfit input of Call Sheet Shot.",
         "The outfit on its own, as a Wearing sentence.",
     )
 
@@ -199,7 +199,7 @@ NODE_CLASS_MAPPINGS = {
     "KreaPoseOutfit": KreaPoseOutfit,
 }
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "KreaPosePrompt": "Call Sheet Pose",
+    "KreaPosePrompt": "Call Sheet Shot",
     "KreaPosePerson": "Call Sheet Person",
     "KreaPoseScene": "Call Sheet Scene",
     "KreaPoseOutfit": "Call Sheet Outfit",

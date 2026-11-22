@@ -550,11 +550,11 @@ app.registerExtension({
         compact: true,
         onGallery: sideGallery,
         actions: [
-          { label: "To node", title: "Add a Call Sheet Pose node set to this frame, or update the selected one", run: (f, _p, btn) => sendToPoseNode(app, f, "single frame", sheet.state(), btn) },
+          { label: "To node", title: "Add a Call Sheet Shot node set to this frame, or update the selected one", run: (f, _p, btn) => sendToPoseNode(app, f, "single frame", sheet.state(), btn) },
           { label: "To text box", title: "Put this prompt in the selected CLIP Text Encode (or any node with a text box)", run: (_f, p, btn) => sendToText(app, p, btn) },
         ],
         setActions: [
-          { label: "Set to node", title: "Add a Call Sheet Pose node that outputs this whole set as a list", run: (_s, frames, _p, btn) => frames.length && sendToPoseNode(app, frames[0], "whole set", sheet.state(), btn) },
+          { label: "Set to node", title: "Add a Call Sheet Shot node that outputs this whole set as a list", run: (_s, frames, _p, btn) => frames.length && sendToPoseNode(app, frames[0], "whole set", sheet.state(), btn) },
         ],
       });
     };
