@@ -4,6 +4,10 @@
   "changelog": [
     {
       "date": "2026-11-22",
+      "text": "5 new SFW web finds: lakeside and boat poses from an Instagram carousel."
+    },
+    {
+      "date": "2026-11-22",
       "text": "34 prompts reworded so more of them work with scenes and outfits. The pose, the clothes and the place now sit in their own sentences."
     },
     {
@@ -1766,6 +1770,46 @@
       "set": "Everyday",
       "title": "Morning stretch",
       "text": "[trigger] in a soft morning photograph, standing at an open bedroom window with both arms stretched up overhead, fingers laced, face turned up toward the light with eyes closed. Wearing a loose white cotton tee and pale blue striped pajama shorts. Sheer curtains drifting, an unmade bed edge in the foreground. Medium shot from behind at a slight angle, 35mm lens feel. Bright early sun pouring in through the window, soft glow around her. White and pale blue palette, airy bright finish.",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S74",
+      "tab": "sfw",
+      "set": "WebS",
+      "title": "Leaning on the caravan",
+      "text": "[trigger] in a candid lakeside portrait, leaning back against the side of a weathered white caravan with shoulders angled to the camera, head tilted, chin slightly lowered, calm unsmiling gaze into the lens. Wearing an oversized navy knit turtleneck sweater. Old caravan with faded maroon lettering reading \"LMC\" above her and clear plastic sheeting over its window, more white trailers and a blue metal railing on a wooden dock by the water behind. Medium shot from a slightly high angle, 35mm lens feel. Overcast dusk light, soft and even, cool navy and pale gray palette, subtle film grain.",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S75",
+      "tab": "sfw",
+      "set": "WebS",
+      "title": "Cheek against the window",
+      "text": "[trigger] in a quiet waterside portrait, leaning sideways with her temple and cheek resting against the dark window of a houseboat, body angled out over the water, gaze drifting off to the side, lips softly parted. Wearing an oversized navy knit turtleneck sweater. A pale textured cabin wall fills the left of the frame, with a calm river, a dark tree line and a cloudy sky glowing after sunset on the right. Medium shot taken close along the wall, wide 35mm lens feel so the wall recedes sharply. Soft dusk light from the bright clouds, cool teal and cream palette, subtle film grain.",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S76",
+      "tab": "sfw",
+      "set": "WebS",
+      "title": "Looking up from the boat",
+      "text": "[trigger] in an intimate portrait, sitting in the bow of a small white rowboat and leaning toward the camera, head tilted far to one side, looking straight up into the lens with a still, serious expression. Wearing a black leather jacket over a black turtleneck. Calm dark lake water fills the background, mirroring pale clouds and a tree line along the top edge. Close medium shot from a high angle looking down, 35mm lens feel, background water slightly soft. Blue hour light, soft and diffused, deep teal and black palette, subtle film grain.",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S77",
+      "tab": "sfw",
+      "set": "WebS",
+      "title": "Profile at sunset",
+      "text": "[trigger] in a golden hour portrait, seated in a boat with her body turned away and her head in profile looking left across the water, one hand raised to tuck her hair behind her ear, sleeve pulled over her wrist. Wearing an oversized navy knit turtleneck sweater. A still lake mirrors the forest and sky, with the low sun sinking at the left horizon. Medium shot at eye level from slightly behind her shoulder, shallow depth of field. Low sun from the side rimming her profile with warm flare and cool shadows, gold and slate blue palette, subtle film grain.",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S78",
+      "tab": "sfw",
+      "set": "WebS",
+      "title": "Chin in hand by the lake",
+      "text": "[trigger] in a pensive lakeside portrait, sitting at the water's edge with her back three quarters to the camera, one hand cupped under her chin with fingers resting on her cheek, gazing off across the lake. Wearing an oversized navy chunky knit turtleneck with bunched sleeves. Calm lake reflecting dense green trees and a pale sky. Medium shot over her shoulder at eye level, shallow depth of field. Overcast evening light, soft and cool, navy, forest green and gray blue palette, subtle film grain.",
       "added": "2026-11-22"
     },
     {

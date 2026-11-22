@@ -461,6 +461,11 @@
   "R3": "a hallway",
   "R4": "a pitch dark room",
   "R5": "a doorway",
-  "R6": "a banister"
+  "R6": "a banister",
+  "S74": "a caravan",
+  "S75": "a houseboat window",
+  "S76": "a rowboat",
+  "S77": "a boat on a lake",
+  "S78": "a lakeshore"
  }
 }
