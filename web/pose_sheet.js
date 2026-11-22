@@ -1,7 +1,8 @@
 // ComfyUI entry point: the Pose Sheet sidebar tab, the pose gallery, and the frame card on the Krea Pose Prompt node.
 import { mountSheet } from "./sheet.js";
 import { openGallery, localCtx, thumbHTML, snippet, editPrompt } from "./gallery.js";
-import { openBuilder } from "./builder.js";
+import { openBuilder, shortPerson } from "./builder.js";
+import { avatarSVG } from "./figure.js";
 import { loadData, frameKey, frameNo, loadEdits, saveEdit, personText } from "./core.js";
 
 const HERE = new URL(".", import.meta.url);
@@ -168,10 +169,52 @@ function galleryFor(node) {
   });
 }
 
+// The Krea Pose Person node: a card with the figure's avatar and a button that opens the person builder.
+// The trait dropdowns stay (hidden) so saved workflows and the API keep working.
+function addPersonCard(nodeType) {
+  const onNodeCreated = nodeType.prototype.onNodeCreated;
+  nodeType.prototype.onNodeCreated = function () {
+    const r = onNodeCreated?.apply(this, arguments);
+    const node = this;
+    const traitWs = data.traits.map(t => [t, node.widgets?.find(w => w.name === t.key)]).filter(([, w]) => w);
+    if (!node.addDOMWidget || !traitWs.length) return r;
+    const picks = () => Object.fromEntries(traitWs.map(([t, w]) => [t.key, (t.options.find(o => o.name === w.value) || {}).value || ""]).filter(([, v]) => v));
+    const wrap = document.createElement("div");
+    wrap.className = "kps kpn kpp";
+    wrap.innerHTML = `<button type="button" class="kpn-face kpp-face" title="Open the person builder"></button>
+      <div class="kpn-bar"><button type="button" class="kps-btn kps-accent kpn-browse">Build person</button></div>`;
+    const face = wrap.querySelector(".kpp-face");
+    const draw = () => {
+      const p = picks(), d = personText(p);
+      face.innerHTML = `${avatarSVG(p, 44)}<span class="kpn-text"><span class="kpn-title">${esc(shortPerson(data.traits, p) || "Anyone")}</span>
+        <span class="kpn-snip">${esc(d || "Nothing picked yet, so Krea 2 decides who is in the shot.")}</span></span>`;
+    };
+    const open = () => openBuilder({
+      data, picks: picks(), on: true, toggle: false, doneLabel: "Done",
+      onChange: ({ picks: p }) => {
+        for (const [t, w] of traitWs) { const o = t.options.find(x => x.value === p[t.key]); w.value = o ? o.name : "Any"; w.callback?.(w.value); }
+        draw(); node.setDirtyCanvas?.(true, true);
+      },
+    });
+    wrap.addEventListener("click", e => { if (e.target.closest(".kpp-face, .kpn-browse")) open(); });
+    wrap.addEventListener("pointerdown", e => e.stopPropagation());
+    const dom = node.addDOMWidget("person_card", "kps_person_card", wrap, { serialize: false, hideOnZoom: false });
+    dom.computeSize = () => [0, 112];
+    for (const [, w] of traitWs) { w.hidden = true; w.computeSize = () => [0, -4]; const cb = w.callback; w.callback = function () { const o = cb?.apply(this, arguments); draw(); return o; }; }
+    node._kpsDraw = draw;
+    draw();
+    node.setSize([Math.max(node.size[0], 300), node.computeSize()[1]]);
+    return r;
+  };
+  const onConfigure = nodeType.prototype.onConfigure;
+  nodeType.prototype.onConfigure = function () { const r = onConfigure?.apply(this, arguments); this._kpsDraw?.(); return r; };
+}
+
 app.registerExtension({
   name: "krea.PoseSheet",
 
   async beforeRegisterNodeDef(nodeType, nodeData) {
+    if (nodeData.name === "KreaPosePerson") { addPersonCard(nodeType); return; }
     if (nodeData.name !== NODE_TYPE) return;
     const onNodeCreated = nodeType.prototype.onNodeCreated;
     nodeType.prototype.onNodeCreated = function () {

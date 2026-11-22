@@ -22,7 +22,7 @@ export function shortPerson(traits, picks) {
 
 let current = null;
 
-export function openBuilder({ data, picks = {}, on = true, trigger = "", onChange = () => {} }) {
+export function openBuilder({ data, picks = {}, on = true, trigger = "", onChange = () => {}, toggle = true, doneLabel = "Use in prompts" }) {
   if (current) current.close();
   const T = data.traits;
   const st = { cat: T[0].key, picks: { ...picks }, on };
@@ -40,7 +40,7 @@ export function openBuilder({ data, picks = {}, on = true, trigger = "", onChang
       <span class="kq-dim">Anything left on Any is up to Krea 2</span>
       <span class="kq-grow"></span>
       <button type="button" class="kq-ghost" data-x="reset">Reset</button>
-      <button type="button" class="kq-primary kq-sm" data-x="use">Use in prompts</button>
+      <button type="button" class="kq-primary kq-sm" data-x="use">${esc(doneLabel)}</button>
     </header>
     <div class="kqb-body">
       <nav class="kqb-nav" aria-label="Categories"></nav>
@@ -56,8 +56,8 @@ export function openBuilder({ data, picks = {}, on = true, trigger = "", onChang
       <aside class="kqb-side">
         <div class="kqb-stage"><div class="kqb-fig"></div><div class="kqb-chips"></div></div>
         <div class="kqb-send">
-          <div class="kq-row"><span class="kq-strong">Include in prompts</span><span class="kq-dim kqb-where"></span><span class="kq-grow"></span>
-            <button type="button" class="kq-switch" data-x="toggle" aria-label="Include this person in prompts"><span></span></button></div>
+          <div class="kq-row"><span class="kq-strong">${toggle ? "Include in prompts" : "Person description"}</span><span class="kq-dim kqb-where"></span><span class="kq-grow"></span>
+            ${toggle ? `<button type="button" class="kq-switch" data-x="toggle" aria-label="Include this person in prompts"><span></span></button>` : ""}</div>
           <p class="kq-mono kqb-desc"></p>
           <button type="button" class="kq-ghost kq-tight" data-x="copy">${COPY}<span>Copy</span></button>
         </div>
@@ -93,8 +93,8 @@ export function openBuilder({ data, picks = {}, on = true, trigger = "", onChang
     const d = personText(st.picks);
     q(".kqb-fig").innerHTML = figureSVG(st.picks, { label: d ? "Preview of " + d : "Neutral figure, nothing picked" });
     q(".kqb-chips").innerHTML = T.filter(t => st.picks[t.key]).map(t => `<button type="button" class="kq-chip" data-clear="${t.key}" aria-label="Clear ${esc(t.label)}">${esc(nameOf(t, st.picks[t.key]))}<span aria-hidden="true">×</span></button>`).join("");
-    q('[data-x="toggle"]').setAttribute("aria-pressed", String(st.on));
-    q(".kqb-where").textContent = st.on ? (trigger.trim() ? "after your trigger" : "in place of [trigger]") : "off";
+    q('[data-x="toggle"]')?.setAttribute("aria-pressed", String(st.on));
+    q(".kqb-where").textContent = !toggle ? "sent from this node's person output" : st.on ? (trigger.trim() ? "after your trigger" : "in place of [trigger]") : "off";
     const desc = q(".kqb-desc");
     desc.classList.toggle("is-off", !st.on);
     desc.innerHTML = d ? `${trigger.trim() ? `<span class="kq-faint">${esc(trigger.trim())}, </span>` : ""}${esc(d)}` : `<span class="kq-faint">Pick a trait to start.</span>`;
