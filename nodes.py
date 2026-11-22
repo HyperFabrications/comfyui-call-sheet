@@ -78,6 +78,12 @@ class KreaPosePrompt:
             },
         }
 
+    @classmethod
+    def IS_CHANGED(cls, **kw):
+        # Your own prompts live in a file, so an edit to one doesn't change the node's inputs. Hand ComfyUI
+        # their current text so it runs again instead of reusing the last result.
+        return json.dumps(load_custom(), sort_keys=True, ensure_ascii=False)
+
     def build(self, frame, mode, trigger, style, person=None, edits=None, scene=None, scene_overrides=None, outfit=None, outfit_overrides=None):
         f = _find(frame)
         try:
@@ -150,6 +156,11 @@ class KreaPoseScene:
     def INPUT_TYPES(cls):
         return {"required": {"scene": ("STRING", {"default": "{}", "tooltip": "Set with Build scene on the node."})}}
 
+    @classmethod
+    def IS_CHANGED(cls, scene="{}", **kw):
+        # Your places live in a file, so key the cache on the finished scene, not only the widget.
+        return json.dumps(S.parts(_state(scene), S.places(P.load()["frames"], load_places())), sort_keys=True, ensure_ascii=False)
+
     def build(self, scene):
         p = S.parts(_state(scene), S.places(P.load()["frames"], load_places()))
         return (p, S.scene_text(p) if p["on"] else "")
@@ -170,6 +181,11 @@ class KreaPoseOutfit:
     @classmethod
     def INPUT_TYPES(cls):
         return {"required": {"outfit": ("STRING", {"default": "{}", "tooltip": "Set with Build outfit on the node."})}}
+
+    @classmethod
+    def IS_CHANGED(cls, outfit="{}", **kw):
+        # Your items live in a file, so editing one leaves the widget the same. Key the cache on the finished outfit.
+        return json.dumps(O.parts(_state(outfit), load_items()), sort_keys=True, ensure_ascii=False)
 
     def build(self, outfit):
         p = O.parts(_state(outfit), load_items())
