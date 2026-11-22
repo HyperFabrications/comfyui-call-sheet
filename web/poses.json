@@ -4,6 +4,10 @@
   "changelog": [
     {
       "date": "2026-11-22",
+      "text": "8 more SFW web finds from a second Instagram carousel: doorway, balcony, sofa and home poses."
+    },
+    {
+      "date": "2026-11-22",
       "text": "3 lakeside frames (S76, S77, S78) reworded so they work with scenes. The boat and the lake now sit in the setting sentence."
     },
     {
@@ -1814,6 +1818,70 @@
       "set": "WebS",
       "title": "Chin in hand by the lake",
       "text": "[trigger] in a pensive portrait, sitting with her back three quarters to the camera, one hand cupped under her chin with fingers resting on her cheek, gazing off into the distance. Wearing an oversized navy chunky knit turtleneck with bunched sleeves. The edge of a calm lake reflecting dense green trees and a pale sky. Medium shot over her shoulder at eye level, shallow depth of field. Overcast evening light, soft and cool, navy, forest green and gray blue palette, subtle film grain.",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S79",
+      "tab": "sfw",
+      "set": "WebS",
+      "title": "Feet up on the doorframe",
+      "text": "[trigger] in a sunlit home portrait, sitting on the floor in an open balcony doorway with her back against one side of the frame, legs raised high and stretched across the opening, bare soles pressed flat against the opposite doorframe, one hand resting on the floorboards, looking into the lens with a calm, steady expression. Wearing a loose cream chiffon blouse with full balloon sleeves and dark brown leggings, barefoot. Old peeling white wooden door frame, a sheer white curtain on one side, a sunny balcony with a white iron railing and yellow autumn trees behind. Medium full shot from a slightly high angle, 35mm lens feel, shallow depth of field. Bright late morning sun from behind, warm backlight and soft fill, cream, chocolate brown and honey palette, subtle film grain.",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S80",
+      "tab": "sfw",
+      "set": "WebS",
+      "title": "Arms wide on the railing",
+      "text": "[trigger] in a black and white balcony portrait, standing with her back to a low iron railing, both arms stretched wide to grip the rail on either side, one knee bent and that foot crossed lightly in front of the other, head tilted, laughing at the lens. Wearing a loose sheer white blouse with full balloon sleeves, cinched at the waist with a wide white corset belt, dark leggings, barefoot. Small tiled balcony framed by open tall glass doors, city rooftops and treetops behind. Full length shot from inside the doorway at eye level, 35mm lens feel. Bright direct sun casting railing shadows across the tiles, crisp contrast, monochrome film look with fine grain.",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S81",
+      "tab": "sfw",
+      "set": "WebS",
+      "title": "Chin on fist in the doorway",
+      "text": "[trigger] in a sunlit home portrait, sitting low on a step with knees drawn up and bare feet together on the floor, one elbow propped on her knee and her chin resting on her loose fist, gazing off to the side with a thoughtful, faraway look. Wearing a loose cream chiffon blouse with full balloon sleeves and dark brown leggings. Sitting on the threshold of an open balcony door with a peeling white shutter, a sheer curtain and worn herringbone parquet floor. Medium full shot at eye level, 50mm lens feel, shallow depth of field. Warm morning sun streaming from behind through the door, soft bounce on her face, cream and walnut palette, subtle film grain.",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S82",
+      "tab": "sfw",
+      "set": "WebS",
+      "title": "Hands framing the head",
+      "text": "[trigger] in a black and white portrait, both arms raised so the sleeves frame her face, one hand resting on top of her head and the other curled up beside her cheek, elbows out wide, head tilted slightly, soft closed lip smile at the lens. Wearing a loose sheer white blouse with full balloon sleeves. Dark carved wooden paneling and a glass cabinet behind. Medium close shot at eye level, 50mm lens feel. Soft daylight from a window to one side, gentle shadows, monochrome film look with fine grain.",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S83",
+      "tab": "sfw",
+      "set": "WebS",
+      "title": "Legs up on the sofa",
+      "text": "[trigger] in a black and white playful portrait, lying on her back across a white sofa with her head and shoulders draped over the rounded armrest, both legs raised straight up toward the ceiling, hands holding the backs of her calves, head tipped back looking toward the camera upside down. Wearing a loose sheer white blouse with full balloon sleeves and dark leggings, barefoot. Plump white slipcovered sofa against a plain pale wall. Medium full shot from the side at sofa height, 35mm lens feel, generous negative space above. Soft even daylight, airy high key tones, monochrome film look with fine grain.",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S84",
+      "tab": "sfw",
+      "set": "WebS",
+      "title": "Arm up against the wall",
+      "text": "[trigger] in a sunlit balcony portrait, leaning her back and shoulder against a wall, one arm stretched straight up with the hand resting in a loose fist high on the wall, the other arm hanging relaxed by her hip, chin slightly lowered, cool steady gaze into the lens. Wearing a loose cream chiffon blouse with full balloon sleeves, cinched with a wide cream corset belt, and dark brown leggings. A white pillar beside tall dusty glass doors, a balcony railing, golden autumn trees and pale city rooftops behind. Medium full shot at eye level, 50mm lens feel, shallow depth of field. Warm afternoon sun from the side, soft glow on the fabric, cream, gold and brown palette, subtle film grain.",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S85",
+      "tab": "sfw",
+      "set": "WebS",
+      "title": "Hand in hair close up",
+      "text": "[trigger] in a black and white close portrait, head tilted slightly, one hand lifted to push her hair back at the side of her head, warm smile with eyes looking straight into the lens. Wearing a loose white collared blouse, open at the neck. Dark carved wooden furniture softly out of focus behind. Head and shoulders shot at eye level, 85mm lens feel, shallow depth of field. Soft window light from the front side, gentle falloff, monochrome film look with fine grain.",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S86",
+      "tab": "sfw",
+      "set": "WebS",
+      "title": "Hugging knees on the ottoman",
+      "text": "[trigger] in a bright home portrait, sitting on a cushioned ottoman with knees pulled up to her chest, arms wrapped around her shins and hands clasped at her ankles, bare feet resting on the cushion edge, beaming a wide smile at the lens. Wearing a loose cream chiffon blouse with full balloon sleeves and dark brown leggings. A white slipcovered ottoman in the corner of a pale room, sheer white curtains and a window behind, warm wooden floorboards. Full length shot from a slightly high angle, 35mm lens feel. Soft diffused window light from behind and to the side, airy cream and taupe palette, subtle film grain.",
       "added": "2026-11-22"
     },
     {
