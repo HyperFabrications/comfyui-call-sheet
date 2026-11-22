@@ -423,3 +423,9 @@
 .kpn-tags { margin-top: auto; display: flex; flex-wrap: wrap; gap: 4px; }
 .kpn-tags .kpn-scene { margin-top: 0; }
 .kpn-tags:empty { display: none; }
+
+/* What came from the Outfit and Scene nodes, in the picker's receive box */
+.kq-receive mark.kq-mo, .kq-leg.kq-mo { color: #f0c48a; background: rgba(240,170,90,.14); }
+.kq-receive mark.kq-ms, .kq-leg.kq-ms { color: #9fd9b0; background: rgba(110,200,140,.13); }
+.kq-leg { display: inline-block; margin-left: 6px; padding: 0 6px; border-radius: 4px; font-size: 11px; }
+.kq-receive p { max-height: 132px; }

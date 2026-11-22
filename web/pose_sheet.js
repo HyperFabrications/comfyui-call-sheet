@@ -9,7 +9,8 @@ import { sceneSVG, kindOf, timeOf } from "./scene_art.js";
 import { places as placeList, parts as sceneParts, locked as sceneLocked } from "./scene_core.js";
 import { openOutfitBuilder, loadItems } from "./outfit.js";
 import { outfitSVG } from "./outfit_art.js";
-import { parts as outfitParts, locked as outfitLocked, outfitText } from "./outfit_core.js";
+import { parts as outfitParts, locked as outfitLocked, outfitText, withOutfit } from "./outfit_core.js";
+import { withScene } from "./scene_core.js";
 import { loadData, frameKey, frameNo, loadEdits, saveEdit, personText } from "./core.js";
 
 const HERE = new URL(".", import.meta.url);
@@ -450,19 +451,29 @@ app.registerExtension({
         if (!sc) return "";
         const lock = sceneLocked(scenes, f, nodeOverrides(node));
         const what = sc.parts.plate ? "Clean plate" : "Scene";
-        return `<span class="kpn-scene${lock && !sc.parts.plate ? " is-locked" : ""}">${lock && !sc.parts.plate ? "Keeps its own location" : `${what}${sc.label ? ": " + esc(sc.label) : ""}`}</span>`;
+        if (sc.parts.plate) return `<span class="kpn-scene" title="Clean plate from your Scene node: the shot with nobody in it">Clean plate${sc.label && !lock ? ": " + esc(sc.label) : ""}</span>`;
+        return lock ? `<span class="kpn-scene is-locked" title="This pose needs its own location, so the Scene node is skipped">Setting: frame's own</span>`
+          : `<span class="kpn-scene" title="The frame's setting is replaced by your Scene node">Setting: Scene node${sc.label ? " (" + esc(sc.label) + ")" : ""}</span>`;
       };
       const outfitLine = f => {
         const o = outfits && nodeCtx(node).outfit();
         if (!o) return "";
         const lock = outfitLocked(outfits, f, outfitOverrides(node));
-        return `<span class="kpn-outfit${lock ? " is-locked" : ""}">${lock ? "Keeps its own clothes" : "Outfit: " + esc(o.label)}</span>`;
+        return lock ? `<span class="kpn-outfit is-locked" title="This pose relies on its own clothes, so the Outfit node is skipped">Clothes: frame's own</span>`
+          : `<span class="kpn-outfit" title="The frame's own clothes are replaced by your Outfit node">Clothes: Outfit node (${esc(o.label)})</span>`;
       };
       const draw = () => {
         const f = frameOf(fw.value);
         const ed = f && nodeEdits(node)[f.id];
+        // The card shows the prompt as the node outputs it, with a linked outfit and scene already applied.
+        let shown = f && (ed ? { ...f, text: ed } : f);
+        if (f) {
+          const ctx = nodeCtx(node), o = outfits && ctx.outfit(), sc = scenes && ctx.scene();
+          if (o) { const [t, ch] = withOutfit(outfits, shown, o.parts, outfitOverrides(node)); if (ch) shown = { ...shown, text: t }; }
+          if (sc && !sc.parts.plate) { const [t, ch] = withScene(scenes, shown, sc.parts, nodeOverrides(node)); if (ch) shown = { ...shown, text: t }; }
+        }
         face.innerHTML = f ? `${thumbHTML(f, thumbs)}<span class="kpn-text"><span class="kpn-title"><span class="kps-no">${frameNo(f.id)}</span> ${esc(f.title)}${ed ? ' <span class="kps-badge kps-upd">Edited</span>' : ""}</span>
-          <span class="kpg-set">${esc(data.tabs.find(t => t.id === f.tab)?.name || "")} · ${esc(data.sets[f.set] || "")}</span><span class="kpn-snip">${esc(snippet(ed ? { ...f, text: ed } : f))}</span><span class="kpn-tags">${sceneLine(f)}${outfitLine(f)}</span></span>`
+          <span class="kpg-set">${esc(data.tabs.find(t => t.id === f.tab)?.name || "")} · ${esc(data.sets[f.set] || "")}</span><span class="kpn-snip">${esc(snippet(shown))}</span><span class="kpn-tags">${sceneLine(f)}${outfitLine(f)}</span></span>`
           : `<span class="kpn-text"><span class="kpn-title">Pick a frame</span></span>`;
       };
       wrap.addEventListener("click", e => {
@@ -487,7 +498,7 @@ app.registerExtension({
       wrap.addEventListener("pointerdown", e => e.stopPropagation());
 
       const dom = node.addDOMWidget("frame_card", "kps_frame_card", wrap, { serialize: false, hideOnZoom: false });
-      dom.computeSize = () => [0, 168];
+      dom.computeSize = () => [0, 188];
 
       // The dropdown stays (hidden) so saved workflows and the API keep working.
       fw.hidden = true;
