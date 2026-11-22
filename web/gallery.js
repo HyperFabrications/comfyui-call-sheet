@@ -279,7 +279,7 @@ export function openGallery({ data, scenes = null, outfits = null, thumbs = {}, 
         <div class="kq-row kq-plabel"><label for="kq-prompt" class="kq-strong">Prompt</label><span class="kq-edited"></span></div>
         <textarea id="kq-prompt" class="kq-text" spellcheck="true"></textarea>
         <div class="kq-row kq-hint"><span class="kq-faint">Keep [trigger] where your trigger or person should go.</span><span class="kq-grow"></span><span class="kq-words"></span></div>
-        <div class="kq-receive"><span class="kq-dim">What the node receives</span><p class="kq-mono"></p></div>
+        <div class="kq-receive"><span class="kq-dim kq-rhead">What the node receives</span><p class="kq-mono"></p></div>
         ${f.note ? `<p class="kq-note"><span class="kq-dim">Why it works.</span> ${esc(f.note)}</p>` : ""}
       </div>
       <div class="kq-pfoot">${fresh ? `
@@ -336,7 +336,7 @@ export function openGallery({ data, scenes = null, outfits = null, thumbs = {}, 
       return `<div class="kq-scene">${ICON.scene}<span class="kq-grow"><span>Clean plate${sc.label && !(lock && !ov) ? ": " + esc(sc.label) : ""}</span>
         <span class="kq-dim">${lock && !ov ? "This frame's own place, with nobody in it." : "This shot's look in the scene, with nobody in it."}</span></span></div>`;
     }
-    if (!lock) return `<div class="kq-scene">${ICON.scene}<span class="kq-grow"><span>Scene${sc.label ? ": " + esc(sc.label) : ""}</span><span class="kq-dim">Replaces this frame's setting. The pose works anywhere.</span></span></div>`;
+    if (!lock) return `<div class="kq-scene">${ICON.scene}<span class="kq-grow"><span>Setting from your Scene node${sc.label ? ": " + esc(sc.label) : ""}</span><span class="kq-dim">The prompt shows the frame's default setting. The node gets yours, in green below.</span></span></div>`;
     if (!ov) return `<div class="kq-scene is-muted">${ICON.lock}<span class="kq-grow"><span>Keeps its own location</span><span class="kq-dim">The pose uses ${esc(propOf(scenes, f))}, so the scene is skipped here.</span></span>
       <button type="button" class="kq-ghost kq-tight kq-filled" data-x="override">Use scene anyway</button></div>`;
     return `<div class="kq-scene is-warn">${ICON.warn}<span class="kq-grow"><span>Scene on, location overridden</span><span class="kq-dim">The pose still mentions ${esc(propOf(scenes, f))}. Check it fits the new place.</span></span>
@@ -346,9 +346,10 @@ export function openGallery({ data, scenes = null, outfits = null, thumbs = {}, 
     const of = outfitNow();
     if (!of || fresh) return "";
     const ov = wearOverrides().includes(f.id), lock = outfitLocked(outfits, f);
-    const what = of.parts.swap === "pick" ? "Swaps only the pieces you picked." : "Replaces what she wears in this frame.";
+    const what = of.parts.swap === "pick" ? "The prompt shows the frame's default clothes. The node gets them with your picked pieces swapped, in orange below."
+      : "The prompt shows the frame's default clothes. The node gets your outfit, in orange below.";
     if (f.tab === "custom" && lock) return `<div class="kq-scene is-muted">${ICON.lock}<span class="kq-grow"><span>Keeps its own clothes</span><span class="kq-dim">Add a sentence that starts with Wearing to this prompt, and the outfit can change it.</span></span></div>`;
-    if (!lock) return `<div class="kq-scene">${ICON.outfit}<span class="kq-grow"><span>Outfit: ${esc(of.label)}</span><span class="kq-dim">${what}</span></span></div>`;
+    if (!lock) return `<div class="kq-scene">${ICON.outfit}<span class="kq-grow"><span>Clothes from your Outfit node (${esc(of.label)})</span><span class="kq-dim">${what}</span></span></div>`;
     if (!ov) return `<div class="kq-scene is-muted">${ICON.lock}<span class="kq-grow"><span>Keeps its own clothes</span><span class="kq-dim">The pose uses ${esc(garmentOf(outfits, f))}, so the outfit is skipped here.</span></span>
       <button type="button" class="kq-ghost kq-tight kq-filled" data-x="wearanyway">Use outfit anyway</button></div>`;
     return `<div class="kq-scene is-warn">${ICON.warn}<span class="kq-grow"><span>Outfit on, clothes overridden</span><span class="kq-dim">The pose still mentions ${esc(garmentOf(outfits, f))}. Check it fits the new outfit.</span></span>
@@ -381,8 +382,21 @@ export function openGallery({ data, scenes = null, outfits = null, thumbs = {}, 
     if (typeof v === "string") { if (v.trim() && v.trim() !== f.text.trim()) ed[f.id] = v; else delete ed[f.id]; }
     const text = promptFor(sceneFrame(f, ed), { trigger: ctx.trigger(), person: ctx.person().text, style: ctx.style() });
     const subj = subject(ctx.trigger(), ctx.person().text);
-    const at = text.indexOf(subj);
-    p.innerHTML = at >= 0 && subj !== "[trigger]" ? esc(text.slice(0, at)) + `<mark>${esc(subj)}</mark>` + esc(text.slice(at + subj.length)) : esc(text);
+    // Mark what came from elsewhere: the person, the Outfit node's clothes and the Scene node's setting.
+    const marks = [];
+    if (subj !== "[trigger]") marks.push([subj, ""]);
+    const base = withEdit(f, ed), of = outfitNow(), sc = sceneNow();
+    if (of && withOutfit(outfits, base, of.parts, wearOverrides())[1]) {
+      const line = text.match(/(?:^|\.\s)((?:Wearing|She wears|She is wearing)\b[^.]*\.)/);
+      if (line) marks.push([line[1], "kq-mo"]);
+    }
+    if (sc && !sc.parts.plate && sc.parts.bg && text.includes(sc.parts.bg)) marks.push([sc.parts.bg, "kq-ms"]);
+    const spans = marks.map(([s, c]) => [text.indexOf(s), s, c]).filter(x => x[0] >= 0).sort((a, b) => a[0] - b[0]);
+    let html = "", at = 0;
+    for (const [i, s, c] of spans) { if (i < at) continue; html += esc(text.slice(at, i)) + `<mark${c ? ` class="${c}"` : ""}>${esc(s)}</mark>`; at = i + s.length; }
+    p.innerHTML = html + esc(text.slice(at));
+    const head = q(".kq-rhead");
+    if (head) head.innerHTML = "What the node receives" + spans.filter(x => x[2]).map(x => x[2] === "kq-mo" ? ' <span class="kq-leg kq-mo">clothes from Outfit node</span>' : ' <span class="kq-leg kq-ms">setting from Scene node</span>').join("");
   }
 
   function select(id, focusCard) {
