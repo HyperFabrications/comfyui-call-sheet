@@ -1,7 +1,11 @@
 {
   "version": 1,
-  "updated": "2026-11-21",
+  "updated": "2026-11-22",
   "changelog": [
+    {
+      "date": "2026-11-22",
+      "text": "41 new SFW prompts in three new sets: fashion poses, places, and everyday poses."
+    },
     {
       "date": "2026-11-21",
       "text": "Build a person now opens from the top bar anywhere on the page."
@@ -44,7 +48,10 @@
         "Portrait",
         "Selfie",
         "Outdoor",
-        "WebS"
+        "WebS",
+        "Fashion",
+        "Places",
+        "Everyday"
       ]
     },
     {
@@ -83,6 +90,9 @@
     }
   ],
   "sets": {
+    "Fashion": "Fashion poses",
+    "Places": "Places",
+    "Everyday": "Everyday poses",
     "Angle": "Camera angle fixes",
     "Dark": "Dark and back lit",
     "Studio": "Seamless studio",
@@ -1381,6 +1391,348 @@
       "set": "Mirror",
       "title": "Bathroom counter, flash on",
       "text": "[trigger] in a playful mirror selfie, sitting on the edge of a bathroom counter beside the sink, turned toward the mirror with one knee drawn up and the other leg hanging down, phone held up with the flash on, tongue between her teeth in a grin. Wearing a black lace trimmed camisole and matching satin shorts, stacked silver rings and a thin chain necklace. Round mirror, pink tile, a toothbrush cup and a hanging towel. Three quarter reflection at eye level, phone camera look. Direct phone flash bursting in the mirror with hard shadows, pink and black palette, glossy night out finish."
+    },
+    {
+      "id": "S33",
+      "tab": "sfw",
+      "set": "Fashion",
+      "title": "Three quarter turn",
+      "text": "[trigger] in a clean fashion lookbook photograph, standing in a three quarter turn with one foot staggered behind the other, hips angled away from the camera and face turned back toward the lens, arms relaxed at her sides. Wearing a camel wool wrap coat over a cream turtleneck, wide leg charcoal trousers and pointed black loafers. Seamless warm gray studio backdrop. Full length shot at eye level, 85mm lens feel. Large soft key light from the left with gentle falloff. Camel and warm gray palette, crisp editorial finish.",
+      "src": "https://shotkit.com/fashion-poses/",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S34",
+      "tab": "sfw",
+      "set": "Fashion",
+      "title": "Hand on the lapel",
+      "text": "[trigger] in an editorial fashion photograph, standing front on with feet shoulder width apart, one hand gripping the lapel of an oversized double breasted blazer, the other hand tucked in a trouser pocket, chin level with a direct gaze. Navy pinstripe suit over a white ribbed tank and black square toe boots. Plain off white studio wall. Full length shot from slightly below, 50mm lens feel. Hard single strobe from the right casting a crisp shadow on the wall. Navy and chalk white palette, sharp clean finish.",
+      "src": "https://shotkit.com/fashion-poses/",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S35",
+      "tab": "sfw",
+      "set": "Fashion",
+      "title": "Angular arms overhead",
+      "text": "[trigger] in a bold fashion photograph, standing with both arms raised straight and angular above her head, wrists crossed, one hip popped hard to the side, chin level and gaze direct into the lens. Wearing a sculptural cobalt blue satin column dress and pointed silver mules. Seamless cobalt backdrop a shade darker than the dress. Full length shot at eye level, 70mm lens feel. Hard frontal beauty dish light with a tight shadow behind her. Saturated monochrome blue, glossy magazine finish.",
+      "src": "https://shotkit.com/fashion-poses/",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S36",
+      "tab": "sfw",
+      "set": "Fashion",
+      "title": "Foot on the wall",
+      "text": "[trigger] in a sunny street fashion photograph, leaning against a sun warmed terracotta wall with one foot planted flat on it behind her, weight on the other leg, the near forearm resting on her raised knee, glancing off to the side. Wearing a faded indigo denim jacket, a white tee, straight leg jeans and tan suede ankle boots. Full length shot from a slight side angle, 50mm lens feel, shallow depth of field. Hard midday sun casting a sharp shadow on the wall. Terracotta and indigo palette, warm film finish.",
+      "src": "https://shotkit.com/fashion-poses/",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S37",
+      "tab": "sfw",
+      "set": "Fashion",
+      "title": "Studio walk, hand in pocket",
+      "text": "[trigger] in a fashion campaign photograph, walking straight toward the camera mid stride on a long white seamless sweep, one hand in the pocket of a belted stone trench coat, the other arm swinging loosely, head level with a calm, serious expression. Trench worn open over a black knit dress, black leather knee boots. Full length shot at hip height, 85mm lens feel, slight motion in the coat hem. Broad soft overhead light. Stone and black palette, clean minimal finish.",
+      "src": "https://shotkit.com/fashion-poses/",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S38",
+      "tab": "sfw",
+      "set": "Fashion",
+      "title": "Crossed legs, popped knee",
+      "text": "[trigger] in a soft fashion photograph, standing with one leg crossed in front of the other, weight on the back foot, the front knee softly bent, hands loosely clasped at her hip and head tilted with a small smile. Wearing a sage green floral print midi dress with puffed sleeves and white strappy sandals. Plain sage painted studio wall. Full length shot at eye level, 85mm lens feel. Soft window light from the left. Sage, cream and blush palette, airy matte finish.",
+      "src": "https://www.whowhatwear.com/how-to-pose-for-photos-model-off-duty",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S39",
+      "tab": "sfw",
+      "set": "Fashion",
+      "title": "Back of the dress",
+      "text": "[trigger] in an elegant fashion photograph, body turned away from the camera to show the back of a black knit dress with a deep draped cowl back, face turned back over one shoulder toward the lens, one hand resting on the opposite shoulder. Plain warm charcoal backdrop. Three quarter length shot at eye level, 85mm lens feel, shallow depth of field. Single soft key light from high on the right raking across the knit texture. Charcoal and black palette, rich low key finish.",
+      "src": "https://www.whowhatwear.com/how-to-pose-for-photos-model-off-duty",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S40",
+      "tab": "sfw",
+      "set": "Fashion",
+      "title": "Chair, elbow on knee",
+      "text": "[trigger] in an editorial fashion photograph, seated on a bentwood chair in the corner of a bare room, leaning forward with one elbow on her bent knee and chin resting on that hand, the other leg extended, body forming a zigzag line. Wearing an oversized dove gray suit with the jacket sleeves pushed up and white leather sneakers. Pale plaster walls meeting in the corner. Full length shot at eye level, 50mm lens feel. Soft daylight from a window out of frame on the left. Dove gray and plaster white palette, quiet matte finish.",
+      "src": "https://shotkit.com/fashion-poses/",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S41",
+      "tab": "sfw",
+      "set": "Fashion",
+      "title": "Backwards chair",
+      "text": "[trigger] in a fashion photograph, sitting astride a wooden chair turned backwards, forearms folded on the chair back with her chin resting on them, looking straight into the lens. Wearing a worn black leather moto jacket, a white crew neck tee, black jeans and black combat boots. Seamless mid gray backdrop. Medium full shot at eye level, 50mm lens feel. Hard key light from the upper left with deep shadows on the right. Black, white and gray palette, high contrast finish, fine grain.",
+      "src": "https://expertphotography.com/model-poses-fashion-photography",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S42",
+      "tab": "sfw",
+      "set": "Fashion",
+      "title": "Low squat",
+      "text": "[trigger] in a streetwear fashion photograph, squatting low with knees wide, forearms resting on her knees, hands hanging loose, gazing up into the lens with a level, confident look. Wearing an oversized forest green track jacket, matching wide track pants and chunky white sneakers. Bare concrete floor and a raw concrete wall. Full length shot from a low angle, 24mm lens feel, slight wide angle stretch. Hard direct flash with a dark shadow behind her. Forest green and concrete gray palette, crisp flash finish.",
+      "src": "https://expertphotography.com/model-poses-fashion-photography",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S43",
+      "tab": "sfw",
+      "set": "Fashion",
+      "title": "Flowing arm, head lean",
+      "text": "[trigger] in a romantic fashion photograph, standing in a loose relaxed stance with one arm falling away from her body at a soft angle, fingers open, head leaned to one side and eyes half closed. Wearing a floor length pleated chiffon gown in dusty lilac, the skirt lifting in a breeze. Seamless pale lilac backdrop. Full length shot at eye level, 85mm lens feel. Soft diffused light from the front and a gentle rim from behind catching the chiffon. Lilac and pearl palette, dreamy low contrast finish.",
+      "src": "https://shotkit.com/fashion-poses/",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S44",
+      "tab": "sfw",
+      "set": "Fashion",
+      "title": "Hands framing the face",
+      "text": "[trigger] in a close beauty fashion portrait, both hands raised with fingertips resting along her jawline, neck elongated, chin lifted slightly and gaze steady into the lens. Wearing a black fine knit turtleneck and large sculptural gold earrings. Plain deep brown backdrop. Tight head and shoulders close up, 100mm lens feel, shallow depth of field. Soft butterfly light from above the camera with a white bounce below. Gold, black and espresso palette, polished satin finish.",
+      "src": "https://expertphotography.com/model-poses-fashion-photography",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S45",
+      "tab": "sfw",
+      "set": "Fashion",
+      "title": "Long back lean",
+      "text": "[trigger] in a graphic fashion photograph, leaning far back from the hips with one arm stretched long behind her and the other extended forward, head tipped back, the whole body forming one long diagonal line. Wearing a wide leg rust jumpsuit with a deep belted waist and platform sandals. Seamless rust orange backdrop. Full length shot from a low angle, 35mm lens feel. Hard frontal strobe with a crisp shadow cast on the backdrop. Tonal rust palette, bold saturated finish.",
+      "src": "https://shotkit.com/fashion-poses/",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S46",
+      "tab": "sfw",
+      "set": "Fashion",
+      "title": "Hands on hips, low angle",
+      "text": "[trigger] in a powerful fashion photograph, standing with hands on her hips and elbows pushed forward, back slightly arched, chin down and a fierce stare into the lens. Wearing a long black leather trench coat belted tight, black turtleneck and pointed knee boots. Overcast sky and the edge of a concrete rooftop behind. Full length shot from a very low angle, 28mm lens feel. Flat overcast light with a hard rim from the bright sky. Black and slate palette, cool contrasty finish.",
+      "src": "https://expertphotography.com/model-poses-fashion-photography",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S47",
+      "tab": "sfw",
+      "set": "Places",
+      "title": "Sidewalk café table",
+      "text": "[trigger] in a candid street photograph, sitting at a small round marble café table on a sidewalk, legs crossed, one hand lifting an espresso cup and the other holding open a paperback, glancing up at the lens. Wearing a striped navy breton top, a cream midi skirt and ballet flats. Rattan bistro chairs, a green awning and a cobbled street behind. Medium full shot at eye level, 50mm lens feel, shallow depth of field. Soft morning light under the awning. Navy, cream and green palette, warm film finish.",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S48",
+      "tab": "sfw",
+      "set": "Places",
+      "title": "Crosswalk mid stride",
+      "text": "[trigger] in a street style photograph, crossing a wide city crosswalk mid stride, one foot lifting off the white stripes, an iced coffee in one hand and a leather tote over the other shoulder, looking ahead past the camera. Wearing a cropped oatmeal blazer, a white tee, straight black trousers and white sneakers. Yellow taxis, traffic lights and glass towers blurred behind. Full length shot from street level, 85mm lens feel, shallow depth of field. Bright late afternoon sun from the side. Oatmeal and black palette with taxi yellow accents, crisp finish.",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S49",
+      "tab": "sfw",
+      "set": "Places",
+      "title": "Subway car pole",
+      "text": "[trigger] in a candid city photograph, standing in a nearly empty subway car holding a steel pole with one hand, the other hand in her coat pocket, leaning her shoulder on the pole and gazing out the dark window. Wearing a long charcoal wool coat, a burgundy knit scarf and black boots. Orange plastic seats, ad panels and fluorescent tubes running down the car. Medium shot at eye level, 35mm lens feel. Flat greenish fluorescent overhead light. Charcoal, burgundy and orange palette, gritty 35mm film grain.",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S50",
+      "tab": "sfw",
+      "set": "Places",
+      "title": "Gallery, looking at a painting",
+      "text": "[trigger] in a quiet gallery photograph, standing with her back three quarters to the camera, hands clasped behind her, head tilted up toward a huge abstract canvas of blue and ochre brushstrokes on a white wall. Wearing a long cream knit cardigan over a black slip dress and black loafers. Polished pale wood floor and a bench to the side. Full length shot from behind at eye level, 35mm lens feel, lots of negative white wall. Soft even gallery track light from above. White, cream and cobalt palette, clean minimal finish.",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S51",
+      "tab": "sfw",
+      "set": "Places",
+      "title": "Boardwalk railing",
+      "text": "[trigger] in a breezy seaside photograph, leaning back against a weathered wooden boardwalk railing with both elbows resting on the top rail, one ankle crossed over the other, laughing with her face turned toward the wind. Wearing a loose white linen shirt with rolled sleeves, faded denim shorts and canvas sneakers. Dunes with sea grass and a pale blue ocean behind. Full length shot at eye level, 35mm lens feel. Bright hazy sun from behind with soft fill. Sun bleached blue, sand and white palette, airy film finish.",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S52",
+      "tab": "sfw",
+      "set": "Places",
+      "title": "Flower market stall",
+      "text": "[trigger] in a lively market photograph, standing between buckets of tulips and peonies at a flower stall, holding a wrapped bunch of ranunculus to her chest with both arms and smiling down at them. Wearing a butter yellow cardigan, a white tee and wide leg ecru trousers. Striped canopy, chalk price tags and crates of flowers around her. Medium shot at eye level, 50mm lens feel, shallow depth of field, flowers soft in the foreground. Soft overcast light under the canopy. Butter yellow, coral and green palette, fresh natural finish.",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S53",
+      "tab": "sfw",
+      "set": "Places",
+      "title": "Station staircase",
+      "text": "[trigger] in a cinematic travel photograph, walking down a wide stone staircase in a grand old train station, one hand trailing the brass handrail and the other pulling a small leather suitcase, looking back up over her shoulder. Wearing a belted camel trench, a silk scarf knotted at the neck and low heeled loafers. Arched windows, a large clock and travelers blurred behind. Full length shot from below the stairs, 35mm lens feel. Shafts of hazy daylight through the high windows. Camel, brass and stone palette, warm cinematic grain.",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S54",
+      "tab": "sfw",
+      "set": "Places",
+      "title": "Greenhouse bench",
+      "text": "[trigger] in a lush botanical photograph, sitting sideways on a painted iron bench inside a Victorian glass greenhouse, one knee drawn up with her arms wrapped around it, chin resting on her knee and looking toward the lens. Wearing a white broderie anglaise sundress and woven sandals. Giant monstera leaves, ferns and hanging vines all around, white iron glazing bars overhead. Medium full shot at eye level, 50mm lens feel, shallow depth of field. Soft diffused daylight through the glass roof with light humidity haze. Deep green and white palette, fresh soft finish.",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S55",
+      "tab": "sfw",
+      "set": "Places",
+      "title": "Whitewashed steps",
+      "text": "[trigger] in a sunlit travel photograph, sitting on a narrow whitewashed stone staircase in a Mediterranean village, leaning back on her hands with her legs stretched down the steps, face tipped up to the sun with eyes closed. Wearing a cobalt blue linen sundress and tan leather sandals. Bright white walls, a blue painted door and pink bougainvillea spilling over the top of the frame. Full length shot from a few steps below, 35mm lens feel. Hard midday sun with crisp shadows on the steps. White, cobalt and magenta palette, vivid clean finish.",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S56",
+      "tab": "sfw",
+      "set": "Places",
+      "title": "Record store crates",
+      "text": "[trigger] in a candid indoor photograph, flipping through a crate of vinyl records in a small record shop, holding one album sleeve up and reading the back, head tilted. Wearing an oversized vintage band tee tucked into high waisted brown corduroy trousers and white sneakers. Wooden crates, walls covered in album covers and a hand lettered sign reading \"NEW ARRIVALS\" above. Medium shot at eye level, 35mm lens feel. Warm tungsten shop light mixed with daylight from the front window. Brown, mustard and faded red palette, nostalgic film grain.",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S57",
+      "tab": "sfw",
+      "set": "Places",
+      "title": "Neon parking garage",
+      "text": "[trigger] in a moody night photograph, leaning against the hood of a dark vintage coupe in an empty concrete parking garage, arms folded, one boot heel hooked on the bumper, looking straight into the lens. Wearing a silver puffer jacket, a black mini skirt, sheer black tights and black lug sole boots. Painted pillars, oil stained concrete and a buzzing pink neon exit sign. Full length shot at eye level, 35mm lens feel. Pink neon and cold green fluorescent light mixing on her and the car. Magenta and teal palette, grainy night film finish.",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S58",
+      "tab": "sfw",
+      "set": "Places",
+      "title": "Snowy village street",
+      "text": "[trigger] in a wintry travel photograph, walking along a snowy village street holding a paper cup of hot chocolate in both mittened hands, steam curling up, smiling toward the lens. Wearing a long cream puffer coat, a red cable knit beanie, a matching scarf and snow boots. Timber chalets with glowing windows and snow covered rooftops behind. Full length shot at eye level, 85mm lens feel, shallow depth of field. Soft overcast daylight with light snowfall. Cream, red and cool white palette, crisp clean finish.",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S59",
+      "tab": "sfw",
+      "set": "Places",
+      "title": "Vineyard rows",
+      "text": "[trigger] in a golden countryside photograph, walking between rows of grapevines trailing one hand along the leaves, a woven basket on her other arm, turning her head back toward the camera with a soft smile. Wearing a flowing rust midi dress with a square neck and a wide straw hat. Rolling hills and a stone farmhouse in the distance. Full length shot from slightly behind at eye level, 85mm lens feel, shallow depth of field. Low golden hour sun backlighting the vines and her hat brim. Rust, olive and gold palette, warm film finish.",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S60",
+      "tab": "sfw",
+      "set": "Places",
+      "title": "Hotel lobby armchair",
+      "text": "[trigger] in an elegant interior photograph, sitting sideways in a deep green velvet armchair in a grand hotel lobby, legs crossed with one arm resting along the arm of the chair, looking off to the side. Wearing an ivory silk blouse, wide leg black trousers and gold hoop earrings. Marble floor, brass lamps, a tall potted palm and a curved staircase behind. Medium full shot at eye level, 50mm lens feel. Warm lamp light mixed with soft daylight from tall windows. Emerald, ivory and brass palette, rich polished finish.",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S61",
+      "tab": "sfw",
+      "set": "Everyday",
+      "title": "Front steps with coffee",
+      "text": "[trigger] in a relaxed lifestyle photograph, sitting on brick front steps with elbows on her knees, holding a ceramic mug in both hands near her chin, looking out toward the street. Wearing an oversized gray hoodie, black leggings and white socks with slides. Potted herbs on the steps and a black front door behind. Medium full shot at eye level, 50mm lens feel, shallow depth of field. Soft early morning light from the side. Gray, brick red and green palette, soft natural finish.",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S62",
+      "tab": "sfw",
+      "set": "Everyday",
+      "title": "Floor with laptop",
+      "text": "[trigger] in a candid home photograph, sitting cross legged on a rug in front of a low coffee table, typing on an open laptop, a pen held in her teeth and a notebook beside her, frowning slightly at the screen. Wearing a cream knit sweater and loose striped pajama pants. Sofa behind, stacked books and a mug on the table. Medium shot from a slightly high angle, 35mm lens feel. Soft daylight from a window on the left. Cream, oak and blue stripe palette, natural soft finish.",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S63",
+      "tab": "sfw",
+      "set": "Everyday",
+      "title": "Leaning on the counter",
+      "text": "[trigger] in a warm kitchen photograph, leaning back against a butcher block counter with both palms resting on its edge, ankles crossed, laughing at something out of frame. Wearing a loose chambray shirt with rolled sleeves, black jeans and bare feet. Open shelves with jars, a hanging copper pan and a bowl of lemons on the counter. Medium full shot at eye level, 35mm lens feel. Soft morning light from a window behind her with gentle rim light. Chambray blue, oak and lemon yellow palette, airy natural finish.",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S64",
+      "tab": "sfw",
+      "set": "Everyday",
+      "title": "Tying a shoelace",
+      "text": "[trigger] in a candid outdoor photograph, crouching on one knee on a park path to tie the lace of a running shoe, head down, the other foot flat on the ground. Wearing a black zip running jacket, gray leggings and white running shoes, earbuds in. Tree lined path with fallen leaves and a bench behind. Medium full shot from a low angle, 50mm lens feel, shallow depth of field. Cool early morning light with low sun through the trees. Black, gray and amber leaf palette, crisp finish.",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S65",
+      "tab": "sfw",
+      "set": "Everyday",
+      "title": "Curled up reading",
+      "text": "[trigger] in a cozy home photograph, curled sideways in the corner of a deep sofa with her legs tucked under her, reading a thick hardcover propped on her knees, a knit blanket over her lap. Wearing an oversized oatmeal cardigan and thick wool socks. Fringed lamp glowing beside her and a rain streaked window behind. Medium shot at eye level, 50mm lens feel, shallow depth of field. Warm lamp light on her face and cool gray daylight from the window. Oatmeal, amber and slate palette, soft grain.",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S66",
+      "tab": "sfw",
+      "set": "Everyday",
+      "title": "Adjusting sunglasses",
+      "text": "[trigger] in a sunny street photograph, standing on a sidewalk with one hand sliding a pair of tortoiseshell sunglasses down her nose, looking over the top of them into the lens, the other hand holding a crossbody bag strap. Wearing a white button up shirt open over a ribbed tank and light wash jeans. Storefronts with striped awnings blurred behind. Medium shot at eye level, 85mm lens feel, shallow depth of field. Bright midday sun with a hard shadow under the sunglasses. White, denim and warm tan palette, crisp summer finish.",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S67",
+      "tab": "sfw",
+      "set": "Everyday",
+      "title": "Groceries on the hip",
+      "text": "[trigger] in a candid lifestyle photograph, walking down a quiet residential sidewalk carrying a paper grocery bag on one hip with a baguette and leeks sticking out of the top, keys dangling from the other hand, smiling to herself. Wearing a navy quilted vest over a gray sweatshirt, straight jeans and loafers. Brownstones and autumn trees behind. Full length shot at eye level, 50mm lens feel. Soft late afternoon light from the side. Navy, kraft brown and orange leaf palette, warm film finish.",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S68",
+      "tab": "sfw",
+      "set": "Everyday",
+      "title": "Window seat daydream",
+      "text": "[trigger] in a quiet interior photograph, sitting in a deep window seat with her back against the side of the alcove, knees drawn up and feet bare, gazing out through the glass with her chin on her hand. Wearing a soft white t-shirt dress. Cushions, a stack of books on the sill and city rooftops outside. Medium full shot at eye level, 35mm lens feel. Soft diffused daylight through the window, light wrapping around her profile. White and pale gray palette, gentle low contrast finish.",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S69",
+      "tab": "sfw",
+      "set": "Everyday",
+      "title": "Lying in the grass",
+      "text": "[trigger] in a summery outdoor photograph, lying on her back in a meadow with one arm folded behind her head and the other shading her eyes, one knee bent, smiling up at the sky. Wearing a gingham button front sundress in pale blue and white. Clover and small daisies around her head. Direct overhead shot, 35mm lens feel. Bright afternoon sun with dappled shade from leaves at the edge of frame. Pale blue, white and grass green palette, sunny film finish.",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S70",
+      "tab": "sfw",
+      "set": "Everyday",
+      "title": "Jump on the beach",
+      "text": "[trigger] in a joyful action photograph, caught mid jump on a wide sandy beach with knees tucked up and both arms flung overhead, mouth open in a laugh. Wearing a white cropped sweater and loose linen shorts. Flat wet sand reflecting the sky and gentle waves behind. Full length shot from a low angle, 35mm lens feel, frozen motion. Golden hour sun from the side throwing a long shadow. Peach, sand and soft blue palette, warm bright finish.",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S71",
+      "tab": "sfw",
+      "set": "Everyday",
+      "title": "Clear umbrella in the rain",
+      "text": "[trigger] in a rainy city photograph, standing on a wet sidewalk under a clear bubble umbrella held with both hands, tilting her head up to watch the drops on the plastic. Wearing a glossy yellow raincoat, black jeans and black rubber boots. Shop lights reflecting in puddles, blurred passersby with dark umbrellas behind. Medium full shot at eye level, 85mm lens feel, shallow depth of field. Overcast dusk light with warm shop window glow. Yellow, black and wet gray palette, moody film grain.",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S72",
+      "tab": "sfw",
+      "set": "Everyday",
+      "title": "On a call, walking",
+      "text": "[trigger] in a candid city photograph, walking along a sunny street with a phone held to her ear, mid laugh, free hand tucking into the pocket of her blazer, a canvas tote on her shoulder. Wearing a cherry red blazer over a white tee, pale wide leg jeans and white sneakers. Brick buildings and leafy trees blurred behind. Full length shot at eye level, 85mm lens feel, shallow depth of field. Warm late morning sun from behind with soft fill. Cherry red, white and denim palette, clean bright finish.",
+      "added": "2026-11-22"
+    },
+    {
+      "id": "S73",
+      "tab": "sfw",
+      "set": "Everyday",
+      "title": "Morning stretch",
+      "text": "[trigger] in a soft morning photograph, standing at an open bedroom window with both arms stretched up overhead, fingers laced, face turned up toward the light with eyes closed. Wearing a loose white cotton tee and pale blue striped pajama shorts. Sheer curtains drifting, an unmade bed edge in the foreground. Medium shot from behind at a slight angle, 35mm lens feel. Bright early sun pouring in through the window, soft glow around her. White and pale blue palette, airy bright finish.",
+      "added": "2026-11-22"
     },
     {
       "id": "R1",
