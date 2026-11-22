@@ -275,14 +275,35 @@ export function openOutfitBuilder({ data, outfits, state = {}, sample = null, on
     const k = Object.keys(EXTRA_HEX).find(w => new RegExp(`\\b${w}\\b`).test(words));
     return k ? EXTRA_HEX[k] : "#8a8a92";
   }
+  // Colors offered for your own items: the builder's set plus a few more, each with the word it puts in the wording.
+  const EDIT_COLORS = [...outfits.colors.map(c => ({ word: c.word, hex: c.hex })),
+    ...["burgundy", "ivory", "beige", "green", "blue", "lilac", "purple", "yellow", "orange", "gold", "silver"].map(w => ({ word: w, hex: EXTRA_HEX[w] }))];
+  const COLOR_WORDS = [...new Set([...EDIT_COLORS.map(c => c.word), ...outfits.colors.map(c => c.value), ...Object.keys(EXTRA_HEX)])].sort((a, b) => b.length - a.length);
+  const hexNow = e => e.hexSet && e.hex ? e.hex : hexOf(e);
+  // Swap the first color word in the wording for the new one, so the prompt says the color you picked.
+  function recolor(text, word) {
+    for (const w of COLOR_WORDS) {
+      const re = new RegExp(`\\b${w}\\b`, "i");
+      if (re.test(text)) return text.replace(re, word);
+    }
+    return null;
+  }
   function renderEditor(box) {
-    const e = st.edit, g = e.guide;
+    const e = st.edit, g = e.guide, cur = hexNow(e).toLowerCase();
     box.innerHTML = `${tabs()}
       <div class="kqb-title"><h3>${e.id ? "Edit item" : "New item"}</h3><span class="kq-dim">Saved on this computer, like your custom prompts</span></div>
       <label class="kqs-field"><span class="kq-strong">Name</span><input type="text" data-e="name" maxlength="60" placeholder="Biker jacket" value="${esc(e.name)}"></label>
       <div class="kqs-field"><span class="kq-strong">Kind of piece</span><div class="kqo-cats" role="group" aria-label="Kind of piece">${CATS.map(k => `<button type="button" class="kq-chip" data-ecat="${k}" aria-pressed="${e.cat === k}">${esc(CATN[k] || k)}</button>`).join("")}</div></div>
       <label class="kqs-field"><span class="kq-row"><span class="kq-strong">Wording</span><span class="kq-dim">How it reads in the prompt</span></span>
         <textarea data-e="text" rows="2" placeholder="a cropped oxblood leather biker jacket with silver zips">${esc(e.text)}</textarea></label>
+      <div class="kqs-field kqo-colors kqo-ecolors"><div class="kq-row"><span class="kq-strong">Color</span><span class="kq-dim">${e.hexSet ? "Picked by you" : "Follows the wording"}</span></div>
+        <div class="kqo-sws" role="group" aria-label="Item color">
+          <button type="button" class="kq-chip kqo-auto" data-ehex="auto" aria-pressed="${!e.hexSet}" title="Use the color named in the wording">Auto</button>
+          ${EDIT_COLORS.map(c => `<button type="button" class="kqo-csw" data-ehex="${c.hex}" data-eword="${esc(c.word)}" aria-pressed="${!!e.hexSet && cur === c.hex.toLowerCase()}" title="${esc(c.word)}" aria-label="${esc(c.word)}" style="background:${c.hex}"></button>`).join("")}
+          <label class="kqo-custom" title="Any color"><input type="color" data-ehexin value="${esc(cur)}" aria-label="Pick any color"><span class="kq-dim">Any color</span></label>
+        </div>
+        <p class="kq-dim kqo-chint">A named color also changes the word in the wording. Any color only changes the figure, so name the color in the wording too.</p>
+      </div>
       <button type="button" class="kq-ghost kq-tight kqs-helpbtn" data-x="help" aria-expanded="${st.help}">${st.help ? "Hide help" : "Help me write it"}</button>
       ${st.help ? `<div class="kqs-help">
         <p class="kq-dim">Fill in what you know. The wording writes itself as you type.</p>
@@ -298,6 +319,11 @@ export function openOutfitBuilder({ data, outfits, state = {}, sample = null, on
         <button type="button" class="kq-primary kq-sm" data-x="esave">${e.id ? "Save item" : "Save and wear"}</button></div>`;
     box.querySelectorAll("input, textarea").forEach(inp => {
       inp.addEventListener("keydown", ev => ev.stopPropagation());
+      if (inp.dataset.ehexin !== undefined) {
+        inp.addEventListener("input", () => { e.hex = inp.value; e.hexSet = true; renderSide(); });
+        inp.addEventListener("change", () => renderMid());
+        return;
+      }
       inp.addEventListener("input", () => {
         if (inp.dataset.e) e[inp.dataset.e] = inp.value;
         if (inp.dataset.g) { g[inp.dataset.g] = inp.value; e.text = composeDraft(e); const t = box.querySelector('[data-e="text"]'); if (t) t.value = e.text; }
@@ -306,7 +332,8 @@ export function openOutfitBuilder({ data, outfits, state = {}, sample = null, on
     });
   }
   function startEdit(m) {
-    st.edit = { id: m ? m.id : "", name: m ? m.name : "", cat: m ? m.cat : (st.cat in CATN ? st.cat : "top"), text: m ? m.text : "", hex: m ? m.hex : "", guide: { fit: "", color: "", fabric: "", item: "", detail: "" } };
+    st.edit = { id: m ? m.id : "", name: m ? m.name : "", cat: m ? m.cat : (st.cat in CATN ? st.cat : "top"), text: m ? m.text : "", hex: m ? m.hex : "",
+      hexSet: !!(m && m.hex && m.hex.toLowerCase() !== hexOf({ guide: { color: "" }, text: m.text }).toLowerCase()), guide: { fit: "", color: "", fabric: "", item: "", detail: "" } };
     st.help = !m; st.mode = "edit"; renderNav(); renderMid(); renderSide();
     q('[data-e="name"]')?.focus();
   }
@@ -317,7 +344,7 @@ export function openOutfitBuilder({ data, outfits, state = {}, sample = null, on
     let shown = st.s, items = st.mine;
     if (ed && ed.text.trim()) {
       // Preview the item you're writing on the figure, in place of that piece.
-      const tmp = { id: "__draft", cat: ed.cat, text: ed.text, hex: hexOf(ed) };
+      const tmp = { id: "__draft", cat: ed.cat, text: ed.text, hex: hexNow(ed) };
       items = [...st.mine, tmp];
       shown = { ...st.s, acc: st.s.acc.slice() };
       if (ed.cat === "acc") shown.acc = [...shown.acc, "__draft"]; else { shown[ed.cat] = "__draft"; if (ed.cat === "one") { delete shown.top; delete shown.bottom; } if (ed.cat === "top" || ed.cat === "bottom") delete shown.one; }
@@ -374,6 +401,19 @@ export function openOutfitBuilder({ data, outfits, state = {}, sample = null, on
     if (col) { st.s = { ...st.s, [st.cat + "C"]: col.dataset.color, on: true }; emit(); renderMid(); renderSide(); return; }
     const ec = t.closest("[data-ecat]");
     if (ec) { st.edit.cat = ec.dataset.ecat; if (st.help) st.edit.text = composeDraft(st.edit); renderMid(); renderSide(); return; }
+    const eh = t.closest("[data-ehex]");
+    if (eh) {
+      const ed = st.edit;
+      if (eh.dataset.ehex === "auto") { ed.hexSet = false; ed.hex = ""; }
+      else {
+        ed.hex = eh.dataset.ehex; ed.hexSet = true;
+        const word = eh.dataset.eword;
+        const g = ed.guide;
+        if (st.help && (g.fit || g.fabric || g.item).trim()) { g.color = word; ed.text = composeDraft(ed); }
+        else { const t2 = recolor(ed.text, word); if (t2 !== null) ed.text = t2; if (st.help) g.color = word; }
+      }
+      renderMid(); renderSide(); return;
+    }
     const ie = t.closest("[data-iedit]");
     if (ie) { e.stopPropagation(); startEdit(mineOf(ie.dataset.iedit)); return; }
     const idl = t.closest("[data-idel]");
@@ -424,7 +464,7 @@ export function openOutfitBuilder({ data, outfits, state = {}, sample = null, on
         const ed = st.edit;
         if (!ed.text.trim()) { q(".kqs-emsg").textContent = "Write the wording first, or use Help me write it."; q('[data-e="text"]').focus(); return; }
         x.disabled = true;
-        saveItem({ id: ed.id, cat: ed.cat, name: ed.name || "My item", text: ed.text, hex: ed.hex && ed.id && !st.help ? ed.hex : hexOf(ed) }).then(m => {
+        saveItem({ id: ed.id, cat: ed.cat, name: ed.name || "My item", text: ed.text, hex: hexNow(ed) }).then(m => {
           const i = st.mine.findIndex(y => y.id === m.id);
           if (i >= 0) st.mine[i] = m; else st.mine.push(m);
           st.cat = m.cat; st.mode = "build";

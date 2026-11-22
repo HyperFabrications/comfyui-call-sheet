@@ -4,6 +4,10 @@
   "changelog": [
     {
       "date": "2026-11-22",
+      "text": "3 lakeside frames (S76, S77, S78) reworded so they work with scenes. The boat and the lake now sit in the setting sentence."
+    },
+    {
+      "date": "2026-11-22",
       "text": "5 new SFW web finds: lakeside and boat poses from an Instagram carousel."
     },
     {
@@ -1793,7 +1797,7 @@
       "tab": "sfw",
       "set": "WebS",
       "title": "Looking up from the boat",
-      "text": "[trigger] in an intimate portrait, sitting in the bow of a small white rowboat and leaning toward the camera, head tilted far to one side, looking straight up into the lens with a still, serious expression. Wearing a black leather jacket over a black turtleneck. Calm dark lake water fills the background, mirroring pale clouds and a tree line along the top edge. Close medium shot from a high angle looking down, 35mm lens feel, background water slightly soft. Blue hour light, soft and diffused, deep teal and black palette, subtle film grain.",
+      "text": "[trigger] in an intimate portrait, sitting and leaning toward the camera, head tilted far to one side, looking straight up into the lens with a still, serious expression. Wearing a black leather jacket over a black turtleneck. The bow of a small white rowboat on calm dark lake water that fills the background, mirroring pale clouds and a tree line along the top edge. Close medium shot from a high angle looking down, 35mm lens feel, background water slightly soft. Blue hour light, soft and diffused, deep teal and black palette, subtle film grain.",
       "added": "2026-11-22"
     },
     {
@@ -1801,7 +1805,7 @@
       "tab": "sfw",
       "set": "WebS",
       "title": "Profile at sunset",
-      "text": "[trigger] in a golden hour portrait, seated in a boat with her body turned away and her head in profile looking left across the water, one hand raised to tuck her hair behind her ear, sleeve pulled over her wrist. Wearing an oversized navy knit turtleneck sweater. A still lake mirrors the forest and sky, with the low sun sinking at the left horizon. Medium shot at eye level from slightly behind her shoulder, shallow depth of field. Low sun from the side rimming her profile with warm flare and cool shadows, gold and slate blue palette, subtle film grain.",
+      "text": "[trigger] in a golden hour portrait, seated with her body turned away and her head in profile looking off to the left, one hand raised to tuck her hair behind her ear, sleeve pulled over her wrist. Wearing an oversized navy knit turtleneck sweater. A boat on a still lake that mirrors the forest and sky, with the low sun sinking at the left horizon. Medium shot at eye level from slightly behind her shoulder, shallow depth of field. Low sun from the side rimming her profile with warm flare and cool shadows, gold and slate blue palette, subtle film grain.",
       "added": "2026-11-22"
     },
     {
@@ -1809,7 +1813,7 @@
       "tab": "sfw",
       "set": "WebS",
       "title": "Chin in hand by the lake",
-      "text": "[trigger] in a pensive lakeside portrait, sitting at the water's edge with her back three quarters to the camera, one hand cupped under her chin with fingers resting on her cheek, gazing off across the lake. Wearing an oversized navy chunky knit turtleneck with bunched sleeves. Calm lake reflecting dense green trees and a pale sky. Medium shot over her shoulder at eye level, shallow depth of field. Overcast evening light, soft and cool, navy, forest green and gray blue palette, subtle film grain.",
+      "text": "[trigger] in a pensive portrait, sitting with her back three quarters to the camera, one hand cupped under her chin with fingers resting on her cheek, gazing off into the distance. Wearing an oversized navy chunky knit turtleneck with bunched sleeves. The edge of a calm lake reflecting dense green trees and a pale sky. Medium shot over her shoulder at eye level, shallow depth of field. Overcast evening light, soft and cool, navy, forest green and gray blue palette, subtle film grain.",
       "added": "2026-11-22"
     },
     {
