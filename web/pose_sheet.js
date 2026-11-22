@@ -3,6 +3,7 @@ import { mountSheet } from "./sheet.js";
 import { openGallery, localCtx, thumbHTML, snippet, editPrompt } from "./gallery.js";
 import { openBuilder, shortPerson } from "./builder.js";
 import { avatarSVG } from "./figure.js";
+import { mergeCustom } from "./custom.js";
 import { loadData, frameKey, frameNo, loadEdits, saveEdit, personText } from "./core.js";
 
 const HERE = new URL(".", import.meta.url);
@@ -113,9 +114,12 @@ async function setPreviewFromLastRender(fid) {
 
 const app = await getApp();
 const data = await loadData(new URL("poses.json", HERE).href);
-const byKey = new Map(data.frames.map(f => [frameKey(f), f]));
-const byId = new Map(data.frames.map(f => [f.id, f]));
-const frameOf = value => byKey.get(value) || byId.get(String(value || "").split(" · ")[0].trim()) || null;
+await mergeCustom(data);
+// Looked up live, so prompts you add in the Custom tab are found too.
+const frameOf = value => {
+  const v = String(value || "");
+  return data.frames.find(f => frameKey(f) === v) || data.frames.find(f => f.id === v.split(" · ")[0].trim()) || null;
+};
 
 const savedPicks = () => { try { return JSON.parse(localStorage.getItem("kps:person") || "{}") || {}; } catch (e) { return {}; } };
 

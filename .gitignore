@@ -4,3 +4,5 @@ _site/
 node_modules/
 .DS_Store
 thumbs/
+custom_prompts.json
+custom_prompts.json.tmp
