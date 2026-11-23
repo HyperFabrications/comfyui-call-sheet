@@ -4,6 +4,10 @@
   "changelog": [
     {
       "date": "2026-11-23",
+      "text": "50 new SFW frames in five new sets: Black sand beach, Cube studio, Autumn park, Commuter train and Meadow chair."
+    },
+    {
+      "date": "2026-11-23",
       "text": "8 new SFW frames in a new Rocking horse set: golden hour park portraits on a playground spring rocking horse."
     },
     {
@@ -100,7 +104,12 @@
         "Details",
         "GoldenWindow",
         "Stairwell",
-        "RockingHorse"
+        "RockingHorse",
+        "BlackSand",
+        "CubeStudio",
+        "AutumnPark",
+        "CommuterTrain",
+        "MeadowChair"
       ]
     },
     {
@@ -142,6 +151,11 @@
     }
   ],
   "sets": {
+    "BlackSand": "Black sand beach",
+    "CubeStudio": "Cube studio",
+    "AutumnPark": "Autumn park",
+    "CommuterTrain": "Commuter train",
+    "MeadowChair": "Meadow chair",
     "RockingHorse": "Rocking horse",
     "GoldenWindow": "Golden window",
     "Stairwell": "Stairwell",
@@ -3506,6 +3520,406 @@
       "set": "RockingHorse",
       "title": "Leaning in, smiling",
       "text": "[trigger] in a warm park portrait, sitting astride a playground spring rocking horse and leaning in toward the camera with both hands on the handles, head tilted with a soft smile. Wearing an oversized gray tweed blazer over a white collared shirt with a loose dark tie, a dark plaid pleated skirt, black opaque tights and black knee high boots. A wooden spring rocking horse painted yellow and black in a quiet park, tall trees, scattered autumn leaves and grass behind. Medium shot at eye level, 50mm lens feel, shallow depth of field. Low golden hour sun behind the trees, warm backlit haze and lens flare, olive, amber and charcoal palette, moody cinematic film grade with soft grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S223",
+      "tab": "sfw",
+      "set": "BlackSand",
+      "title": "Hair across the face",
+      "text": "[trigger] in a windswept editorial photo, standing ankle deep in the water with the wind blowing her hair across her face, one hand resting at her waist, eyes lowered. Wearing a long white pointelle knit dress with fitted long sleeves and a full flowing skirt, barefoot. A black volcanic sand beach with gray surf rolling in and a low wooded headland far behind. Medium full shot at eye level, 50mm lens feel, shallow depth of field. Flat overcast daylight under a heavy gray sky, soft and shadowless. Muted slate, ivory and charcoal palette, moody editorial film finish with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S224",
+      "tab": "sfw",
+      "set": "BlackSand",
+      "title": "Cheek on the forearm",
+      "text": "[trigger] in a windswept editorial photo, lying on her front with her cheek resting near one outstretched forearm, lips parted, glancing off to the side. Wearing a long white pointelle knit dress with fitted long sleeves and a full flowing skirt, barefoot. A black volcanic sand beach with gray surf rolling in and a low wooded headland far behind. Close up at ground level, 85mm lens feel, very shallow depth of field. Flat overcast daylight under a heavy gray sky, soft and shadowless. Muted slate, ivory and charcoal palette, moody editorial film finish with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S225",
+      "tab": "sfw",
+      "set": "BlackSand",
+      "title": "Kneeling at the water's edge",
+      "text": "[trigger] in a windswept editorial photo, kneeling and sitting back on her heels with both hands resting on the ground in front of her, head turned toward the sea. Wearing a long white pointelle knit dress with fitted long sleeves and a full flowing skirt, barefoot. A black volcanic sand beach with gray surf rolling in and a low wooded headland far behind. Wide full length shot at eye level, 35mm lens feel. Flat overcast daylight under a heavy gray sky, soft and shadowless. Muted slate, ivory and charcoal palette, moody editorial film finish with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S226",
+      "tab": "sfw",
+      "set": "BlackSand",
+      "title": "Hair streaming in profile",
+      "text": "[trigger] in a windswept editorial photo, standing in profile with one arm lifted into her hair, eyes closed, long hair streaming out sideways in the wind. Wearing a long white pointelle knit dress with fitted long sleeves and a full flowing skirt, barefoot. A black volcanic sand beach with gray surf rolling in and a low wooded headland far behind. Medium shot at eye level, 50mm lens feel, shallow depth of field. Flat overcast daylight under a heavy gray sky, soft and shadowless. Muted slate, ivory and charcoal palette, moody editorial film finish with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S227",
+      "tab": "sfw",
+      "set": "BlackSand",
+      "title": "Hands at the chest",
+      "text": "[trigger] in a windswept editorial photo, standing tall with both hands resting lightly at her chest, looking straight into the lens with a calm, still expression. Wearing a long white pointelle knit dress with fitted long sleeves and a full flowing skirt, barefoot. A black volcanic sand beach with gray surf rolling in and a low wooded headland far behind. Full length shot at eye level, 50mm lens feel. Flat overcast daylight under a heavy gray sky, soft and shadowless. Muted slate, ivory and charcoal palette, moody editorial film finish with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S228",
+      "tab": "sfw",
+      "set": "BlackSand",
+      "title": "Looking up over the shoulder",
+      "text": "[trigger] in a windswept editorial photo, sitting on the ground with her skirt spread around her, twisting at the waist to look up over her shoulder past the lens. Wearing a long white pointelle knit dress with fitted long sleeves and a full flowing skirt, barefoot. A black volcanic sand beach with gray surf rolling in and a low wooded headland far behind. Medium shot from slightly above, 50mm lens feel, shallow depth of field. Flat overcast daylight under a heavy gray sky, soft and shadowless. Muted slate, ivory and charcoal palette, moody editorial film finish with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S229",
+      "tab": "sfw",
+      "set": "BlackSand",
+      "title": "Lying back, hand by the face",
+      "text": "[trigger] in a windswept editorial photo, lying on her back with her head tilted to one side, one hand raised beside her face with fingers softly curled, eyes closed. Wearing a long white pointelle knit dress with fitted long sleeves and a full flowing skirt, barefoot. A black volcanic sand beach with gray surf rolling in and a low wooded headland far behind. Overhead close medium shot looking straight down, 50mm lens feel. Flat overcast daylight under a heavy gray sky, soft and shadowless. Muted slate, ivory and charcoal palette, moody editorial film finish with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S230",
+      "tab": "sfw",
+      "set": "BlackSand",
+      "title": "Glance back over the shoulder",
+      "text": "[trigger] in a windswept editorial photo, standing turned away from the camera, looking back over her shoulder into the lens, long hair falling down her back. Wearing a long white pointelle knit dress with fitted long sleeves and a full flowing skirt, barefoot. A black volcanic sand beach with gray surf rolling in and a low wooded headland far behind. Medium shot at eye level, 85mm lens feel, shallow depth of field. Flat overcast daylight under a heavy gray sky, soft and shadowless. Muted slate, ivory and charcoal palette, moody editorial film finish with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S231",
+      "tab": "sfw",
+      "set": "BlackSand",
+      "title": "Propped on an elbow, head back",
+      "text": "[trigger] in a windswept editorial photo, reclining on the ground propped on one elbow, the other hand resting on her skirt, head tipped back with eyes closed. Wearing a long white pointelle knit dress with fitted long sleeves and a full flowing skirt, barefoot. A black volcanic sand beach with gray surf rolling in and a low wooded headland far behind. Medium full shot at ground level, 35mm lens feel. Flat overcast daylight under a heavy gray sky, soft and shadowless. Muted slate, ivory and charcoal palette, moody editorial film finish with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S232",
+      "tab": "sfw",
+      "set": "CubeStudio",
+      "title": "Folded over the cube",
+      "text": "[trigger] in a minimalist studio portrait, bending forward over the edge of a white cube with her legs straight down its side, hands reaching to her ankles, peering up into the lens. Wearing an oversized black button up shirt worn as a short dress and sheer ivory tights, hair in a loose low bun with soft bangs. A plain seamless pale gray studio backdrop that curves into the floor. Full length shot at eye level, 50mm lens feel. Soft diffused daylight from a large window to one side, gentle shadows. Muted gray, black and ivory palette, quiet analog film finish with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S233",
+      "tab": "sfw",
+      "set": "CubeStudio",
+      "title": "On the floor, chin on hands",
+      "text": "[trigger] in a minimalist studio portrait, lying on her stomach on the floor with her knees bent and feet raised behind her, chin resting on her stacked hands, looking into the lens. Wearing an oversized black button up shirt worn as a short dress and sheer ivory tights, hair in a loose low bun with soft bangs. A plain seamless pale gray studio backdrop that curves into the floor. Medium full shot at floor level, 50mm lens feel. Soft diffused daylight from a large window to one side, gentle shadows. Muted gray, black and ivory palette, quiet analog film finish with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S234",
+      "tab": "sfw",
+      "set": "CubeStudio",
+      "title": "Kneeling up on the cube",
+      "text": "[trigger] in a minimalist studio portrait, kneeling upright on top of a white cube with her hands clasped between her knees, shoulders soft, a direct still gaze into the lens. Wearing an oversized black button up shirt worn as a short dress and sheer ivory tights, hair in a loose low bun with soft bangs. A plain seamless pale gray studio backdrop that curves into the floor. Full length shot from slightly below, 50mm lens feel. Soft diffused daylight from a large window to one side, gentle shadows. Muted gray, black and ivory palette, quiet analog film finish with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S235",
+      "tab": "sfw",
+      "set": "CubeStudio",
+      "title": "Reaching for the lens",
+      "text": "[trigger] in a minimalist studio portrait, reaching one open hand straight toward the camera so it looms large in the foreground, head tilted, eyes on the lens past her fingers. Wearing an oversized black button up shirt worn as a short dress and sheer ivory tights, hair in a loose low bun with soft bangs. A plain seamless pale gray studio backdrop that curves into the floor. Medium close shot at eye level, 35mm lens feel, the hand soft with depth of field. Soft diffused daylight from a large window to one side, gentle shadows. Muted gray, black and ivory palette, quiet analog film finish with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S236",
+      "tab": "sfw",
+      "set": "CubeStudio",
+      "title": "Hugging one knee on the cube",
+      "text": "[trigger] in a minimalist studio portrait, sitting on the edge of a white cube with one knee drawn up and hugged to her chest, the other leg dangling, cheek resting near her knee. Wearing an oversized black button up shirt worn as a short dress and sheer ivory tights, hair in a loose low bun with soft bangs. A plain seamless pale gray studio backdrop that curves into the floor. Full length shot at eye level, 50mm lens feel. Soft diffused daylight from a large window to one side, gentle shadows. Muted gray, black and ivory palette, quiet analog film finish with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S237",
+      "tab": "sfw",
+      "set": "CubeStudio",
+      "title": "Leaning in close",
+      "text": "[trigger] in a minimalist studio portrait, leaning slightly toward the camera with her head lowered a touch, lips pressed together, a steady intense gaze into the lens. Wearing an oversized black button up shirt worn as a short dress and sheer ivory tights, hair in a loose low bun with soft bangs. A plain seamless pale gray studio backdrop that curves into the floor. Close up at eye level, 85mm lens feel, shallow depth of field. Soft diffused daylight from a large window to one side, gentle shadows. Muted gray, black and ivory palette, quiet analog film finish with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S238",
+      "tab": "sfw",
+      "set": "AutumnPark",
+      "title": "Perched on the bench edge",
+      "text": "[trigger] in a warm autumn portrait, sitting forward on the edge of a green wooden park bench with knees together and both hands resting on her knees, looking into the lens. Wearing a long camel wool coat over a white open collar shirt, a brown plaid mini skirt, black tights and black ankle boots, with red lipstick. An autumn park with blazing red and orange maple trees, fallen leaves on the grass and a path winding into the distance. Full length shot at eye level, 35mm lens feel. Low golden hour sun behind the trees, warm backlight and soft flare. Rich rust, amber and moss green palette, warm cinematic film finish with subtle grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S239",
+      "tab": "sfw",
+      "set": "AutumnPark",
+      "title": "Apple at the chest, gazing up",
+      "text": "[trigger] in a warm autumn portrait, holding a shiny red apple against her chest with chin lifted, gazing up and off to the side, red maple leaves crowding the edges of the frame. Wearing a long camel wool coat over a white open collar shirt, a brown plaid mini skirt, black tights and black ankle boots, with red lipstick. An autumn park with blazing red and orange maple trees, fallen leaves on the grass and a path winding into the distance. Medium close shot at eye level, 85mm lens feel, shallow depth of field. Low golden hour sun behind the trees, warm backlight and soft flare. Rich rust, amber and moss green palette, warm cinematic film finish with subtle grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S240",
+      "tab": "sfw",
+      "set": "AutumnPark",
+      "title": "Arms along the bench back",
+      "text": "[trigger] in a warm autumn portrait, sitting on a park bench seen from behind, both arms stretched out along the backrest, head turned to show her profile. Wearing a long camel wool coat over a white open collar shirt, a brown plaid mini skirt, black tights and black ankle boots, with red lipstick. An autumn park with blazing red and orange maple trees, fallen leaves on the grass and a path winding into the distance. Medium full shot from behind at eye level, 35mm lens feel. Low golden hour sun behind the trees, warm backlight and soft flare. Rich rust, amber and moss green palette, warm cinematic film finish with subtle grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S241",
+      "tab": "sfw",
+      "set": "AutumnPark",
+      "title": "Backlit, hand at the collar",
+      "text": "[trigger] in a warm autumn portrait, standing with the sun right behind her, one hand at her shirt collar, head tilted, eyes half closed. Wearing a long camel wool coat over a white open collar shirt, a brown plaid mini skirt, black tights and black ankle boots, with red lipstick. An autumn park with blazing red and orange maple trees, fallen leaves on the grass and a path winding into the distance. Medium full shot at eye level, 50mm lens feel, flare across the top of the frame. Low golden hour sun behind the trees, warm backlight and soft flare. Rich rust, amber and moss green palette, warm cinematic film finish with subtle grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S242",
+      "tab": "sfw",
+      "set": "AutumnPark",
+      "title": "Biting the apple",
+      "text": "[trigger] in a warm autumn portrait, biting into a red apple held in both ringed hands, eyes downcast, head in profile. Wearing a long camel wool coat over a white open collar shirt, a brown plaid mini skirt, black tights and black ankle boots, with red lipstick. An autumn park with blazing red and orange maple trees, fallen leaves on the grass and a path winding into the distance. Tight close up in profile, 85mm lens feel, very shallow depth of field. Low golden hour sun behind the trees, warm backlight and soft flare. Rich rust, amber and moss green palette, warm cinematic film finish with subtle grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S243",
+      "tab": "sfw",
+      "set": "AutumnPark",
+      "title": "Against the tree trunk",
+      "text": "[trigger] in a warm autumn portrait, leaning her back against a tree trunk with her coat hanging open, head tilted against the bark, a soft gaze into the lens. Wearing a long camel wool coat over a white open collar shirt, a brown plaid mini skirt, black tights and black ankle boots, with red lipstick. An autumn park with blazing red and orange maple trees, fallen leaves on the grass and a path winding into the distance. Medium full shot at eye level, 50mm lens feel. Low golden hour sun behind the trees, warm backlight and soft flare. Rich rust, amber and moss green palette, warm cinematic film finish with subtle grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S244",
+      "tab": "sfw",
+      "set": "AutumnPark",
+      "title": "Reclining on the bench",
+      "text": "[trigger] in a warm autumn portrait, reclining along a park bench in profile with one arm draped over the backrest, chin lifted and eyes closed. Wearing a long camel wool coat over a white open collar shirt, a brown plaid mini skirt, black tights and black ankle boots, with red lipstick. An autumn park with blazing red and orange maple trees, fallen leaves on the grass and a path winding into the distance. Medium shot at seat height, 50mm lens feel, shallow depth of field. Low golden hour sun behind the trees, warm backlight and soft flare. Rich rust, amber and moss green palette, warm cinematic film finish with subtle grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S245",
+      "tab": "sfw",
+      "set": "AutumnPark",
+      "title": "Hand in the hair",
+      "text": "[trigger] in a warm autumn portrait, standing with one hand raised to touch her cheek and hair, the coat falling open, looking into the lens. Wearing a long camel wool coat over a white open collar shirt, a brown plaid mini skirt, black tights and black ankle boots, with red lipstick. An autumn park with blazing red and orange maple trees, fallen leaves on the grass and a path winding into the distance. Medium shot at eye level, 50mm lens feel, shallow depth of field. Low golden hour sun behind the trees, warm backlight and soft flare. Rich rust, amber and moss green palette, warm cinematic film finish with subtle grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S246",
+      "tab": "sfw",
+      "set": "AutumnPark",
+      "title": "Laughing on the bench",
+      "text": "[trigger] in a warm autumn portrait, sitting sideways on a park bench with one arm resting along the backrest, laughing with her head tipped toward her shoulder. Wearing a long camel wool coat over a white open collar shirt, a brown plaid mini skirt, black tights and black ankle boots, with red lipstick. An autumn park with blazing red and orange maple trees, fallen leaves on the grass and a path winding into the distance. Medium full shot at eye level, 35mm lens feel. Low golden hour sun behind the trees, warm backlight and soft flare. Rich rust, amber and moss green palette, warm cinematic film finish with subtle grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S247",
+      "tab": "sfw",
+      "set": "AutumnPark",
+      "title": "Collar up, head back",
+      "text": "[trigger] in a warm autumn portrait, holding the coat collar up around her neck with both hands, head tipped back, looking down her nose into the lens. Wearing a long camel wool coat over a white open collar shirt, a brown plaid mini skirt, black tights and black ankle boots, with red lipstick. An autumn park with blazing red and orange maple trees, fallen leaves on the grass and a path winding into the distance. Medium close shot from slightly below, 50mm lens feel. Low golden hour sun behind the trees, warm backlight and soft flare. Rich rust, amber and moss green palette, warm cinematic film finish with subtle grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S248",
+      "tab": "sfw",
+      "set": "AutumnPark",
+      "title": "Walking into the sun",
+      "text": "[trigger] in a warm autumn portrait, walking away into the low sun, turning to glance back over her shoulder at the lens. Wearing a long camel wool coat over a white open collar shirt, a brown plaid mini skirt, black tights and black ankle boots, with red lipstick. An autumn park with blazing red and orange maple trees, fallen leaves on the grass and a path winding into the distance. Full length shot at eye level, 50mm lens feel. Low golden hour sun behind the trees, warm backlight and soft flare. Rich rust, amber and moss green palette, warm cinematic film finish with subtle grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S249",
+      "tab": "sfw",
+      "set": "CommuterTrain",
+      "title": "Slumped by the window",
+      "text": "[trigger] in a quiet black and white documentary portrait, slumped low in a seat beside the window, one arm folded up over her head against the glass, looking into the lens. Wearing an oversized chunky cable knit sweater with long sleeves and dark straight trousers, hair slicked back. An old commuter train carriage with worn vinyl bench seats, scuffed paneled walls and wide windows onto a gray passing landscape. Medium shot at seat height, 35mm lens feel. Flat gray daylight through the train windows, soft and directional. Black and white 35mm film look with deep blacks, gritty texture and heavy grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S250",
+      "tab": "sfw",
+      "set": "CommuterTrain",
+      "title": "Hands on the door window",
+      "text": "[trigger] in a quiet black and white documentary portrait, peering out through a small rounded window in a closed door, both palms pressed flat against the glass. Wearing an oversized chunky cable knit sweater with long sleeves and dark straight trousers, hair slicked back. An old commuter train carriage with worn vinyl bench seats, scuffed paneled walls and wide windows onto a gray passing landscape. Medium shot from outside the door at eye level, 35mm lens feel, the door filling the frame. Flat gray daylight through the train windows, soft and directional. Black and white 35mm film look with deep blacks, gritty texture and heavy grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S251",
+      "tab": "sfw",
+      "set": "CommuterTrain",
+      "title": "Profile at the window",
+      "text": "[trigger] in a quiet black and white documentary portrait, seated in close profile gazing out of the window, lips parted, lost in thought. Wearing an oversized chunky cable knit sweater with long sleeves and dark straight trousers, hair slicked back. An old commuter train carriage with worn vinyl bench seats, scuffed paneled walls and wide windows onto a gray passing landscape. Close up in profile at eye level, 50mm lens feel, shallow depth of field. Flat gray daylight through the train windows, soft and directional. Black and white 35mm film look with deep blacks, gritty texture and heavy grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S252",
+      "tab": "sfw",
+      "set": "CommuterTrain",
+      "title": "Kneeling on the seat, reaching up",
+      "text": "[trigger] in a quiet black and white documentary portrait, kneeling on the bench seat with one arm reaching high up the window frame, face lifted toward the light. Wearing an oversized chunky cable knit sweater with long sleeves and dark straight trousers, hair slicked back. An old commuter train carriage with worn vinyl bench seats, scuffed paneled walls and wide windows onto a gray passing landscape. Medium shot at eye level, 35mm lens feel. Flat gray daylight through the train windows, soft and directional. Black and white 35mm film look with deep blacks, gritty texture and heavy grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S253",
+      "tab": "sfw",
+      "set": "CommuterTrain",
+      "title": "Sprawled, hands behind the head",
+      "text": "[trigger] in a quiet black and white documentary portrait, sprawled across the bench seat with hands clasped behind her head and legs stretched out long. Wearing an oversized chunky cable knit sweater with long sleeves and dark straight trousers, hair slicked back. An old commuter train carriage with worn vinyl bench seats, scuffed paneled walls and wide windows onto a gray passing landscape. Wide full length shot from the aisle, 28mm lens feel. Flat gray daylight through the train windows, soft and directional. Black and white 35mm film look with deep blacks, gritty texture and heavy grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S254",
+      "tab": "sfw",
+      "set": "CommuterTrain",
+      "title": "Head back in the vestibule",
+      "text": "[trigger] in a quiet black and white documentary portrait, standing with her back against the wall, head tipped back and eyes closed, arms hanging loose. Wearing an oversized chunky cable knit sweater with long sleeves and dark straight trousers, hair slicked back. An old commuter train carriage with worn vinyl bench seats, scuffed paneled walls and wide windows onto a gray passing landscape. Full length shot at eye level, 35mm lens feel. Flat gray daylight through the train windows, soft and directional. Black and white 35mm film look with deep blacks, gritty texture and heavy grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S255",
+      "tab": "sfw",
+      "set": "CommuterTrain",
+      "title": "Curled up on the seat",
+      "text": "[trigger] in a quiet black and white documentary portrait, curled sideways across the seat with her head resting on her folded arms, eyes half closed. Wearing an oversized chunky cable knit sweater with long sleeves and dark straight trousers, hair slicked back. An old commuter train carriage with worn vinyl bench seats, scuffed paneled walls and wide windows onto a gray passing landscape. Medium shot from above the seat back, 35mm lens feel. Flat gray daylight through the train windows, soft and directional. Black and white 35mm film look with deep blacks, gritty texture and heavy grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S256",
+      "tab": "sfw",
+      "set": "CommuterTrain",
+      "title": "Cheek on the sleeve",
+      "text": "[trigger] in a quiet black and white documentary portrait, resting her cheek on her knit sleeve with eyes half closed and a faraway look. Wearing an oversized chunky cable knit sweater with long sleeves and dark straight trousers, hair slicked back. An old commuter train carriage with worn vinyl bench seats, scuffed paneled walls and wide windows onto a gray passing landscape. Tight close up at eye level, 50mm lens feel, very shallow depth of field. Flat gray daylight through the train windows, soft and directional. Black and white 35mm film look with deep blacks, gritty texture and heavy grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S257",
+      "tab": "sfw",
+      "set": "CommuterTrain",
+      "title": "Chin on the seat back",
+      "text": "[trigger] in a quiet black and white documentary portrait, kneeling on the seat and leaning over the seat back, chin resting on her folded forearm, looking into the lens. Wearing an oversized chunky cable knit sweater with long sleeves and dark straight trousers, hair slicked back. An old commuter train carriage with worn vinyl bench seats, scuffed paneled walls and wide windows onto a gray passing landscape. Medium close shot at eye level, 35mm lens feel. Flat gray daylight through the train windows, soft and directional. Black and white 35mm film look with deep blacks, gritty texture and heavy grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S258",
+      "tab": "sfw",
+      "set": "CommuterTrain",
+      "title": "Hugging herself",
+      "text": "[trigger] in a quiet black and white documentary portrait, standing with arms wrapped tightly around herself, hands lost in the long sleeves, head bowed. Wearing an oversized chunky cable knit sweater with long sleeves and dark straight trousers, hair slicked back. An old commuter train carriage with worn vinyl bench seats, scuffed paneled walls and wide windows onto a gray passing landscape. Medium full shot at eye level, 50mm lens feel. Flat gray daylight through the train windows, soft and directional. Black and white 35mm film look with deep blacks, gritty texture and heavy grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S259",
+      "tab": "sfw",
+      "set": "CommuterTrain",
+      "title": "Hand over the eyes",
+      "text": "[trigger] in a quiet black and white documentary portrait, slumped in a seat with one hand covering her eyes, the other arm loose in her lap. Wearing an oversized chunky cable knit sweater with long sleeves and dark straight trousers, hair slicked back. An old commuter train carriage with worn vinyl bench seats, scuffed paneled walls and wide windows onto a gray passing landscape. Medium shot at seat height, 35mm lens feel. Flat gray daylight through the train windows, soft and directional. Black and white 35mm film look with deep blacks, gritty texture and heavy grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S260",
+      "tab": "sfw",
+      "set": "CommuterTrain",
+      "title": "In the doorway",
+      "text": "[trigger] in a quiet black and white documentary portrait, standing in the open carriage doorway with her hands tucked into the sweater sleeves, looking into the lens. Wearing an oversized chunky cable knit sweater with long sleeves and dark straight trousers, hair slicked back. An old commuter train carriage with worn vinyl bench seats, scuffed paneled walls and wide windows onto a gray passing landscape. Full length shot at eye level, 35mm lens feel. Flat gray daylight through the train windows, soft and directional. Black and white 35mm film look with deep blacks, gritty texture and heavy grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S261",
+      "tab": "sfw",
+      "set": "MeadowChair",
+      "title": "Hugging the knees on the chair",
+      "text": "[trigger] in an editorial outdoor portrait, sitting on an old wooden chair with both boots up on the seat and her arms wrapped around her knees, looking into the lens. Wearing an oversized black blazer as a short dress, sheer black tights and chunky black lace up boots. An open meadow of tall dry grass rolling toward a distant tree line under a wide sky. Full length shot at eye level, 50mm lens feel. Low golden evening sun from the side, long soft shadows. Warm straw gold and deep black palette with a clear blue sky, editorial film finish with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S262",
+      "tab": "sfw",
+      "set": "MeadowChair",
+      "title": "Boot on the chair, sky behind",
+      "text": "[trigger] in an editorial outdoor portrait, standing with one boot up on the seat of a wooden chair and a hand resting on that knee, chin lifted. Wearing an oversized black blazer as a short dress, sheer black tights and chunky black lace up boots. An open meadow of tall dry grass rolling toward a distant tree line under a wide sky. Full length shot from a low angle against the sky, 35mm lens feel. Low golden evening sun from the side, long soft shadows. Warm straw gold and deep black palette with a clear blue sky, editorial film finish with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S263",
+      "tab": "sfw",
+      "set": "MeadowChair",
+      "title": "Hands clasped behind",
+      "text": "[trigger] in an editorial outdoor portrait, standing with her back to the camera and her hands clasped behind her, looking back over her shoulder. Wearing an oversized black blazer as a short dress, sheer black tights and chunky black lace up boots. An open meadow of tall dry grass rolling toward a distant tree line under a wide sky. Medium shot at eye level, 50mm lens feel, shallow depth of field. Low golden evening sun from the side, long soft shadows. Warm straw gold and deep black palette with a clear blue sky, editorial film finish with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S264",
+      "tab": "sfw",
+      "set": "MeadowChair",
+      "title": "Sideways on the chair, legs out",
+      "text": "[trigger] in an editorial outdoor portrait, sitting sideways on a wooden chair, legs stretched out long in front of her, leaning back with one arm over the backrest. Wearing an oversized black blazer as a short dress, sheer black tights and chunky black lace up boots. An open meadow of tall dry grass rolling toward a distant tree line under a wide sky. Full length shot at eye level, 35mm lens feel. Low golden evening sun from the side, long soft shadows. Warm straw gold and deep black palette with a clear blue sky, editorial film finish with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S265",
+      "tab": "sfw",
+      "set": "MeadowChair",
+      "title": "Elbows on the knees",
+      "text": "[trigger] in an editorial outdoor portrait, sitting on a wooden chair and leaning forward with elbows on her knees, hands loosely linked, a direct gaze into the lens. Wearing an oversized black blazer as a short dress, sheer black tights and chunky black lace up boots. An open meadow of tall dry grass rolling toward a distant tree line under a wide sky. Medium full shot at eye level, 50mm lens feel. Low golden evening sun from the side, long soft shadows. Warm straw gold and deep black palette with a clear blue sky, editorial film finish with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S266",
+      "tab": "sfw",
+      "set": "MeadowChair",
+      "title": "Hands at the neck behind the chair",
+      "text": "[trigger] in an editorial outdoor portrait, standing behind a wooden chair with forearms resting on its backrest, both hands at her neck, chin lifted. Wearing a sheer black mesh long sleeve top, black shorts and sheer black tights. An open meadow of tall dry grass rolling toward a distant tree line under a wide sky. Medium close shot at eye level, 85mm lens feel, shallow depth of field. Low golden evening sun from the side, long soft shadows. Warm straw gold and deep black palette with a clear blue sky, editorial film finish with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S267",
+      "tab": "sfw",
+      "set": "MeadowChair",
+      "title": "Knees apart, forearms on thighs",
+      "text": "[trigger] in an editorial outdoor portrait, sitting square on a wooden chair with knees apart and forearms resting on her thighs, a steady gaze into the lens. Wearing an oversized black blazer as a short dress, sheer black tights and chunky black lace up boots. An open meadow of tall dry grass rolling toward a distant tree line under a wide sky. Full length shot at eye level, 35mm lens feel. Low golden evening sun from the side, long soft shadows. Warm straw gold and deep black palette with a clear blue sky, editorial film finish with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S268",
+      "tab": "sfw",
+      "set": "MeadowChair",
+      "title": "Tipping the chair",
+      "text": "[trigger] in an editorial outdoor portrait, walking while tipping a wooden chair back on one leg beside her, glancing down at it. Wearing an oversized black blazer as a short dress, sheer black tights and chunky black lace up boots. An open meadow of tall dry grass rolling toward a distant tree line under a wide sky. Wide full length shot at eye level, 35mm lens feel. Low golden evening sun from the side, long soft shadows. Warm straw gold and deep black palette with a clear blue sky, editorial film finish with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S269",
+      "tab": "sfw",
+      "set": "MeadowChair",
+      "title": "Standing on the chair",
+      "text": "[trigger] in an editorial outdoor portrait, standing on the seat of a wooden chair with one arm raised high toward the sky, head tipped back. Wearing an oversized black blazer as a short dress, sheer black tights and chunky black lace up boots. An open meadow of tall dry grass rolling toward a distant tree line under a wide sky. Wide full length shot from a low angle, 24mm lens feel. Low golden evening sun from the side, long soft shadows. Warm straw gold and deep black palette with a clear blue sky, editorial film finish with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S270",
+      "tab": "sfw",
+      "set": "MeadowChair",
+      "title": "Hat raised behind the chair",
+      "text": "[trigger] in an editorial outdoor portrait, kneeling behind a wooden chair with her arms folded on the backrest, one hand raising a black hat. Wearing a sheer black mesh long sleeve top, black shorts and sheer black tights. An open meadow of tall dry grass rolling toward a distant tree line under a wide sky. Medium shot at eye level, 50mm lens feel, shallow depth of field. Low golden evening sun from the side, long soft shadows. Warm straw gold and deep black palette with a clear blue sky, editorial film finish with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S271",
+      "tab": "sfw",
+      "set": "MeadowChair",
+      "title": "Leaning in on the knee",
+      "text": "[trigger] in an editorial outdoor portrait, standing with one boot on the seat of a wooden chair, leaning in over her raised knee and looking into the lens. Wearing an oversized black blazer as a short dress, sheer black tights and chunky black lace up boots. An open meadow of tall dry grass rolling toward a distant tree line under a wide sky. Full length shot at eye level, 50mm lens feel. Low golden evening sun from the side, long soft shadows. Warm straw gold and deep black palette with a clear blue sky, editorial film finish with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S272",
+      "tab": "sfw",
+      "set": "MeadowChair",
+      "title": "Smiling over the chair back",
+      "text": "[trigger] in an editorial outdoor portrait, standing behind a wooden chair with her arms folded on its backrest, smiling warmly into the lens. Wearing a sheer black mesh long sleeve top, black shorts and sheer black tights. An open meadow of tall dry grass rolling toward a distant tree line under a wide sky. Medium close shot at eye level, 85mm lens feel, shallow depth of field. Low golden evening sun from the side, long soft shadows. Warm straw gold and deep black palette with a clear blue sky, editorial film finish with fine grain.",
       "added": "2026-11-23"
     },
     {
