@@ -4,6 +4,10 @@
   "changelog": [
     {
       "date": "2026-11-23",
+      "text": "31 new Boudoir prompts in four new sets: Gingham, Projector, Black bodysuit and Daylight studio."
+    },
+    {
+      "date": "2026-11-23",
       "text": "147 new prompts from Instagram carousels. New sets: Autumn forest (SFW), Knit studio, Flannel and Body details (Suggestive), plus more Everyday, Outdoor, Fashion, Places, Selfie and Portrait poses."
     },
     {
@@ -56,7 +60,11 @@
         "Paper",
         "Home",
         "Bathroom",
-        "WebB"
+        "WebB",
+        "Gingham",
+        "Projector",
+        "BlackBodysuit",
+        "DaylightStudio"
       ]
     },
     {
@@ -114,6 +122,10 @@
     }
   ],
   "sets": {
+    "Gingham": "Gingham",
+    "Projector": "Projector light",
+    "BlackBodysuit": "Black bodysuit",
+    "DaylightStudio": "Daylight studio",
     "Forest": "Autumn forest",
     "Knit": "Knit studio",
     "Flannel": "Flannel",
@@ -3230,6 +3242,285 @@
       "title": "Hugging herself on the hillside",
       "text": "[trigger] in a mountain photo, standing sideways on a grassy hillside with her arms wrapped around herself, looking off into the distance. Wearing a black off shoulder long sleeve knit top and a white tiered cotton maxi skirt. Rolling slopes and a cloudy sky. Medium full shot at eye level, 50mm lens feel, shallow depth of field. Soft overcast evening light, moss and slate palette, warm film grade, wide panoramic crop.",
       "src": "https://www.instagram.com/p/DfUM6OSjjLN/",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "38",
+      "tab": "boudoir",
+      "set": "Gingham",
+      "title": "Buttoning the shirt on a stool",
+      "text": "[trigger] in a clean studio boudoir photograph, perched on the edge of a black stool with knees together and feet on the floor, fingers fastening a button at her chest, head bowed and eyes lowered. Wearing an oversized light blue gingham button up shirt hanging open over a dark bra and briefs, barefoot. Seamless white studio backdrop. Full length shot at eye level, 50mm lens feel. Bright soft studio light from the front, clean shadowless whites, pale blue and white palette, crisp natural finish.",
+      "src": "https://www.instagram.com/p/DfNK_GPjc8h/",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "39",
+      "tab": "boudoir",
+      "set": "Gingham",
+      "title": "Crouched, hand at chin",
+      "text": "[trigger] in a clean studio boudoir photograph, crouched low on one knee with the other knee raised, one elbow resting on it and fingertips at her chin, a calm direct gaze into the lens. Wearing an oversized light blue gingham button up shirt hanging open over a dark bra and briefs, barefoot. Seamless white studio backdrop. Full length shot from a slightly high angle, 50mm lens feel. Bright soft studio light from the front, clean shadowless whites, pale blue and white palette, crisp natural finish.",
+      "src": "https://www.instagram.com/p/DfNK_GPjc8h/",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "40",
+      "tab": "boudoir",
+      "set": "Gingham",
+      "title": "Kneeling, holding the shirt open",
+      "text": "[trigger] in a clean studio boudoir photograph, kneeling upright with knees slightly apart, both hands holding the edges of the open shirt, head tilted, soft gaze into the lens. Wearing an oversized light blue gingham button up shirt hanging open over a dark bra and briefs, barefoot. Seamless white studio backdrop. Full length shot at eye level, 50mm lens feel. Bright soft studio light from the front, clean shadowless whites, pale blue and white palette, crisp natural finish.",
+      "src": "https://www.instagram.com/p/DfNK_GPjc8h/",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "41",
+      "tab": "boudoir",
+      "set": "Gingham",
+      "title": "Wide stance on the stool",
+      "text": "[trigger] in a clean studio boudoir photograph, sitting on a black stool with knees apart and feet planted wide, forearms resting on her thighs, head bowed looking down at the floor. Wearing an oversized light blue gingham button up shirt hanging open over a dark bra and briefs, barefoot. Seamless white studio backdrop. Full length shot at eye level, 50mm lens feel. Bright soft studio light from the front, clean shadowless whites, pale blue and white palette, crisp natural finish.",
+      "src": "https://www.instagram.com/p/DfNK_GPjc8h/",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "42",
+      "tab": "boudoir",
+      "set": "Gingham",
+      "title": "Kneeling, arm across the face",
+      "text": "[trigger] in a clean studio boudoir photograph, kneeling and sitting back on her heels, one arm raised with the forearm resting against her brow, the other hand gathering the shirt at her waist, eyes half closed. Wearing an oversized light blue gingham button up shirt hanging open over a dark bra and briefs, barefoot. Seamless white studio backdrop. Full length shot at eye level, 50mm lens feel. Bright soft studio light from the front, clean shadowless whites, pale blue and white palette, crisp natural finish.",
+      "src": "https://www.instagram.com/p/DfNK_GPjc8h/",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "43",
+      "tab": "boudoir",
+      "set": "Gingham",
+      "title": "Standing, clutching the collar",
+      "text": "[trigger] in a clean studio boudoir photograph, standing with shins crossed and weight on one foot, one hand clutching the shirt collar at the opposite shoulder, the other resting on her hip, looking into the lens. Wearing an oversized light blue gingham button up shirt hanging open over a dark bra and briefs, barefoot. Seamless white studio backdrop. Full length shot at eye level, 50mm lens feel. Bright soft studio light from the front, clean shadowless whites, pale blue and white palette, crisp natural finish.",
+      "src": "https://www.instagram.com/p/DfNK_GPjc8h/",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "44",
+      "tab": "boudoir",
+      "set": "Projector",
+      "title": "Crouched on the cube, hand to face",
+      "text": "[trigger] in a dark editorial boudoir photograph, crouched low on top of a black cube with knees pressed together, one hand curled at her cheek, gazing down. Wearing a fitted black short sleeve mock neck bodysuit, sheer black tights and knee high black heeled boots, hair pulled into a high top bun. Dark studio with a huge black and white portrait of a woman's face projected across the wall behind, her own shadow falling over it. Full length shot at eye level, 35mm lens feel. Cool projector light from the front as the only source, deep shadows, monochrome gray and black palette with a slight blue cast, fine grain.",
+      "src": "https://www.instagram.com/p/DfC6zqVjYRl/",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "45",
+      "tab": "boudoir",
+      "set": "Projector",
+      "title": "Deep squat, fingertip at lips",
+      "text": "[trigger] in a dark editorial boudoir photograph, in a deep squat on a black cube with knees apart, one fingertip resting on her lips, a steady gaze into the lens. Wearing a long black coat draped over the shoulders of a fitted black mock neck bodysuit, sheer black tights and knee high black heeled boots, hair pulled into a high top bun. Dark studio with a huge black and white portrait of a woman's face projected across the wall behind, her own shadow falling over it. Full length shot at eye level, 35mm lens feel. Cool projector light from the front as the only source, deep shadows, monochrome gray and black palette with a slight blue cast, fine grain.",
+      "src": "https://www.instagram.com/p/DfC6zqVjYRl/",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "46",
+      "tab": "boudoir",
+      "set": "Projector",
+      "title": "Chin on fist, crouched",
+      "text": "[trigger] in a dark editorial boudoir photograph, crouched on her heels on the floor, one elbow on her knee and her chin resting on a loose fist, staring into the lens. Wearing a fitted black short sleeve mock neck bodysuit, sheer black tights and knee high black heeled boots, hair pulled into a high top bun. Dark studio with a huge black and white portrait of a woman's face projected across the wall behind, her own shadow falling over it. Full length shot at eye level, 35mm lens feel. Cool projector light from the front as the only source, deep shadows, monochrome gray and black palette with a slight blue cast, fine grain.",
+      "src": "https://www.instagram.com/p/DfC6zqVjYRl/",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "47",
+      "tab": "boudoir",
+      "set": "Projector",
+      "title": "Coat on the shoulders, glance aside",
+      "text": "[trigger] in a dark editorial boudoir photograph, standing close to the camera with a long coat hanging off her shoulders, head turned to glance sideways past the lens. Wearing a long black coat draped over the shoulders of a fitted black mock neck bodysuit, sheer black tights and knee high black heeled boots, hair pulled into a high top bun. Dark studio with a huge black and white portrait of a woman's face projected across the wall behind, her own shadow falling over it. Medium shot at eye level, 50mm lens feel. Cool projector light from the front as the only source, deep shadows, monochrome gray and black palette with a slight blue cast, fine grain.",
+      "src": "https://www.instagram.com/p/DfC6zqVjYRl/",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "48",
+      "tab": "boudoir",
+      "set": "Projector",
+      "title": "Kneeling, hand behind the head",
+      "text": "[trigger] in a dark editorial boudoir photograph, kneeling upright with back arched, one hand behind her head and the other lightly on her thigh, chin lifted, looking into the lens. Wearing a fitted black short sleeve mock neck bodysuit, sheer black tights and knee high black heeled boots, hair pulled into a high top bun. Dark studio with a huge black and white portrait of a woman's face projected across the wall behind, her own shadow falling over it. Full length shot at eye level, 35mm lens feel. Cool projector light from the front as the only source, deep shadows, monochrome gray and black palette with a slight blue cast, fine grain.",
+      "src": "https://www.instagram.com/p/DfC6zqVjYRl/",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "49",
+      "tab": "boudoir",
+      "set": "Projector",
+      "title": "Seated, leaning back on one hand",
+      "text": "[trigger] in a dark editorial boudoir photograph, sitting on the floor with legs folded to one side, leaning back on one straight arm with the other hand resting on the floor, looking into the lens. Wearing a fitted black short sleeve mock neck bodysuit, sheer black tights and knee high black heeled boots, hair pulled into a high top bun. Dark studio with a huge black and white portrait of a woman's face projected across the wall behind, her own shadow falling over it. Full length shot from a slightly high angle, 35mm lens feel. Cool projector light from the front as the only source, deep shadows, monochrome gray and black palette with a slight blue cast, fine grain.",
+      "src": "https://www.instagram.com/p/DfC6zqVjYRl/",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "50",
+      "tab": "boudoir",
+      "set": "Projector",
+      "title": "Forearm across the brow",
+      "text": "[trigger] in a dark editorial boudoir photograph, standing at a three quarter angle with one forearm raised across her brow and the other arm relaxed at her side, gazing off to the side. Wearing a fitted black short sleeve mock neck bodysuit, sheer black tights and knee high black heeled boots, hair pulled into a high top bun. Dark studio with a huge black and white portrait of a woman's face projected across the wall behind, her own shadow falling over it. Medium shot at eye level, 50mm lens feel. Cool projector light from the front as the only source, deep shadows, monochrome gray and black palette with a slight blue cast, fine grain.",
+      "src": "https://www.instagram.com/p/DfC6zqVjYRl/",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "51",
+      "tab": "boudoir",
+      "set": "Projector",
+      "title": "On her toes on the cube",
+      "text": "[trigger] in a dark editorial boudoir photograph, crouched on her toes on a black cube with arms hugging her knees and fingertips at her chin, looking into the lens. Wearing a fitted black short sleeve mock neck bodysuit, sheer black tights and knee high black heeled boots, hair pulled into a high top bun. Dark studio with a huge black and white portrait of a woman's face projected across the wall behind, her own shadow falling over it. Full length shot at eye level, 35mm lens feel. Cool projector light from the front as the only source, deep shadows, monochrome gray and black palette with a slight blue cast, fine grain.",
+      "src": "https://www.instagram.com/p/DfC6zqVjYRl/",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "52",
+      "tab": "boudoir",
+      "set": "BlackBodysuit",
+      "title": "Lying on one elbow",
+      "text": "[trigger] in a high key studio boudoir photograph, lying on her side on the floor propped on one forearm, legs stretched out long and crossed at the ankles, looking into the lens. Wearing a black plunge neck bodysuit with thin straps and black strappy heeled sandals. Seamless white studio backdrop. Full length shot at floor level, 50mm lens feel. Bright even studio light, crisp clean whites, high key black and white palette, sharp natural finish.",
+      "src": "https://www.instagram.com/p/DeKM88KjTiE/",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "53",
+      "tab": "boudoir",
+      "set": "BlackBodysuit",
+      "title": "Folding chair, leg extended",
+      "text": "[trigger] in a high key studio boudoir photograph, sitting on a black folding chair with one ankle resting on the opposite knee and the other leg stretched out wide to the side, one hand in her hair, looking into the lens. Wearing a black plunge neck bodysuit with thin straps and black strappy heeled sandals. Seamless white studio backdrop. Full length shot at eye level, 35mm lens feel. Bright even studio light, crisp clean whites, high key black and white palette, sharp natural finish.",
+      "src": "https://www.instagram.com/p/DeKM88KjTiE/",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "54",
+      "tab": "boudoir",
+      "set": "BlackBodysuit",
+      "title": "Leaning back, knees up",
+      "text": "[trigger] in a high key studio boudoir photograph, sitting on the floor leaning back on both hands, knees raised with heels planted, body angled away and looking back over her shoulder into the lens. Wearing a black plunge neck bodysuit with thin straps and black strappy heeled sandals. Seamless white studio backdrop. Full length shot at eye level, 50mm lens feel. Bright even studio light, crisp clean whites, high key black and white palette, sharp natural finish.",
+      "src": "https://www.instagram.com/p/DeKM88KjTiE/",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "55",
+      "tab": "boudoir",
+      "set": "BlackBodysuit",
+      "title": "Kneeling, hand on hip",
+      "text": "[trigger] in a high key studio boudoir photograph, kneeling upright with knees apart, one hand on her hip and the other resting on her thigh, a confident direct gaze into the lens. Wearing a black plunge neck bodysuit with thin straps and black strappy heeled sandals. Seamless white studio backdrop. Full length shot at eye level, 50mm lens feel. Bright even studio light, crisp clean whites, high key black and white palette, sharp natural finish.",
+      "src": "https://www.instagram.com/p/DeKM88KjTiE/",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "56",
+      "tab": "boudoir",
+      "set": "BlackBodysuit",
+      "title": "Standing, hands in hair",
+      "text": "[trigger] in a high key studio boudoir photograph, standing with feet slightly apart and both hands lifted into her hair, elbows out, looking into the lens. Wearing a black plunge neck bodysuit with thin straps and black strappy heeled sandals. Seamless white studio backdrop. Full length shot at eye level, 50mm lens feel. Bright even studio light, crisp clean whites, high key black and white palette, sharp natural finish.",
+      "src": "https://www.instagram.com/p/DeKM88KjTiE/",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "57",
+      "tab": "boudoir",
+      "set": "BlackBodysuit",
+      "title": "Floor sit, hand behind the head",
+      "text": "[trigger] in a high key studio boudoir photograph, sitting on the floor with one leg folded in front and the other stretched out to the side, one hand behind her head and the other on the floor, looking into the lens. Wearing a black plunge neck bodysuit with thin straps and black strappy heeled sandals. Seamless white studio backdrop. Full length shot at eye level, 50mm lens feel. Bright even studio light, crisp clean whites, high key black and white palette, sharp natural finish.",
+      "src": "https://www.instagram.com/p/DeKM88KjTiE/",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "58",
+      "tab": "boudoir",
+      "set": "BlackBodysuit",
+      "title": "Heel up on the chair",
+      "text": "[trigger] in a high key studio boudoir photograph, standing in profile with one heel raised onto the seat of a black folding chair, both hands resting on the raised knee, head turned to look into the lens. Wearing a black plunge neck bodysuit with thin straps and black strappy heeled sandals. Seamless white studio backdrop. Full length shot at eye level, 35mm lens feel. Bright even studio light, crisp clean whites, high key black and white palette, sharp natural finish.",
+      "src": "https://www.instagram.com/p/DeKM88KjTiE/",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "59",
+      "tab": "boudoir",
+      "set": "DaylightStudio",
+      "title": "Upside down on the floor",
+      "text": "[trigger] in a soft studio boudoir photograph, lying on her back on the floor with her head toward the camera, knees bent and legs twisted to one side with heels in the air, arms spread loosely, looking up into the lens upside down. Wearing a black long sleeve scoop neck bodysuit, sheer black tights and black heels. Seamless white studio backdrop. Full length shot from a high angle, 35mm lens feel. Soft diffused daylight, gentle shadows, warm film tones, black and white denim palette, subtle grain.",
+      "src": "https://www.instagram.com/p/DeT1AomDZXU/",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "60",
+      "tab": "boudoir",
+      "set": "DaylightStudio",
+      "title": "Lying back, arm over head",
+      "text": "[trigger] in a soft studio boudoir photograph, lying on her back on the floor with one arm bent over her head, face turned toward the lens with a soft gaze. Wearing a black satin corset top. Seamless white studio backdrop. Medium shot from a low angle at floor level, 50mm lens feel. Soft diffused daylight, gentle shadows, warm film tones, black and white denim palette, subtle grain.",
+      "src": "https://www.instagram.com/p/DeT1AomDZXU/",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "61",
+      "tab": "boudoir",
+      "set": "DaylightStudio",
+      "title": "Blazer off the shoulders",
+      "text": "[trigger] in a soft studio boudoir photograph, standing square to the camera with hands resting at her waist, a black blazer slipping down off her shoulders, looking into the lens. Wearing a black satin corset top, black trousers and an oversized black blazer. Seamless white studio backdrop. Medium full shot at eye level, 50mm lens feel. Soft diffused daylight, gentle shadows, warm film tones, black and white denim palette, subtle grain.",
+      "src": "https://www.instagram.com/p/DeT1AomDZXU/",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "62",
+      "tab": "boudoir",
+      "set": "DaylightStudio",
+      "title": "Kneeling, wrists crossed overhead",
+      "text": "[trigger] in a soft studio boudoir photograph, kneeling and sitting back on her heels with both arms raised and wrists crossed over the top of her head, head tilted, gazing into the lens. Wearing a black long sleeve scoop neck bodysuit, sheer black tights and black heels. Seamless white studio backdrop. Full length shot at eye level, 50mm lens feel. Soft diffused daylight, gentle shadows, warm film tones, black and white denim palette, subtle grain.",
+      "src": "https://www.instagram.com/p/DeT1AomDZXU/",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "63",
+      "tab": "boudoir",
+      "set": "DaylightStudio",
+      "title": "Kneeling in jeans, hand in hair",
+      "text": "[trigger] in a soft studio boudoir photograph, kneeling upright with knees apart, one hand lifted into her hair and the other resting on her thigh, looking into the lens. Wearing a black bralette and loose light wash jeans, barefoot. Seamless white studio backdrop. Medium full shot at eye level, 50mm lens feel. Soft diffused daylight, gentle shadows, warm film tones, black and white denim palette, subtle grain.",
+      "src": "https://www.instagram.com/p/DeT1AomDZXU/",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "64",
+      "tab": "boudoir",
+      "set": "DaylightStudio",
+      "title": "Propped on an elbow",
+      "text": "[trigger] in a soft studio boudoir photograph, lying on her side propped on one elbow, the other hand raised into her hair, legs stretched out long, head tipped back toward the lens. Wearing a black long sleeve scoop neck bodysuit, sheer black tights and black heels. Seamless white studio backdrop. Full length shot at floor level, 35mm lens feel. Soft diffused daylight, gentle shadows, warm film tones, black and white denim palette, subtle grain.",
+      "src": "https://www.instagram.com/p/DeT1AomDZXU/",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "65",
+      "tab": "boudoir",
+      "set": "DaylightStudio",
+      "title": "Side sit, looking back",
+      "text": "[trigger] in a soft studio boudoir photograph, sitting on the floor with legs folded to one side, leaning on both hands with her back half turned, looking over her shoulder into the lens. Wearing a black long sleeve scoop neck bodysuit, sheer black tights and black heels. Seamless white studio backdrop. Full length shot at eye level, 50mm lens feel. Soft diffused daylight, gentle shadows, warm film tones, black and white denim palette, subtle grain.",
+      "src": "https://www.instagram.com/p/DeT1AomDZXU/",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "66",
+      "tab": "boudoir",
+      "set": "DaylightStudio",
+      "title": "Kneeling, arms crossed",
+      "text": "[trigger] in a soft studio boudoir photograph, kneeling and sitting back on her heels, arms crossed over her chest with one hand at the opposite shoulder, head tilted, a soft gaze into the lens. Wearing a black bralette and loose light wash jeans, barefoot. Seamless white studio backdrop. Medium full shot at eye level, 50mm lens feel. Soft diffused daylight, gentle shadows, warm film tones, black and white denim palette, subtle grain.",
+      "src": "https://www.instagram.com/p/DeT1AomDZXU/",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "67",
+      "tab": "boudoir",
+      "set": "DaylightStudio",
+      "title": "Low on hands and knees",
+      "text": "[trigger] in a soft studio boudoir photograph, on her knees with her chest lowered toward the floor, cheek resting on one hand, the other arm stretched forward, looking into the lens. Wearing a black bralette and loose light wash jeans, barefoot. Seamless white studio backdrop. Full length shot from a low angle, 35mm lens feel. Soft diffused daylight, gentle shadows, warm film tones, black and white denim palette, subtle grain.",
+      "src": "https://www.instagram.com/p/DeT1AomDZXU/",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "68",
+      "tab": "boudoir",
+      "set": "DaylightStudio",
+      "title": "Blazer slipping, looking back",
+      "text": "[trigger] in a soft studio boudoir photograph, standing with her back to the camera, a black blazer slipping down her arms to bare her shoulders, looking back over her shoulder into the lens. Wearing a black strappy top, black trousers and an oversized black blazer. Seamless white studio backdrop. Medium shot at eye level, 50mm lens feel. Soft diffused daylight, gentle shadows, warm film tones, black and white denim palette, subtle grain.",
+      "src": "https://www.instagram.com/p/DeT1AomDZXU/",
       "added": "2026-11-23"
     },
     {
