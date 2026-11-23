@@ -12,7 +12,7 @@ import { outfitSVG } from "./outfit_art.js";
 import { parts as outfitParts, locked as outfitLocked, outfitText, withOutfit } from "./outfit_core.js";
 import { withScene } from "./scene_core.js";
 import { openCameraPicker, cameraIcon } from "./camera.js";
-import { parts as cameraParts, cameraText } from "./camera_core.js";
+import { parts as cameraParts, cameraText, labelOf as cameraLabel } from "./camera_core.js";
 import { loadData, frameKey, frameNo, loadEdits, saveEdit, personText } from "./core.js";
 
 const HERE = new URL(".", import.meta.url);
@@ -258,7 +258,7 @@ function nodeCtx(node) {
       const src = linkedCamera(node);
       if (!src || !cams) return null;
       const p = cameraParts(cams, cameraState(src));
-      return p.on && (p.cam || p.skin) ? { parts: p, label: p.label || "Real skin" } : null;
+      return p.on && (p.cam || p.look || p.skin) ? { parts: p, label: cameraLabel(p) } : null;
     },
     outfitOverrides: () => outfitOverrides(node),
     setOutfitOverride: (id, on) => {
@@ -406,13 +406,15 @@ function addCameraCard(nodeType) {
     const wrap = document.createElement("div");
     wrap.className = "kps kpn kpc";
     wrap.innerHTML = `<button type="button" class="kpn-face kpc-face" title="Open the camera picker"></button>
-      <div class="kpn-bar"><button type="button" class="kps-btn kps-accent kpn-browse">Pick camera</button></div>`;
+      <div class="kpn-bar"><button type="button" class="kps-btn kps-accent kpn-browse">Camera and look</button></div>`;
     const face = wrap.querySelector(".kpc-face");
     const draw = () => {
       const s = cameraState(node), p = cameraParts(cams, s);
-      const title = !p.on ? "Camera off" : p.label ? p.label + (p.skin ? " + real skin" : "") : p.skin ? "Real skin" : "Frame's own camera";
-      const snip = !p.on ? "Frames keep their own camera and finish." : cameraText(p) || "Pick a phone, flash, disposable or film camera.";
-      face.innerHTML = `<span class="kpc-art${p.on && (p.cam || p.skin) ? "" : " is-off"}">${cameraIcon(p.cam, 36)}</span><span class="kpn-text"><span class="kpn-title">${esc(title)}</span>
+      const name = cameraLabel(p), lk = p.look && cams.looks ? cams.looks.find(l => l.value === p.look) : null;
+      const title = !p.on ? "Camera off" : name ? name + (p.skin && (p.cam || p.look) ? " + real skin" : "") : "Frame's own camera";
+      const snip = !p.on ? "Frames keep their own camera and finish." : cameraText(p) || "Pick a camera or a look: phone, flash, film, a grade, a light or an art style.";
+      const live = p.on && (p.cam || p.look || p.skin);
+      face.innerHTML = `<span class="kpc-art${live ? "" : " is-off"}"${lk && lk.swatch && !p.cam ? ` style="background:${esc(lk.swatch)}"` : ""}>${lk && !p.cam ? "" : cameraIcon(p.cam, 36)}</span><span class="kpn-text"><span class="kpn-title">${esc(title)}</span>
         <span class="kpn-snip">${esc(snip)}</span></span>`;
     };
     const open = () => {

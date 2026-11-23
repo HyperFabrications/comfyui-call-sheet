@@ -1,6 +1,6 @@
-// Pick the camera a shot was taken on, its flaws, and real skin.
+// Pick the camera a shot was taken on, its flaws, a look (film, grade, light or an art style), and real skin.
 // openCameraPicker({ data, cams, state, sample, onChange(state) }). Changes apply as you make them.
-import { parts, cameraText, withCamera, cameraOf } from "./camera_core.js";
+import { parts, cameraText, withCamera, cameraOf, lookOf, labelOf } from "./camera_core.js";
 import { frameNo } from "./core.js";
 
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -23,7 +23,7 @@ let current = null;
 
 export function openCameraPicker({ data, cams, state = {}, sample = null, onChange = () => {}, doneLabel = "Done" }) {
   if (current) current.close();
-  const st = { s: { on: true, ...state }, ex: 0 };
+  const st = { s: { on: true, ...state }, ex: 0, tab: state.look && !state.cam ? "look" : "camera" };
   const samples = [sample, ...["69", "S36", "33", "S87"].map(id => data.frames.find(f => f.id === id))].filter((f, i, a) => f && a.findIndex(x => x && x.id === f.id) === i);
 
   const el = document.createElement("div");
@@ -35,7 +35,7 @@ export function openCameraPicker({ data, cams, state = {}, sample = null, onChan
     <header class="kq-head">
       <button type="button" class="kq-icon" data-x="close" aria-label="Back"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
       <h2>Camera</h2>
-      <span class="kq-dim">What the shot was taken on</span>
+      <span class="kq-dim">What the shot was taken on, and how it looks</span>
       <span class="kq-grow"></span>
       <button type="button" class="kq-ghost" data-x="reset">Reset</button>
       <button type="button" class="kq-primary kq-sm" data-x="done">${esc(doneLabel)}</button>
@@ -56,15 +56,32 @@ export function openCameraPicker({ data, cams, state = {}, sample = null, onChan
       return `<button type="button" class="kq-chip kqc-tog" ${attr}="${esc(o.key)}" aria-pressed="${on}" title="${esc(o.text)}">${esc(o.name)}</button>`;
     }).join("");
   }
+  function tabs() {
+    const c = cameraOf(cams, st.s.cam), l = lookOf(cams, st.s.look);
+    return `<div class="kqs-tabs" role="tablist" aria-label="Camera or look">
+      <button type="button" role="tab" data-tab="camera" aria-selected="${st.tab === "camera"}">Camera${c && !(l && l.art) ? ` <span class="kq-faint">${esc(c.name)}</span>` : ""}</button>
+      <button type="button" role="tab" data-tab="look" aria-selected="${st.tab === "look"}">Look${l ? ` <span class="kq-faint">${esc(l.name)}</span>` : ""}</button></div>`;
+  }
   function renderMid() {
-    const c = cameraOf(cams, st.s.cam);
-    q(".kqc-mid").innerHTML = `
-      <div class="kqc-cams">${[{ value: "", name: "Frame's own", short: "Keep each frame's lens and finish" }, ...cams.cameras].map(o => `
+    const c = cameraOf(cams, st.s.cam), l = lookOf(cams, st.s.look), art = !!(l && l.art);
+    if (st.tab === "look") {
+      const groups = [...new Set(cams.looks.map(x => x.group))];
+      q(".kqc-mid").innerHTML = `${tabs()}
+        <button type="button" class="kqc-look kqc-none" data-look="" aria-pressed="${!l}"><span class="kqc-sw"></span><span class="kqc-ct"><span class="kqc-cn">Frame's own</span><span class="kq-dim">Keep each frame's palette and light</span></span></button>
+        ${groups.map(g => `<div class="kqc-group"><div class="kqc-gh">${esc(g)}${g === "Art" ? '<span class="kq-dim">Changes the medium, so the camera and real skin are skipped</span>' : ""}</div>
+          <div class="kqc-looks">${cams.looks.filter(x => x.group === g).map(x => `
+            <button type="button" class="kqc-look" data-look="${esc(x.value)}" aria-pressed="${st.s.look === x.value}" title="${esc(x.light ? x.light + " " : "")}${esc(x.grade)}">
+              <span class="kqc-sw" style="background:${esc(x.swatch || "#222")}"></span><span class="kqc-ct"><span class="kqc-cn">${esc(x.name)}</span><span class="kq-dim">${esc(x.short)}</span></span></button>`).join("")}</div></div>`).join("")}`;
+      return;
+    }
+    q(".kqc-mid").innerHTML = `${tabs()}
+      ${art ? `<p class="kqc-note">${esc(l.name)} sets its own medium, so the camera and real skin are skipped. Pick a photo look to use them again.</p>` : ""}
+      <div class="kqc-cams${art ? " is-off" : ""}">${[{ value: "", name: "Frame's own", short: "Keep each frame's lens and finish" }, ...cams.cameras].map(o => `
         <button type="button" class="kqc-cam" data-cam="${esc(o.value)}" aria-pressed="${(st.s.cam || "") === o.value}">
           ${cameraIcon(o.value)}<span class="kqc-ct"><span class="kqc-cn">${esc(o.name)}</span><span class="kq-dim">${esc(o.short)}</span></span></button>`).join("")}</div>
-      ${c ? `<div class="kqc-sec"><div class="kq-row"><span class="kq-strong">Flaws</span></div>
+      ${c && !art ? `<div class="kqc-sec"><div class="kq-row"><span class="kq-strong">Flaws</span></div>
         <div class="kqc-chips">${chips(c.flaws, st.s.flaws, "data-flaw")}</div></div>` : ""}
-      <div class="kqc-sec"><div class="kq-row"><span class="kq-strong">Real skin</span><span class="kq-grow"></span>
+      <div class="kqc-sec${art ? " is-off" : ""}"><div class="kq-row"><span class="kq-strong">Real skin</span><span class="kq-grow"></span>
         <button type="button" class="kq-switch" data-x="skin" aria-pressed="${!!st.s.skin}" aria-label="Real skin"><span></span></button></div>
         ${st.s.skin ? `<div class="kqc-chips">${chips(cams.skin, st.s.skinBits, "data-skin")}</div>` : ""}</div>`;
   }
@@ -73,7 +90,8 @@ export function openCameraPicker({ data, cams, state = {}, sample = null, onChan
     const f = samples[st.ex % samples.length], p = P();
     const [txt, changed] = withCamera(f.text, p);
     let html = esc(txt);
-    if (changed) for (const s of [p.device, p.light, p.finish, p.flaws, p.skin].filter(Boolean)) {
+    const medium = p.art ? p.medium : "";
+    if (changed) for (const s of [medium, p.device, p.frame, p.light, p.lookLight, p.grade, p.finish, p.flaws, p.skin].filter(Boolean)) {
       const e = esc(s), i = html.toLowerCase().indexOf(e.toLowerCase());
       if (i >= 0) html = html.slice(0, i) + `<mark>${html.slice(i, i + e.length)}</mark>` + html.slice(i + e.length);
     }
@@ -83,12 +101,12 @@ export function openCameraPicker({ data, cams, state = {}, sample = null, onChan
       <p class="kqs-extext">${html.replace("[trigger]", '<span class="kq-faint">[trigger]</span>')}</p></div>`;
   }
   function renderSide() {
-    const p = P(), txt = cameraText(p), c = cameraOf(cams, st.s.cam);
+    const p = P(), txt = cameraText(p), c = cameraOf(cams, st.s.cam) || lookOf(cams, st.s.look);
     q(".kqc-side").innerHTML = `${example()}
       <div class="kqb-send">
         <div class="kq-row"><span class="kq-strong">Use this camera</span><span class="kq-dim">${st.s.on === false ? "off, frames keep their own" : "on every frame"}</span><span class="kq-grow"></span>
           <button type="button" class="kq-switch" data-x="on" aria-pressed="${st.s.on !== false}" aria-label="Use this camera in prompts"><span></span></button></div>
-        <p class="kq-mono kqb-desc${st.s.on === false ? " is-off" : ""}">${txt ? esc(txt) : `<span class="kq-faint">${c ? "" : "Pick a camera or turn on real skin."}</span>`}</p>
+        <p class="kq-mono kqb-desc${st.s.on === false ? " is-off" : ""}">${txt ? esc(txt) : `<span class="kq-faint">${c ? "" : "Pick a camera, a look or real skin."}</span>`}</p>
         <button type="button" class="kq-ghost kq-tight" data-x="copy">${COPY}<span>Copy</span></button>
       </div>`;
   }
@@ -113,11 +131,22 @@ export function openCameraPicker({ data, cams, state = {}, sample = null, onChan
   el.addEventListener("click", e => {
     const t = e.target;
     if (t === el) { close(); return; }
+    const tb = t.closest("[data-tab]");
+    if (tb) { st.tab = tb.dataset.tab; renderMid(); return; }
+    const lk = t.closest("[data-look]");
+    if (lk) {
+      const v = lk.dataset.look;
+      st.s = { ...st.s, on: true };
+      if (v && st.s.look !== v) st.s.look = v; else delete st.s.look;
+      emit(); render(); return;
+    }
     const cm = t.closest("[data-cam]");
     if (cm) {
       const v = cm.dataset.cam;
       st.s = { ...st.s, on: true };
       if (v) st.s.cam = v; else delete st.s.cam;
+      const lk = lookOf(cams, st.s.look);
+      if (v && lk && lk.art) delete st.s.look; // a camera means a photo again
       delete st.s.flaws; // each camera starts from its own flaws
       emit(); render(); return;
     }
@@ -142,7 +171,7 @@ export function openCameraPicker({ data, cams, state = {}, sample = null, onChan
   el.addEventListener("pointerdown", e => e.stopPropagation());
   document.addEventListener("keydown", onKey, true);
   render();
-  q(".kqc-cam[aria-pressed=true]")?.focus({ preventScroll: true });
+  q(".kqc-mid [aria-pressed=true]")?.focus({ preventScroll: true });
   current = { el, close };
   return current;
 }
