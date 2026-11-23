@@ -1,5 +1,5 @@
 {
- "note": "Cameras for the Call Sheet Camera node. device replaces the frame's lens and focus words (keepLens keeps them), light goes in before the frame's own light, finish replaces its grain and film words. Flaws and skin bits marked on start on.",
+ "note": "Cameras for the Call Sheet Camera node. device replaces the frame's lens and focus words (keepLens keeps them), light goes in before the frame's own light, finish replaces its grain and film words. Flaws and skin bits marked on start on. Looks replace the frame's palette and color words with grade, and its light words with light when a look has one; frame goes at the end of the camera line.",
  "cameras": [
   {
    "value": "phone",
@@ -8,11 +8,36 @@
    "device": "taken as an unposed snapshot on a smartphone, everything in focus",
    "finish": "unedited phone photo, slight digital noise in the shadows",
    "flaws": [
-    {"key": "tilt", "name": "Crooked framing", "text": "slightly crooked framing", "on": true},
-    {"key": "blown", "name": "Blown highlights", "text": "highlights blown out where the light is brightest", "on": true},
-    {"key": "blur", "name": "Motion blur", "text": "a touch of motion blur from a moving hand", "on": false},
-    {"key": "crop", "name": "Awkward crop", "text": "an awkward crop at one edge of the frame", "on": false},
-    {"key": "haze", "name": "Smudged lens", "text": "a soft haze from a smudged lens", "on": false}
+    {
+     "key": "tilt",
+     "name": "Crooked framing",
+     "text": "slightly crooked framing",
+     "on": true
+    },
+    {
+     "key": "blown",
+     "name": "Blown highlights",
+     "text": "highlights blown out where the light is brightest",
+     "on": true
+    },
+    {
+     "key": "blur",
+     "name": "Motion blur",
+     "text": "a touch of motion blur from a moving hand",
+     "on": false
+    },
+    {
+     "key": "crop",
+     "name": "Awkward crop",
+     "text": "an awkward crop at one edge of the frame",
+     "on": false
+    },
+    {
+     "key": "haze",
+     "name": "Smudged lens",
+     "text": "a soft haze from a smudged lens",
+     "on": false
+    }
    ]
   },
   {
@@ -22,10 +47,30 @@
    "device": "taken as a mirror selfie, her phone held up in one hand and visible in the reflection, everything in focus",
    "finish": "unedited phone photo, slight digital noise",
    "flaws": [
-    {"key": "smudge", "name": "Smudged mirror", "text": "smudges and specks of dust on the mirror", "on": true},
-    {"key": "tilt", "name": "Crooked framing", "text": "slightly crooked framing", "on": true},
-    {"key": "flare", "name": "Flash in mirror", "text": "the phone flash flaring as a bright spot in the mirror", "on": false},
-    {"key": "clutter", "name": "Clutter in frame", "text": "everyday clutter visible around the mirror", "on": false}
+    {
+     "key": "smudge",
+     "name": "Smudged mirror",
+     "text": "smudges and specks of dust on the mirror",
+     "on": true
+    },
+    {
+     "key": "tilt",
+     "name": "Crooked framing",
+     "text": "slightly crooked framing",
+     "on": true
+    },
+    {
+     "key": "flare",
+     "name": "Flash in mirror",
+     "text": "the phone flash flaring as a bright spot in the mirror",
+     "on": false
+    },
+    {
+     "key": "clutter",
+     "name": "Clutter in frame",
+     "text": "everyday clutter visible around the mirror",
+     "on": false
+    }
    ]
   },
   {
@@ -36,10 +81,30 @@
    "light": "Harsh direct flash from the camera, flat bright light on her skin and a hard shadow cast just behind her.",
    "finish": "candid flash photo, crisp and slightly overexposed",
    "flaws": [
-    {"key": "blown", "name": "Blown highlights", "text": "blown out highlights on her skin", "on": true},
-    {"key": "falloff", "name": "Dark falloff", "text": "the background falling off into darkness", "on": true},
-    {"key": "shine", "name": "Flash shine", "text": "shiny flash hotspots on her forehead and cheeks", "on": false},
-    {"key": "tilt", "name": "Crooked framing", "text": "slightly crooked framing", "on": false}
+    {
+     "key": "blown",
+     "name": "Blown highlights",
+     "text": "blown out highlights on her skin",
+     "on": true
+    },
+    {
+     "key": "falloff",
+     "name": "Dark falloff",
+     "text": "the background falling off into darkness",
+     "on": true
+    },
+    {
+     "key": "shine",
+     "name": "Flash shine",
+     "text": "shiny flash hotspots on her forehead and cheeks",
+     "on": false
+    },
+    {
+     "key": "tilt",
+     "name": "Crooked framing",
+     "text": "slightly crooked framing",
+     "on": false
+    }
    ]
   },
   {
@@ -50,10 +115,30 @@
    "light": "Its small built in flash firing straight on, bright on her and dropping off quickly behind.",
    "finish": "35mm drugstore film print, heavy grain, faded slightly warm colors, soft focus",
    "flaws": [
-    {"key": "leak", "name": "Light leak", "text": "a light leak glowing orange along one edge", "on": true},
-    {"key": "vignette", "name": "Dark corners", "text": "dark vignetting in the corners", "on": true},
-    {"key": "blur", "name": "Motion blur", "text": "slight motion blur", "on": false},
-    {"key": "date", "name": "Date stamp", "text": "an orange date stamp in the bottom corner", "on": false}
+    {
+     "key": "leak",
+     "name": "Light leak",
+     "text": "a light leak glowing orange along one edge",
+     "on": true
+    },
+    {
+     "key": "vignette",
+     "name": "Dark corners",
+     "text": "dark vignetting in the corners",
+     "on": true
+    },
+    {
+     "key": "blur",
+     "name": "Motion blur",
+     "text": "slight motion blur",
+     "on": false
+    },
+    {
+     "key": "date",
+     "name": "Date stamp",
+     "text": "an orange date stamp in the bottom corner",
+     "on": false
+    }
    ]
   },
   {
@@ -64,10 +149,30 @@
    "device": "shot on a 35mm film SLR",
    "finish": "Kodak Portra 400 color film, fine grain, soft warm skin tones, gentle highlight roll off",
    "flaws": [
-    {"key": "halation", "name": "Halation", "text": "slight halation glowing around the highlights", "on": true},
-    {"key": "vignette", "name": "Soft vignette", "text": "faint vignetting in the corners", "on": false},
-    {"key": "dust", "name": "Dust specks", "text": "a few dust specks from the film scan", "on": false},
-    {"key": "focus", "name": "Missed focus", "text": "focus landing just behind her eyes", "on": false}
+    {
+     "key": "halation",
+     "name": "Halation",
+     "text": "slight halation glowing around the highlights",
+     "on": true
+    },
+    {
+     "key": "vignette",
+     "name": "Soft vignette",
+     "text": "faint vignetting in the corners",
+     "on": false
+    },
+    {
+     "key": "dust",
+     "name": "Dust specks",
+     "text": "a few dust specks from the film scan",
+     "on": false
+    },
+    {
+     "key": "focus",
+     "name": "Missed focus",
+     "text": "focus landing just behind her eyes",
+     "on": false
+    }
    ]
   },
   {
@@ -77,18 +182,292 @@
    "device": "taken on an early 2000s point and shoot digital camera, everything in focus",
    "finish": "low resolution digital photo, noisy shadows, slightly oversaturated colors",
    "flaws": [
-    {"key": "flash", "name": "Built in flash", "text": "a harsh built in flash flattening her face", "on": true},
-    {"key": "jpeg", "name": "JPEG blocks", "text": "visible JPEG compression in the dark areas", "on": true},
-    {"key": "fringe", "name": "Color fringing", "text": "purple fringing on bright edges", "on": false},
-    {"key": "soft", "name": "Soft focus", "text": "slightly soft focus", "on": false}
+    {
+     "key": "flash",
+     "name": "Built in flash",
+     "text": "a harsh built in flash flattening her face",
+     "on": true
+    },
+    {
+     "key": "jpeg",
+     "name": "JPEG blocks",
+     "text": "visible JPEG compression in the dark areas",
+     "on": true
+    },
+    {
+     "key": "fringe",
+     "name": "Color fringing",
+     "text": "purple fringing on bright edges",
+     "on": false
+    },
+    {
+     "key": "soft",
+     "name": "Soft focus",
+     "text": "slightly soft focus",
+     "on": false
+    }
    ]
   }
  ],
  "skin": [
-  {"key": "pores", "name": "Visible pores", "text": "visible pores", "on": true},
-  {"key": "texture", "name": "Fine texture", "text": "fine natural texture", "on": true},
-  {"key": "freckles", "name": "Faint freckles", "text": "faint freckles", "on": false},
-  {"key": "fuzz", "name": "Peach fuzz", "text": "fine peach fuzz catching the light", "on": false},
-  {"key": "marks", "name": "Small marks", "text": "a few small natural marks and blemishes", "on": false}
+  {
+   "key": "pores",
+   "name": "Visible pores",
+   "text": "visible pores",
+   "on": true
+  },
+  {
+   "key": "texture",
+   "name": "Fine texture",
+   "text": "fine natural texture",
+   "on": true
+  },
+  {
+   "key": "freckles",
+   "name": "Faint freckles",
+   "text": "faint freckles",
+   "on": false
+  },
+  {
+   "key": "fuzz",
+   "name": "Peach fuzz",
+   "text": "fine peach fuzz catching the light",
+   "on": false
+  },
+  {
+   "key": "marks",
+   "name": "Small marks",
+   "text": "a few small natural marks and blemishes",
+   "on": false
+  }
+ ],
+ "looks": [
+  {
+   "value": "kodachrome",
+   "name": "Kodachrome",
+   "short": "Saturated slide film color",
+   "group": "Film and grade",
+   "grade": "rich saturated Kodachrome slide film color, deep warm reds and blues, fine grain, crisp contrast",
+   "swatch": "linear-gradient(135deg,#b8322a,#e3b04b 50%,#1f4f8f)"
+  },
+  {
+   "value": "bleach",
+   "name": "Bleach bypass",
+   "short": "Desaturated, silvery, hard contrast",
+   "group": "Film and grade",
+   "grade": "bleach bypass grade, desaturated color with silvery highlights, dense deep shadows and high contrast",
+   "swatch": "linear-gradient(135deg,#1d1f20,#8a8f8c 55%,#d9dcd6)"
+  },
+  {
+   "value": "cross",
+   "name": "Cross processed",
+   "short": "Cyan shadows, yellow highlights",
+   "group": "Film and grade",
+   "grade": "cross processed film color, cyan green shadows, yellow tinted highlights, punchy contrast",
+   "swatch": "linear-gradient(135deg,#0f6f6a,#7fc4a0 50%,#f1e04f)"
+  },
+  {
+   "value": "halation",
+   "name": "Halation glow",
+   "short": "Highlights bleeding warm light",
+   "group": "Film and grade",
+   "grade": "soft halation glow bleeding warm light out of every highlight, hazy bloom, gentle contrast",
+   "swatch": "radial-gradient(circle at 60% 40%,#fff3d6,#f0a35e 40%,#3a1c14)"
+  },
+  {
+   "value": "greentech",
+   "name": "Green tech grade",
+   "short": "Cold green cast, crushed blacks",
+   "group": "Film and grade",
+   "grade": "cold green color cast over the whole frame, crushed blacks, desaturated skin, hard contrast",
+   "swatch": "linear-gradient(135deg,#050b06,#2f6b3a 55%,#a9d9a0)"
+  },
+  {
+   "value": "amber",
+   "name": "Sun bleached amber",
+   "short": "Dusty ochre and yellow",
+   "group": "Film and grade",
+   "grade": "sun bleached amber grade, dusty ochre and yellow tones, warm brown shadows",
+   "swatch": "linear-gradient(135deg,#4a2e12,#c48a2c 55%,#f0d58a)"
+  },
+  {
+   "value": "noir",
+   "name": "Film noir",
+   "short": "Hard light, blinds, deep black",
+   "group": "Black and white",
+   "light": "A single hard light from low to one side, slatted shadows from window blinds falling across her and the wall.",
+   "grade": "black and white, deep inky blacks, bright isolated highlights, high contrast",
+   "swatch": "repeating-linear-gradient(160deg,#050505 0 7px,#cfcfcf 7px 10px)"
+  },
+  {
+   "value": "bw",
+   "name": "B&W documentary",
+   "short": "Rich grays, natural light",
+   "group": "Black and white",
+   "grade": "black and white documentary photo, rich gray tones, natural contrast, fine grain",
+   "swatch": "linear-gradient(135deg,#111,#777 50%,#eee)"
+  },
+  {
+   "value": "golden",
+   "name": "Golden hour",
+   "short": "Low warm sun, long shadows",
+   "group": "Light",
+   "light": "Low golden hour sun raking in from the side, a warm glow on her skin and long soft shadows stretching away.",
+   "grade": "warm honey and amber tones",
+   "swatch": "linear-gradient(180deg,#f7c76b,#e9893b 55%,#6b3a1f)"
+  },
+  {
+   "value": "blue",
+   "name": "Blue hour",
+   "short": "Cool dusk, warm practicals",
+   "group": "Light",
+   "light": "Blue hour dusk light, a deep cool glow from the sky with warm practical lights glowing nearby.",
+   "grade": "cool blue and warm amber tones",
+   "swatch": "linear-gradient(180deg,#1b2b5c,#3e5d9e 60%,#f0b25a)"
+  },
+  {
+   "value": "neon",
+   "name": "Neon night",
+   "short": "Magenta and cyan from the sides",
+   "group": "Light",
+   "light": "Magenta and cyan neon light from either side, colored reflections on her skin, deep shadows in between.",
+   "grade": "saturated magenta and cyan tones",
+   "swatch": "linear-gradient(90deg,#e1338f,#1a0f24 50%,#20c4e0)"
+  },
+  {
+   "value": "highkey",
+   "name": "High key",
+   "short": "Bright, soft, almost shadowless",
+   "group": "Light",
+   "light": "Bright soft light wrapping around her from every side, almost no shadows.",
+   "grade": "clean bright whites and airy pale tones",
+   "swatch": "linear-gradient(135deg,#ffffff,#e9e9ee)"
+  },
+  {
+   "value": "lowkey",
+   "name": "Low key",
+   "short": "One light, near darkness",
+   "group": "Light",
+   "light": "A single soft light from one side carving her out of near darkness, the rest of the frame falling into black.",
+   "grade": "deep shadow tones with a few bright highlights",
+   "swatch": "radial-gradient(circle at 30% 40%,#8a7a6a,#151210 45%,#050505)"
+  },
+  {
+   "value": "rembrandt",
+   "name": "Rembrandt light",
+   "short": "Window light, triangle on the cheek",
+   "group": "Light",
+   "light": "Single window light from high to one side, a small triangle of light under her far eye, the other side of her face in soft shadow.",
+   "grade": "warm umber, gold and near black tones",
+   "swatch": "radial-gradient(circle at 30% 35%,#e0b35c,#6b4320 45%,#120c07)"
+  },
+  {
+   "value": "editorial",
+   "name": "Glossy editorial",
+   "short": "Crisp studio light, magazine polish",
+   "group": "Genre",
+   "light": "Crisp studio key light with a clean defined shadow.",
+   "grade": "bold polished magazine color, glossy retouched finish",
+   "swatch": "linear-gradient(135deg,#d8243f,#111 50%,#f2f2f2)"
+  },
+  {
+   "value": "pastel",
+   "name": "Symmetrical pastel",
+   "short": "Centered, flat light, pastel",
+   "group": "Genre",
+   "light": "Flat even light with soft shadows.",
+   "grade": "pastel pink, mint and butter yellow palette, storybook neatness",
+   "frame": "centered symmetrical framing",
+   "swatch": "linear-gradient(90deg,#f4b6c2,#bfe6d3 50%,#f6e3a1)"
+  },
+  {
+   "value": "sitcom",
+   "name": "Sitcom still",
+   "short": "Bright flat TV set light",
+   "group": "Genre",
+   "light": "Bright flat studio set lighting from above, every part of the room evenly lit.",
+   "grade": "clean bright TV color",
+   "swatch": "linear-gradient(135deg,#f5d36b,#7cb5e0 55%,#f08a5d)"
+  },
+  {
+   "value": "anime",
+   "name": "Anime",
+   "short": "Clean lines, cel shading",
+   "group": "Art",
+   "art": true,
+   "medium": "anime illustration",
+   "grade": "clean confident line art, flat cel shading, large expressive eyes, bright clear colors",
+   "swatch": "linear-gradient(135deg,#ff9fc0,#8fd0ff 60%,#fff)"
+  },
+  {
+   "value": "anime80",
+   "name": "80s anime",
+   "short": "Painted cels, soft airbrush",
+   "group": "Art",
+   "art": true,
+   "medium": "1980s anime cel",
+   "grade": "hand painted animation cel, bold graphic shadows, soft airbrushed highlights, slightly faded vintage colors",
+   "swatch": "linear-gradient(135deg,#2b1d5c,#d0508f 55%,#f6c48a)"
+  },
+  {
+   "value": "watercolor",
+   "name": "Storybook watercolor",
+   "short": "Soft washes, pencil lines",
+   "group": "Art",
+   "art": true,
+   "medium": "hand painted watercolor illustration",
+   "grade": "soft watercolor washes, delicate pencil lines, gentle pastel color, visible paper texture",
+   "swatch": "linear-gradient(135deg,#cfe7d9,#f3e2c4 50%,#a9c6e8)"
+  },
+  {
+   "value": "oil",
+   "name": "Oil painting",
+   "short": "Brushstrokes, rich pigment",
+   "group": "Art",
+   "art": true,
+   "medium": "classical oil painting",
+   "grade": "visible brushstrokes, rich layered pigment, warm glazed shadows, canvas texture",
+   "swatch": "linear-gradient(135deg,#3a2414,#9a6a34 50%,#e7cf9a)"
+  },
+  {
+   "value": "charcoal",
+   "name": "Charcoal drawing",
+   "short": "Smudged charcoal, paper tooth",
+   "group": "Art",
+   "art": true,
+   "medium": "charcoal drawing",
+   "grade": "smudged charcoal on toothy paper, soft gradients, bold dark accents, black and white",
+   "swatch": "linear-gradient(135deg,#1a1a1a,#6b6b6b 50%,#ece8df)"
+  },
+  {
+   "value": "comic",
+   "name": "Comic ink",
+   "short": "Bold ink, halftone color",
+   "group": "Art",
+   "art": true,
+   "medium": "comic book illustration",
+   "grade": "bold ink outlines, crosshatched shadows, flat printed color, halftone dots",
+   "swatch": "radial-gradient(circle,#111 18%,transparent 20%) 0 0/8px 8px,linear-gradient(135deg,#f5d000,#e8333c)"
+  },
+  {
+   "value": "render",
+   "name": "3D render",
+   "short": "Sculpted, soft studio render",
+   "group": "Art",
+   "art": true,
+   "medium": "stylized 3D render",
+   "grade": "smooth sculpted forms, soft subsurface skin, clean studio rendering, gentle ambient occlusion",
+   "swatch": "radial-gradient(circle at 40% 35%,#f5f0ff,#9b8ce0 45%,#2a2340)"
+  },
+  {
+   "value": "pinup",
+   "name": "Pin up painting",
+   "short": "Airbrushed 1950s calendar art",
+   "group": "Art",
+   "art": true,
+   "medium": "vintage pin up painting",
+   "grade": "airbrushed gouache finish, glowing warm skin, creamy background, saturated 1950s calendar art color",
+   "swatch": "linear-gradient(135deg,#f6d6b8,#e8565e 55%,#2c6f8f)"
+  }
  ]
 }
