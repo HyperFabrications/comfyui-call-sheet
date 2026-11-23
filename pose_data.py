@@ -4,6 +4,11 @@ import json
 import os
 import re
 
+try:
+    from .camera_data import with_camera
+except ImportError:  # run as a plain module (tests)
+    from camera_data import with_camera
+
 DATA_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "web", "poses.json")
 
 STYLE_RE = re.compile(r"\b(grain|grainy|palette|tones|finish|film|matte|contrast|desaturated|saturated|color grade|grading|print border|monochrome|black and white|halftone)\b|\bcolou?r$", re.I)
@@ -106,8 +111,9 @@ def with_edit(frame, edits):
     return frame
 
 
-def prompt_for(frame, trigger="", person="", style=True, edits=None):
-    return fill(base(with_edit(frame, edits), style), subject(trigger, person))
+def prompt_for(frame, trigger="", person="", style=True, edits=None, camera=None):
+    # A linked camera goes on after the style switch, so its film and grain words stay even with style off.
+    return fill(with_camera(base(with_edit(frame, edits), style), camera)[0], subject(trigger, person))
 
 
 def frame_key(f):

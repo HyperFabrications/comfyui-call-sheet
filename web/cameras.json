@@ -1,0 +1,94 @@
+{
+ "note": "Cameras for the Call Sheet Camera node. device replaces the frame's lens and focus words (keepLens keeps them), light goes in before the frame's own light, finish replaces its grain and film words. Flaws and skin bits marked on start on.",
+ "cameras": [
+  {
+   "value": "phone",
+   "name": "Phone snapshot",
+   "short": "Unposed, deep focus, a little noise",
+   "device": "taken as an unposed snapshot on a smartphone, everything in focus",
+   "finish": "unedited phone photo, slight digital noise in the shadows",
+   "flaws": [
+    {"key": "tilt", "name": "Crooked framing", "text": "slightly crooked framing", "on": true},
+    {"key": "blown", "name": "Blown highlights", "text": "highlights blown out where the light is brightest", "on": true},
+    {"key": "blur", "name": "Motion blur", "text": "a touch of motion blur from a moving hand", "on": false},
+    {"key": "crop", "name": "Awkward crop", "text": "an awkward crop at one edge of the frame", "on": false},
+    {"key": "haze", "name": "Smudged lens", "text": "a soft haze from a smudged lens", "on": false}
+   ]
+  },
+  {
+   "value": "mirror",
+   "name": "Mirror selfie",
+   "short": "Phone in hand, seen in the mirror",
+   "device": "taken as a mirror selfie, her phone held up in one hand and visible in the reflection, everything in focus",
+   "finish": "unedited phone photo, slight digital noise",
+   "flaws": [
+    {"key": "smudge", "name": "Smudged mirror", "text": "smudges and specks of dust on the mirror", "on": true},
+    {"key": "tilt", "name": "Crooked framing", "text": "slightly crooked framing", "on": true},
+    {"key": "flare", "name": "Flash in mirror", "text": "the phone flash flaring as a bright spot in the mirror", "on": false},
+    {"key": "clutter", "name": "Clutter in frame", "text": "everyday clutter visible around the mirror", "on": false}
+   ]
+  },
+  {
+   "value": "flash",
+   "name": "Direct flash",
+   "short": "Compact camera, flash straight on",
+   "device": "taken on a compact digital camera with the flash on, everything in focus",
+   "light": "Harsh direct flash from the camera, flat bright light on her skin and a hard shadow cast just behind her.",
+   "finish": "candid flash photo, crisp and slightly overexposed",
+   "flaws": [
+    {"key": "blown", "name": "Blown highlights", "text": "blown out highlights on her skin", "on": true},
+    {"key": "falloff", "name": "Dark falloff", "text": "the background falling off into darkness", "on": true},
+    {"key": "shine", "name": "Flash shine", "text": "shiny flash hotspots on her forehead and cheeks", "on": false},
+    {"key": "tilt", "name": "Crooked framing", "text": "slightly crooked framing", "on": false}
+   ]
+  },
+  {
+   "value": "disposable",
+   "name": "90s disposable",
+   "short": "Cheap film, built in flash, heavy grain",
+   "device": "taken on a cheap 90s disposable film camera, fixed focus",
+   "light": "Its small built in flash firing straight on, bright on her and dropping off quickly behind.",
+   "finish": "35mm drugstore film print, heavy grain, faded slightly warm colors, soft focus",
+   "flaws": [
+    {"key": "leak", "name": "Light leak", "text": "a light leak glowing orange along one edge", "on": true},
+    {"key": "vignette", "name": "Dark corners", "text": "dark vignetting in the corners", "on": true},
+    {"key": "blur", "name": "Motion blur", "text": "slight motion blur", "on": false},
+    {"key": "date", "name": "Date stamp", "text": "an orange date stamp in the bottom corner", "on": false}
+   ]
+  },
+  {
+   "value": "slr",
+   "name": "Film SLR",
+   "short": "35mm color film, keeps the frame's lens",
+   "keepLens": true,
+   "device": "shot on a 35mm film SLR",
+   "finish": "Kodak Portra 400 color film, fine grain, soft warm skin tones, gentle highlight roll off",
+   "flaws": [
+    {"key": "halation", "name": "Halation", "text": "slight halation glowing around the highlights", "on": true},
+    {"key": "vignette", "name": "Soft vignette", "text": "faint vignetting in the corners", "on": false},
+    {"key": "dust", "name": "Dust specks", "text": "a few dust specks from the film scan", "on": false},
+    {"key": "focus", "name": "Missed focus", "text": "focus landing just behind her eyes", "on": false}
+   ]
+  },
+  {
+   "value": "digicam",
+   "name": "2000s digicam",
+   "short": "Early point and shoot, low res, noisy",
+   "device": "taken on an early 2000s point and shoot digital camera, everything in focus",
+   "finish": "low resolution digital photo, noisy shadows, slightly oversaturated colors",
+   "flaws": [
+    {"key": "flash", "name": "Built in flash", "text": "a harsh built in flash flattening her face", "on": true},
+    {"key": "jpeg", "name": "JPEG blocks", "text": "visible JPEG compression in the dark areas", "on": true},
+    {"key": "fringe", "name": "Color fringing", "text": "purple fringing on bright edges", "on": false},
+    {"key": "soft", "name": "Soft focus", "text": "slightly soft focus", "on": false}
+   ]
+  }
+ ],
+ "skin": [
+  {"key": "pores", "name": "Visible pores", "text": "visible pores", "on": true},
+  {"key": "texture", "name": "Fine texture", "text": "fine natural texture", "on": true},
+  {"key": "freckles", "name": "Faint freckles", "text": "faint freckles", "on": false},
+  {"key": "fuzz", "name": "Peach fuzz", "text": "fine peach fuzz catching the light", "on": false},
+  {"key": "marks", "name": "Small marks", "text": "a few small natural marks and blemishes", "on": false}
+ ]
+}
