@@ -4,6 +4,10 @@
   "changelog": [
     {
       "date": "2026-11-23",
+      "text": "10 new poses from two carousels: a Golden window set and a Stairwell set (in SFW, with one in Suggestive)."
+    },
+    {
+      "date": "2026-11-23",
       "text": "Body details moved from Suggestive to SFW (now S197 to S205)."
     },
     {
@@ -85,7 +89,9 @@
         "Places",
         "Everyday",
         "Forest",
-        "Details"
+        "Details",
+        "GoldenWindow",
+        "Stairwell"
       ]
     },
     {
@@ -95,7 +101,8 @@
         "Flirt",
         "Mirror",
         "Knit",
-        "Flannel"
+        "Flannel",
+        "StairwellS"
       ]
     },
     {
@@ -126,6 +133,9 @@
     }
   ],
   "sets": {
+    "GoldenWindow": "Golden window",
+    "Stairwell": "Stairwell",
+    "StairwellS": "Stairwell",
     "Gingham": "Gingham",
     "Projector": "Projector light",
     "BlackBodysuit": "Black bodysuit",
@@ -3525,6 +3535,96 @@
       "title": "Blazer slipping, looking back",
       "text": "[trigger] in a soft studio boudoir photograph, standing with her back to the camera, a black blazer slipping down her arms to bare her shoulders, looking back over her shoulder into the lens. Wearing a black strappy top, black trousers and an oversized black blazer. Seamless white studio backdrop. Medium shot at eye level, 50mm lens feel. Soft diffused daylight, gentle shadows, warm film tones, black and white denim palette, subtle grain.",
       "src": "https://www.instagram.com/p/DeT1AomDZXU/",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S206",
+      "tab": "sfw",
+      "set": "GoldenWindow",
+      "title": "Cheek to the wall",
+      "text": "[trigger] in a painterly window portrait, leaning her head and shoulder against the wall beside the window, chin slightly lowered, lips softly parted, a calm, dreamy gaze into the lens. Wearing a loose cream linen peasant blouse slipping off the shoulders and a crown of bare twigs with small red berries tangled in loosely pinned hair. Beside a tall old window with a pale wooden frame in a bare plaster room. Close medium shot at eye level, 85mm lens feel, shallow depth of field. Low golden late afternoon sun streaming through the window, warm glowing highlights and deep soft shadows, amber, cream and berry red palette, painterly film look with fine grain.",
+      "src": "https://www.instagram.com/p/DffS-OnD91i/",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S207",
+      "tab": "sfw",
+      "set": "GoldenWindow",
+      "title": "Glance through the hair",
+      "text": "[trigger] in a painterly window portrait, body turned away from the camera, looking back over her shoulder into the lens through loose strands of windblown hair. Wearing a loose cream linen peasant blouse slipping off the shoulders and a crown of bare twigs with small red berries tangled in loosely pinned hair. Beside a tall old window with a pale wooden frame in a bare plaster room. Medium close shot at eye level, 85mm lens feel, shallow depth of field, red berries soft in the foreground. Low golden late afternoon sun streaming through the window, warm glowing highlights and deep soft shadows, amber, cream and berry red palette, painterly film look with fine grain.",
+      "src": "https://www.instagram.com/p/DffS-OnD91i/",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S208",
+      "tab": "sfw",
+      "set": "GoldenWindow",
+      "title": "Back turned, gazing down",
+      "text": "[trigger] in a painterly window portrait, seen from behind at a three quarter angle, head turned in profile and eyes lowered toward the floor, the blouse fallen low across her back and shoulder. Wearing a loose cream linen peasant blouse slipping off the shoulders and a crown of bare twigs with small red berries tangled in loosely pinned hair. Beside a tall old window with a pale wooden frame in a bare plaster room. Medium shot at eye level, 50mm lens feel, shallow depth of field. Low golden late afternoon sun streaming through the window, warm glowing highlights and deep soft shadows, amber, cream and berry red palette, painterly film look with fine grain.",
+      "src": "https://www.instagram.com/p/DffS-OnD91i/",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S209",
+      "tab": "sfw",
+      "set": "GoldenWindow",
+      "title": "Face lifted to the sun",
+      "text": "[trigger] in a painterly window portrait, head tipped back with eyes closed and face lifted toward the light, one bare shoulder turned toward the window, lips relaxed. Wearing a loose cream linen peasant blouse slipping off the shoulders and a crown of bare twigs with small red berries tangled in loosely pinned hair. Beside a tall old window with a pale wooden frame in a bare plaster room. Medium close shot from slightly below, 85mm lens feel, shallow depth of field. Low golden late afternoon sun streaming through the window, warm glowing highlights and deep soft shadows, amber, cream and berry red palette, painterly film look with fine grain.",
+      "src": "https://www.instagram.com/p/DffS-OnD91i/",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S210",
+      "tab": "sfw",
+      "set": "GoldenWindow",
+      "title": "Smile over the shoulder",
+      "text": "[trigger] in a painterly window portrait, standing with her back to the camera, the blouse slipping off one shoulder, turning her head to look back over that shoulder with a soft, shy smile. Wearing a loose cream linen peasant blouse slipping off the shoulders and a crown of bare twigs with small red berries tangled in loosely pinned hair. Beside a tall old window with a pale wooden frame in a bare plaster room. Medium close shot at eye level, 85mm lens feel, shallow depth of field. Low golden late afternoon sun streaming through the window, warm glowing highlights and deep soft shadows, amber, cream and berry red palette, painterly film look with fine grain.",
+      "src": "https://www.instagram.com/p/DffS-OnD91i/",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S211",
+      "tab": "sfw",
+      "set": "Stairwell",
+      "title": "Perched on the steps, hand on knee",
+      "text": "[trigger] in a moody stairwell portrait, sitting low on a concrete step with knees drawn up and angled to one side, one hand resting on her knee and the other on the step, bare feet on the step below, head tilted with a cool steady gaze into the lens. Wearing a fitted black ribbed turtleneck sweater and a gray plaid pleated mini skirt, barefoot. A narrow concrete stairwell with peeling pale green painted walls, worn dark steps and a single bare bulb in a cage on the ceiling. Full length shot from slightly below, 35mm lens feel. Dim cold fluorescent and bulb light from above, deep shadows, desaturated teal green and charcoal palette, gritty cinematic film look with heavy grain.",
+      "src": "https://www.instagram.com/p/DfsEGxSAs9z/",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "T1",
+      "tab": "suggestive",
+      "set": "StairwellS",
+      "title": "Legs splayed on the stairs",
+      "text": "[trigger] in a moody stairwell portrait, sitting on a concrete step and leaning back, both legs stretched long down the stairs and set wide apart, bare feet on the lower steps, hands braced behind her, chin lifted, looking down into the lens. Wearing a fitted black ribbed turtleneck sweater and a gray plaid pleated mini skirt, barefoot. A narrow concrete stairwell with peeling pale green painted walls, worn dark steps and a single bare bulb in a cage on the ceiling. Full length shot from a low angle at the foot of the stairs, 24mm wide lens feel. Dim cold fluorescent and bulb light from above, deep shadows, desaturated teal green and charcoal palette, gritty cinematic film look with heavy grain.",
+      "src": "https://www.instagram.com/p/DfsEGxSAs9z/",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S212",
+      "tab": "sfw",
+      "set": "Stairwell",
+      "title": "Seated square, hands on the step",
+      "text": "[trigger] in a moody stairwell portrait, sitting upright on a concrete step facing the camera with knees together, both hands resting flat on the step beside her hips, head tilted back against the shadows, a heavy lidded gaze into the lens. Wearing a fitted black ribbed turtleneck sweater and a gray plaid pleated mini skirt, barefoot. A narrow concrete stairwell with peeling pale green painted walls, worn dark steps and a single bare bulb in a cage on the ceiling. Medium full shot from a low angle, 35mm lens feel, symmetrical framing. Dim cold fluorescent and bulb light from above, deep shadows, desaturated teal green and charcoal palette, gritty cinematic film look with heavy grain.",
+      "src": "https://www.instagram.com/p/DfsEGxSAs9z/",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S213",
+      "tab": "sfw",
+      "set": "Stairwell",
+      "title": "Leaning in the corner, knee lifted",
+      "text": "[trigger] in a moody stairwell portrait, leaning her back and shoulder into the corner of two walls, one knee bent with the bare foot resting against the wall behind her, arms hanging relaxed, head tilted back with a faraway look. Wearing a fitted black ribbed turtleneck sweater and a gray plaid pleated mini skirt, barefoot. A narrow concrete stairwell with peeling pale green painted walls, worn dark steps and a single bare bulb in a cage on the ceiling. Full length shot from a low angle, 24mm wide lens feel. Dim cold fluorescent and bulb light from above, deep shadows, desaturated teal green and charcoal palette, gritty cinematic film look with heavy grain.",
+      "src": "https://www.instagram.com/p/DfsEGxSAs9z/",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S214",
+      "tab": "sfw",
+      "set": "Stairwell",
+      "title": "Twisted on the steps, hand in hair",
+      "text": "[trigger] in a moody stairwell portrait, sitting sideways on a concrete step with legs folded and stacked, one knee raised high, one hand pushed into her hair and the other on the step, looking into the lens. Wearing a fitted black ribbed turtleneck sweater and a gray plaid pleated mini skirt, barefoot. A narrow concrete stairwell with peeling pale green painted walls, worn dark steps and a single bare bulb in a cage on the ceiling. Full length shot from a low angle, 35mm lens feel. Dim cold fluorescent and bulb light from above, deep shadows, desaturated teal green and charcoal palette, gritty cinematic film look with heavy grain.",
+      "src": "https://www.instagram.com/p/DfsEGxSAs9z/",
       "added": "2026-11-23"
     },
     {
