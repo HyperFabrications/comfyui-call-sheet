@@ -23,3 +23,5 @@ jobs:
         run: node tests/scene_parity.mjs
       - name: Python and web outfits match
         run: node tests/outfit_parity.mjs
+      - name: Camera prompts match between Python and JS
+        run: node tests/camera_parity.mjs

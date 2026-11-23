@@ -1,5 +1,6 @@
 // Shared prompt logic for the Krea Pose Sheet (ComfyUI sidebar and web page).
 // nodes/pose_data.py mirrors these functions for the Python node; keep them in step.
+import { withCamera } from "./camera_core.js";
 
 const STYLE_RE = /\b(grain|grainy|palette|tones|finish|film|matte|contrast|desaturated|saturated|color grade|grading|print border|monochrome|black and white|halftone)\b|\bcolou?r$/i;
 const COLOR_END = /\b(greens|browns|whites|blues|pinks|reds|tans|golds|creams|grays|greys|blacks|ambers|yellows|oranges|purples|neutrals|pastels|accents|ivories|coppers)$/i;
@@ -70,8 +71,9 @@ export function fill(text, subj) {
 export const withEdit = (frame, edits) => edits && typeof edits[frame.id] === "string" && edits[frame.id].trim()
   ? { ...frame, text: edits[frame.id], bare: undefined } : frame;
 
-export function promptFor(frame, { trigger = "", person = "", style = true, edits = null } = {}) {
-  return fill(base(withEdit(frame, edits), style), subject(trigger, person));
+// A linked camera goes on after the style switch, so its film and grain words stay even with style off.
+export function promptFor(frame, { trigger = "", person = "", style = true, edits = null, camera = null } = {}) {
+  return fill(withCamera(base(withEdit(frame, edits), style), camera)[0], subject(trigger, person));
 }
 
 export function loadEdits() {

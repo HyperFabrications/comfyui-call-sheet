@@ -3,6 +3,7 @@ import json
 from . import pose_data as P
 from . import scene_data as S
 from . import outfit_data as O
+from . import camera_data as C
 from .custom import load_custom
 from .places import load_places
 from .outfit_items import load_items
@@ -75,6 +76,7 @@ class KreaPosePrompt:
                 "scene_overrides": ("STRING", {"default": "", "tooltip": "Frames that use the scene even though their pose relies on their own location. Set with Use scene anyway in the picker."}),
                 "outfit": ("KREA_OUTFIT", {"tooltip": "Link a Call Sheet Outfit node to change what she wears. Frames whose pose relies on a garment keep their own clothes."}),
                 "outfit_overrides": ("STRING", {"default": "", "tooltip": "Frames that use the outfit even though their pose relies on a garment. Set with Use outfit anyway in the picker."}),
+                "camera": ("KREA_CAMERA", {"tooltip": "Link a Call Sheet Camera node to shoot every frame on a phone, flash, disposable or film camera, with its flaws and real skin."}),
             },
         }
 
@@ -84,7 +86,7 @@ class KreaPosePrompt:
         # their current text so it runs again instead of reusing the last result.
         return json.dumps(load_custom(), sort_keys=True, ensure_ascii=False)
 
-    def build(self, frame, mode, trigger, style, person=None, edits=None, scene=None, scene_overrides=None, outfit=None, outfit_overrides=None):
+    def build(self, frame, mode, trigger, style, person=None, edits=None, scene=None, scene_overrides=None, outfit=None, outfit_overrides=None, camera=None):
         f = _find(frame)
         try:
             edit_map = json.loads(edits) if edits else {}
@@ -108,7 +110,7 @@ class KreaPosePrompt:
             text, changed = S.with_scene(x, scene, overrides)
             if changed:
                 x = {**x, "text": text, "bare": None}
-            prompts.append(P.prompt_for(x, trigger, person or "", style))
+            prompts.append(P.prompt_for(x, trigger, person or "", style, camera=camera))
         return ("\n".join(prompts), prompts, len(prompts))
 
 
@@ -192,15 +194,38 @@ class KreaPoseOutfit:
         return (p, O.outfit_text(p) if p["on"] else "")
 
 
+class KreaPoseCamera:
+    """Pick the camera the shot was taken on: a phone, a flash, a disposable or film. Each adds its own flaws, and you can add real skin."""
+
+    CATEGORY = "Call Sheet"
+    FUNCTION = "build"
+    RETURN_TYPES = ("KREA_CAMERA", "STRING")
+    RETURN_NAMES = ("camera", "text")
+    OUTPUT_TOOLTIPS = (
+        "Link to the camera input of Call Sheet Shot.",
+        "The camera on its own: the lines it adds to a prompt.",
+    )
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {"required": {"camera": ("STRING", {"default": "{}", "tooltip": "Set with Pick camera on the node."})}}
+
+    def build(self, camera):
+        p = C.parts(_state(camera))
+        return (p, C.camera_text(p))
+
+
 NODE_CLASS_MAPPINGS = {
     "KreaPosePrompt": KreaPosePrompt,
     "KreaPosePerson": KreaPosePerson,
     "KreaPoseScene": KreaPoseScene,
     "KreaPoseOutfit": KreaPoseOutfit,
+    "KreaPoseCamera": KreaPoseCamera,
 }
 NODE_DISPLAY_NAME_MAPPINGS = {
     "KreaPosePrompt": "Call Sheet Shot",
     "KreaPosePerson": "Call Sheet Person",
     "KreaPoseScene": "Call Sheet Scene",
     "KreaPoseOutfit": "Call Sheet Outfit",
+    "KreaPoseCamera": "Call Sheet Camera",
 }

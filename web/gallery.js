@@ -185,7 +185,10 @@ export function openGallery({ data, scenes = null, outfits = null, thumbs = {}, 
     const [text, changed] = withScene(scenes, fe, sc.parts, overrides());
     return changed ? { ...fe, text, bare: undefined } : fe;
   };
-  const promptOf = f => promptFor(sceneFrame(f, ctx.edits()), { trigger: ctx.trigger(), person: ctx.person().text, style: ctx.style() });
+  // The camera (from a linked Call Sheet Camera node) goes on last.
+  const cameraNow = () => ctx.camera ? ctx.camera() : null;
+  const camParts = () => { const c = cameraNow(); return c ? c.parts : null; };
+  const promptOf = f => promptFor(sceneFrame(f, ctx.edits()), { trigger: ctx.trigger(), person: ctx.person().text, style: ctx.style(), camera: camParts() });
 
   // ----- header: trigger and person -----
   function renderTrigger(editing = false) {
@@ -382,7 +385,7 @@ export function openGallery({ data, scenes = null, outfits = null, thumbs = {}, 
     const ed = { ...ctx.edits() };
     const v = val === undefined ? q(".kq-text")?.value : val;
     if (typeof v === "string") { if (v.trim() && v.trim() !== f.text.trim()) ed[f.id] = v; else delete ed[f.id]; }
-    const text = promptFor(sceneFrame(f, ed), { trigger: ctx.trigger(), person: ctx.person().text, style: ctx.style() });
+    const text = promptFor(sceneFrame(f, ed), { trigger: ctx.trigger(), person: ctx.person().text, style: ctx.style(), camera: camParts() });
     const subj = subject(ctx.trigger(), ctx.person().text);
     // Mark what came from elsewhere: the person, the Outfit node's clothes and the Scene node's setting.
     const marks = [];
@@ -393,12 +396,18 @@ export function openGallery({ data, scenes = null, outfits = null, thumbs = {}, 
       if (line) marks.push([line[1], "kq-mo"]);
     }
     if (sc && !sc.parts.plate && sc.parts.bg && text.includes(sc.parts.bg)) marks.push([sc.parts.bg, "kq-ms"]);
+    const cp = camParts();
+    if (cp) for (const s of [cp.device, cp.light, cp.finish, cp.flaws, cp.skin].filter(Boolean)) {
+      const i = text.toLowerCase().indexOf(s.toLowerCase());
+      if (i >= 0) marks.push([text.slice(i, i + s.length), "kq-mc"]);
+    }
     const spans = marks.map(([s, c]) => [text.indexOf(s), s, c]).filter(x => x[0] >= 0).sort((a, b) => a[0] - b[0]);
     let html = "", at = 0;
     for (const [i, s, c] of spans) { if (i < at) continue; html += esc(text.slice(at, i)) + `<mark${c ? ` class="${c}"` : ""}>${esc(s)}</mark>`; at = i + s.length; }
     p.innerHTML = html + esc(text.slice(at));
     const head = q(".kq-rhead");
-    if (head) head.innerHTML = "What the node receives" + spans.filter(x => x[2]).map(x => x[2] === "kq-mo" ? ' <span class="kq-leg kq-mo">clothes from Outfit node</span>' : ' <span class="kq-leg kq-ms">setting from Scene node</span>').join("");
+    const LEG = { "kq-mo": "clothes from Outfit node", "kq-ms": "setting from Scene node", "kq-mc": "camera from Camera node" };
+    if (head) head.innerHTML = "What the node receives" + [...new Set(spans.map(x => x[2]).filter(Boolean))].map(c => ` <span class="kq-leg ${c}">${LEG[c]}</span>`).join("");
   }
 
   function select(id, focusCard) {

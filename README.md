@@ -24,10 +24,11 @@ In ComfyUI Manager, click **Update** on Call Sheet (or run `git pull` in its fol
 
 | Node | What it does |
 | --- | --- |
-| **Call Sheet Shot** | Pick a frame and output its prompt, a starting shot written the way Krea 2 reads it, ready for you to build on. Person, Outfit and Scene swap in their part of the shot. Choose `single frame`, `whole set` or `whole tab`. Outputs `prompt` (one prompt, or all of them one per line), `prompt_list` (a list, so the graph runs once per prompt) and `count`. |
+| **Call Sheet Shot** | Pick a frame and output its prompt, a starting shot written the way Krea 2 reads it, ready for you to build on. Person, Outfit, Scene and Camera swap in their part of the shot. Choose `single frame`, `whole set` or `whole tab`. Outputs `prompt` (one prompt, or all of them one per line), `prompt_list` (a list, so the graph runs once per prompt) and `count`. |
 | **Call Sheet Person** | Describe who is in the shot. Link it to the Shot node's `person` input. |
 | **Call Sheet Scene** | Build a setting once and use it with any pose. Link it to the Shot node's `scene` input. Its `text` output is the scene on its own. |
 | **Call Sheet Outfit** | Put together an outfit and use it with any pose. Link it to the Shot node's `outfit` input. Its `text` output is the outfit on its own. |
+| **Call Sheet Camera** | Pick what the shot was taken on: a phone snapshot, a mirror selfie, a direct flash, a 90s disposable, a film SLR or a 2000s digicam. Each adds its own flaws, and Real skin adds pores and texture. Link it to the Shot node's `camera` input. It works with style off too. |
 
 ## Picking a frame
 
@@ -62,6 +63,7 @@ In ComfyUI Manager, click **Update** on Call Sheet (or run `git pull` in its fol
 
 ## The outfit
 
+- **Camera picker.** Press **Pick camera** on the Camera node. Pick a camera, turn its flaws on or off (crooked framing, light leaks, blown highlights and more), and turn on Real skin if you want it. **On a frame** shows the prompt with the camera in it.
 - **Outfit builder.** Press **Build outfit** on the Outfit node. Pick a top, bottoms or a one piece, outerwear, shoes and any number of accessories, each in one of 14 colors. A figure shows the outfit as you go, and **On a frame** shows it written into a real prompt.
 - **Whole outfit or just what I pick.** **Whole outfit** replaces everything she wears in the frame (makeup stays). **Just what I pick** swaps only the pieces you chose: pick a coat and the frame keeps its own top, jeans and shoes under it. A one piece replaces the top and bottoms, and outerwear goes over whatever she has on.
 - **Your own items.** In **Your items**, press **New item**, name it, choose what kind of piece it is and write how it reads. **Help me write it** offers starter ideas and asks for cut, color, fabric, the piece and one detail, then writes it for you. **Color** sets the piece's color: a named swatch also changes the color word in the wording, **Any color** opens a full picker for the figure, and **Auto** follows the wording. Edits to an item, a place or a custom prompt make ComfyUI run the graph again. Items are saved on your computer in `custom_outfit_items.json`, never uploaded, with **Import**, **Export** and **×** to delete.
@@ -116,5 +118,7 @@ The same sheet can be published as a web page. In the repo, go to Settings → P
 | `outfit_data.py`, `web/outfit_core.js` | Outfit logic: read and swap the clothing line (`outfit_data.py` mirrors `outfit_core.js`) |
 | `web/outfit.js`, `web/outfit_art.js` | The outfit builder and its figure |
 | `outfit_items.py` | Your own clothing items, saved locally |
+| `web/cameras.json` | The cameras, their flaws and the real skin options |
+| `camera_data.py`, `web/camera_core.js`, `web/camera.js` | Camera logic (`camera_data.py` mirrors `camera_core.js`) and the camera picker |
 | `site/index.html` | The GitHub Pages page |
 | `scripts/` | `release.py`, `validate.py`, `build_site.sh`, `sync_from_artifact.mjs` |

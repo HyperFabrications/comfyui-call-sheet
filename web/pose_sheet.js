@@ -11,6 +11,8 @@ import { openOutfitBuilder, loadItems } from "./outfit.js";
 import { outfitSVG } from "./outfit_art.js";
 import { parts as outfitParts, locked as outfitLocked, outfitText, withOutfit } from "./outfit_core.js";
 import { withScene } from "./scene_core.js";
+import { openCameraPicker, cameraIcon } from "./camera.js";
+import { parts as cameraParts, cameraText } from "./camera_core.js";
 import { loadData, frameKey, frameNo, loadEdits, saveEdit, personText } from "./core.js";
 
 const HERE = new URL(".", import.meta.url);
@@ -187,6 +189,16 @@ function linkedOutfit(node) {
 function outfitOverrides(node) {
   try { const v = JSON.parse(node.widgets?.find(w => w.name === "outfit_overrides")?.value || "[]"); return Array.isArray(v) ? v : []; } catch (e) { return []; }
 }
+// The camera, from a linked Call Sheet Camera node.
+const cams = await loadData(new URL("cameras.json", HERE).href).catch(() => null);
+const CAMERA_TYPE = "KreaPoseCamera";
+const cameraState = node => { try { const v = JSON.parse(node.widgets?.find(w => w.name === "camera")?.value || "{}"); return v && typeof v === "object" ? v : {}; } catch (e) { return {}; } };
+function linkedCamera(node) {
+  const inp = node.inputs?.find(i => i.name === "camera");
+  const link = inp && inp.link != null ? app.graph.links?.[inp.link] || app.graph.links?.get?.(inp.link) : null;
+  const src = link ? app.graph.getNodeById(link.origin_id) : null;
+  return src && src.type === CAMERA_TYPE && src.mode !== 4 ? src : null;
+}
 // The look of a scene for the little previews: its location's kind and time.
 function sceneLook(s) {
   const pl = s.place ? allPlaces().find(p => p.id === s.place) : null;
@@ -240,6 +252,13 @@ function nodeCtx(node) {
       if (!src || !outfits) return null;
       const p = outfitParts(outfits, outfitState(src), myItems);
       return p.on && p.pieces.length ? { parts: p, label: p.swap === "pick" ? "just what you picked" : "whole outfit" } : null;
+    },
+    // The camera comes from a linked Call Sheet Camera node.
+    camera: () => {
+      const src = linkedCamera(node);
+      if (!src || !cams) return null;
+      const p = cameraParts(cams, cameraState(src));
+      return p.on && (p.cam || p.skin) ? { parts: p, label: p.label || "Real skin" } : null;
     },
     outfitOverrides: () => outfitOverrides(node),
     setOutfitOverride: (id, on) => {
@@ -376,6 +395,53 @@ function addSceneCard(nodeType) {
   nodeType.prototype.onConfigure = function () { const r = onConfigure?.apply(this, arguments); this._kpsDraw?.(); return r; };
 }
 
+// The Call Sheet Camera node: the camera's drawing and a button that opens the camera picker.
+function addCameraCard(nodeType) {
+  const onNodeCreated = nodeType.prototype.onNodeCreated;
+  nodeType.prototype.onNodeCreated = function () {
+    const r = onNodeCreated?.apply(this, arguments);
+    const node = this;
+    const cw = node.widgets?.find(w => w.name === "camera");
+    if (!cw || !node.addDOMWidget || !cams) return r;
+    const wrap = document.createElement("div");
+    wrap.className = "kps kpn kpc";
+    wrap.innerHTML = `<button type="button" class="kpn-face kpc-face" title="Open the camera picker"></button>
+      <div class="kpn-bar"><button type="button" class="kps-btn kps-accent kpn-browse">Pick camera</button></div>`;
+    const face = wrap.querySelector(".kpc-face");
+    const draw = () => {
+      const s = cameraState(node), p = cameraParts(cams, s);
+      const title = !p.on ? "Camera off" : p.label ? p.label + (p.skin ? " + real skin" : "") : p.skin ? "Real skin" : "Frame's own camera";
+      const snip = !p.on ? "Frames keep their own camera and finish." : cameraText(p) || "Pick a phone, flash, disposable or film camera.";
+      face.innerHTML = `<span class="kpc-art${p.on && (p.cam || p.skin) ? "" : " is-off"}">${cameraIcon(p.cam, 36)}</span><span class="kpn-text"><span class="kpn-title">${esc(title)}</span>
+        <span class="kpn-snip">${esc(snip)}</span></span>`;
+    };
+    const open = () => {
+      const out = node.outputs?.[0]?.links || [];
+      const target = out.map(id => app.graph.links?.[id] || app.graph.links?.get?.(id)).filter(Boolean).map(l => app.graph.getNodeById(l.target_id)).find(n => n && n.type === NODE_TYPE);
+      const fw = target?.widgets?.find(w => w.name === "frame");
+      openCameraPicker({
+        data, cams, state: cameraState(node), sample: fw ? frameOf(fw.value) : null,
+        onChange: st => {
+          cw.value = JSON.stringify(st); cw.callback?.(cw.value);
+          draw(); node.setDirtyCanvas?.(true, true);
+          for (const n of app.graph._nodes || []) if (n.type === NODE_TYPE) n._kpsDraw?.();
+        },
+      });
+    };
+    wrap.addEventListener("click", e => { if (e.target.closest(".kpc-face, .kpn-browse")) open(); });
+    wrap.addEventListener("pointerdown", e => e.stopPropagation());
+    const dom = node.addDOMWidget("camera_card", "kps_camera_card", wrap, { serialize: false, hideOnZoom: false });
+    dom.computeSize = () => [0, 120];
+    cw.hidden = true; cw.computeSize = () => [0, -4];
+    node._kpsDraw = draw;
+    draw();
+    node.setSize([Math.max(node.size[0], 320), node.computeSize()[1]]);
+    return r;
+  };
+  const onConfigure = nodeType.prototype.onConfigure;
+  nodeType.prototype.onConfigure = function () { const r = onConfigure?.apply(this, arguments); this._kpsDraw?.(); return r; };
+}
+
 // The Call Sheet Outfit node: the figure in the outfit and a button that opens the outfit builder.
 function addOutfitCard(nodeType) {
   const onNodeCreated = nodeType.prototype.onNodeCreated;
@@ -430,6 +496,7 @@ app.registerExtension({
     if (nodeData.name === "KreaPosePerson") { addPersonCard(nodeType); return; }
     if (nodeData.name === SCENE_TYPE) { addSceneCard(nodeType); return; }
     if (nodeData.name === OUTFIT_TYPE) { addOutfitCard(nodeType); return; }
+    if (nodeData.name === CAMERA_TYPE) { addCameraCard(nodeType); return; }
     if (nodeData.name !== NODE_TYPE) return;
     const onNodeCreated = nodeType.prototype.onNodeCreated;
     nodeType.prototype.onNodeCreated = function () {
@@ -462,6 +529,10 @@ app.registerExtension({
         return lock ? `<span class="kpn-outfit is-locked" title="This pose relies on its own clothes, so the Outfit node is skipped">Clothes: frame's own</span>`
           : `<span class="kpn-outfit" title="The frame's own clothes are replaced by your Outfit node">Clothes: Outfit node (${esc(o.label)})</span>`;
       };
+      const cameraLine = () => {
+        const c = cams && nodeCtx(node).camera();
+        return c ? `<span class="kpn-camera" title="Your Camera node sets how every frame was shot">Camera: ${esc(c.label)}</span>` : "";
+      };
       const draw = () => {
         const f = frameOf(fw.value);
         const ed = f && nodeEdits(node)[f.id];
@@ -473,7 +544,7 @@ app.registerExtension({
           if (sc && !sc.parts.plate) { const [t, ch] = withScene(scenes, shown, sc.parts, nodeOverrides(node)); if (ch) shown = { ...shown, text: t }; }
         }
         face.innerHTML = f ? `${thumbHTML(f, thumbs)}<span class="kpn-text"><span class="kpn-title"><span class="kps-no">${frameNo(f.id)}</span> ${esc(f.title)}${ed ? ' <span class="kps-badge kps-upd">Edited</span>' : ""}</span>
-          <span class="kpg-set">${esc(data.tabs.find(t => t.id === f.tab)?.name || "")} · ${esc(data.sets[f.set] || "")}</span><span class="kpn-snip">${esc(snippet(shown))}</span><span class="kpn-tags">${sceneLine(f)}${outfitLine(f)}</span></span>`
+          <span class="kpg-set">${esc(data.tabs.find(t => t.id === f.tab)?.name || "")} · ${esc(data.sets[f.set] || "")}</span><span class="kpn-snip">${esc(snippet(shown))}</span><span class="kpn-tags">${sceneLine(f)}${outfitLine(f)}${cameraLine()}</span></span>`
           : `<span class="kpn-text"><span class="kpn-title">Pick a frame</span></span>`;
       };
       wrap.addEventListener("click", e => {
