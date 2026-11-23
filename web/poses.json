@@ -4,6 +4,10 @@
   "changelog": [
     {
       "date": "2026-11-23",
+      "text": "8 new SFW frames in a new Pink rose set: soft studio portraits holding a single pink rose."
+    },
+    {
+      "date": "2026-11-23",
       "text": "132 new frames from saved posts in 21 new sets: 105 SFW, 22 Boudoir and 5 Suggestive."
     },
     {
@@ -133,7 +137,8 @@
         "FarmFence",
         "SeventiesVan",
         "MountainLake",
-        "IronGazebo"
+        "IronGazebo",
+        "PinkRose"
       ]
     },
     {
@@ -176,6 +181,7 @@
     }
   ],
   "sets": {
+    "PinkRose": "Pink rose",
     "SkybridgeStreet": "Skybridge street",
     "Boardwalk": "Boardwalk",
     "FourLooks": "Four looks",
@@ -5022,6 +5028,70 @@
       "set": "IronGazebo",
       "title": "Tugging the sweater hem",
       "text": "[trigger] in a playful autumn rooftop photo, tugging the sweater hem up over her midriff with her head tipped to one side. Wearing a cream cable knit cropped sweater, a beige mini skirt and black lace up knee boots. A rooftop balcony under an ornate wrought iron dome with a spiderweb lattice, with orange autumn trees and red tile roofs beyond the railing. Medium shot from a low angle, 35mm lens feel. Soft afternoon sun with a warm glow through the trees. Cream, beige and burnt orange palette, warm editorial film finish with soft grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S378",
+      "tab": "sfw",
+      "set": "PinkRose",
+      "title": "Rose to the face, seated",
+      "text": "[trigger] in a romantic studio portrait, sitting on the floor with the long skirt pooling around her, holding a single pink rose with green leaves close to her face and gazing past it. Wearing a white ribbed crop top under an open pale pink sheer striped shirt and a long white flowing skirt. A seamless light gray studio backdrop sweeping into the floor, clean and empty. Medium shot at eye level, 85mm lens feel, shallow depth of field. Soft diffused side light, gentle highlights and soft shadows. Pastel pink, white and pale gray palette, ethereal romantic editorial finish with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S379",
+      "tab": "sfw",
+      "set": "PinkRose",
+      "title": "Against the desk, eyes closed",
+      "text": "[trigger] in an intimate interior portrait, leaning back against a wooden desk with a pink rose held loosely in both hands, eyes closed and head tipped down. Wearing a white crop top, a white tiered mini skirt and an open pale pink shirt draped off both shoulders. A warm neutral room with a simple wooden desk against a plain wall. Medium full shot at eye level, 50mm lens feel, shallow depth of field. Natural window light through blinds casting soft stripes across the wall. Warm neutral, white and blush pink palette, soft romantic finish with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S380",
+      "tab": "sfw",
+      "set": "PinkRose",
+      "title": "Profile, rose at the shoulder",
+      "text": "[trigger] in an elegant studio portrait, standing in full profile with her chin lifted, a pink rose held up near her shoulder. Wearing a white ribbed crop top under an open pale pink sheer striped shirt and a long white flowing skirt. A seamless light gray studio backdrop sweeping into the floor, clean and empty. Medium shot at eye level, 85mm lens feel. Soft diffused side light, gentle highlights and soft shadows. Pastel pink, white and pale gray palette, ethereal romantic editorial finish with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S381",
+      "tab": "sfw",
+      "set": "PinkRose",
+      "title": "Rose at the lips, close up",
+      "text": "[trigger] in a close up fine art portrait, sitting on the floor and holding a pink rose just below her lips, eyes soft and looking into the lens. Wearing a white ribbed crop top under an open pale pink sheer striped shirt and a long white flowing skirt. A seamless light gray studio backdrop sweeping into the floor, clean and empty. Close up at eye level, 100mm lens feel, very shallow depth of field. Soft dreamy diffused light, gentle and even. Pastel pink, white and pale gray palette, ethereal romantic editorial finish with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S382",
+      "tab": "sfw",
+      "set": "PinkRose",
+      "title": "One leg extended",
+      "text": "[trigger] in a graceful studio fashion photo, sitting on the floor with one leg extended and the other bent, leaning on one hand with a pink rose held in the other. Wearing a white ribbed crop top under an open pale pink sheer striped shirt and a long white flowing skirt. A seamless light gray studio backdrop sweeping into the floor, clean and empty. Full length shot from a low angle, 35mm lens feel. Soft volumetric side light falling across the floor. Pastel pink, white and pale gray palette, ethereal romantic editorial finish with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S383",
+      "tab": "sfw",
+      "set": "PinkRose",
+      "title": "Turning away, shirt slipping",
+      "text": "[trigger] in a melancholic studio portrait, seated and turning her head away from the camera, the sheer shirt slipping off one shoulder, a single pink rose held against her chest. Wearing a white ribbed crop top under an open pale pink sheer striped shirt and a long white flowing skirt. A seamless light gray studio backdrop sweeping into the floor, clean and empty. Medium shot at eye level, 85mm lens feel, shallow depth of field. Soft diffused side light, gentle highlights and soft shadows. Pastel pink, white and pale gray palette, ethereal romantic editorial finish with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S384",
+      "tab": "sfw",
+      "set": "PinkRose",
+      "title": "Leaning back on one hand",
+      "text": "[trigger] in an ethereal studio fashion photo, sitting with her knees drawn to one side and leaning back on one hand, a pink rose resting in her lap, gazing softly into the lens. Wearing a white ribbed crop top under an open pale pink sheer striped shirt and a long white flowing skirt. A seamless light gray studio backdrop sweeping into the floor, clean and empty. Full length shot at eye level, 50mm lens feel. Soft high key light, bright and nearly shadowless. Pastel pink, white and pale gray palette, ethereal romantic editorial finish with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S385",
+      "tab": "sfw",
+      "set": "PinkRose",
+      "title": "Eyes half closed, rose under the chin",
+      "text": "[trigger] in a dreamy soft portrait, standing with her head tilted and eyes half closed, a pink rose held just under her chin. Wearing a white ribbed crop top under an open pale pink sheer striped shirt and a long white flowing skirt. A seamless light gray studio backdrop sweeping into the floor, clean and empty. Close up at eye level, 85mm lens feel, very shallow depth of field. Gentle window light from one side, soft and warm. Pastel pink, white and pale gray palette, ethereal romantic editorial finish with fine grain.",
       "added": "2026-11-23"
     },
     {
