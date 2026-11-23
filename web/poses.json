@@ -4,7 +4,7 @@
   "changelog": [
     {
       "date": "2026-11-23",
-      "text": "New Call Sheet node: the whole shot on one node, set in the Studio, with + Add in every group."
+      "text": "8 new SFW frames in a new Rocking horse set: golden hour park portraits on a playground spring rocking horse."
     },
     {
       "date": "2026-11-23",
@@ -99,7 +99,8 @@
         "Forest",
         "Details",
         "GoldenWindow",
-        "Stairwell"
+        "Stairwell",
+        "RockingHorse"
       ]
     },
     {
@@ -141,6 +142,7 @@
     }
   ],
   "sets": {
+    "RockingHorse": "Rocking horse",
     "GoldenWindow": "Golden window",
     "Stairwell": "Stairwell",
     "StairwellS": "Stairwell",
@@ -3440,6 +3442,70 @@
       "set": "Home",
       "title": "Curled on the windowsill",
       "text": "[trigger] in a candid portrait, sitting curled on a white windowsill with knees drawn up to her chest, bare feet resting on the sill, painted toenails, looking straight into the camera with a calm, neutral expression. Wearing a simple black sleeveless top and a delicate gold bracelet on her left wrist. A large window beside her in a clean white interior, a bright airy room. Shot on 50mm, shallow depth of field. Soft natural daylight streams through the window, wrapping her face and body in gentle light with subtle shadows. Natural color grade, realistic skin texture, photorealistic.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S215",
+      "tab": "sfw",
+      "set": "RockingHorse",
+      "title": "Cheek on folded arms",
+      "text": "[trigger] in a moody park portrait, sitting on a playground spring rocking horse and leaning forward, arms folded on the horse's head with her cheek resting on them, a calm direct gaze into the lens. Wearing an oversized gray tweed blazer over a white collared shirt with a loose dark tie, a dark plaid pleated skirt, black opaque tights and black knee high boots. A wooden spring rocking horse painted yellow and black in a quiet park, tall trees, scattered autumn leaves and grass behind. Medium shot at eye level, 50mm lens feel, shallow depth of field. Low golden hour sun behind the trees, warm backlit haze and lens flare, olive, amber and charcoal palette, moody cinematic film grade with soft grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S216",
+      "tab": "sfw",
+      "set": "RockingHorse",
+      "title": "Sideways in the sunburst",
+      "text": "[trigger] in a moody park portrait, sitting sideways on a playground spring rocking horse with legs crossed, head bowed and hair falling forward, hands resting in her lap. Wearing an oversized gray tweed blazer over a white collared shirt with a loose dark tie, a dark plaid pleated skirt, black opaque tights and black knee high boots. A wooden spring rocking horse painted yellow and black in a quiet park, tall trees, scattered autumn leaves and grass behind. Medium full shot at eye level, 35mm lens feel, the sun bursting through the trees right behind her head. Low golden hour sun behind the trees, warm backlit haze and lens flare, olive, amber and charcoal palette, moody cinematic film grade with soft grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S217",
+      "tab": "sfw",
+      "set": "RockingHorse",
+      "title": "Side saddle, wide",
+      "text": "[trigger] in a cinematic park photo, perched side saddle on a playground spring rocking horse, legs crossed at the knee, leaning back slightly and gazing off into the distance. Wearing an oversized gray tweed blazer over a white collared shirt with a loose dark tie, a dark plaid pleated skirt, black opaque tights and black knee high boots. A wooden spring rocking horse painted yellow and black in a quiet park, tall trees, scattered autumn leaves and grass behind. Wide full length shot at eye level, 35mm lens feel, long shadows across the grass. Low golden hour sun behind the trees, warm backlit haze and lens flare, olive, amber and charcoal palette, moody cinematic film grade with soft grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S218",
+      "tab": "sfw",
+      "set": "RockingHorse",
+      "title": "Hugging the horse's head",
+      "text": "[trigger] in a playful park portrait, sitting astride a playground spring rocking horse and leaning all the way forward to wrap both arms around its head, face turned to the side with eyes half closed. Wearing an oversized gray tweed blazer over a white collared shirt with a loose dark tie, a dark plaid pleated skirt, black opaque tights and black knee high boots. A wooden spring rocking horse painted yellow and black in a quiet park, tall trees, scattered autumn leaves and grass behind. Medium shot at eye level, 50mm lens feel, shallow depth of field. Low golden hour sun behind the trees, warm backlit haze and lens flare, olive, amber and charcoal palette, moody cinematic film grade with soft grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S219",
+      "tab": "sfw",
+      "set": "RockingHorse",
+      "title": "Bowed forward, hand in hair",
+      "text": "[trigger] in a moody park portrait, sitting on a playground spring rocking horse and folding forward over it, head bowed so her hair spills down, one hand pushed into her hair. Wearing an oversized gray tweed blazer over a white collared shirt with a loose dark tie, a dark plaid pleated skirt, black opaque tights and black knee high boots. A wooden spring rocking horse painted yellow and black in a quiet park, tall trees, scattered autumn leaves and grass behind. Medium full shot from slightly above, 35mm lens feel. Low golden hour sun behind the trees, warm backlit haze and lens flare, olive, amber and charcoal palette, moody cinematic film grade with soft grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S220",
+      "tab": "sfw",
+      "set": "RockingHorse",
+      "title": "Leaning on the horse, seated on the ground",
+      "text": "[trigger] in a moody park portrait, sitting on the leafy ground with legs stretched out, one shoulder leaning against the spring of a playground rocking horse, head tilted and looking into the lens. Wearing an oversized gray tweed blazer over a white collared shirt with a loose dark tie, a dark plaid pleated skirt, black opaque tights and black knee high boots. A wooden spring rocking horse painted yellow and black in a quiet park, tall trees, scattered autumn leaves and grass behind. Medium shot from a low angle, 50mm lens feel, shallow depth of field. Low golden hour sun behind the trees, warm backlit haze and lens flare, olive, amber and charcoal palette, moody cinematic film grade with soft grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S221",
+      "tab": "sfw",
+      "set": "RockingHorse",
+      "title": "Looking back into the sun",
+      "text": "[trigger] in a cinematic park portrait, sitting astride a playground spring rocking horse with her back half turned, twisting at the waist to look back over her shoulder into the lens. Wearing an oversized gray tweed blazer over a white collared shirt with a loose dark tie, a dark plaid pleated skirt, black opaque tights and black knee high boots. A wooden spring rocking horse painted yellow and black in a quiet park, tall trees, scattered autumn leaves and grass behind. Medium full shot at eye level, 35mm lens feel, the low sun flaring behind her. Low golden hour sun behind the trees, warm backlit haze and lens flare, olive, amber and charcoal palette, moody cinematic film grade with soft grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S222",
+      "tab": "sfw",
+      "set": "RockingHorse",
+      "title": "Leaning in, smiling",
+      "text": "[trigger] in a warm park portrait, sitting astride a playground spring rocking horse and leaning in toward the camera with both hands on the handles, head tilted with a soft smile. Wearing an oversized gray tweed blazer over a white collared shirt with a loose dark tie, a dark plaid pleated skirt, black opaque tights and black knee high boots. A wooden spring rocking horse painted yellow and black in a quiet park, tall trees, scattered autumn leaves and grass behind. Medium shot at eye level, 50mm lens feel, shallow depth of field. Low golden hour sun behind the trees, warm backlit haze and lens flare, olive, amber and charcoal palette, moody cinematic film grade with soft grain.",
       "added": "2026-11-23"
     },
     {
