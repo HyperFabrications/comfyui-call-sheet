@@ -111,9 +111,31 @@ def with_edit(frame, edits):
     return frame
 
 
+# Frames are written about a woman. When the person is a man, her and she read as his, him and he.
+MALE = re.compile(r"\b(man|men|guy|boy|male|gentleman|he|his|him)\b", re.I)
+FEMALE = re.compile(r"\b(woman|women|girl|female|lady|she|her)\b", re.I)
+OBJ = set("and or as to with in on at from while for by up down then the a an into onto over under like so but that close closer off out toward towards against through behind before after is was are softly gently slightly again too both one there here around across along near beside between".split(" "))
+
+
+def is_male(desc):
+    return bool(desc) and bool(MALE.search(desc)) and not FEMALE.search(desc)
+
+
+def to_male(t):
+    def rep(m):
+        w, sp, nxt = m.group(1), m.group(2), m.group(3)
+        lw = w.lower()
+        r = "he" if lw == "she" else "himself" if lw == "herself" else "his" if lw == "hers" else "him" if not nxt or nxt.lower() in OBJ else "his"
+        if w[0] == w[0].upper():
+            r = r[0].upper() + r[1:]
+        return r + (sp or "")
+    return re.sub(r"\b(she|herself|hers|her)\b(\s+([A-Za-z]+))?", rep, t, flags=re.I)
+
+
 def prompt_for(frame, trigger="", person="", style=True, edits=None, camera=None):
     # A linked camera goes on after the style switch, so its film and grain words stay even with style off.
-    return fill(with_camera(base(with_edit(frame, edits), style), camera)[0], subject(trigger, person))
+    t = with_camera(base(with_edit(frame, edits), style), camera)[0]
+    return fill(to_male(t) if is_male(person) else t, subject(trigger, person))
 
 
 def frame_key(f):

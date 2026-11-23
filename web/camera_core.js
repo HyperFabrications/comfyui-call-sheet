@@ -9,6 +9,7 @@ const LENS = /\b(\d+\s?mm|lens|phone camera look|deep focus|depth of field|backg
 const FIN = /\b(grain|grainy|film|finish|grade|grading|matte|print border)\b/i;
 const FLASH = /\bflash\b/i;
 const LIGHTW = /\b(light|lights|daylight|lit|lighting|flash|glow|glowing|sunlight|sun|shadow|shadows|backlit|backlight|lamp|lamps|neon|candlelight|highlights|overcast|sky|rim)\b/i;
+const COLOR = /\b(red|brick|camel|amber|charcoal|evergreen|ivory|cream|rust|navy|sage|stone|olive|honey|gold|golden|blush|peach|burgundy|emerald|slate|oatmeal|mint|copper|tawny|white|black|gray|grey|brown|pink|blue|green|teal|beige|tan|sand|ochre|mustard|coral|lilac|lavender|plum|wine|umber|brass|bronze|silver|yellow|orange|purple|violet|magenta|cyan|crimson|scarlet|maroon|khaki|taupe|mauve|rose|denim|chocolate|caramel|terracotta|turquoise|indigo|lemon|lime|ink)s?$/i;
 const PAL = /\b(palette|tones|colou?rs?|monochrome|black and white|sepia)\b/i;
 const REAL = /\b(photo|photograph|photographic|photorealistic|realistic|real|skin texture)\b/i;
 // Words that make the opening phrase a photo; an art style keeps what comes before them ("storybook autumn").
@@ -74,15 +75,17 @@ function artLead(first, medium) {
 const bitsOf = x => x.replace(/\.+$/, "").split(/,\s*/).filter(Boolean);
 
 // Drop the bits that pass test from sentences after c (never the protected ones), and put add where the first one was.
-function swap(s, c, prot, test, add) {
+// With list on, the short color words that lead into a hit go too ("Camel, brass and stone palette").
+function swap(s, c, prot, test, add, list = false) {
   let done = !add;
   for (let i = c + 1; i < s.length; i++) {
     const bits = bitsOf(s[i]);
-    const hit = b => !prot.has(b) && test(b);
-    const at = bits.findIndex(hit);
+    const hits = bits.map(b => !prot.has(b) && !!test(b));
+    if (list) for (let j = bits.length - 2; j >= 0; j--) if (hits[j + 1] && !hits[j] && !prot.has(bits[j]) && bits[j].split(/\s+/).length <= 3 && COLOR.test(bits[j]) && !LIGHTW.test(bits[j])) hits[j] = true;
+    const at = hits.indexOf(true);
     if (at < 0) continue;
-    const kept = bits.filter(b => !hit(b));
-    if (!done) { kept.splice(bits.slice(0, at).filter(b => !hit(b)).length, 0, add); done = true; }
+    const kept = bits.filter((b, j) => !hits[j]);
+    if (!done) { kept.splice(hits.slice(0, at).filter(h => !h).length, 0, add); done = true; }
     if (kept.length) s[i] = cap(kept.join(", ")) + ".";
     else { s.splice(i, 1); i--; }
   }
@@ -104,7 +107,7 @@ export function apply(text, p) {
       const kept = bitsOf(s[from]).filter(b => !LENS.test(b));
       if (kept.length) s[from] = cap(kept.join(", ")) + "."; else { s.splice(from, 1); from--; }
     } else from = 0;
-    if (!swap(s, from, prot, b => PAL.test(b) || FIN.test(b) || REAL.test(b), p.grade)) s.push(cap(p.grade) + ".");
+    if (!swap(s, from, prot, b => PAL.test(b) || FIN.test(b) || REAL.test(b), p.grade, true)) s.push(cap(p.grade) + ".");
     return s.join(" ");
   }
   if (p.cam || p.look) {
@@ -132,7 +135,7 @@ export function apply(text, p) {
       s.splice(at, 0, p.lookLight); guard(p.lookLight);
     }
     if (p.grade) {
-      if (!swap(s, c, prot, b => PAL.test(b) || (!p.cam && FIN.test(b)), p.grade)) s.push(cap(p.grade) + ".");
+      if (!swap(s, c, prot, b => PAL.test(b) || (!p.cam && FIN.test(b)), p.grade, true)) s.push(cap(p.grade) + ".");
       guard(p.grade);
     }
     if (p.cam && !swap(s, c, prot, b => FIN.test(b), p.finish)) s.push(cap(p.finish) + ".");

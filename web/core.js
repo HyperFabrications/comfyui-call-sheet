@@ -67,13 +67,27 @@ export function fill(text, subj) {
   return text.replace(/\[trigger\](,?)/g, (m, c) => subj.endsWith(",") ? subj : subj + c);
 }
 
+// Frames are written about a woman. When the person is a man, her and she read as his, him and he.
+const MALE = /\b(man|men|guy|boy|male|gentleman|he|his|him)\b/i, FEMALE = /\b(woman|women|girl|female|lady|she|her)\b/i;
+const OBJ = new Set("and or as to with in on at from while for by up down then the a an into onto over under like so but that close closer off out toward towards against through behind before after is was are softly gently slightly again too both one there here around across along near beside between".split(" "));
+export const isMale = desc => !!desc && MALE.test(desc) && !FEMALE.test(desc);
+export function toMale(t) {
+  return t.replace(/\b(she|herself|hers|her)\b(\s+([A-Za-z]+))?/gi, (m, w, sp, next) => {
+    const lw = w.toLowerCase();
+    let r = lw === "she" ? "he" : lw === "herself" ? "himself" : lw === "hers" ? "his" : !next || OBJ.has(next.toLowerCase()) ? "him" : "his";
+    if (w[0] === w[0].toUpperCase()) r = r[0].toUpperCase() + r.slice(1);
+    return r + (sp || "");
+  });
+}
+
 // Your own wording for a frame replaces the sheet's text (edits: { frameId: text }).
 export const withEdit = (frame, edits) => edits && typeof edits[frame.id] === "string" && edits[frame.id].trim()
   ? { ...frame, text: edits[frame.id], bare: undefined } : frame;
 
 // A linked camera goes on after the style switch, so its film and grain words stay even with style off.
 export function promptFor(frame, { trigger = "", person = "", style = true, edits = null, camera = null } = {}) {
-  return fill(withCamera(base(withEdit(frame, edits), style), camera)[0], subject(trigger, person));
+  const t = withCamera(base(withEdit(frame, edits), style), camera)[0];
+  return fill(isMale(person) ? toMale(t) : t, subject(trigger, person));
 }
 
 export function loadEdits() {

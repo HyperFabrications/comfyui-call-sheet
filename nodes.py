@@ -21,6 +21,12 @@ def _frame_options():
     return [P.frame_key(f) for f in _frames()]
 
 
+def _default_frame():
+    """New nodes start on the first SFW frame."""
+    f = next((f for f in _frames() if f.get("tab") == "sfw"), None)
+    return P.frame_key(f) if f else _frame_options()[0]
+
+
 def _find(frame_value):
     # Match on the id before " · " so a renamed title still finds its frame.
     fid = frame_value.split(" · ", 1)[0].strip()
@@ -64,7 +70,7 @@ class KreaPosePrompt:
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "frame": (_frame_options(), {"tooltip": "The frame to use. In set or tab mode, this frame picks the set or tab."}),
+                "frame": (_frame_options(), {"default": _default_frame(), "tooltip": "The frame to use. In set or tab mode, this frame picks the set or tab."}),
                 "mode": (MODES, {"default": "single frame"}),
                 "trigger": ("STRING", {"default": "", "placeholder": "LoRA trigger (leave empty for none)", "tooltip": "Replaces [trigger] in every prompt."}),
                 "style": ("BOOLEAN", {"default": True, "label_on": "style on", "label_off": "style off",
@@ -235,7 +241,7 @@ class KreaCallSheet:
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "frame": (_frame_options(), {"tooltip": "The frame to use. In set or tab mode, this frame picks the set or tab."}),
+                "frame": (_frame_options(), {"default": _default_frame(), "tooltip": "The frame to use. In set or tab mode, this frame picks the set or tab."}),
                 "mode": (MODES, {"default": "single frame"}),
                 "trigger": ("STRING", {"default": "", "placeholder": "LoRA trigger (leave empty for none)", "tooltip": "Replaces [trigger] in every prompt."}),
                 "style": ("BOOLEAN", {"default": True, "label_on": "style on", "label_off": "style off",
