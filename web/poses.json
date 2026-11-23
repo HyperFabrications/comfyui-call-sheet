@@ -1,7 +1,11 @@
 {
   "version": 1,
-  "updated": "2026-11-22",
+  "updated": "2026-11-23",
   "changelog": [
+    {
+      "date": "2026-11-23",
+      "text": "147 new prompts from Instagram carousels. New sets: Autumn forest (SFW), Knit studio, Flannel and Body details (Suggestive), plus more Everyday, Outdoor, Fashion, Places, Selfie and Portrait poses."
+    },
     {
       "date": "2026-11-22",
       "text": "8 more SFW web finds from a second Instagram carousel: doorway, balcony, sofa and home poses."
@@ -67,7 +71,8 @@
         "WebS",
         "Fashion",
         "Places",
-        "Everyday"
+        "Everyday",
+        "Forest"
       ]
     },
     {
@@ -75,7 +80,10 @@
       "name": "Suggestive",
       "sets": [
         "Flirt",
-        "Mirror"
+        "Mirror",
+        "Knit",
+        "Flannel",
+        "Details"
       ]
     },
     {
@@ -106,6 +114,10 @@
     }
   ],
   "sets": {
+    "Forest": "Autumn forest",
+    "Knit": "Knit studio",
+    "Flannel": "Flannel",
+    "Details": "Body details",
     "Fashion": "Fashion poses",
     "Places": "Places",
     "Everyday": "Everyday poses",
@@ -1883,6 +1895,1182 @@
       "title": "Hugging knees on the ottoman",
       "text": "[trigger] in a bright home portrait, sitting on a cushioned ottoman with knees pulled up to her chest, arms wrapped around her shins and hands clasped at her ankles, bare feet resting on the cushion edge, beaming a wide smile at the lens. Wearing a loose cream chiffon blouse with full balloon sleeves and dark brown leggings. A white slipcovered ottoman in the corner of a pale room, sheer white curtains and a window behind, warm wooden floorboards. Full length shot from a slightly high angle, 35mm lens feel. Soft diffused window light from behind and to the side, airy cream and taupe palette, subtle film grain.",
       "added": "2026-11-22"
+    },
+    {
+      "id": "K1",
+      "tab": "suggestive",
+      "set": "Knit",
+      "title": "Perched on the window sill",
+      "text": "[trigger] in a quiet studio portrait, perched sideways on a low white window sill with knees drawn up, head bowed toward her knees, an oversized knit cardigan slipping off both shoulders. Wearing an oversized charcoal chunky knit cardigan and black knee high socks. A tall window with a sheer white curtain in a bare white room. Full length side view at eye level, 50mm lens feel. Soft cool daylight from the window, gentle shadows, cool gray and charcoal palette, matte finish with light grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "K2",
+      "tab": "suggestive",
+      "set": "Knit",
+      "title": "Leaning back by the steps",
+      "text": "[trigger] in a studio portrait, sitting on a pale concrete floor and leaning back on one hand, the other hand resting on top of her head, legs stretched out along a white step behind her, glancing at the lens over her bare shoulder. Wearing an oversized charcoal chunky knit cardigan slipped off the shoulders and dark gray wide leg jeans with a studded black belt, barefoot. Minimal white studio with low white steps. High angle medium full shot, 35mm lens feel. Soft diffused daylight, cool gray palette, matte finish with light grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "K3",
+      "tab": "suggestive",
+      "set": "Knit",
+      "title": "Forearm over the brow",
+      "text": "[trigger] in an intimate close portrait, lying back with one knit sleeved forearm resting across her forehead, chin tipped up, gazing past the lens with a sleepy expression. Wearing an oversized charcoal chunky knit cardigan. Soft blurred pale background. Extreme close up from slightly above, tilted frame, 85mm lens feel, very shallow depth of field. Soft cool daylight, gray and coral palette, matte finish with light grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "K4",
+      "tab": "suggestive",
+      "set": "Knit",
+      "title": "Fingers over the eye",
+      "text": "[trigger] in an intimate close portrait, lying back with one hand resting lightly over her brow so her fingers frame one eye, head tilted, looking straight into the lens. Wearing an oversized charcoal chunky knit cardigan. Soft blurred pale background. Extreme close up from above, tilted frame, 85mm lens feel, very shallow depth of field. Soft cool daylight, gray and coral palette, matte finish with light grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "K5",
+      "tab": "suggestive",
+      "set": "Knit",
+      "title": "Leaning over the kitchen counter",
+      "text": "[trigger] in a moody home portrait, leaning forward over a kitchen counter on folded forearms, head bowed and eyes lowered toward the counter top. Wearing an oversized charcoal chunky knit cardigan over a charcoal knit tube top and dark gray jeans with a black belt. Concrete gray kitchen with a stainless sink, a knife block, an espresso machine and glass jars on an open shelf. Medium shot at eye level, 35mm lens feel. Soft cool window light, gray and copper palette, matte finish with light grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "K6",
+      "tab": "suggestive",
+      "set": "Knit",
+      "title": "Legs over the lounge chair",
+      "text": "[trigger] in a playful studio photo, sitting sideways in a mid century wooden lounge chair with both bare legs draped over one armrest and lifted in the air, one arm raised behind her head, looking at the lens. Wearing an oversized charcoal chunky knit cardigan and dark gray wide leg jeans. A teak lounge chair with a dark cushion on a seamless pale gray backdrop. Full length shot at eye level, 50mm lens feel, generous negative space. Soft even studio light, cool gray and teak palette, matte finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "K7",
+      "tab": "suggestive",
+      "set": "Knit",
+      "title": "Collarbone detail on the bed",
+      "text": "[trigger] in an intimate detail shot, lying on white bedding, the frame cropped from her lips down to her collarbone, a chunky knit cardigan falling open across one shoulder. Wearing an oversized charcoal chunky knit cardigan. Crumpled white sheet beneath. Tight overhead crop, 85mm lens feel, shallow depth of field. Soft diffused daylight, charcoal, white and coral palette, matte finish with light grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "K8",
+      "tab": "suggestive",
+      "set": "Knit",
+      "title": "Upside down on the bed",
+      "text": "[trigger] in a soft portrait, lying on her back on a white bed with her head toward the camera so the frame reads upside down, arms bent loosely beside her head, gazing up into the lens. Wearing an oversized charcoal chunky knit cardigan. Rumpled white sheets. Close medium shot from directly above, 50mm lens feel, shallow depth of field. Soft cool daylight, white and charcoal palette, matte finish with light grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "K9",
+      "tab": "suggestive",
+      "set": "Knit",
+      "title": "Knee in, hand on hip",
+      "text": "[trigger] in a fashion portrait, standing with one knee turned inward, one hand on her hip, the other arm hanging with a knit cardigan slipped down to the elbows, chin slightly lowered, direct gaze. Wearing a strapless charcoal knit top, a black pleated mini skirt with a black belt, black lace topped thigh high socks and chunky black platform loafers. A wall of vertical honey oak slats over a herringbone wood floor. Full length shot at eye level, 50mm lens feel. Soft warm studio light, oak and charcoal palette, matte finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "K10",
+      "tab": "suggestive",
+      "set": "Knit",
+      "title": "Peeking past the curtain",
+      "text": "[trigger] in a dreamy close portrait, half hidden behind a sheer white curtain so only part of her face and a bare shoulder show, head tilted, looking into the lens. A thin chain necklace. Sheer white curtain fabric filling the foreground and edge of frame. Close up at eye level, 85mm lens feel, very shallow depth of field. Soft bright window light diffused through the curtain, airy white and coral palette, matte finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "K11",
+      "tab": "suggestive",
+      "set": "Knit",
+      "title": "Pulling the cardigan up",
+      "text": "[trigger] in a studio portrait, sitting on a low white platform with knees drawn up, one arm raised to pull the back of a knit cardigan up behind her head like a hood, the other arm hugging her shins, looking at the lens. Wearing an oversized charcoal chunky knit cardigan over a charcoal knit tube top and dark gray wide leg jeans, barefoot. Bare white studio wall. Full length shot at eye level, 50mm lens feel. Soft cool daylight, gray palette, matte finish with light grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "K12",
+      "tab": "suggestive",
+      "set": "Knit",
+      "title": "Back turned, foot on the step",
+      "text": "[trigger] in a studio portrait, sitting on the floor with her back to the camera and her body twisted, leaning on one hand, one leg stretched up with the foot resting on a step, looking back over her shoulder as a knit cardigan slips down her back. Wearing an oversized charcoal chunky knit cardigan and dark gray wide leg jeans, barefoot. Pale concrete floor and white steps. Medium full shot from a slightly high angle, 35mm lens feel. Soft daylight, cool gray palette, matte finish with light grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "K13",
+      "tab": "suggestive",
+      "set": "Knit",
+      "title": "Perched on the pouf, cheek on hand",
+      "text": "[trigger] in a studio portrait, perched on a round pouf with one knee drawn up and the bare foot resting on its edge, cheek resting on her hand, head tilted, looking at the lens. Wearing an oversized charcoal chunky knit cardigan slipped off one shoulder and dark gray wide leg jeans. A pale gray boucle pouf against a white and gray marble wall. Medium full shot at eye level, 50mm lens feel. Soft cool daylight, marble gray palette, matte finish with light grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "K14",
+      "tab": "suggestive",
+      "set": "Knit",
+      "title": "Hugging the knee on the pouf",
+      "text": "[trigger] in a quiet studio portrait, seated in profile on a round pouf, one knee drawn up and hugged close with both arms, eyes lowered toward the floor. Wearing an oversized charcoal chunky knit cardigan slipping off the shoulders and dark gray wide leg jeans. A pale gray boucle pouf against a white and gray marble wall. Medium full shot at eye level, 50mm lens feel. Soft cool daylight, marble gray palette, matte finish with light grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "K15",
+      "tab": "suggestive",
+      "set": "Knit",
+      "title": "Head on the sofa arm",
+      "text": "[trigger] in a soft portrait, lying on her side along a sofa with her head resting on the rounded armrest, one hand tucked under her cheek, looking at the lens with a sleepy gaze. Wearing an oversized charcoal chunky knit cardigan in a deep V. A pale gray upholstered sofa against a marble wall and a bright window. Medium shot at sofa height, 50mm lens feel, shallow depth of field. Soft cool daylight from the side, gray palette, matte finish with light grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "K16",
+      "tab": "suggestive",
+      "set": "Knit",
+      "title": "Over the shoulder by the window",
+      "text": "[trigger] in an intimate close portrait, body turned away with a bare shoulder toward the lens, head tilted back over it, looking straight into the camera. Wearing an oversized charcoal chunky knit cardigan slipped low. A bright window with blurred green leaves outside and a sheer curtain. Close up at eye level, 85mm lens feel, shallow depth of field. Soft window light from behind, cool gray and leaf green palette, matte finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "K17",
+      "tab": "suggestive",
+      "set": "Knit",
+      "title": "Face down across the bed",
+      "text": "[trigger] in a quiet bedroom photo, lying face down across a white bed, arms stretched out ahead, face turned to the side on the sheet, knees bent with feet lifted. Wearing an oversized charcoal knit cardigan and black trousers. Crisp white bedding against a pale wall with a wooden headboard edge. Wide shot at bed height, 35mm lens feel. Soft cool daylight, white and charcoal palette, matte finish with light grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S87",
+      "tab": "sfw",
+      "set": "Fashion",
+      "title": "Stool, chin in hand",
+      "text": "[trigger] in a model test shoot, perched on a tall wooden stool with one leg raised and bent, leaning forward with a forearm on her knee and the other hand cupped at her jaw, head tilted, calm direct gaze. Wearing a chocolate brown off shoulder ribbed long sleeve top and pale light wash baggy wide leg jeans, barefoot. A worn dark wooden stool on a seamless light gray backdrop. Full length shot at eye level, 70mm lens feel. Soft even studio light, brown and denim blue palette, clean natural finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S88",
+      "tab": "sfw",
+      "set": "Fashion",
+      "title": "Arms folded across",
+      "text": "[trigger] in a model test shoot, standing square to the camera with both arms folded across her midriff, one hand gripping the opposite upper arm, head tilted, hair falling across one eye, steady direct gaze. Wearing a chocolate brown off shoulder ribbed long sleeve crop top and pale light wash baggy wide leg jeans. Seamless light gray backdrop. Full length shot at eye level, 70mm lens feel. Soft even studio light with gentle falloff, brown and denim blue palette, clean natural finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S89",
+      "tab": "sfw",
+      "set": "Fashion",
+      "title": "Stool, hugging the shin",
+      "text": "[trigger] in a model test shoot, sitting on a tall wooden stool with one knee pulled up and the foot on the seat edge, both arms wrapped around that shin, the other leg hanging down, soft smile at the lens. Wearing a chocolate brown off shoulder ribbed long sleeve top and pale light wash baggy wide leg jeans, barefoot. A worn dark wooden stool on a seamless light gray backdrop. Full length shot at eye level, 70mm lens feel. Soft even studio light, clean natural finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S90",
+      "tab": "sfw",
+      "set": "Fashion",
+      "title": "Hands on the waistband",
+      "text": "[trigger] in a model test shoot, standing at a slight angle with both hands at the back of her hips and thumbs hooked in the waistband, shoulders back, chin slightly lowered, direct gaze. Wearing a chocolate brown off shoulder ribbed long sleeve crop top and pale light wash jeans. Seamless light gray backdrop. Three quarter length shot at eye level, 85mm lens feel. Soft even studio light, clean natural finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S91",
+      "tab": "sfw",
+      "set": "Fashion",
+      "title": "Hands in back pockets",
+      "text": "[trigger] in a model test shoot, standing with both hands tucked into her back pockets, head tipped forward so hair falls over one eye, serious direct gaze. Wearing a light blue ribbed henley crop top and dark indigo jeans. Seamless dark charcoal backdrop. Medium shot at eye level, 85mm lens feel. Soft directional key light from the side, gentle shadow on the far cheek, slate blue and charcoal palette, clean natural finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S92",
+      "tab": "sfw",
+      "set": "Fashion",
+      "title": "Laughing lean",
+      "text": "[trigger] in a model test shoot, standing and leaning her whole body to one side with one hip pushed out, hands clasped behind her back, laughing at the lens. Wearing a chocolate brown off shoulder ribbed long sleeve crop top and pale light wash baggy wide leg jeans, barefoot. Seamless light gray backdrop. Full length shot at eye level, 70mm lens feel. Soft even studio light, clean natural finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S93",
+      "tab": "sfw",
+      "set": "Fashion",
+      "title": "Stool, laughing forward",
+      "text": "[trigger] in a model test shoot, sitting on a tall wooden stool with legs crossed and one knee raised, leaning forward and laughing with a hand resting at her chin. Wearing a chocolate brown off shoulder ribbed long sleeve top and pale light wash baggy wide leg jeans, barefoot. A worn dark wooden stool on a seamless light gray backdrop. Full length shot at eye level, 70mm lens feel. Soft even studio light, clean natural finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S94",
+      "tab": "sfw",
+      "set": "Everyday",
+      "title": "Head back off the table",
+      "text": "[trigger] in a moody home photo, lying back across a dining table with her head tipped over the far edge, legs raised and crossed at the ankles resting on the back of a chair. Wearing a black camisole, black wide trousers with a black belt and black heeled ankle boots. A dim dining room with dark chairs, a metal shelf holding a bicycle, a round wall clock and one small bright window. Wide shot at eye level, 35mm lens feel. Low natural window light, deep shadows, muted brown gray palette, soft grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S95",
+      "tab": "sfw",
+      "set": "Everyday",
+      "title": "Curled on the floor, overhead",
+      "text": "[trigger] in a moody home photo, kneeling and folded forward on a wooden floor with her head bowed so her hair spills across the boards, arms tucked in. Wearing an oversized black blazer over a black camisole. Warm wood floor in a dark room. Direct overhead shot, 35mm lens feel. A single shaft of window light catching her shoulder, everything else in deep shadow, muted brown palette, soft grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S96",
+      "tab": "sfw",
+      "set": "Everyday",
+      "title": "Head bowed at the window",
+      "text": "[trigger] in a quiet home portrait, sitting beside a window with her head bowed and eyes lowered, one hand resting at her collar, hair falling forward around her face. Wearing an oversized black blazer over a black camisole. A pale window frame and dark wall. Medium close shot at eye level, 50mm lens feel, shallow depth of field. Soft side light from the window, deep shadows, muted gray brown palette, soft grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S97",
+      "tab": "sfw",
+      "set": "Everyday",
+      "title": "Arms over the face on the floor",
+      "text": "[trigger] in a moody home photo, lying on her back on a wooden floor with her head on a gray floor cushion, both forearms crossed over her face, knees bent. Wearing a black camisole and black wide trousers. Dark wood floor and a white cabinet edge. High angle medium shot, 35mm lens feel. Low window light, deep shadows, muted brown palette, soft grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S98",
+      "tab": "sfw",
+      "set": "Everyday",
+      "title": "Backbend with arm flung out",
+      "text": "[trigger] in a dynamic portrait, arching her back dramatically with her head thrown back and hair swinging, one arm flung out behind her, the other hanging loose, an oversized blazer slipping off. Wearing a black camisole, black wide trousers with a black belt and an oversized black blazer. A narrow balcony between pale apartment buildings. Low angle medium shot, 35mm lens feel, slight motion in the hair. Soft overcast daylight, muted gray and black palette, soft grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S99",
+      "tab": "sfw",
+      "set": "Everyday",
+      "title": "Pulling the blazer off",
+      "text": "[trigger] in a moody detail portrait, back to the camera, one hand gripping the shoulder of an oversized blazer and drawing it down off her shoulder, face out of frame. Wearing an oversized black blazer over a black camisole. Blurred balcony railing and pale building behind. Close crop at shoulder height, 50mm lens feel, shallow depth of field. Dim overcast daylight, deep black and gray palette, soft grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S100",
+      "tab": "sfw",
+      "set": "Everyday",
+      "title": "Sitting on the balcony ledge",
+      "text": "[trigger] in a quiet city portrait, sitting on a balcony ledge with an oversized blazer draped over her shoulders, looking down and to the side, hands resting in her lap. Wearing a black camisole, black trousers with a belt and an oversized black blazer. White apartment balcony railings, overhead wires and pale buildings behind. Medium shot at eye level, 50mm lens feel, shallow depth of field, a dark blurred edge in the foreground. Soft overcast daylight, muted gray palette, soft grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S101",
+      "tab": "sfw",
+      "set": "Everyday",
+      "title": "Face down on the rug",
+      "text": "[trigger] in a moody home photo, lying face down on a rug with her cheek on the floor, one arm bent with the hand in her hair, the other arm stretched out along the boards. Wearing a black camisole. A gray patterned rug, warm wood floor and heavy dark curtains. Low angle at floor level, 35mm lens feel, shallow depth of field. Soft window light from the far side, deep shadows, muted brown palette, soft grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S102",
+      "tab": "sfw",
+      "set": "Everyday",
+      "title": "Against the wall under the window",
+      "text": "[trigger] in a lonely home photo, sitting on the floor with her back against the wall beneath a window, knees drawn up, head bowed, a small figure in a bare room. Wearing a black blazer and black trousers. Pale gray walls, a sliding window and a dim doorway to a kitchen. Wide shot at eye level, 28mm lens feel. Dim natural light, muted gray green palette, soft grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S103",
+      "tab": "sfw",
+      "set": "Everyday",
+      "title": "Sprawled on the sofa",
+      "text": "[trigger] in a candid home photo, lying face down sprawled across a gray sofa with her face buried in a cushion and one arm hanging off the edge. Wearing all black, an oversized blazer and trousers. Gray modular sofa, white walls, a hanging plant, a wall shelf and a large leafy plant in the foreground. Wide shot at eye level, 28mm lens feel. Soft window light, muted gray and green palette, soft grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S104",
+      "tab": "sfw",
+      "set": "Selfie",
+      "title": "Camera selfie on the bed",
+      "text": "[trigger] in a camera self portrait taken in a standing mirror, lying on her stomach on a bed facing the mirror with calves raised and crossed behind her, holding a mirrorless camera up to her face with both hands, a tabby cat sitting beside her. Wearing a dark charcoal long sleeve top and pale gray knit socks. Gray quilted bedspread and pale walls, the blurred wooden mirror frame edges in the foreground. Medium shot through the mirror, 35mm lens feel. Soft window light, warm muted film tones, gentle grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S105",
+      "tab": "sfw",
+      "set": "Selfie",
+      "title": "Head off the bed, camera up",
+      "text": "[trigger] in a camera self portrait taken in a standing mirror, lying on her back across a bed with her head hanging off the edge and her hair spilling toward the floor, one hand holding a camera up toward the mirror, the other arm bent overhead. Wearing a dark charcoal long sleeve top. Gray quilted bedspread, a tabby cat behind her, the blurred wooden mirror frame edges in the foreground. Medium shot through the mirror, 35mm lens feel. Soft window light, warm muted film tones, gentle grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S106",
+      "tab": "sfw",
+      "set": "Selfie",
+      "title": "Camera hiding the face",
+      "text": "[trigger] in a camera self portrait taken in a standing mirror, sitting on a bed with one knee raised, a camera held up so it covers her face, a tabby cat curled up against her. Wearing a dark charcoal long sleeve top and pale gray knit socks. Gray quilted bedspread and a pale wall, the blurred wooden mirror frame edges in the foreground. Medium full shot through the mirror, 35mm lens feel. Soft window light, warm muted film tones, gentle grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S107",
+      "tab": "sfw",
+      "set": "Selfie",
+      "title": "Reaching for the camera on the floor",
+      "text": "[trigger] in a candid mirror self portrait, lying on her stomach at the foot of a bed, one hand pushing her hair up off her forehead, the other arm reaching down toward a camera on the floor, looking at the mirror. Wearing a dark charcoal long sleeve top. Gray quilted bedspread, a pale wall and a tabby cat in the background, the blurred wooden mirror frame edge in the foreground. Medium shot through the mirror, 35mm lens feel. Soft window light, warm muted film tones, gentle grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S108",
+      "tab": "sfw",
+      "set": "Selfie",
+      "title": "Leg kicked up, camera at face",
+      "text": "[trigger] in a playful camera self portrait taken in a standing mirror, lying on her back across a bed with one leg kicked straight up in the air, holding a camera to her face aimed at the mirror, a tabby cat standing on the bed behind her. Wearing a dark charcoal long sleeve top and charcoal leggings. Gray quilted bedspread, pale walls, the blurred wooden mirror frame edges in the foreground. Medium shot through the mirror, 35mm lens feel. Soft window light, warm muted film tones, gentle grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S109",
+      "tab": "sfw",
+      "set": "Selfie",
+      "title": "Camera at the chest, soft smile",
+      "text": "[trigger] in a camera self portrait taken in a standing mirror, sitting on the edge of a bed with one knee raised and the foot up on the mattress, holding a camera at her chest and smiling softly at her reflection. Wearing a dark charcoal long sleeve top, short shorts and pale gray knit socks. Gray quilted bedspread, a pale wall and a tabby cat on the pillow, the blurred wooden mirror frame edges in the foreground. Medium full shot through the mirror, 35mm lens feel. Soft window light, warm muted film tones, gentle grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S110",
+      "tab": "sfw",
+      "set": "Portrait",
+      "title": "Temple on the window frame",
+      "text": "[trigger] in a sunlit window portrait, leaning her shoulder and temple against a white window frame, body turned three quarters, chin lowered, looking into the lens. Wearing a loose oatmeal knit sweater. A dark room behind with a blurred glass reflection in the foreground. Medium close shot at eye level, 85mm lens feel, shallow depth of field. Hard golden side sun through the window striping across her face, deep shadow behind, warm cream and umber palette, fine film grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S111",
+      "tab": "sfw",
+      "set": "Portrait",
+      "title": "Through the glass",
+      "text": "[trigger] in a window portrait shot through the glass, facing the camera straight on with a calm direct gaze, soft reflections and a warm flare washing across the pane in front of her. Wearing a loose oatmeal knit sweater. A dim warm room behind her and a painted window frame at one edge. Close portrait at eye level, 85mm lens feel, shallow depth of field. Soft golden window light, layered reflections, warm sand and olive palette, fine film grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S112",
+      "tab": "sfw",
+      "set": "Portrait",
+      "title": "Hand on the opposite shoulder",
+      "text": "[trigger] in a soft window portrait, facing the camera with one hand resting on the opposite shoulder, head tilted very slightly, gentle direct gaze. Wearing a loose oatmeal knit sweater. A sheer cream curtain glowing behind her. Close medium shot at eye level, 85mm lens feel, shallow depth of field. Warm diffused window light from the side, creamy highlights, honey and cream palette, fine film grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S113",
+      "tab": "sfw",
+      "set": "Portrait",
+      "title": "Over the shoulder at the window",
+      "text": "[trigger] in a window portrait, body turned away with the sweater slipped off one shoulder, looking back over that shoulder toward the light, her reflection faint in the glass beside her. Wearing a loose oatmeal knit sweater and small gold hoop earrings. A window frame and pale wall. Close up at eye level, 85mm lens feel, shallow depth of field. A bar of hard low sun across her eyes, soft shadow elsewhere, warm cream and slate palette, fine film grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S114",
+      "tab": "sfw",
+      "set": "Outdoor",
+      "title": "Steps, chin on hand",
+      "text": "[trigger] in an outdoor portrait, sitting on wide concrete steps with an elbow on her knee and her chin resting on her hand, head tilted, looking into the lens with a calm, playful expression. Wearing a rust tan suede bomber jacket over a gray tee, black shorts and sheer black tights. A dark metal cable railing blurs diagonally across the foreground, a modern concrete building behind. Close medium shot at eye level, 50mm lens feel, shallow depth of field. Soft warm afternoon light, rust and concrete gray palette, white print border.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S115",
+      "tab": "sfw",
+      "set": "Outdoor",
+      "title": "Steps, knees to the side",
+      "text": "[trigger] in an outdoor portrait, sitting on concrete steps leaning back slightly, knees together and angled to one side, hands resting on her knees, looking up into the lens. Wearing a rust tan suede bomber jacket over a gray tee, black shorts, sheer black tights and dark brown lace up heeled boots. Weathered concrete stairs and a dark metal cable railing behind. Full length shot from a high angle, 35mm lens feel. Soft warm afternoon light, rust and concrete gray palette, white print border.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S116",
+      "tab": "sfw",
+      "set": "Outdoor",
+      "title": "Centered on the stairs",
+      "text": "[trigger] in an outdoor portrait, sitting in the middle of a wide flight of concrete stairs, knees together and feet apart, one elbow on her knee with her hand at her chin, the other hand resting on her knee, looking at the lens. Wearing a rust tan suede bomber jacket, black shorts, sheer black tights and dark brown lace up heeled boots. Long stairs receding up to a modern building with a dark metal railing along one side. Full length shot at eye level, 50mm lens feel, symmetrical framing. Soft warm afternoon light, rust and gray palette, white print border.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S117",
+      "tab": "sfw",
+      "set": "Everyday",
+      "title": "Head in hand at the table",
+      "text": "[trigger] in a black and white portrait, sitting at a wooden table and leaning on one elbow with her head resting in her hand and fingers in her hair, head tilted, the other arm folded on the table, a drowsy gaze toward the lens. Wearing a loose knit V neck sweater slipping off one shoulder, a thin pendant necklace and bracelets. A glass mug of tea with the tag hanging over the rim on the table, a bright window behind. Medium shot at table height, 85mm lens feel, shallow depth of field. Soft window backlight, monochrome film look with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S118",
+      "tab": "sfw",
+      "set": "Everyday",
+      "title": "Chin on stacked hands",
+      "text": "[trigger] in a black and white portrait, sitting at a wooden table with elbows down and her chin resting on the backs of both stacked hands, a sly smile, eyes glancing off to the side. Wearing a loose knit V neck sweater and bracelets. A glass mug of tea with the tag hanging over the rim on the table, a bright window behind. Medium shot at table height, 85mm lens feel, shallow depth of field. Soft window backlight, monochrome film look with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S119",
+      "tab": "sfw",
+      "set": "Everyday",
+      "title": "Knee up behind the mug",
+      "text": "[trigger] in a black and white portrait, sitting at a wooden table with one knee pulled up to her chest behind a glass mug of tea, arms wrapped around her shin, chin lifted, cool direct gaze. Wearing a loose knit V neck sweater. A bright window behind. Medium shot at table height, 85mm lens feel, shallow depth of field. Soft window backlight, monochrome film look with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S120",
+      "tab": "sfw",
+      "set": "Everyday",
+      "title": "Hand on the head at the table",
+      "text": "[trigger] in a black and white portrait, sitting at a wooden table with one arm raised and the hand resting on top of her head in her hair, the other hand resting on the table, serious direct gaze. Wearing a loose knit V neck sweater. A glass mug of tea on the table in front of her, a bright window behind. Medium shot at table height, 85mm lens feel, shallow depth of field. Soft window backlight, monochrome film look with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S121",
+      "tab": "sfw",
+      "set": "Outdoor",
+      "title": "Skipping, coat flaring",
+      "text": "[trigger] in a joyful outdoor photo, skipping toward the camera mid stride with one knee kicked back and arms flung out so an open long coat flares wide, laughing. Wearing a blush pink long trench coat open over a black V neck mini dress, sheer black tights and black lace up combat boots. A wooden footbridge with weathered rails, fallen leaves and lush green trees. Full length shot at eye level, 85mm lens feel, shallow depth of field. Soft overcast daylight, green and blush palette, crisp natural finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S122",
+      "tab": "sfw",
+      "set": "Outdoor",
+      "title": "Knee up, hands in pockets",
+      "text": "[trigger] in a joyful outdoor photo, lifting one knee high toward the camera mid step, hands tucked in her coat pockets, laughing and looking up and away. Wearing a blush pink long trench coat open over a black V neck mini dress, sheer black tights and black lace up combat boots. A wooden footbridge with weathered rails and lush green trees. Full length shot at eye level, 85mm lens feel, shallow depth of field. Soft overcast daylight, green and blush palette, crisp natural finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S123",
+      "tab": "sfw",
+      "set": "Outdoor",
+      "title": "Walking toward the lens",
+      "text": "[trigger] in an outdoor fashion photo, walking toward the camera mid step with a long coat swinging out behind her, one hand trailing, soft smile at the lens. Wearing a blush pink long trench coat open over a black V neck mini dress, sheer black tights and black lace up combat boots. A wooden footbridge with weathered rails, scattered leaves and green trees. Full length shot at eye level, 85mm lens feel, shallow depth of field. Soft daylight, green and blush palette, crisp natural finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "D1",
+      "tab": "suggestive",
+      "set": "Details",
+      "title": "Sprig between the knees",
+      "text": "[trigger] in a quiet detail photograph, seated with knees together, hands clasped loosely on her knees holding a sprig of dried baby's breath that dangles between her legs, the frame cropped from waist to shins. Wearing a fuzzy black mohair cardigan with long sleeves, bare legs and thin gold rings. A beige upholstered sofa. Close crop at seat height, 50mm lens feel, shallow depth of field. Soft window light, muted taupe and black palette, matte film finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "D2",
+      "tab": "suggestive",
+      "set": "Details",
+      "title": "Hand over the sofa back",
+      "text": "[trigger] in a quiet detail photograph, one hand draped over the top edge of a sofa back, a sprig of dried baby's breath laced between the fingers, thin gold rings. A beige ribbed upholstered sofa against a dark gray wall. Close crop on the hand, 50mm lens feel, shallow depth of field. Soft window light from above, muted taupe and charcoal palette, matte film finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "D3",
+      "tab": "suggestive",
+      "set": "Details",
+      "title": "Sprig on the shoulder",
+      "text": "[trigger] in a quiet detail photograph, seen from the side, a sprig of dried baby's breath resting on her bare shoulder beside a thin camisole strap, chin just at the top of the frame. Wearing a white lace trimmed camisole under a fuzzy black mohair cardigan. Soft blurred dim room behind. Close crop on the shoulder, 85mm lens feel, shallow depth of field. Soft window light, muted taupe and black palette, matte film finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "D4",
+      "tab": "suggestive",
+      "set": "Details",
+      "title": "Back turned on the stool",
+      "text": "[trigger] in a quiet window photograph, seated on a low stool with her back to the camera, a fuzzy cardigan slipping down one shoulder, gazing out of the window. Wearing a fuzzy black mohair cardigan. A cream boucle stool, gray curtains, a small round table and a balcony railing outside, a dark wall edge in the foreground. Medium shot at eye level, 35mm lens feel. Soft overcast window light, muted gray and cream palette, matte film finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "D5",
+      "tab": "suggestive",
+      "set": "Details",
+      "title": "Sprig hanging from the sleeve",
+      "text": "[trigger] in a quiet detail photograph, a hand emerging from a long fuzzy sleeve and holding a sprig of dried baby's breath upside down by its stem. Wearing a fuzzy black mohair cardigan and thin gold rings. A pale warm gray surface fills the frame. Overhead crop, 50mm lens feel. Soft even window light, pale taupe and black palette, matte film finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "D6",
+      "tab": "suggestive",
+      "set": "Details",
+      "title": "Hands clasped at the collarbone",
+      "text": "[trigger] in a quiet detail photograph, the frame cropped from her lips to her chest, hands clasped together at her collarbone holding a sprig of dried baby's breath against her neck. Wearing a white lace trimmed camisole under an open fuzzy black mohair cardigan and thin gold rings. Dim blurred room behind. Close crop at eye level, 85mm lens feel, shallow depth of field. Soft window light, muted taupe and black palette, matte film finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "D7",
+      "tab": "suggestive",
+      "set": "Details",
+      "title": "Sprig across the collarbone",
+      "text": "[trigger] in a quiet detail photograph, a single sprig of dried baby's breath laid across her collarbone, a lace edge and fuzzy cardigan at the edges of the frame. Wearing a white lace trimmed camisole and a fuzzy black mohair cardigan. Tight crop on the collarbone from slightly above, 85mm lens feel, shallow depth of field. Soft window light, warm skin and black palette, matte film finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "D8",
+      "tab": "suggestive",
+      "set": "Details",
+      "title": "Sprig along the forearm",
+      "text": "[trigger] in a quiet detail photograph, a bare forearm lying flat on a pale surface with a sprig of dried baby's breath laid along it from wrist to elbow. A smooth pale warm gray tabletop. Close crop from slightly above, 50mm lens feel, shallow depth of field. Soft window light raking from the side, pale taupe palette, matte film finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "D9",
+      "tab": "suggestive",
+      "set": "Details",
+      "title": "Sprig over the crossed ankles",
+      "text": "[trigger] in a quiet detail photograph, bare legs extended and crossed at the ankles, a sprig of dried baby's breath resting across her shins, the hem of a fuzzy cardigan at the edge of the frame. A pale warm gray wall and floor. Side crop at leg height, 50mm lens feel, shallow depth of field. Soft window light, muted taupe palette, matte film finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S124",
+      "tab": "sfw",
+      "set": "Selfie",
+      "title": "Floor selfie, arm over the knee",
+      "text": "[trigger] in a casual mirror selfie, sitting on a tiled floor with one knee up and an arm draped over it, the other leg stretched out, head tilted, holding a phone in a peach case up to her face. Wearing a cream ribbed long sleeve scoop neck top, cream jogger sweatpants, black and white novelty slipper socks and bracelets. Speckled gray granite tile floor in a narrow hallway between dark wooden door frames and a beige wall. Full length shot from floor height, phone camera look, deep focus. Warm indoor overhead light, beige and cream palette, slightly soft phone finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S125",
+      "tab": "sfw",
+      "set": "Selfie",
+      "title": "Floor selfie, holding the ankle",
+      "text": "[trigger] in a casual mirror selfie, sitting on a tiled floor with knees drawn up and feet together, leaning forward with one hand around her ankle, head tilted down toward a phone in a peach case. Wearing a cream ribbed long sleeve scoop neck top, cream jogger sweatpants, black and white novelty slipper socks and bracelets. Speckled gray granite tile floor in a narrow hallway between dark wooden door frames and a beige wall. Full length shot from floor height, phone camera look, deep focus. Warm indoor overhead light, beige and cream palette, slightly soft phone finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S126",
+      "tab": "sfw",
+      "set": "Selfie",
+      "title": "Floor selfie, head on the shoulder",
+      "text": "[trigger] in a playful mirror selfie, sitting on a tiled floor with knees drawn up, one hand holding her ankle, head tilted to rest toward her shoulder, a phone in a peach case held up to her face. Wearing a cream ribbed long sleeve scoop neck top, cream jogger sweatpants, black and white novelty slipper socks and bracelets. Speckled gray granite tile floor in a narrow hallway between dark wooden door frames and a beige wall. Full length shot from floor height, phone camera look, deep focus. Warm indoor overhead light, beige and cream palette, slightly soft phone finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "F1",
+      "tab": "suggestive",
+      "set": "Flannel",
+      "title": "Chin on the forearms",
+      "text": "[trigger] in a soft bedroom portrait, lying on her stomach with her chin propped on stacked forearms, gazing sideways out of frame. Wearing an oversized red and navy plaid flannel shirt. White bedding and a pale blurred wall. Tight close up at mattress height, 85mm lens feel, shallow depth of field. Soft window light from the side, red, navy and cream palette, clean natural finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "F2",
+      "tab": "suggestive",
+      "set": "Flannel",
+      "title": "Curled up by the tall window",
+      "text": "[trigger] in a black and white bedroom photo, curled on her side on a white bed with knees drawn up and her head resting on her arm, a flannel shirt draped loosely around her. Wearing an oversized plaid flannel shirt over a white ribbed tank, bare legs and white crew socks. A low bed beside tall black framed windows with a balcony railing outside. Wide shot from a high angle, 35mm lens feel. Bright soft window light, monochrome finish with white print border.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "F3",
+      "tab": "suggestive",
+      "set": "Flannel",
+      "title": "Hand on the head, shirt open",
+      "text": "[trigger] in a loft portrait, standing with one arm raised and the hand resting on top of her head, the other hand holding a flannel shirt open off her shoulder, head tilted, direct gaze. Wearing an oversized red and navy plaid flannel shirt over a white ribbed tank. A bright attic loft with a sloped white ceiling and a tall window behind. Medium shot at eye level, 50mm lens feel, shallow depth of field. Soft daylight from the window, red, navy and white palette, clean natural finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "F4",
+      "tab": "suggestive",
+      "set": "Flannel",
+      "title": "On her back, hand near the face",
+      "text": "[trigger] in a black and white bedroom portrait, lying on her back on a bed with her head tipped back, one hand resting in her hair near her face, lips parted, eyes turned upward. Wearing an open plaid flannel shirt over a white ribbed tank. Rumpled white bedding and a window corner behind. Close medium shot from above, 35mm lens feel, shallow depth of field. Soft window light, monochrome film finish with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "F5",
+      "tab": "suggestive",
+      "set": "Flannel",
+      "title": "Holding the ankle on the bed",
+      "text": "[trigger] in a bedroom portrait, sitting on a white bed with knees bent and fallen to one side, both hands holding one ankle, a flannel shirt slipping off one shoulder, looking down and away. Wearing an oversized red and navy plaid flannel shirt over a white tank, bare legs and white crew socks. An attic room with a sloped ceiling and a tall black floor mirror leaning on the wall. Medium full shot at eye level, 35mm lens feel. Soft daylight, red, navy and white palette, clean natural finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "F6",
+      "tab": "suggestive",
+      "set": "Flannel",
+      "title": "Pulling up a sock",
+      "text": "[trigger] in a black and white bedroom portrait, sitting on a bed with knees drawn up, head bowed and smiling as she pulls up a white sock with both hands, a flannel shirt off one shoulder. Wearing an oversized plaid flannel shirt over a white tank, bare legs and white crew socks. An attic room with a sloped ceiling and a tall floor mirror. Medium full shot at eye level, 35mm lens feel. Soft daylight, monochrome finish with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "F7",
+      "tab": "suggestive",
+      "set": "Flannel",
+      "title": "Reaching up from the bed",
+      "text": "[trigger] in a black and white bedroom photo, lying on her back on a bed with both arms stretched straight up toward the ceiling, hands reaching, head turned toward the camera. Wearing a white ribbed tank with a plaid flannel shirt underneath her. White bedding and a tall black framed window behind. Medium shot from a low angle at the foot of the bed, 35mm lens feel. Bright soft window light, monochrome finish with white print border.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "F8",
+      "tab": "suggestive",
+      "set": "Flannel",
+      "title": "Tongue out on the carpet",
+      "text": "[trigger] in a playful loft portrait, sitting on a carpeted floor with legs crossed loosely and knees apart, leaning forward with her hands near her ankles, sticking her tongue out and looking up at the lens. Wearing an oversized red and navy plaid flannel shirt over a white tank and white crew socks. A pale carpet in a bright loft with a floor lamp behind. High angle medium full shot, 35mm lens feel. Soft daylight, red, navy and cream palette, clean natural finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "F9",
+      "tab": "suggestive",
+      "set": "Flannel",
+      "title": "Cheek on the bed",
+      "text": "[trigger] in a black and white close portrait, lying on her side with her cheek pressed to the bed so her face sits sideways in the frame, direct gaze into the lens. Wearing a plaid flannel shirt. Rumpled sheets. Tight close up at mattress height, rotated frame, 50mm lens feel, shallow depth of field. Soft window light, monochrome finish with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "F10",
+      "tab": "suggestive",
+      "set": "Flannel",
+      "title": "Leaning on the window frame",
+      "text": "[trigger] in a loft photo, standing beside a tall window with her shoulder against the frame, one knee bent and the foot lifted behind her, one arm raised overhead. Wearing an oversized plaid flannel shirt over a white tank, bare legs and white crew socks. A bright attic loft with a sloped white ceiling, a pale floor and tall black framed windows. Full length shot at eye level, 35mm lens feel, small figure with plenty of space. Bright soft daylight, white and navy palette, white print border.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "F11",
+      "tab": "suggestive",
+      "set": "Flannel",
+      "title": "Reading a magazine",
+      "text": "[trigger] in a black and white portrait, sitting with a magazine held open at her chest, eyes lowered to the page, a calm expression. Wearing an oversized plaid flannel shirt. A bright window and a dark doorway behind. Medium close shot at eye level, 50mm lens feel, shallow depth of field. Soft window light, monochrome finish with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S127",
+      "tab": "sfw",
+      "set": "Everyday",
+      "title": "Reaching for the lens, lamp glow",
+      "text": "[trigger] in a warm home portrait, lying on her back on the floor with one hand reaching up toward the lens with fingers spread, the other arm resting above her head, looking up past her hand. Wearing an oversized cream sweatshirt. A warm wooden floor and the curved shade of a floor lamp. Close shot from directly above, 35mm lens feel, foreground hand slightly soft. Warm orange lamp light on one side and cool daylight on the other, amber and slate palette, clean finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S128",
+      "tab": "sfw",
+      "set": "Everyday",
+      "title": "Laughing on the wooden chair",
+      "text": "[trigger] in a black and white loft photo, sitting sideways on a wooden chair with knees drawn up, an elbow on her knee and her hand at her cheek, laughing. Wearing an oversized cream sweatshirt and matching wide sweatpants, barefoot. A bright attic loft with a sloped ceiling, a low bed and a tall floor mirror. Wide full length shot at eye level, 35mm lens feel. Soft daylight, monochrome finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S129",
+      "tab": "sfw",
+      "set": "Everyday",
+      "title": "Drawstring at the lips",
+      "text": "[trigger] in a playful home portrait, sitting close to the lens and leaning forward, one hand tugging a hoodie drawstring up to her lips, peeking at the camera from behind loose hair, the other hand resting on her knee. Wearing an oversized cream hoodie and matching sweatpants. A bright attic room, soft blurred bedding in the foreground. Medium close shot at eye level, 35mm lens feel, shallow depth of field. Soft warm daylight, cream and copper palette, clean natural finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S130",
+      "tab": "sfw",
+      "set": "Everyday",
+      "title": "Eyes closed under the lamp",
+      "text": "[trigger] in a warm home portrait, lying on her back on the floor, eyes closed, one hand at her temple and the other resting near her face, lips softly parted. Wearing an oversized cream sweatshirt. A wooden floor beside a lamp with a brass stand and a window. Close shot from above, 35mm lens feel, shallow depth of field. Warm lamp light and cool daylight, amber and cream palette, clean finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S131",
+      "tab": "sfw",
+      "set": "Everyday",
+      "title": "Beaming, chin in both hands",
+      "text": "[trigger] in a black and white home portrait, lying on her stomach with her chin cupped in both hands, beaming with eyes closed. Wearing an oversized cream sweatshirt. A gray sofa and a bright wall behind. Medium close shot at eye level, 50mm lens feel, shallow depth of field. Soft daylight, monochrome finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S132",
+      "tab": "sfw",
+      "set": "Everyday",
+      "title": "Fingers laced at the chin",
+      "text": "[trigger] in a black and white portrait, hands raised near her chin with fingers loosely interlaced, head tilted slightly, serious direct gaze. Wearing an oversized cream sweatshirt over a black top. A bright blurred room behind. Medium close shot at eye level, 50mm lens feel, shallow depth of field. Soft daylight from the side, monochrome finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S133",
+      "tab": "sfw",
+      "set": "Everyday",
+      "title": "Laughing up at the lamp",
+      "text": "[trigger] in a warm home portrait, lying on her back on the floor laughing, one hand reaching toward the lens and the other above her head, eyes squeezed with joy. Wearing an oversized cream sweatshirt. The glowing round shade of a floor lamp at the top of the frame, a wooden floor and a blue gray sofa edge. Close shot from directly above, 35mm lens feel, hand slightly soft in the foreground. Warm orange lamp glow, amber and slate palette, clean finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S134",
+      "tab": "sfw",
+      "set": "Everyday",
+      "title": "Hands on the cheeks, laughing",
+      "text": "[trigger] in a black and white close portrait, both hands cupping her cheeks, laughing with eyes closed, head tilted slightly. Wearing an oversized cream sweatshirt. A bright window blurred behind. Close up at eye level, 85mm lens feel, shallow depth of field. Soft daylight, monochrome finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S135",
+      "tab": "sfw",
+      "set": "Everyday",
+      "title": "Leaning on the white pillar",
+      "text": "[trigger] in a loft photo, standing full length and leaning one shoulder against a white pillar, one leg crossed in front of the other, hands relaxed, looking at the lens. Wearing an oversized cream sweatshirt and matching wide sweatpants, barefoot. A large bright attic loft with a sloped ceiling, a dark leather sofa and a pale floor. Full length shot at eye level, 35mm lens feel. Soft daylight, cream and gray palette, white print border.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S136",
+      "tab": "sfw",
+      "set": "Everyday",
+      "title": "Hand cupping the jaw",
+      "text": "[trigger] in a home portrait, sitting and leaning forward toward the lens with one hand cupping her jaw and cheek, calm direct gaze. Wearing an oversized cream sweatshirt and matching sweatpants. A bright attic room with an arched window behind. Medium close shot at eye level, 50mm lens feel, shallow depth of field. Soft daylight, cream and copper palette, clean natural finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S137",
+      "tab": "sfw",
+      "set": "Everyday",
+      "title": "Finger at the lips, laughing",
+      "text": "[trigger] in a black and white home portrait, sitting back and laughing with one finger resting at her lips, eyes crinkled, the other hand on her knee. Wearing an oversized cream sweatshirt and matching sweatpants. A bright blurred room. Medium shot at eye level, 50mm lens feel, shallow depth of field. Soft daylight, monochrome finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S138",
+      "tab": "sfw",
+      "set": "Everyday",
+      "title": "Hair piled up, soft gaze",
+      "text": "[trigger] in a home portrait, sitting with her hair piled up loosely on top of her head, head tilted to one side, soft gaze into the lens, shoulders relaxed. Wearing an oversized cream sweatshirt. A bright attic room with a sloped ceiling. Medium shot at eye level, 50mm lens feel, shallow depth of field. Soft daylight, cream and copper palette, clean natural finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S139",
+      "tab": "sfw",
+      "set": "Everyday",
+      "title": "Both hands in the hair",
+      "text": "[trigger] in a home portrait, both arms raised with her hands in her hair piling it up on her head, smiling and looking off to the side. Wearing an oversized cream sweatshirt. A bright attic room with a sloped white ceiling. Medium shot at eye level, 50mm lens feel, shallow depth of field. Soft daylight, cream and copper palette, clean natural finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S140",
+      "tab": "sfw",
+      "set": "Everyday",
+      "title": "Head on the arms at the table",
+      "text": "[trigger] in a warm home portrait, leaning forward across a dark wooden table with her head resting on her folded arms, smiling at the lens. Wearing an oversized cream sweatshirt. A pale wall and soft blurred room. Medium close shot at table height, 50mm lens feel, shallow depth of field. Soft warm daylight, cream, walnut and copper palette, clean natural finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S141",
+      "tab": "sfw",
+      "set": "Places",
+      "title": "Diner booth, hands in hair",
+      "text": "[trigger] in a cinematic diner portrait, sitting in a booth with both elbows on the table and her hands pushed into her hair at the temples, head tilted, moody direct gaze. Wearing a camel ribbed knit sweater. A brown ceramic coffee cup on a saucer in the foreground, teal and rust leather booths, chrome trim and warm pendant bulbs along the ceiling. Medium shot from slightly above, 28mm lens feel. Warm tungsten interior light with cool window fill, amber and teal palette, soft film grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S142",
+      "tab": "sfw",
+      "set": "Places",
+      "title": "Leaning on the booth end",
+      "text": "[trigger] in a cinematic diner portrait, standing at the end of a booth and leaning one forearm on its back, the other hand at her cheek, calm direct gaze. Wearing a camel ribbed knit sweater and black flared trousers. A long diner aisle receding behind her with teal and rust booths, tables and warm hanging bulbs. Medium shot to the hips at eye level, 35mm lens feel, shallow depth of field. Warm tungsten light with daylight from the windows, amber and teal palette, soft film grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S143",
+      "tab": "sfw",
+      "set": "Places",
+      "title": "Looking out the booth window",
+      "text": "[trigger] in a cinematic diner portrait, sitting in a window booth turned toward the glass, one hand at the back of her neck, gazing out in three quarter profile. Wearing a camel ribbed knit sweater. A long diner window, chrome trim, teal and rust booths and warm bulbs overhead. Medium shot at eye level, 35mm lens feel, shallow depth of field. Soft daylight from the window and warm interior glow, amber and teal palette, soft film grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S144",
+      "tab": "sfw",
+      "set": "Places",
+      "title": "Diner booth, frowning",
+      "text": "[trigger] in a cinematic diner portrait, sitting in a booth with both hands pressed into her hair at her temples, elbows on the table, a slight frown and direct gaze. Wearing a camel ribbed knit sweater. A brown ceramic coffee cup and saucer in front of her, teal and rust leather booths and warm bulbs behind. Medium shot at eye level, 35mm lens feel. Warm tungsten interior light, amber and teal palette, soft film grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S145",
+      "tab": "sfw",
+      "set": "Places",
+      "title": "Head on hand at the window table",
+      "text": "[trigger] in a cinematic diner photo, sitting at a window table with her head resting on one hand, the other arm on the table, eyes lowered toward a coffee cup. Wearing a camel ribbed knit sweater. A brown ceramic coffee cup and saucer, a rust leather booth and a street visible through the window. Wide landscape shot at eye level, 35mm lens feel, shallow depth of field. Soft daylight from the window and warm interior glow, amber and teal palette, soft film grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S146",
+      "tab": "sfw",
+      "set": "Places",
+      "title": "Peeking over the booth",
+      "text": "[trigger] in a playful diner photo, peeking over the top of a high booth back so only her head and folded hands show, chin resting on her hands, looking at the lens. Two tone teal and rust leather booth backs in the foreground, a long diner aisle with windows and warm hanging bulbs behind. Wide landscape shot at booth height, 35mm lens feel. Warm tungsten interior light with window daylight, amber and teal palette, soft film grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S147",
+      "tab": "sfw",
+      "set": "Places",
+      "title": "Chin on the hand, coffee in front",
+      "text": "[trigger] in a cinematic diner portrait, sitting in a booth with her chin resting on the back of one hand, elbow on the table, direct gaze. Wearing a camel ribbed knit sweater. A brown ceramic coffee cup and saucer on the table in front of her, a window, chrome trim and teal and rust booths behind. Medium shot from slightly above, 28mm lens feel. Warm tungsten interior light, amber and teal palette, soft film grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S148",
+      "tab": "sfw",
+      "set": "Places",
+      "title": "Standing in the diner aisle",
+      "text": "[trigger] in a cinematic diner photo, standing in the aisle and leaning back against the end of a booth, one hand raised near her face, looking out of the window. Wearing a camel ribbed knit sweater and black flared trousers. Teal and rust leather booths, chrome tables, a tiled floor, venetian blinds and warm ceiling lights. Full length shot at eye level, 28mm lens feel. Warm tungsten interior light with window daylight, amber and teal palette, soft film grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S149",
+      "tab": "sfw",
+      "set": "Places",
+      "title": "Through the diner glass",
+      "text": "[trigger] in a cinematic portrait shot from outside through a diner window, sitting with her head resting on one hand and the other arm folded on the table, direct gaze, street reflections layered over the glass. Wearing a camel ribbed knit sweater. Warm diner interior behind her, reflected red brick buildings and streetlights across the pane. Medium shot at eye level, 50mm lens feel. Warm interior glow mixed with cool street reflections, amber and teal palette, soft film grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S150",
+      "tab": "sfw",
+      "set": "Places",
+      "title": "Fingers in the hair, through glass",
+      "text": "[trigger] in a cinematic portrait shot from outside through a diner window, head resting against one hand with fingers in her hair, direct gaze, reflections of the street sliding across the glass. Wearing a camel ribbed knit sweater. Warm diner interior behind, reflected brick buildings and a glowing orange sign. Medium close shot at eye level, 50mm lens feel, shallow depth of field. Warm interior glow mixed with cool street reflections, amber and teal palette, soft film grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S151",
+      "tab": "sfw",
+      "set": "Forest",
+      "title": "Head back on the log",
+      "text": "[trigger] in a storybook autumn portrait, reclining back against a fallen log on a bed of leaves, head tipped back with eyes closed, a wicker basket resting beside her. Wearing a heavy brown wool cape with a fur collar over a cream linen blouse and a tartan pinafore dress. Orange leaf litter and a misty clearing behind. Medium shot from slightly above, 50mm lens feel, shallow depth of field. Soft hazy autumn daylight, rust, moss and cream palette, warm muted film grade.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S152",
+      "tab": "sfw",
+      "set": "Forest",
+      "title": "Bending from the log",
+      "text": "[trigger] in a storybook autumn photo, standing on a fallen log and bending forward at the waist to reach toward the ground, face hidden. Wearing a cream linen blouse with puffed sleeves and a dark tartan pinafore dress. A beech forest with tall thin trunks, a carpet of orange leaves and soft light through the canopy. Wide full length shot at eye level, 35mm lens feel. Soft backlit forest daylight, rust and moss palette, warm muted film grade.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S153",
+      "tab": "sfw",
+      "set": "Forest",
+      "title": "Peering over the basket",
+      "text": "[trigger] in a playful storybook portrait, holding a wicker basket up in front of her face and peering over its handle toward the side, one hand reaching forward out of focus. Wearing a heavy brown wool cape with a fur collar. Blurred autumn forest behind. Close shot at eye level, 50mm lens feel, very shallow depth of field. Soft autumn daylight, honey and rust palette, warm muted film grade.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S154",
+      "tab": "sfw",
+      "set": "Forest",
+      "title": "Glance back in the forest",
+      "text": "[trigger] in a storybook autumn photo, standing among thin trees seen from behind and glancing back over her shoulder. Wearing a heavy brown wool cape with a fur collar over a tartan dress. Slender trunks and bare branches, golden leaves and soft green undergrowth. Full length shot at eye level, 50mm lens feel, branches soft in the foreground. Soft backlit autumn daylight, gold and moss palette, warm muted film grade.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S155",
+      "tab": "sfw",
+      "set": "Forest",
+      "title": "Walking the forest path",
+      "text": "[trigger] in a storybook autumn photo, walking along a narrow forest path with her head bowed, holding a cape closed at her chest. Wearing a heavy brown wool cape with a fur collar over a tartan pinafore dress. Dark evergreen trees, fallen branches and orange leaf litter. Wide full length shot at eye level, 35mm lens feel. Dim soft forest light, deep green and rust palette, warm muted film grade.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S156",
+      "tab": "sfw",
+      "set": "Forest",
+      "title": "Profile in the fur collar",
+      "text": "[trigger] in a storybook autumn portrait, in profile with her gaze lifted up and away, a wicker basket resting at her hip. Wearing a heavy brown wool cape with a thick fur collar. Blurred sunlit forest behind. Close medium shot from behind her shoulder, 85mm lens feel, very shallow depth of field. Warm low sun from behind rimming her profile, honey and umber palette, warm muted film grade.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S157",
+      "tab": "sfw",
+      "set": "Forest",
+      "title": "Feeding the deer",
+      "text": "[trigger] in a storybook autumn photo, sitting on a low wooden rail fence and holding out one hand to feed a fallow deer that leans in toward her, a second deer standing close by. Wearing a heavy brown wool cape over a cream blouse and a tartan pinafore dress. A frosty misty clearing with sun rays through tall trees. Medium full shot at eye level, 50mm lens feel. Soft hazy morning backlight, frost white and fawn palette, warm muted film grade.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S158",
+      "tab": "sfw",
+      "set": "Forest",
+      "title": "Chestnut held up for the deer",
+      "text": "[trigger] in a storybook autumn photo, standing and holding a chestnut up above a fallow deer that stretches its neck toward her hand, smiling down at it. Wearing a heavy brown wool cape over a cream blouse and a tartan pinafore dress. A frosty meadow and misty trees behind. Medium shot at eye level, 50mm lens feel, shallow depth of field. Soft hazy morning light, frost white and fawn palette, warm muted film grade.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S159",
+      "tab": "sfw",
+      "set": "Forest",
+      "title": "Alone in the frosty clearing",
+      "text": "[trigger] in a storybook autumn photo, standing in the middle of a frosty clearing holding a small wicker basket in front of her with both hands, looking up and away. Wearing a heavy brown wool cape over a tartan pinafore dress, dark tights and brown boots. Frosted grass, bare and golden trees and a pale misty sky. Wide full length shot at eye level, 35mm lens feel. Soft hazy morning light, frost white and gold palette, warm muted film grade.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S160",
+      "tab": "sfw",
+      "set": "Forest",
+      "title": "Looking into the basket",
+      "text": "[trigger] in a storybook autumn portrait, standing with a fur trimmed cape around her shoulders, eyes lowered into a wicker basket of chestnuts held at her waist. Wearing a heavy brown wool cape over a cream blouse and a tartan pinafore dress. A frosty clearing and misty golden trees behind. Medium shot at eye level, 50mm lens feel, shallow depth of field. Soft morning light, frost and chestnut palette, warm muted film grade.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S161",
+      "tab": "sfw",
+      "set": "Forest",
+      "title": "Basket raised behind the trunk",
+      "text": "[trigger] in a storybook autumn photo, standing behind a gnarled fallen trunk with one arm raised to hold a wicker basket aloft, looking up at it. Wearing a heavy brown wool cape over a cream blouse. A twisted weathered trunk in the foreground, a frosty clearing and tall misty trees behind. Medium shot from low behind the trunk, 35mm lens feel, shallow depth of field. Soft hazy morning light, wood brown and frost palette, warm muted film grade.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S162",
+      "tab": "sfw",
+      "set": "Forest",
+      "title": "On the slope between trunks",
+      "text": "[trigger] in a storybook autumn photo, standing on a leafy slope between mossy tree trunks, looking back toward the camera. Wearing a heavy brown wool cape over a tartan pinafore dress. Mossy trunks framing the shot, orange leaf litter, a fallen log and deep forest. Wide full length shot at eye level, 35mm lens feel, trunks soft in the foreground. Soft forest daylight, moss and rust palette, warm muted film grade.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S163",
+      "tab": "sfw",
+      "set": "Forest",
+      "title": "Hugging the mossy trunk",
+      "text": "[trigger] in a storybook autumn portrait, leaning against a leaning mossy tree trunk with one hand flat on the bark and her face turned away, her body pressed close to the trunk. Wearing a cream linen blouse with puffed sleeves, a tartan pinafore dress and a brown wool cape. Autumn forest with golden leaves behind. Medium shot at eye level, 50mm lens feel, shallow depth of field. Soft backlit forest light, moss and gold palette, warm muted film grade.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S164",
+      "tab": "sfw",
+      "set": "Forest",
+      "title": "Peering up past the trunk",
+      "text": "[trigger] in a storybook autumn portrait, peering around a tree trunk with one hand resting on the bark, chin lifted, gazing up into the canopy. Wearing a heavy brown wool cape. Dark trunk soft in the foreground, thin trees and green leaves above. Close profile shot at eye level, 50mm lens feel, shallow depth of field. Soft cool forest light from above, moss and bark brown palette, warm muted film grade.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S165",
+      "tab": "sfw",
+      "set": "Forest",
+      "title": "Standing on the stump",
+      "text": "[trigger] in a storybook autumn photo, standing on top of a broad tree stump in the forest, looking up into the trees with her arms close to her body. Wearing a heavy brown wool cape over a tartan pinafore dress and brown boots. Tall pines and birches, ferns and orange leaf litter around the stump. Full length shot from a low angle, 35mm lens feel. Soft overcast forest light, moss and rust palette, warm muted film grade.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S166",
+      "tab": "sfw",
+      "set": "Forest",
+      "title": "Sitting in the leaves",
+      "text": "[trigger] in a storybook autumn portrait, sitting on the leaf covered ground with a wicker basket beside her, one hand resting at her chest, looking up and away. Wearing a heavy brown wool cape over a cream blouse and a tartan pinafore dress. Golden yellow and orange leaves all around, green forest behind. Medium full shot from slightly above, 50mm lens feel, shallow depth of field. Soft forest daylight, gold and moss palette, warm muted film grade.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S167",
+      "tab": "sfw",
+      "set": "Forest",
+      "title": "Back to the big tree",
+      "text": "[trigger] in a storybook autumn portrait, leaning back against a thick tree trunk with her head tipped back to gaze into the canopy, a wicker basket held low in both hands. Wearing a cream linen blouse with puffed sleeves and a tartan pinafore dress. Rough bark beside her, tall autumn trees and orange leaf litter behind. Medium shot at eye level, 50mm lens feel, shallow depth of field. Soft golden forest light, bark brown and amber palette, warm muted film grade.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S168",
+      "tab": "sfw",
+      "set": "Forest",
+      "title": "Behind the tall trunk",
+      "text": "[trigger] in a storybook autumn photo, standing behind a tall tree trunk and peeking out from one side. Wearing a cream blouse and a tartan pinafore dress. A tall autumn beech forest with straight trunks, golden canopy and a carpet of orange leaves. Wide full length shot at eye level, 35mm lens feel, leaves soft in the foreground. Soft backlit forest light, gold and rust palette, warm muted film grade.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S169",
+      "tab": "sfw",
+      "set": "Forest",
+      "title": "Head bowed in the sun rays",
+      "text": "[trigger] in a storybook autumn photo, seen three quarters from behind with her head bowed over a basket in her hands. Wearing a heavy brown wool cape. A misty forest clearing with shafts of sunlight slanting through the trees. Medium shot at eye level, 50mm lens feel, shallow depth of field. Strong low sun backlight glowing through the mist, warm lens flare, honey and umber palette, warm muted film grade.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S170",
+      "tab": "sfw",
+      "set": "Outdoor",
+      "title": "Hand behind the head, sweet smile",
+      "text": "[trigger] in a casual outdoor portrait, standing with one hand behind her head, head tilted, sweet closed lip smile at the lens. Wearing a cropped oversized white long sleeve sweatshirt, frayed light wash denim cutoff shorts, a small brown crossbody bag on a chain and a gold pendant necklace. A beige wall, green shrubs and a paved walkway. Three quarter length shot at eye level, 50mm lens feel, shallow depth of field. Soft daylight, white, denim and green palette, clean natural finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S171",
+      "tab": "sfw",
+      "set": "Outdoor",
+      "title": "Hand through the hair, eyes down",
+      "text": "[trigger] in a casual outdoor portrait, standing with one hand running through the side of her hair, looking down with a soft smile, the other arm relaxed. Wearing a cropped oversized white long sleeve sweatshirt, frayed light wash denim cutoff shorts and a small brown crossbody bag on a chain. A covered walkway with a wood slat ceiling, recessed lights and concrete pillars. Three quarter length shot at eye level, 35mm lens feel. Direct on camera flash in open shade, crisp highlights, white and warm wood palette, clean finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S172",
+      "tab": "sfw",
+      "set": "Outdoor",
+      "title": "Arm out, playful pout",
+      "text": "[trigger] in a casual outdoor portrait, standing with one hand touching her hair and the other arm swinging out to the side, head tilted with a playful pout. Wearing a cropped oversized white long sleeve sweatshirt, frayed light wash denim cutoff shorts and a small brown crossbody bag on a chain. A covered walkway with a wood slat ceiling, recessed lights and concrete pillars. Three quarter length shot from a low angle, 28mm lens feel. Direct on camera flash in open shade, crisp highlights, clean finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S173",
+      "tab": "sfw",
+      "set": "Outdoor",
+      "title": "Shy look down by the marble",
+      "text": "[trigger] in a casual outdoor portrait, standing with arms relaxed at her sides, looking down with a shy smile. Wearing a cropped oversized white long sleeve sweatshirt, frayed light wash denim cutoff shorts, a small brown crossbody bag on a chain and a gold pendant necklace. A polished black marble wall with white veining behind her. Medium shot at eye level, 50mm lens feel. Direct on camera flash, crisp highlights against the dark marble, black and white palette, clean finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S174",
+      "tab": "sfw",
+      "set": "Outdoor",
+      "title": "Hand on the marble pillar",
+      "text": "[trigger] in a casual outdoor portrait, leaning a shoulder toward a black marble pillar with one hand flat on its surface and the other hand on her hip, smiling at the lens. Wearing a cropped oversized white long sleeve sweatshirt and frayed light wash denim cutoff shorts. A covered walkway with a wood slat ceiling and concrete pillars receding behind. Three quarter length shot at eye level, 35mm lens feel. Direct on camera flash in open shade, crisp highlights, clean finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S175",
+      "tab": "sfw",
+      "set": "Outdoor",
+      "title": "Blanket at the foot of the ladder",
+      "text": "[trigger] in a golden hour outdoor portrait, sitting on a cream blanket on the grass at the foot of a rustic wooden ladder, knees up and ankles crossed, hands resting on her knees, looking at the lens. Wearing an oversized oxblood leather jacket, a charcoal knit sweater, a white pleated tennis mini skirt, white over the knee socks and black knee high riding boots. A grassy hillside, the ladder leaning on a tree and autumn trees in warm light. Wide full length shot at eye level, 35mm lens feel. Low warm sun from behind, glowing rim light, gold and oxblood palette, warm film grade.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S176",
+      "tab": "sfw",
+      "set": "Outdoor",
+      "title": "Arm on the ladder rung",
+      "text": "[trigger] in a golden hour outdoor portrait, sitting in the grass and leaning back against a rustic wooden ladder, one arm raised to rest on a rung with her hand in her hair, knees up, looking at the lens. Wearing an oversized oxblood leather jacket, a charcoal knit sweater, a white pleated mini skirt, white over the knee socks and black knee high riding boots. A grassy hillside and autumn trees behind. Medium shot at eye level, 50mm lens feel, shallow depth of field. Low warm sun from behind, gold and oxblood palette, warm film grade.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S177",
+      "tab": "sfw",
+      "set": "Outdoor",
+      "title": "Boot up on the ladder",
+      "text": "[trigger] in a golden hour outdoor portrait, standing and leaning back against a rustic wooden ladder, one hand gripping a rung above her head, one boot heel propped on a low rung, looking down. Wearing a charcoal knit sweater, a white pleated tennis mini skirt, white over the knee socks and black knee high riding boots. A grassy hillside, a meadow and autumn trees glowing behind. Full length shot at eye level, 35mm lens feel. Low warm sun from behind, glowing rim light, gold and charcoal palette, warm film grade.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S178",
+      "tab": "sfw",
+      "set": "Outdoor",
+      "title": "Laughing past the ladder",
+      "text": "[trigger] in a golden hour outdoor portrait, walking past a rustic wooden ladder with her hands in her jacket pockets, laughing and looking down and away. Wearing an oversized oxblood leather jacket over a charcoal knit sweater. A meadow and autumn trees in soft focus behind. Medium shot at eye level, 50mm lens feel, shallow depth of field. Low warm sun backlighting the hair with a soft glow, gold and oxblood palette, warm film grade.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S179",
+      "tab": "sfw",
+      "set": "Fashion",
+      "title": "Crouched, cheek on the knees",
+      "text": "[trigger] in a model digitals shoot, crouching low on the floor with knees pulled to her chest, arms wrapped around her shins, head resting sideways on her knees, looking at the lens. Wearing an ivory open knit crochet long sleeve maxi dress and black patent slingback kitten heels. A mottled slate gray painted backdrop. Full length shot at a low angle, 50mm lens feel. Soft even studio light, ivory and slate palette, clean natural finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S180",
+      "tab": "sfw",
+      "set": "Fashion",
+      "title": "Sleeves framing the face",
+      "text": "[trigger] in a fashion close up, both forearms raised so one open knit sleeve crosses the top of the frame above her eyes and the other crosses the bottom below her chin, direct gaze between them. Wearing an ivory open knit crochet long sleeve dress. A mottled slate gray painted backdrop. Tight close up at eye level, 85mm lens feel, shallow depth of field. Soft frontal studio light, ivory and slate palette, clean natural finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S181",
+      "tab": "sfw",
+      "set": "Fashion",
+      "title": "Wrists crossed overhead",
+      "text": "[trigger] in a model digitals shoot, standing with both arms raised overhead and crossed at the wrists, head tilted, eyes lowered. Wearing an ivory open knit crochet long sleeve maxi dress. A mottled slate gray painted backdrop. Three quarter length shot at eye level, 70mm lens feel. Soft even studio light, ivory and slate palette, clean natural finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S182",
+      "tab": "sfw",
+      "set": "Fashion",
+      "title": "Straight on digitals",
+      "text": "[trigger] in a model digitals shoot, standing straight and square to the camera with arms relaxed at her sides, calm neutral expression and direct gaze. Wearing an ivory open knit crochet long sleeve maxi dress. A mottled slate gray painted backdrop. Waist up shot at eye level, 85mm lens feel. Soft even frontal studio light, ivory and slate palette, clean natural finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S183",
+      "tab": "sfw",
+      "set": "Fashion",
+      "title": "Profile, fingertips at the neck",
+      "text": "[trigger] in a fashion close up, in strict profile looking straight ahead, fingertips resting lightly on the side of her neck below the ear. Wearing an ivory open knit crochet top, a small gold hoop earring and a chunky silver coil ring. A mottled slate gray painted backdrop. Tight profile close up at eye level, 85mm lens feel, shallow depth of field. Soft side studio light, ivory and slate palette, clean natural finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S184",
+      "tab": "sfw",
+      "set": "Fashion",
+      "title": "Hem and heels detail",
+      "text": "[trigger] in a fashion detail shot, standing with feet together, the frame cropped from the knee down to the floor. Wearing an ivory open knit crochet maxi dress and black patent slingback kitten heels. A mottled slate gray painted backdrop and floor. Low crop at shin height, 70mm lens feel. Soft even studio light with a soft floor shadow, ivory and slate palette, clean natural finish.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S185",
+      "tab": "sfw",
+      "set": "Outdoor",
+      "title": "Skirt lifted toward the sun",
+      "text": "[trigger] in a golden hour mountain portrait, standing in tall dry grass gathering a long skirt in one hand so it lifts above one knee, the other hand at her waist, hip pushed out, eyes closed and chin lifted toward the sun. Wearing a black off shoulder long sleeve knit top, a white tiered cotton maxi skirt, white socks and black boots. A golden meadow and hazy hills. Full length shot at eye level, 50mm lens feel, shallow depth of field. Low sun backlight through haze, glowing rim light, gold, black and white palette, warm film grade.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S186",
+      "tab": "sfw",
+      "set": "Outdoor",
+      "title": "Propped on an elbow in the grass",
+      "text": "[trigger] in a golden hour mountain portrait, reclining in long dry grass propped up on one elbow, legs stretched out, looking up past the lens. Wearing a black off shoulder long sleeve knit top and a white tiered cotton maxi skirt. Tall golden grass all around. Medium full shot from a high angle, 35mm lens feel. Soft warm evening light, gold and black palette, warm film grade.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S187",
+      "tab": "sfw",
+      "set": "Outdoor",
+      "title": "Palm open to the sun",
+      "text": "[trigger] in a golden hour mountain photo, seen from behind with one arm raised and palm open toward the setting sun, wind lifting her hair. Wearing a black off shoulder long sleeve knit top. A hazy sky glowing peach above a sea of clouds. Medium shot at eye level, 85mm lens feel, shallow depth of field. Strong low sun backlight, glowing haze, peach and black palette, warm film grade, wide panoramic crop.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S188",
+      "tab": "sfw",
+      "set": "Outdoor",
+      "title": "Over the shoulder in the fog",
+      "text": "[trigger] in a mountain portrait, glancing back over her shoulder into the lens with a calm expression. Wearing a black off shoulder knit top. Pale drifting fog and soft distant peaks behind. Close portrait at eye level, 85mm lens feel, shallow depth of field. Soft diffused light through the fog, pale peach and gray palette, warm film grade, wide panoramic crop.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S189",
+      "tab": "sfw",
+      "set": "Outdoor",
+      "title": "Looking out into the fog",
+      "text": "[trigger] in a mountain photo, standing in a golden meadow seen from behind, looking out into drifting fog, hands relaxed at her sides. Wearing a black off shoulder long sleeve knit top and a white tiered cotton maxi skirt. Golden dry grass sloping away into dense pale fog. Full length shot at eye level, 50mm lens feel. Soft diffused light through the fog, gold and white palette, warm film grade.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S190",
+      "tab": "sfw",
+      "set": "Outdoor",
+      "title": "Lying under the sunset",
+      "text": "[trigger] in a wide mountain photo, lying on her back in dry grass with knees bent and a long white skirt spread around her, a small figure under a huge sunset sky. Wearing a black off shoulder long sleeve knit top and a white tiered cotton maxi skirt. Tall grass in the foreground, a sea of clouds and pink and orange cloud banks above. Wide shot at grass height, 35mm lens feel. Low setting sun, soft glowing haze, peach, gold and slate palette, warm film grade.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S191",
+      "tab": "sfw",
+      "set": "Outdoor",
+      "title": "Overhead in the dry grass",
+      "text": "[trigger] in a mountain portrait, lying on her back in dry grass with arms at her sides, looking straight up into the lens with a calm expression. Wearing a black off shoulder long sleeve knit top, a white tiered cotton maxi skirt and small earrings. Pale golden grass fills the frame. Medium shot from directly above, 35mm lens feel. Soft even evening light, gold, black and white palette, warm film grade.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S192",
+      "tab": "sfw",
+      "set": "Outdoor",
+      "title": "Turned away, looking back",
+      "text": "[trigger] in a mountain portrait, standing three quarters turned away with her hands clasped at her waist, looking back over her shoulder at the lens. Wearing a black off shoulder long sleeve knit top and a white tiered cotton maxi skirt. A golden meadow fading into dense fog. Three quarter length shot at eye level, 50mm lens feel, shallow depth of field. Soft diffused light through the fog, gold and white palette, warm film grade.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S193",
+      "tab": "sfw",
+      "set": "Outdoor",
+      "title": "Tiny on the ridge",
+      "text": "[trigger] in an epic mountain photo, a tiny figure standing on a grassy ridge above a sea of clouds, snow capped peaks in the distance. Wearing a black top and a white maxi skirt. Rolling green and gold slopes, a dramatic cloudy sky. Extreme wide shot at eye level, 35mm lens feel, deep focus. Soft evening light breaking through clouds, slate blue, gold and white palette, warm film grade.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S194",
+      "tab": "sfw",
+      "set": "Outdoor",
+      "title": "Fingertips at the lips",
+      "text": "[trigger] in a mountain portrait, fingertips of one hand resting at her lips, gazing off to the side with a thoughtful expression. Wearing a black long sleeve knit top. Soft blurred mountains, fog and pastel sky behind. Medium close shot at eye level, 85mm lens feel, shallow depth of field. Soft evening light, pastel slate and peach palette, warm film grade, white print border.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S195",
+      "tab": "sfw",
+      "set": "Outdoor",
+      "title": "Sitting in the tall grass",
+      "text": "[trigger] in a golden hour mountain portrait, sitting in tall dry grass with knees up under a draped skirt, one arm wrapped around her knees and the other hand in her hair, direct gaze. Wearing a black off shoulder long sleeve knit top, a white tiered cotton maxi skirt, white socks and white boots. Tall golden grass and a hazy pastel sky. Medium full shot at eye level, 50mm lens feel, shallow depth of field. Soft warm backlight, gold, black and white palette, warm film grade.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "S196",
+      "tab": "sfw",
+      "set": "Outdoor",
+      "title": "Hugging herself on the hillside",
+      "text": "[trigger] in a mountain photo, standing sideways on a grassy hillside with her arms wrapped around herself, looking off into the distance. Wearing a black off shoulder long sleeve knit top and a white tiered cotton maxi skirt. Rolling slopes and a cloudy sky. Medium full shot at eye level, 50mm lens feel, shallow depth of field. Soft overcast evening light, moss and slate palette, warm film grade, wide panoramic crop.",
+      "added": "2026-11-23"
     },
     {
       "id": "R1",
