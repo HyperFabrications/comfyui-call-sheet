@@ -138,7 +138,7 @@ export function openGallery({ data, scenes = null, outfits = null, thumbs = {}, 
         ${data.hasCustom ? `<button type="button" class="kq-ghost" data-x="newprompt"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>New prompt</span></button>` : ""}
         <button type="button" class="kq-ghost" data-x="filters" aria-expanded="false">${ICON.filter}<span>Filter</span></button>
       </div>
-      <input type="file" class="kq-file" accept=".json,application/json" hidden>
+      <input type="file" class="kq-file" accept=".json,.txt,application/json,text/plain" hidden>
       <div class="kq-filters" hidden>
         <select data-f="set" aria-label="Set"></select>
         <select data-f="camera" aria-label="Camera"><option value="">Any camera</option>${TAGS.camera.map(([n]) => `<option>${n}</option>`).join("")}</select>
@@ -223,7 +223,7 @@ export function openGallery({ data, scenes = null, outfits = null, thumbs = {}, 
   function renderFilters() {
     const tabs = [["all", "All"], ...data.tabs.map(t => [t.id, t.name]), ["starred", "Starred"], ["recent", "Recent"]];
     q(".kq-tabs").innerHTML = tabs.map(([id, name]) => `<button type="button" role="tab" data-tab="${id}" aria-selected="${st.tab === id}">${esc(name)}</button>`).join("");
-    q(".kq-tabtools").innerHTML = st.tab === "custom" && data.hasCustom ? `<button type="button" class="kq-ghost" data-x="import" title="Add prompts from an exported file. Nothing you have is replaced.">${ICON.up}<span>Import</span></button><button type="button" class="kq-ghost" data-x="export" title="Save your custom prompts as a file">${ICON.down}<span>Export</span></button>` : "";
+    q(".kq-tabtools").innerHTML = st.tab === "custom" && data.hasCustom ? `<button type="button" class="kq-ghost" data-x="import" title="Add prompts from an exported file or a text list, one per line. Nothing you have is replaced.">${ICON.up}<span>Import</span></button><button type="button" class="kq-ghost" data-x="export" title="Save your custom prompts as a file">${ICON.down}<span>Export</span></button>` : "";
     const tabSets = !data.tabs.some(t => t.id === st.tab) ? data.tabs.flatMap(t => t.sets.map(s => [s, t.name + " · " + data.sets[s]])) : data.tabs.find(t => t.id === st.tab).sets.map(s => [s, data.sets[s]]);
     if (st.set !== "all" && !tabSets.some(([s]) => s === st.set)) st.set = "all";
     q('[data-f="set"]').innerHTML = `<option value="all">All sets</option>` + tabSets.map(([s, n]) => `<option value="${s}"${s === st.set ? " selected" : ""}>${esc(n)}</option>`).join("");
@@ -569,9 +569,9 @@ export function openGallery({ data, scenes = null, outfits = null, thumbs = {}, 
       const file = e.target.files && e.target.files[0]; e.target.value = "";
       const btn = q('[data-x="import"]');
       if (!file) return;
-      importCustom(data, file).then(n => {
+      importCustom(data, file).then(({ added, skipped }) => {
         st.tab = "custom"; renderFilters(); renderGrid(); markSelected();
-        const b = q('[data-x="import"]'); if (b) flash(b, n ? `Added ${n}` : "No prompts found", 2500);
+        const b = q('[data-x="import"]'); if (b) flash(b, added ? `Added ${added}` : skipped ? "Already have these" : "No prompts found", 2500);
       }, err => { if (btn) flash(btn, err.message || "Couldn't import", 3000); });
       return;
     }

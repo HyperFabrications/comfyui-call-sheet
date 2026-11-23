@@ -3,7 +3,7 @@ import { mountSheet } from "./sheet.js";
 import { openGallery, localCtx, thumbHTML, snippet, editPrompt } from "./gallery.js";
 import { openBuilder, shortPerson } from "./builder.js";
 import { avatarSVG } from "./figure.js";
-import { mergeCustom, saveCustom, deleteCustom } from "./custom.js";
+import { mergeCustom, saveCustom, deleteCustom, importList } from "./custom.js";
 import { openSceneBuilder, loadPlaces, savePlace, deletePlace } from "./scene.js";
 import { sceneSVG, kindOf, timeOf } from "./scene_art.js";
 import { places as placeList, parts as sceneParts, locked as sceneLocked } from "./scene_core.js";
@@ -584,6 +584,7 @@ function studioCtx(node) {
     deleteChoice: async id => { await deleteChoice(id); await reloadChoices(); },
     saveCustom: p => saveCustom(data, p),
     deleteCustom: id => deleteCustom(data, id),
+    importCustom: (items, portable) => importList(data, items, portable),
     refresh: () => { dirty(); redrawAll(); app.graph.setDirtyCanvas(true, true); },
   };
 }

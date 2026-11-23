@@ -53,7 +53,8 @@ The Studio is the editor for the **Call Sheet** node. Tabs across the top for **
 
 - **New prompt.** Press **New prompt** in the picker, name it, and write it with `[trigger]` where your trigger or person should go. It lands in the **Custom** tab and works in the node like any other frame.
 - **Duplicate to Custom.** Copy any frame into your Custom tab as a starting point.
-- **Export and import.** In the Custom tab, **Export** saves your prompts as a file and **Import** adds prompts from a file. Importing only ever adds, so delete any duplicates with the **×** on a card.
+- **Import a list.** In the Studio's Custom group, press **Import a list** and paste your prompts, one per line, or choose a .txt file. Each one becomes a custom prompt. A short line right above a prompt becomes its name, otherwise the name comes from the pose. Bullets, numbers and quotes are dropped, and `[trigger]` is added where it's missing. Prompts you already have are skipped.
+- **Export and import.** In the Custom tab, **Export** saves your prompts as a file and **Import** adds prompts from that file or from a .txt list. Importing only ever adds.
 - Custom prompts are saved on your computer in `custom_prompts.json` in the plugin folder. They are never uploaded and are kept when you update.
 
 ## The person

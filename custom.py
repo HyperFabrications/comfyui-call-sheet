@@ -60,10 +60,12 @@ def upsert(fid, title, text, portable=None):
 
 
 def import_many(items):
-    """Add every prompt in items as a new one. Never replaces what you already have. Returns how many were added."""
-    added = 0
+    """Add every prompt in items as a new one. Never replaces what you already have, and skips prompts you already have.
+    Returns (added, skipped)."""
+    added = skipped = 0
     with _lock:
         frames = load_custom()
+        have = {" ".join(f["text"].split()) for f in frames}
         n = max([int(f["id"][1:]) for f in frames] + [0])
         for x in items if isinstance(items, list) else []:
             if not isinstance(x, dict):
@@ -71,12 +73,18 @@ def import_many(items):
             text = str(x.get("text") or "").strip()
             if not text:
                 continue
+            key = " ".join(text.split())
+            if key in have:
+                skipped += 1
+                continue
+            have.add(key)
             n += 1
             frames.append({"id": f"U{n}", "tab": "custom", "set": "custom", "title": (str(x.get("title") or "").strip() or "Untitled")[:80],
                            "text": text, "added": time.strftime("%Y-%m-%d"), "portable": bool(x.get("portable"))})
             added += 1
-        _save(frames)
-    return added
+        if added:
+            _save(frames)
+    return added, skipped
 
 
 def remove(fid):
@@ -110,7 +118,7 @@ if routes is not None:
 
     @routes.post("/krea_pose_sheet/custom/import")
     async def import_custom(request):
-        """Body: an exported file ({frames: [...]}) or a plain list of {title, text}. Always appends."""
+        """Body: an exported file ({frames: [...]}) or a plain list of {title, text, portable?}. Always appends."""
         try:
             body = await request.json()
         except ValueError:
@@ -118,8 +126,8 @@ if routes is not None:
         items = body.get("frames") if isinstance(body, dict) else body
         if not isinstance(items, list):
             return web.json_response({"error": "That file isn't a prompt export."}, status=400)
-        added = import_many(items)
-        return web.json_response({"ok": True, "added": added, "frames": load_custom()})
+        added, skipped = import_many(items)
+        return web.json_response({"ok": True, "added": added, "skipped": skipped, "frames": load_custom()})
 
     @routes.delete("/krea_pose_sheet/custom/{fid}")
     async def delete_custom(request):

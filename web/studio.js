@@ -12,6 +12,7 @@ import { outfitSVG } from "./outfit_art.js";
 import { sceneSVG, kindOf, timeOf } from "./scene_art.js";
 import { cameraIcon } from "./camera.js";
 import { thumbHTML, snippet } from "./gallery.js";
+import { parsePromptList } from "./custom.js";
 
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const cap = s => s ? s[0].toUpperCase() + s.slice(1) : s;
@@ -123,7 +124,7 @@ let current = null;
 
 // ctx: { state(), save(state), frame(), setFrame(f), mode(), setMode(v), trigger(), setTrigger(v), style(), setStyle(v),
 //        wired(), thumbs(), openPicker(), editPrompt(f, done), setPreview(fid), saveItem(p), deleteItem(id), savePlace(p),
-//        deletePlace(id), saveChoice(c), deleteChoice(id), saveCustom(p), deleteCustom(id), refresh() }
+//        deletePlace(id), saveChoice(c), deleteChoice(id), saveCustom(p), deleteCustom(id), importCustom(items, portable), refresh() }
 export function openStudio({ env, ctx, tab = "frame" }) {
   if (current) current.close();
   const st = { layer: LAYERS.some(l => l.key === tab) ? tab : "frame", s: JSON.parse(JSON.stringify(ctx.state() || {})), cur: {}, exp: new Set(), add: null, armed: null, settings: studioSettings(), q: "" };
@@ -330,14 +331,20 @@ export function openStudio({ env, ctx, tab = "frame" }) {
   }
   function addHTML(g) {
     if (!g.add) return "";
-    const open = st.add && st.add.k === g.k;
+    const open = st.add && st.add.k === g.k, kind = open && st.add.kind;
     const label = g.add.kind === "prompt" ? "New prompt" : g.add.kind === "place" ? "New place" : "Add";
     const cls = g.card === "frame" ? "kst-fc kst-addc" : g.card === "look" ? "kst-lk kst-addc" : g.card === "desc" ? "kst-desc kst-addc" : "kst-c kst-add";
-    return `<button type="button" class="${cls}" data-add="${esc(g.k)}" aria-expanded="${!!open}"><span>+ ${label}</span></button>`;
+    const btn = `<button type="button" class="${cls}" data-add="${esc(g.k)}" aria-expanded="${!!open && !kind}"><span>+ ${label}</span></button>`;
+    return g.add.kind !== "prompt" ? btn
+      : `<div class="kst-addpair">${btn}<button type="button" class="${cls}" data-add="${esc(g.k)}" data-addkind="import" aria-expanded="${kind === "import"}"><span>Import a list</span></button></div>`;
   }
   function formHTML(g) {
     if (!st.add || st.add.k !== g.k) return "";
     const a = g.add, err = st.add.err ? `<span class="kst-ferr">${esc(st.add.err)}</span>` : "";
+    if (a.kind === "prompt" && st.add.kind === "import") return `<form class="kst-form kst-form-wide" data-form="${esc(g.k)}" data-import>
+      <textarea name="t" rows="8" placeholder="Paste prompts, one per line" required>${esc(st.add.text || "")}</textarea>
+      <label class="kst-fchk"><input type="checkbox" name="p"> Works with scenes (their settings can be swapped)</label>
+      <div class="kst-fbtn">${err}<button type="button" class="kq-link" data-pickfile>Choose a .txt file</button><input type="file" accept=".txt,text/plain" data-listfile hidden><span class="kq-grow"></span><span class="kq-dim" data-importn></span><button type="button" class="kq-ghost" data-cancel>Cancel</button><button type="submit" class="kq-primary kq-sm" disabled>Add</button></div></form>`;
     if (a.kind === "prompt") return `<form class="kst-form kst-form-wide" data-form="${esc(g.k)}">
       <input name="n" maxlength="80" placeholder="Name it, like Window seat with tea" required>
       <textarea name="t" rows="3" placeholder="[trigger] curled up on a deep window seat, holding a mug with both hands. Wearing an oversized knit sweater. A rainy window behind her. Medium shot at eye level. Soft gray daylight." required></textarea>
@@ -368,7 +375,7 @@ export function openStudio({ env, ctx, tab = "frame" }) {
     const body = g.empty && !g.opts.length ? `<p class="kq-dim kst-empty">${esc(g.empty)}</p>`
       : `<div class="${wrap}" data-wrap="${esc(g.k)}">${anyHTML(g, one)}${vis.map(o => optHTML(g, o, one)).join("")}${more}${addHTML(g)}</div><p class="kq-dim kst-nomatch" data-nomatch="${esc(g.k)}" hidden>No match. Use + ${g.add && g.add.kind === "prompt" ? "New prompt" : "Add"} to make it.</p>`;
     return `<div class="kst-group" data-group="${esc(g.k)}"><div class="kst-gh"><h3${one ? ' class="is-big"' : ""}>${esc(g.label)}</h3>${g.head ? g.head() : ""}</div>
-      ${g.note ? `<p class="kst-note">${esc(g.note)}</p>` : ""}${filter}${body}${formHTML(g)}${g.extra ? g.extra() : ""}</div>`;
+      ${g.note ? `<p class="kst-note">${esc(g.note)}</p>` : ""}${filter}${body}${formHTML(g)}${st.notice && st.notice.k === g.k ? `<p class="kst-note" role="status">${esc(st.notice.text)}</p>` : ""}${g.extra ? g.extra() : ""}</div>`;
   }
   function topHTML() {
     const L = st.layer;
@@ -519,9 +526,30 @@ export function openStudio({ env, ctx, tab = "frame" }) {
   function changed() { save(); renderAll(); }
 
   // ---------- events ----------
+  function countImport(form) {
+    const n = parsePromptList(form.querySelector("textarea").value).length;
+    form.querySelector("[data-importn]").textContent = n ? `${n} ${n === 1 ? "prompt" : "prompts"}` : "";
+    const b = form.querySelector('[type="submit"]'); b.disabled = !n; b.textContent = n ? `Add ${n}` : "Add";
+  }
+  async function submitImport(form, g) {
+    const raw = form.querySelector("textarea").value, items = parsePromptList(raw);
+    if (!items.length) return;
+    form.querySelector('[type="submit"]').disabled = true;
+    try {
+      const { added, skipped } = await ctx.importCustom(items, !!new FormData(form).get("p"));
+      st.add = null;
+      st.notice = { k: g.k, text: added ? `Added ${added} to Custom${skipped ? `. ${skipped} you already had were skipped.` : "."}` : "You already have all of these." };
+      st.exp.add("frame:" + g.k);
+      renderAll();
+    } catch (e) {
+      st.add = { k: g.k, kind: "import", text: raw, err: e.message || "Couldn't import" };
+      renderAll();
+    }
+  }
   async function submitForm(form) {
     const g = groupsFor(st.layer).find(x => x.k === form.dataset.form);
     if (!g) return;
+    if (form.matches("[data-import]")) return submitImport(form, g);
     const fd = new FormData(form), n = String(fd.get("n") || "").trim(), t = String(fd.get("t") || "").trim();
     if (!n || !t) return;
     const a = g.add;
@@ -599,7 +627,7 @@ export function openStudio({ env, ctx, tab = "frame" }) {
     if (x === "picker") { ctx.openPicker(() => renderAll()); return; }
     if (x === "rewording") { st.s.person.text = ""; return changed(); }
     const tab = t.closest("[data-layer]");
-    if (tab) { st.layer = tab.dataset.layer; st.add = null; st.armed = null; st.savedOpen = false; mid.scrollTop = 0; renderAll(); mid.scrollTop = 0; return; }
+    if (tab) { st.layer = tab.dataset.layer; st.add = null; st.notice = null; st.armed = null; st.savedOpen = false; mid.scrollTop = 0; renderAll(); mid.scrollTop = 0; return; }
     const jump = t.closest("[data-jump]");
     if (jump) {
       st.cur[st.layer] = jump.dataset.jump;
@@ -628,13 +656,16 @@ export function openStudio({ env, ctx, tab = "frame" }) {
     if (more) { const id = st.layer + ":" + more.dataset.more; st.exp.has(id) ? st.exp.delete(id) : st.exp.add(id); return renderAll(); }
     const add = t.closest("[data-add]");
     if (add) {
-      st.add = st.add && st.add.k === add.dataset.add ? null : { k: add.dataset.add };
+      const kind = add.dataset.addkind || "";
+      st.notice = null;
+      st.add = st.add && st.add.k === add.dataset.add && (st.add.kind || "") === kind ? null : { k: add.dataset.add, kind };
       renderAll();
       const form = mid.querySelector(`[data-form="${CSS.escape(add.dataset.add)}"]`);
       if (form) { const fr = form.getBoundingClientRect(), mr = mid.getBoundingClientRect(); if (fr.bottom > mr.bottom) mid.scrollTop += fr.bottom - mr.bottom + 16; form.querySelector("input,textarea")?.focus({ preventScroll: true }); }
       return;
     }
     if (t.closest("[data-cancel]")) { st.add = null; return renderAll(); }
+    if (t.closest("[data-pickfile]")) { t.closest("form").querySelector("[data-listfile]").click(); return; }
     const col = t.closest("[data-color]");
     if (col) { const [k, c] = col.dataset.color.split(":"); st.s.outfit[k + "C"] = c; st.s.outfit.on = true; return changed(); }
     const sw = t.closest("[data-swap]");
@@ -666,10 +697,16 @@ export function openStudio({ env, ctx, tab = "frame" }) {
     const t = e.target;
     if (t.name === "kst-layout") { st.settings.layout = t.value; saveSettings(st.settings); renderAll(); mid.scrollTop = 0; return; }
     if (t.matches("[data-mode]")) { ctx.setMode(t.value); return renderAll(); }
+    if (t.matches("[data-listfile]")) {
+      const file = t.files && t.files[0]; t.value = "";
+      if (file) file.text().then(txt => { const ta = t.closest("form").querySelector("textarea"); ta.value = (ta.value.trim() ? ta.value.trimEnd() + "\n" : "") + txt; countImport(t.closest("form")); });
+      return;
+    }
   });
   el.addEventListener("input", e => {
     const t = e.target;
     if (t.matches('input[type="color"]')) { t.dataset.touched = "1"; return; }
+    if (t.matches("[data-import] textarea")) { countImport(t.form); return; }
     if (t.matches("[data-trigger]")) { ctx.setTrigger(t.value); promptHTML(); return; }
     if (t.matches("#kst-wording")) { const P = st.s.person; const built = personText(P.picks); P.text = t.value.trim() === built ? "" : t.value; P.on = true; save(); promptHTML(); tabsHTML(); return; }
     if (t.matches("[data-search]")) {

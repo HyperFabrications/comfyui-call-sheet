@@ -29,3 +29,5 @@ jobs:
         run: node tests/choices_parity.mjs
       - name: The Call Sheet node matches the Studio
         run: node tests/callsheet_parity.mjs
+      - name: Prompt list import
+        run: node tests/custom_import.mjs
