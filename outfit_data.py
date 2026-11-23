@@ -14,7 +14,7 @@ DATA_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "web", "out
 
 WEARING = re.compile(r"^(wearing|she wears|she is wearing)\b", re.I)
 KINDS = [
-    ("shoes", re.compile(r"\b(shoes|boots?|heels|sneakers|trainers|loafers|sandals|mules|pumps|flats|slippers|stilettos|espadrilles|clogs|oxfords|feet|platforms)\b", re.I)),
+    ("shoes", re.compile(r"\b(shoes|boots?|heels|sneakers|trainers|loafers|sandals|mules|pumps|flats|slippers|stilettos|espadrilles|clogs|oxfords|feet|platforms|slides|flip flops|flip-flops|wedges|moccasins|slingbacks)\b", re.I)),
     ("legs", re.compile(r"\b(tights|stockings|socks|leg warmers|thigh highs|garters?|hosiery|fishnets)\b", re.I)),
     ("one", re.compile(r"\b(dress|sundress|gown|jumpsuit|romper|playsuit|bodysuit|swimsuit|bikini|leotard|catsuit|overalls|coveralls|suit|slip|kimono|robe|teddy|babydoll|nightgown|chemise)\b", re.I)),
     ("outer", re.compile(r"\b(coat|peacoat|raincoat|overcoat|jacket|bomber|blazer|cardigan|parka|puffer|trench|shawl|cape|poncho|gilet|shacket|overshirt)\b", re.I)),
@@ -49,9 +49,15 @@ def pieces(line):
     out = []
 
     def push(t):
+        # "white socks with slides" is two pieces, so the shoes can change and the socks stay.
         t = t.strip()
-        if t:
-            out.append({"slot": kind_of(t), "text": t})
+        if not t:
+            return
+        w = re.match(r"^(.+?)\s+with\s+(.+)$", t)
+        if w and kind_of(w.group(1)) == "legs" and kind_of(w.group(2)) == "shoes":
+            out.extend([{"slot": "legs", "text": w.group(1)}, {"slot": "shoes", "text": w.group(2)}])
+            return
+        out.append({"slot": kind_of(t), "text": t})
 
     for chunk in re.split(r",\s*", body):
         c = re.sub(r"^and\s+", "", chunk, count=1)

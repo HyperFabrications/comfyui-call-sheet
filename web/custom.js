@@ -99,10 +99,12 @@ export function parsePromptList(raw) {
   return out.filter(Boolean);
 }
 
-// Make sure the prompt has a [trigger] for your trigger or person. Your own words are all kept: "A young woman sitting…"
-// becomes "[trigger], a young woman sitting…".
+// Make sure the prompt has a [trigger] for your trigger or person. A bare "A woman" becomes [trigger]; anything more
+// is kept: "A young woman sitting…" becomes "[trigger], a young woman sitting…".
+const BARE = /^(?:a|an|the)\s+(?:woman|man|person|girl|guy|lady)\b/i;
 export function withTrigger(t) {
   if (/\[trigger\]/.test(t)) return t;
+  if (BARE.test(t)) return t.replace(BARE, "[trigger]");
   return "[trigger], " + (/^[A-Z](?![A-Z])/.test(t) ? t[0].toLowerCase() + t.slice(1) : t);
 }
 
