@@ -15,14 +15,24 @@ PERSONAL = re.compile(r"\b(her|she|hers|herself|his|him|he|face|skin|body|subjec
 FRAMING = re.compile(r"\b(shot|close[- ]?up|crop|cropped|framing|framed|negative space|full length)\b", re.I)
 PLATE_END = "No people anywhere in the frame."
 
+try:
+    from . import choices as _choices
+except ImportError:  # run as a plain module (tests)
+    try:
+        import choices as _choices
+    except ImportError:
+        _choices = None
+
 _cache = {"mtime": None, "data": None}
 
 
 def load():
-    mtime = os.path.getmtime(DATA_PATH)
+    """The data file, plus your own choices from the Studio (re-read when either file changes)."""
+    mtime = (os.path.getmtime(DATA_PATH), _choices.mtime() if _choices else None)
     if _cache["mtime"] != mtime:
         with open(DATA_PATH, encoding="utf-8") as f:
-            _cache["data"] = json.load(f)
+            data = json.load(f)
+        _cache["data"] = _choices.merge_scenes(data, _choices.load_choices()) if _choices and mtime[1] else data
         _cache["mtime"] = mtime
     return _cache["data"]
 
