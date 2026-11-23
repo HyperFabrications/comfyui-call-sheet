@@ -2,7 +2,7 @@
 // scene_data.py mirrors these functions for the Python nodes; keep the two in step (tests/parity.mjs checks them).
 
 const CAM = /\b(shot|lens|close[- ]?up|top down|eye level|depth of field|full length|low angle|high angle|from above|from below|framing|framed)\b/i;
-const LIGHT = /\b(light|lights|daylight|lit|lighting|flash|glow|glowing|sunlight|sun|shadow|shadows|backlit|backlight|lamp|lamps|neon|candlelight)\b/i;
+const LIGHT = /\b(light|lights|daylight|lit|lighting|flash|glow|glowing|sunlight|sun|shadow|shadows|backlit|backlight|lamp|lamps|neon|candlelight|highlights|fill)\b/i;
 const FINISH = /\b(palette|finish|grain|film|tones|contrast)\b/i;
 const WEARING = /^(wearing|she wears|she is wearing)\b/i;
 const PERSONAL = /\b(her|she|hers|herself|his|him|he|face|skin|body|subject)\b/i;

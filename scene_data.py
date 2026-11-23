@@ -8,7 +8,7 @@ import re
 DATA_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "web", "scenes.json")
 
 CAM = re.compile(r"\b(shot|lens|close[- ]?up|top down|eye level|depth of field|full length|low angle|high angle|from above|from below|framing|framed)\b", re.I)
-LIGHT = re.compile(r"\b(light|lights|daylight|lit|lighting|flash|glow|glowing|sunlight|sun|shadow|shadows|backlit|backlight|lamp|lamps|neon|candlelight)\b", re.I)
+LIGHT = re.compile(r"\b(light|lights|daylight|lit|lighting|flash|glow|glowing|sunlight|sun|shadow|shadows|backlit|backlight|lamp|lamps|neon|candlelight|highlights|fill)\b", re.I)
 FINISH = re.compile(r"\b(palette|finish|grain|film|tones|contrast)\b", re.I)
 WEARING = re.compile(r"^(wearing|she wears|she is wearing)\b", re.I)
 PERSONAL = re.compile(r"\b(her|she|hers|herself|his|him|he|face|skin|body|subject)\b", re.I)

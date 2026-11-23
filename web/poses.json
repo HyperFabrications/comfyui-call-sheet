@@ -4,6 +4,10 @@
   "changelog": [
     {
       "date": "2026-11-23",
+      "text": "8 new Boudoir frames in a new Lace blindfold set: teal lit dark studio poses."
+    },
+    {
+      "date": "2026-11-23",
       "text": "8 new SFW frames in a new Pink rose set: soft studio portraits holding a single pink rose."
     },
     {
@@ -95,7 +99,8 @@
         "DaylightStudio",
         "SheerCurtain",
         "SwivelChair",
-        "ParkingGarage"
+        "ParkingGarage",
+        "LaceBlindfold"
       ]
     },
     {
@@ -181,6 +186,7 @@
     }
   ],
   "sets": {
+    "LaceBlindfold": "Lace blindfold",
     "PinkRose": "Pink rose",
     "SkybridgeStreet": "Skybridge street",
     "Boardwalk": "Boardwalk",
@@ -5092,6 +5098,70 @@
       "set": "PinkRose",
       "title": "Eyes half closed, rose under the chin",
       "text": "[trigger] in a dreamy soft portrait, standing with her head tilted and eyes half closed, a pink rose held just under her chin. Wearing a white ribbed crop top under an open pale pink sheer striped shirt and a long white flowing skirt. A seamless light gray studio backdrop sweeping into the floor, clean and empty. Close up at eye level, 85mm lens feel, very shallow depth of field. Gentle window light from one side, soft and warm. Pastel pink, white and pale gray palette, ethereal romantic editorial finish with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "92",
+      "tab": "boudoir",
+      "set": "LaceBlindfold",
+      "title": "Leaning back on both hands",
+      "text": "[trigger] in a moody fine art studio photo, sitting on the floor and leaning back on both hands, knees bent together, chin lifted, a black lace blindfold over her eyes. Wearing a black long sleeve bodysuit, sheer black polka dot tights and black high heels. A dark seamless studio with a black backdrop and a floor washed in teal green light. Full length shot from the side at floor level, 35mm lens feel. Dramatic side light with a teal rim light and deep shadows. Black, deep teal and warm amber palette, mysterious cinematic fine art finish with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "93",
+      "tab": "boudoir",
+      "set": "LaceBlindfold",
+      "title": "Blindfolded close up, lips parted",
+      "text": "[trigger] in a close up studio portrait, head turned slightly toward the light, lips parted, a black lace blindfold over her eyes. Wearing a black long sleeve bodysuit, sheer black polka dot tights and black high heels. A dark seamless studio with a black backdrop and a floor washed in teal green light. Close up at eye level, 85mm lens feel, very shallow depth of field. Warm key light across the face with teal accents, deep chiaroscuro shadows. Black, deep teal and warm amber palette, mysterious cinematic fine art finish with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "94",
+      "tab": "boudoir",
+      "set": "LaceBlindfold",
+      "title": "One leg extended, low angle",
+      "text": "[trigger] in a dynamic studio editorial, seated on the floor with one leg extended and the other bent, both hands planted behind her taking her weight, a black lace blindfold over her eyes. Wearing a black long sleeve bodysuit, sheer black polka dot tights and black high heels. A dark seamless studio with a black backdrop and a floor washed in teal green light. Full length shot from a low angle, 35mm lens feel. Deep shadows with a teal rim light outlining the figure. Black, deep teal and warm amber palette, mysterious cinematic fine art finish with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "95",
+      "tab": "boudoir",
+      "set": "LaceBlindfold",
+      "title": "Fingertips on the lace",
+      "text": "[trigger] in a tight close up portrait, fingertips lightly touching the edge of black lace blindfold over her eyes, face tipped slightly down. Wearing a black long sleeve bodysuit, sheer black polka dot tights and black high heels. A dark seamless studio with a black backdrop and a floor washed in teal green light. Tight close up at eye level, 100mm lens feel, very shallow depth of field. Soft teal highlights from above with warm fill, a dark void behind. Black, deep teal and warm amber palette, mysterious cinematic fine art finish with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "96",
+      "tab": "boudoir",
+      "set": "LaceBlindfold",
+      "title": "Reclined on the elbows",
+      "text": "[trigger] in a low key studio photo, reclining back on her elbows with knees raised and heels on the floor, head tipped back, a black lace blindfold over her eyes. Wearing a black long sleeve bodysuit, sheer black polka dot tights and black high heels. A dark seamless studio with a black backdrop and a floor washed in teal green light. Full length shot from a low three quarter angle, 35mm lens feel. Moody low key light, the teal floor glow lighting the figure from below. Black, deep teal and warm amber palette, mysterious cinematic fine art finish with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "97",
+      "tab": "boudoir",
+      "set": "LaceBlindfold",
+      "title": "Looking upward, blindfolded",
+      "text": "[trigger] in an elegant studio portrait, chin raised and face turned upward as if looking to the sky, a black lace blindfold over her eyes. Wearing a black long sleeve bodysuit, sheer black polka dot tights and black high heels. A dark seamless studio with a black backdrop and a floor washed in teal green light. Medium close shot at eye level, 85mm lens feel. Dramatic chiaroscuro light from above with teal accents on a black background. Black, deep teal and warm amber palette, mysterious cinematic fine art finish with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "98",
+      "tab": "boudoir",
+      "set": "LaceBlindfold",
+      "title": "Twisting on one arm",
+      "text": "[trigger] in a cinematic studio photo, sitting with legs folded to one side and one arm extended to the floor for support, torso twisting toward the camera, a black lace blindfold over her eyes. Wearing a black long sleeve bodysuit, sheer black polka dot tights and black high heels. A dark seamless studio with a black backdrop and a floor washed in teal green light. Full length shot at eye level, 50mm lens feel. Colored teal floor light with strong side shadows. Black, deep teal and warm amber palette, mysterious cinematic fine art finish with fine grain.",
+      "added": "2026-11-23"
+    },
+    {
+      "id": "99",
+      "tab": "boudoir",
+      "set": "LaceBlindfold",
+      "title": "Head bowed in the rim light",
+      "text": "[trigger] in a fine art studio portrait, head bowed in near profile, a black lace blindfold over her eyes. Wearing a black long sleeve bodysuit, sheer black polka dot tights and black high heels. A dark seamless studio with a black backdrop and a floor washed in teal green light. Close up at eye level, 85mm lens feel, shallow depth of field. A teal rim light tracing the profile against deep shadow. Black, deep teal and warm amber palette, mysterious cinematic fine art finish with fine grain.",
       "added": "2026-11-23"
     },
     {
