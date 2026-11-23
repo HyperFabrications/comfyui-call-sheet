@@ -91,16 +91,19 @@ export function parsePromptList(raw) {
     if (!l) { if (buf) flush(); continue; }
     if (buf && !/[.!?"\u201d]$/.test(buf)) { buf += " " + l; continue; }
     if (buf) flush();
+    // A short line followed by one that starts in lower case is a prompt broken across lines, not a name.
+    if (name && /^[a-z]/.test(l)) { buf = name + " " + l; name = ""; continue; }
     if (isName(l)) name = l; else buf = l;
   }
   if (buf) flush();
   return out.filter(Boolean);
 }
 
-// Make sure the prompt has a [trigger]: "A young woman sitting…" becomes "[trigger] sitting…".
+// Make sure the prompt has a [trigger] for your trigger or person. Your own words are all kept: "A young woman sitting…"
+// becomes "[trigger], a young woman sitting…".
 export function withTrigger(t) {
   if (/\[trigger\]/.test(t)) return t;
-  return SUBJECT.test(t) ? t.replace(SUBJECT, "[trigger]") : "[trigger] " + (/^[A-Z][a-z]/.test(t) ? t[0].toLowerCase() + t.slice(1) : t);
+  return "[trigger], " + (/^[A-Z](?![A-Z])/.test(t) ? t[0].toLowerCase() + t.slice(1) : t);
 }
 
 // A short name from the prompt: the pose after the opening "[trigger] in a … photo," part.
