@@ -24,11 +24,22 @@ In ComfyUI Manager, click **Update** on Call Sheet (or run `git pull` in its fol
 
 | Node | What it does |
 | --- | --- |
+| **Call Sheet** | The whole shot on one node. Its card shows the frame, the prompt and four chips for Person, Outfit, Scene and Camera. Click **Open Studio** or a chip to set everything in one editor. Same outputs and modes as the Shot node. Link a Person, Outfit, Scene or Camera node to any of its inputs and that node takes over that part, so one outfit or scene can feed many shots. |
 | **Call Sheet Shot** | Pick a frame and output its prompt, a starting shot written the way Krea 2 reads it, ready for you to build on. Person, Outfit, Scene and Camera swap in their part of the shot. Choose `single frame`, `whole set` or `whole tab`. Outputs `prompt` (one prompt, or all of them one per line), `prompt_list` (a list, so the graph runs once per prompt) and `count`. |
 | **Call Sheet Person** | Describe who is in the shot. Link it to the Shot node's `person` input. |
 | **Call Sheet Scene** | Build a setting once and use it with any pose. Link it to the Shot node's `scene` input. Its `text` output is the scene on its own. |
 | **Call Sheet Outfit** | Put together an outfit and use it with any pose. Link it to the Shot node's `outfit` input. Its `text` output is the outfit on its own. |
 | **Call Sheet Camera** | Pick what the shot was taken on and how it looks. Cameras: phone snapshot, mirror selfie, direct flash, 90s disposable, film SLR, 2000s digicam, each with its own flaws. Looks: film stocks and grades, black and white, kinds of light (golden hour, neon, Rembrandt and more), genres, and art styles (anime, watercolor, oil, charcoal, comic ink, 3D, pin up) that change the medium. Real skin adds pores and texture. Link it to the Shot node's `camera` input. It works with style off too. |
+
+## The Studio
+
+The Studio is the editor for the **Call Sheet** node. Tabs across the top for **Frame**, **Person**, **Outfit**, **Scene** and **Camera**, the groups down the left with what each is set to, the choices in the middle and a preview on the right. The finished prompt runs along the bottom, and changes apply as you make them.
+
+- **Frame.** Search all frames, or browse Starred, Recent, each tab and Custom. The right side holds the mode, trigger, style switch, **Edit prompt**, **Star**, **Use last render as preview** and the full picker.
+- **Person, Outfit, Scene, Camera.** The same choices as the builders, with color swatches, **Whole outfit** or **Just what I pick**, clean plate, flaws, looks and real skin. A frame that needs its own clothes or location says so, with **Use outfit anyway** or **Use scene anyway**. **Saved** loads and saves people, outfits and scenes (shared with the builders).
+- **+ Add in every group.** Add your own hair color, body type, location, mood, camera, flaw, look and more. Name it and write how it reads in the prompt. Hover your own choice and press **×** twice to delete it. Your choices are saved on your computer in `custom_choices.json`, never uploaded, and every node that reads a person, scene or camera understands them.
+- **Long lists stay short.** A long group shows its first choices and **+N more**. What you picked always stays visible, and an opened group of more than 16 gets a filter box.
+- **⚙ Settings.** **All on one page** (every group in one scroll) or **One at a time** (one group as big cards, step through with ‹ ›), the **Preview** on or off, and **Color the prompt by layer** to underline what each tab wrote.
 
 ## Picking a frame
 
@@ -118,6 +129,8 @@ The same sheet can be published as a web page. In the repo, go to Settings → P
 | `outfit_data.py`, `web/outfit_core.js` | Outfit logic: read and swap the clothing line (`outfit_data.py` mirrors `outfit_core.js`) |
 | `web/outfit.js`, `web/outfit_art.js` | The outfit builder and its figure |
 | `outfit_items.py` | Your own clothing items, saved locally |
+| `nodes.py` `KreaCallSheet`, `web/studio.js` | The Call Sheet node and the Studio |
+| `choices.py`, `web/choices.js` | Your own Studio choices, saved locally in `custom_choices.json` |
 | `web/cameras.json` | The cameras and their flaws, the looks and art styles, and the real skin options |
 | `camera_data.py`, `web/camera_core.js`, `web/camera.js` | Camera logic (`camera_data.py` mirrors `camera_core.js`) and the camera picker |
 | `site/index.html` | The GitHub Pages page |

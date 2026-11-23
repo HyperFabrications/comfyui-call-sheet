@@ -7,6 +7,7 @@ from . import camera_data as C
 from .custom import load_custom
 from .places import load_places
 from .outfit_items import load_items
+from .choices import load_choices
 
 MODES = ["single frame", "whole set", "whole tab"]
 
@@ -87,31 +88,35 @@ class KreaPosePrompt:
         return json.dumps(load_custom(), sort_keys=True, ensure_ascii=False)
 
     def build(self, frame, mode, trigger, style, person=None, edits=None, scene=None, scene_overrides=None, outfit=None, outfit_overrides=None, camera=None):
-        f = _find(frame)
         try:
             edit_map = json.loads(edits) if edits else {}
             if not isinstance(edit_map, dict):
                 edit_map = {}
         except ValueError:
             edit_map = {}
-        if mode == "whole set":
-            picked = [x for x in _frames() if x["set"] == f["set"]]
-        elif mode == "whole tab":
-            picked = [x for x in _frames() if x["tab"] == f["tab"]]
-        else:
-            picked = [f]
-        overrides, wear = _ids(scene_overrides), _ids(outfit_overrides)
-        prompts = []
-        for x in picked:
-            x = P.with_edit(x, edit_map)
-            text, changed = O.with_outfit(x, outfit, wear)
-            if changed:
-                x = {**x, "text": text, "bare": None}
-            text, changed = S.with_scene(x, scene, overrides)
-            if changed:
-                x = {**x, "text": text, "bare": None}
-            prompts.append(P.prompt_for(x, trigger, person or "", style, camera=camera))
-        return ("\n".join(prompts), prompts, len(prompts))
+        return _build(frame, mode, trigger, style, person or "", edit_map, scene, _ids(scene_overrides), outfit, _ids(outfit_overrides), camera)
+
+
+def _build(frame, mode, trigger, style, person, edit_map, scene, overrides, outfit, wear, camera):
+    """The prompts for a frame (or its set or tab), with the outfit, scene, person and camera applied."""
+    f = _find(frame)
+    if mode == "whole set":
+        picked = [x for x in _frames() if x["set"] == f["set"]]
+    elif mode == "whole tab":
+        picked = [x for x in _frames() if x["tab"] == f["tab"]]
+    else:
+        picked = [f]
+    prompts = []
+    for x in picked:
+        x = P.with_edit(x, edit_map)
+        text, changed = O.with_outfit(x, outfit, wear)
+        if changed:
+            x = {**x, "text": text, "bare": None}
+        text, changed = S.with_scene(x, scene, overrides)
+        if changed:
+            x = {**x, "text": text, "bare": None}
+        prompts.append(P.prompt_for(x, trigger, person or "", style, camera=camera))
+    return ("\n".join(prompts), prompts, len(prompts))
 
 
 class KreaPosePerson:
@@ -215,7 +220,64 @@ class KreaPoseCamera:
         return (p, C.camera_text(p))
 
 
+class KreaCallSheet:
+    """The whole shot on one node: a frame plus the person, outfit, scene and camera, all set in the Studio.
+    Link a Person, Outfit, Scene or Camera node to take over that part."""
+
+    CATEGORY = "Call Sheet"
+    FUNCTION = "build"
+    RETURN_TYPES = ("STRING", "STRING", "INT")
+    RETURN_NAMES = ("prompt", "prompt_list", "count")
+    OUTPUT_IS_LIST = (False, True, False)
+    OUTPUT_TOOLTIPS = KreaPosePrompt.OUTPUT_TOOLTIPS
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "frame": (_frame_options(), {"tooltip": "The frame to use. In set or tab mode, this frame picks the set or tab."}),
+                "mode": (MODES, {"default": "single frame"}),
+                "trigger": ("STRING", {"default": "", "placeholder": "LoRA trigger (leave empty for none)", "tooltip": "Replaces [trigger] in every prompt."}),
+                "style": ("BOOLEAN", {"default": True, "label_on": "style on", "label_off": "style off",
+                                      "tooltip": "Off strips medium, film, grain and palette words so a LoRA supplies the look."}),
+            },
+            "optional": {
+                "studio": ("STRING", {"default": "{}", "tooltip": "Everything set in the Studio: person, outfit, scene, camera and your prompt edits."}),
+                "person": ("STRING", {"forceInput": True, "tooltip": "Link a Call Sheet Person node to describe who is in the shot instead of the Person tab."}),
+                "outfit": ("KREA_OUTFIT", {"tooltip": "Link a Call Sheet Outfit node to use it instead of the Outfit tab."}),
+                "scene": ("KREA_SCENE", {"tooltip": "Link a Call Sheet Scene node to use it instead of the Scene tab."}),
+                "camera": ("KREA_CAMERA", {"tooltip": "Link a Call Sheet Camera node to use it instead of the Camera tab."}),
+            },
+        }
+
+    @classmethod
+    def IS_CHANGED(cls, **kw):
+        # Your prompts, items, places and choices live in files, so an edit to one doesn't change the node's inputs.
+        return json.dumps([load_custom(), load_items(), load_places(), load_choices()], sort_keys=True, ensure_ascii=False)
+
+    def build(self, frame, mode, trigger, style, studio="{}", person=None, outfit=None, scene=None, camera=None):
+        st = _state(studio)
+        if person is None:
+            ps = st.get("person") if isinstance(st.get("person"), dict) else {}
+            person = ""
+            if ps.get("on") is not False:
+                picks = ps.get("picks") if isinstance(ps.get("picks"), dict) else {}
+                picks = {k: str(v) for k, v in picks.items() if isinstance(v, str) and v}
+                person = str(ps.get("text") or "").strip() or P.person_text(picks)
+        if outfit is None and isinstance(st.get("outfit"), dict):
+            outfit = O.parts(st["outfit"], load_items())
+        if scene is None and isinstance(st.get("scene"), dict):
+            p = S.parts(st["scene"], S.places(P.load()["frames"], load_places()))
+            scene = p if (p["bg"] or p["extra"] or p["light"] or p["plate"]) else None
+        if camera is None and isinstance(st.get("camera"), dict):
+            camera = C.parts(st["camera"])
+        edits = st.get("edits") if isinstance(st.get("edits"), dict) else {}
+        return _build(frame, mode, trigger, style, person, edits, scene, _ids(json.dumps(st.get("sceneOverrides") or [])),
+                      outfit, _ids(json.dumps(st.get("outfitOverrides") or [])), camera)
+
+
 NODE_CLASS_MAPPINGS = {
+    "KreaCallSheet": KreaCallSheet,
     "KreaPosePrompt": KreaPosePrompt,
     "KreaPosePerson": KreaPosePerson,
     "KreaPoseScene": KreaPoseScene,
@@ -223,6 +285,7 @@ NODE_CLASS_MAPPINGS = {
     "KreaPoseCamera": KreaPoseCamera,
 }
 NODE_DISPLAY_NAME_MAPPINGS = {
+    "KreaCallSheet": "Call Sheet",
     "KreaPosePrompt": "Call Sheet Shot",
     "KreaPosePerson": "Call Sheet Person",
     "KreaPoseScene": "Call Sheet Scene",

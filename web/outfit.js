@@ -19,13 +19,13 @@ const API = "/krea_pose_sheet/outfit_items";
 export async function loadItems() {
   try { const r = await fetch(API, { cache: "no-store" }); if (!r.ok) return null; return (await r.json()).items || []; } catch (e) { return null; }
 }
-async function saveItem(p) {
+export async function saveItem(p) {
   const r = await fetch(API, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(p) });
   const j = await r.json().catch(() => ({}));
   if (!r.ok) throw new Error(j.error || "Couldn't save the item");
   return j.item;
 }
-async function deleteItem(id) {
+export async function deleteItem(id) {
   const r = await fetch(`${API}/${encodeURIComponent(id)}`, { method: "DELETE" });
   if (!r.ok) throw new Error("Couldn't delete the item");
 }

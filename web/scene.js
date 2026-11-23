@@ -17,13 +17,13 @@ const API = "/krea_pose_sheet/places";
 export async function loadPlaces() {
   try { const r = await fetch(API, { cache: "no-store" }); if (!r.ok) return null; return (await r.json()).places || []; } catch (e) { return null; }
 }
-async function savePlace(p) {
+export async function savePlace(p) {
   const r = await fetch(API, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(p) });
   const j = await r.json().catch(() => ({}));
   if (!r.ok) throw new Error(j.error || "Couldn't save the place");
   return j.place;
 }
-async function deletePlace(id) {
+export async function deletePlace(id) {
   const r = await fetch(`${API}/${encodeURIComponent(id)}`, { method: "DELETE" });
   if (!r.ok) throw new Error("Couldn't delete the place");
 }

@@ -25,3 +25,7 @@ jobs:
         run: node tests/outfit_parity.mjs
       - name: Camera prompts match between Python and JS
         run: node tests/camera_parity.mjs
+      - name: Your own choices merge the same in Python and JS
+        run: node tests/choices_parity.mjs
+      - name: The Call Sheet node matches the Studio
+        run: node tests/callsheet_parity.mjs

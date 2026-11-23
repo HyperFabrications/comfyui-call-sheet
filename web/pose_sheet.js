@@ -3,20 +3,23 @@ import { mountSheet } from "./sheet.js";
 import { openGallery, localCtx, thumbHTML, snippet, editPrompt } from "./gallery.js";
 import { openBuilder, shortPerson } from "./builder.js";
 import { avatarSVG } from "./figure.js";
-import { mergeCustom } from "./custom.js";
-import { openSceneBuilder, loadPlaces } from "./scene.js";
+import { mergeCustom, saveCustom, deleteCustom } from "./custom.js";
+import { openSceneBuilder, loadPlaces, savePlace, deletePlace } from "./scene.js";
 import { sceneSVG, kindOf, timeOf } from "./scene_art.js";
 import { places as placeList, parts as sceneParts, locked as sceneLocked } from "./scene_core.js";
-import { openOutfitBuilder, loadItems } from "./outfit.js";
+import { openOutfitBuilder, loadItems, saveItem, deleteItem } from "./outfit.js";
 import { outfitSVG } from "./outfit_art.js";
 import { parts as outfitParts, locked as outfitLocked, outfitText, withOutfit } from "./outfit_core.js";
 import { withScene } from "./scene_core.js";
 import { openCameraPicker, cameraIcon } from "./camera.js";
 import { parts as cameraParts, cameraText, labelOf as cameraLabel } from "./camera_core.js";
 import { loadData, frameKey, frameNo, loadEdits, saveEdit, personText } from "./core.js";
+import { openStudio, summaries, shotOf, LAYERS } from "./studio.js";
+import { loadChoices, saveChoice, deleteChoice, mergeScenes, mergeCameras } from "./choices.js";
 
 const HERE = new URL(".", import.meta.url);
 const NODE_TYPE = "KreaPosePrompt";
+const CALL_TYPE = "KreaCallSheet";
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
 async function getApp() {
@@ -69,10 +72,10 @@ const selectedNodes = app => Object.values(app.canvas?.selected_nodes || {});
 // Put a Krea Pose Prompt node on the canvas (or reuse the selected one) set to this frame.
 function sendToPoseNode(app, frame, mode, state, btn) {
   const LG = window.LiteGraph;
-  let node = selectedNodes(app).find(n => n.type === NODE_TYPE);
+  let node = selectedNodes(app).find(n => n.type === CALL_TYPE || n.type === NODE_TYPE);
   const isNew = !node;
   if (!node) {
-    node = LG.createNode(NODE_TYPE);
+    node = LG.createNode(CALL_TYPE) || LG.createNode(NODE_TYPE);
     if (!node) { flash(btn, "Restart ComfyUI"); return; }
     const c = app.canvas, ds = c.ds;
     node.pos = [(-ds.offset[0]) + (c.canvas.width / ds.scale) / 2 - 160, (-ds.offset[1]) + (c.canvas.height / ds.scale) / 2 - 120];
@@ -83,10 +86,20 @@ function sendToPoseNode(app, frame, mode, state, btn) {
   setWidget(node, "mode", mode);
   setWidget(node, "trigger", state.trigger);
   setWidget(node, "style", state.style);
-  setWidget(node, "person", state.person);
   const mine = loadEdits();
   const ids = mode === "whole set" ? data.frames.filter(f => f.set === frame.set).map(f => f.id) : [frame.id];
-  for (const id of ids) if (mine[id]) setNodeEdit(node, id, mine[id]);
+  if (node.type === CALL_TYPE) {
+    // The Call Sheet node keeps the person and your wording in its Studio state.
+    const st = studioOf(node);
+    if (state.person) st.person = { ...(st.person || {}), picks: st.person?.picks || {}, text: state.person, on: true };
+    const ed = { ...(st.edits || {}) };
+    for (const id of ids) if (mine[id]) ed[id] = mine[id];
+    st.edits = ed;
+    setWidget(node, "studio", JSON.stringify(st));
+  } else {
+    setWidget(node, "person", state.person);
+    for (const id of ids) if (mine[id]) setNodeEdit(node, id, mine[id]);
+  }
   node._kpsDraw?.();
   app.graph.setDirtyCanvas(true, true);
   flash(btn, isNew ? "Node added" : "Node updated");
@@ -192,6 +205,15 @@ function outfitOverrides(node) {
 // The camera, from a linked Call Sheet Camera node.
 const cams = await loadData(new URL("cameras.json", HERE).href).catch(() => null);
 const CAMERA_TYPE = "KreaPoseCamera";
+// Your own choices from the Studio (extra traits, scene settings, cameras, flaws, skin details and looks).
+let myChoices = (await loadChoices()) || [];
+mergeScenes(scenes, myChoices); mergeCameras(cams, myChoices);
+async function reloadChoices() {
+  const c = await loadChoices();
+  if (c) { myChoices = c; mergeScenes(scenes, myChoices); mergeCameras(cams, myChoices); }
+  return myChoices;
+}
+const redrawAll = () => { for (const n of app.graph?._nodes || app.graph?.nodes || []) n._kpsDraw?.(); };
 const cameraState = node => { try { const v = JSON.parse(node.widgets?.find(w => w.name === "camera")?.value || "{}"); return v && typeof v === "object" ? v : {}; } catch (e) { return {}; } };
 function linkedCamera(node) {
   const inp = node.inputs?.find(i => i.name === "camera");
@@ -329,7 +351,7 @@ function addPersonCard(nodeType) {
       onChange: ({ picks: p, text }) => {
         if (ww) { ww.value = text || ""; ww.callback?.(ww.value); }
         for (const [t, w] of traitWs) { const o = t.options.find(x => x.value === p[t.key]); w.value = o ? o.name : "Any"; w.callback?.(w.value); }
-        draw(); node.setDirtyCanvas?.(true, true);
+        draw(); node.setDirtyCanvas?.(true, true); redrawAll();
       },
     });
     wrap.addEventListener("click", e => { if (e.target.closest(".kpp-face, .kpn-browse")) open(); });
@@ -377,7 +399,7 @@ function addSceneCard(nodeType) {
           sw.value = JSON.stringify(st); sw.callback?.(sw.value);
           loadPlaces().then(l => { if (l) myPlaces = l; draw(); });
           draw(); node.setDirtyCanvas?.(true, true);
-          for (const n of app.graph._nodes || []) if (n.type === NODE_TYPE) n._kpsDraw?.();
+          for (const n of app.graph._nodes || []) if (n.type === NODE_TYPE || n.type === CALL_TYPE) n._kpsDraw?.();
         },
       });
     };
@@ -426,7 +448,7 @@ function addCameraCard(nodeType) {
         onChange: st => {
           cw.value = JSON.stringify(st); cw.callback?.(cw.value);
           draw(); node.setDirtyCanvas?.(true, true);
-          for (const n of app.graph._nodes || []) if (n.type === NODE_TYPE) n._kpsDraw?.();
+          for (const n of app.graph._nodes || []) if (n.type === NODE_TYPE || n.type === CALL_TYPE) n._kpsDraw?.();
         },
       });
     };
@@ -471,9 +493,9 @@ function addOutfitCard(nodeType) {
         data, outfits, state: outfitState(node), sample: fw ? frameOf(fw.value) : null,
         onChange: st => {
           ow.value = JSON.stringify(st); ow.callback?.(ow.value);
-          loadItems().then(l => { if (l) myItems = l; draw(); for (const n of app.graph._nodes || []) if (n.type === NODE_TYPE) n._kpsDraw?.(); });
+          loadItems().then(l => { if (l) myItems = l; draw(); for (const n of app.graph._nodes || []) if (n.type === NODE_TYPE || n.type === CALL_TYPE) n._kpsDraw?.(); });
           draw(); node.setDirtyCanvas?.(true, true);
-          for (const n of app.graph._nodes || []) if (n.type === NODE_TYPE) n._kpsDraw?.();
+          for (const n of app.graph._nodes || []) if (n.type === NODE_TYPE || n.type === CALL_TYPE) n._kpsDraw?.();
         },
       });
     };
@@ -491,6 +513,149 @@ function addOutfitCard(nodeType) {
   nodeType.prototype.onConfigure = function () { const r = onConfigure?.apply(this, arguments); this._kpsDraw?.(); return r; };
 }
 
+// ---- The Call Sheet node: the whole shot on one node, set in the Studio ----
+function studioOf(node) {
+  try { const v = JSON.parse(node.widgets?.find(w => w.name === "studio")?.value || "{}"); return v && typeof v === "object" && !Array.isArray(v) ? v : {}; } catch (e) { return {}; }
+}
+// The node linked to one of this node's inputs (a bypassed node counts as not linked).
+function linkedFrom(node, name) {
+  const inp = node.inputs?.find(i => i.name === name);
+  const link = inp && inp.link != null ? app.graph.links?.[inp.link] || app.graph.links?.get?.(inp.link) : null;
+  const src = link ? app.graph.getNodeById(link.origin_id) : null;
+  return src && src.mode !== 4 ? src : null;
+}
+// The wording a Call Sheet Person node sends: its own words, or the words built from its traits.
+function personOfNode(src) {
+  if (src.type !== "KreaPosePerson") return "";
+  const own = String(src.widgets?.find(w => w.name === "wording")?.value || "").trim();
+  if (own) return own;
+  const picks = {};
+  for (const t of data.traits) { const w = src.widgets?.find(x => x.name === t.key); const o = w && t.options.find(x => x.name === w.value); if (o && o.value) picks[t.key] = o.value; }
+  return personText(picks);
+}
+// What the linked nodes give, keyed by layer. A layer is only here when its input is linked.
+function wiredOf(node) {
+  const w = {};
+  const p = linkedFrom(node, "person");
+  if (p) w.person = personOfNode(p);
+  const o = linkedFrom(node, "outfit");
+  if (o) { const x = o.type === OUTFIT_TYPE && outfits ? outfitParts(outfits, outfitState(o), myItems) : null; w.outfit = x && x.on && x.pieces.length ? x : null; }
+  const s = linkedFrom(node, "scene");
+  if (s) { const x = s.type === SCENE_TYPE && scenes ? sceneParts(scenes, sceneState(s), allPlaces()) : null; w.scene = x && x.on && (x.bg || x.extra || x.light || x.plate) ? x : null; }
+  const c = linkedFrom(node, "camera");
+  if (c) { const x = c.type === CAMERA_TYPE && cams ? cameraParts(cams, cameraState(c)) : null; w.camera = x && x.on && (x.cam || x.look || x.skin) ? x : null; }
+  return w;
+}
+const studioEnv = { data, scenes, outfits, cams, places: allPlaces, items: () => myItems, choices: () => myChoices };
+
+function studioCtx(node) {
+  const w = n => node.widgets?.find(x => x.name === n);
+  const dirty = () => { node._kpsDraw?.(); node.setDirtyCanvas?.(true, true); };
+  const set = (n, v) => { setWidget(node, n, v); dirty(); };
+  return {
+    state: () => studioOf(node),
+    save: st => set("studio", JSON.stringify(st)),
+    frame: () => frameOf(w("frame")?.value),
+    setFrame: f => set("frame", frameKey(f)),
+    mode: () => String(w("mode")?.value || "single frame"),
+    setMode: v => set("mode", v),
+    trigger: () => String(w("trigger")?.value ?? ""),
+    setTrigger: v => set("trigger", v),
+    style: () => w("style")?.value !== false,
+    setStyle: v => set("style", !!v),
+    wired: () => wiredOf(node),
+    thumbs: () => thumbs,
+    setPreview: fid => setPreviewFromLastRender(fid),
+    openPicker: done => {
+      const cur = frameOf(w("frame")?.value);
+      openGallery({
+        data, scenes, outfits, thumbs, current: cur ? cur.id : null, ctx: localCtx(), setPreview: setPreviewFromLastRender,
+        primary: { label: "Use this frame", run: f => { set("frame", frameKey(f)); done?.(); return true; } },
+        onClose: () => done?.(),
+      });
+    },
+    // Your wording for a frame is saved on the node, and for this browser so other nodes and the sheet offer it too.
+    editPrompt: (f, initial, onSave) => editPrompt({ frame: f, initial: initial || loadEdits()[f.id], onSave: txt => { saveEdit(f.id, txt); onSave(txt); } }),
+    saveItem: async p => { const it = await saveItem(p); myItems = (await loadItems()) || myItems; return it; },
+    deleteItem: async id => { await deleteItem(id); myItems = (await loadItems()) || myItems.filter(i => i.id !== id); },
+    savePlace: async p => { const pl = await savePlace(p); myPlaces = (await loadPlaces()) || myPlaces; return pl; },
+    deletePlace: async id => { await deletePlace(id); myPlaces = (await loadPlaces()) || myPlaces.filter(p => p.id !== id); },
+    saveChoice: async c => { const x = await saveChoice(c); await reloadChoices(); return x; },
+    deleteChoice: async id => { await deleteChoice(id); await reloadChoices(); },
+    saveCustom: p => saveCustom(data, p),
+    deleteCustom: id => deleteCustom(data, id),
+    refresh: () => { dirty(); redrawAll(); app.graph.setDirtyCanvas(true, true); },
+  };
+}
+
+function addCallSheetCard(nodeType) {
+  const onNodeCreated = nodeType.prototype.onNodeCreated;
+  nodeType.prototype.onNodeCreated = function () {
+    const r = onNodeCreated?.apply(this, arguments);
+    const node = this;
+    const fw = node.widgets?.find(w => w.name === "frame");
+    if (!fw || !node.addDOMWidget) return r;
+    const wrap = document.createElement("div");
+    wrap.className = "kps kpn kpcs";
+    wrap.innerHTML = `<button type="button" class="kpn-face" title="Open the Studio"></button>
+      <div class="kpn-bar"><button type="button" class="kps-btn" data-step="-1" title="Previous frame" aria-label="Previous frame">‹</button>
+      <button type="button" class="kps-btn kps-accent kpn-browse">Open Studio</button>
+      <button type="button" class="kps-btn" data-step="1" title="Next frame" aria-label="Next frame">›</button></div>
+      <div class="kpcs-chips"></div>`;
+    const face = wrap.querySelector(".kpn-face"), chips = wrap.querySelector(".kpcs-chips");
+    const open = tab => openStudio({ env: studioEnv, ctx: studioCtx(node), tab });
+    const draw = () => {
+      const f = frameOf(fw.value), st = studioOf(node), wired = wiredOf(node);
+      const ctx = studioCtx(node);
+      if (f) {
+        const shot = shotOf(studioEnv, f, st, { trigger: ctx.trigger(), style: ctx.style(), wired });
+        const ed = st.edits && st.edits[f.id];
+        face.innerHTML = `${thumbHTML(f, thumbs)}<span class="kpn-text"><span class="kpn-title"><span class="kps-no">${frameNo(f.id)}</span> ${esc(f.title)}${ed ? ' <span class="kps-badge kps-upd">Edited</span>' : ""}</span>
+          <span class="kpg-set">${esc(data.tabs.find(t => t.id === f.tab)?.name || "")} · ${esc(data.sets[f.set] || "")}${ctx.mode() !== "single frame" ? " · " + esc(ctx.mode()) : ""}</span><span class="kpn-snip">${esc(shot.text)}</span></span>`;
+      } else face.innerHTML = `<span class="kpn-text"><span class="kpn-title">Pick a frame</span></span>`;
+      const sum = summaries(studioEnv, st, wired);
+      chips.innerHTML = LAYERS.filter(l => l.key !== "frame").map(l => {
+        const s = sum[l.key] || {};
+        const cls = s.off ? "is-off" : !s.wired && /^(Frame's own|Anyone)$/.test(s.text || "") ? "is-empty" : "";
+        return `<button type="button" class="kpcs-chip kst-l-${l.key} ${cls}" data-open="${l.key}" title="${esc(s.text || "")}"><i>${esc(l.label)}</i><small>${esc(s.text || "")}</small></button>`;
+      }).join("");
+    };
+    wrap.addEventListener("click", e => {
+      const step = e.target.closest("[data-step]");
+      if (step) {
+        const f = frameOf(fw.value), i = f ? data.frames.indexOf(f) : -1;
+        const next = data.frames[(i + +step.dataset.step + data.frames.length) % data.frames.length];
+        setWidget(node, "frame", frameKey(next)); draw(); node.setDirtyCanvas?.(true, true);
+        return;
+      }
+      const chip = e.target.closest("[data-open]");
+      if (chip) return open(chip.dataset.open);
+      if (e.target.closest(".kpn-face, .kpn-browse")) open("frame");
+    });
+    wrap.addEventListener("pointerdown", e => e.stopPropagation());
+    const dom = node.addDOMWidget("call_card", "kps_call_card", wrap, { serialize: false, hideOnZoom: false });
+    dom.computeSize = () => [0, 252];
+    // Everything is set in the Studio. The widgets stay (hidden) so saved workflows and the API keep working.
+    for (const name of ["frame", "mode", "trigger", "style", "studio"]) {
+      const hw = node.widgets.find(w => w.name === name);
+      if (hw) { hw.hidden = true; hw.computeSize = () => [0, -4]; const cb = hw.callback; hw.callback = function () { const o = cb?.apply(this, arguments); draw(); return o; }; }
+    }
+    const iw = node.widgets.indexOf(dom);
+    if (iw > 0) { node.widgets.splice(iw, 1); node.widgets.unshift(dom); }
+    const occ = node.onConnectionsChange;
+    node.onConnectionsChange = function () { const o = occ?.apply(this, arguments); setTimeout(draw, 0); return o; };
+    node._kpsDraw = draw;
+    thumbListeners.add(draw);
+    const onRemoved = node.onRemoved;
+    node.onRemoved = function () { thumbListeners.delete(draw); return onRemoved?.apply(this, arguments); };
+    draw();
+    node.setSize([Math.max(node.size[0], 340), node.computeSize()[1]]);
+    return r;
+  };
+  const onConfigure = nodeType.prototype.onConfigure;
+  nodeType.prototype.onConfigure = function () { const r = onConfigure?.apply(this, arguments); this._kpsDraw?.(); return r; };
+}
+
 app.registerExtension({
   name: "krea.PoseSheet",
 
@@ -499,6 +664,7 @@ app.registerExtension({
     if (nodeData.name === SCENE_TYPE) { addSceneCard(nodeType); return; }
     if (nodeData.name === OUTFIT_TYPE) { addOutfitCard(nodeType); return; }
     if (nodeData.name === CAMERA_TYPE) { addCameraCard(nodeType); return; }
+    if (nodeData.name === CALL_TYPE) { addCallSheetCard(nodeType); return; }
     if (nodeData.name !== NODE_TYPE) return;
     const onNodeCreated = nodeType.prototype.onNodeCreated;
     nodeType.prototype.onNodeCreated = function () {
@@ -623,11 +789,11 @@ app.registerExtension({
         compact: true,
         onGallery: sideGallery,
         actions: [
-          { label: "To node", title: "Add a Call Sheet Shot node set to this frame, or update the selected one", run: (f, _p, btn) => sendToPoseNode(app, f, "single frame", sheet.state(), btn) },
+          { label: "To node", title: "Add a Call Sheet node set to this frame, or update the selected one", run: (f, _p, btn) => sendToPoseNode(app, f, "single frame", sheet.state(), btn) },
           { label: "To text box", title: "Put this prompt in the selected CLIP Text Encode (or any node with a text box)", run: (_f, p, btn) => sendToText(app, p, btn) },
         ],
         setActions: [
-          { label: "Set to node", title: "Add a Call Sheet Shot node that outputs this whole set as a list", run: (_s, frames, _p, btn) => frames.length && sendToPoseNode(app, frames[0], "whole set", sheet.state(), btn) },
+          { label: "Set to node", title: "Add a Call Sheet node that outputs this whole set as a list", run: (_s, frames, _p, btn) => frames.length && sendToPoseNode(app, frames[0], "whole set", sheet.state(), btn) },
         ],
       });
     };

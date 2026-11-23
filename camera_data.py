@@ -22,14 +22,24 @@ PAL = re.compile(r"\b(palette|tones|colou?rs?|monochrome|black and white|sepia)\
 REAL = re.compile(r"\b(photo|photograph|photographic|photorealistic|realistic|real|skin texture)\b", re.I)
 PHOTO_NOUN = re.compile(r"\b(photos?|photographs?|portraits?|shoot|snapshots?|selfies?|self|camera|pictures?|image|still|shot|mirror|phone)\b", re.I)
 
+try:
+    from . import choices as _choices
+except ImportError:  # run as a plain module (tests)
+    try:
+        import choices as _choices
+    except ImportError:
+        _choices = None
+
 _cache = {"mtime": None, "data": None}
 
 
 def load():
-    mtime = os.path.getmtime(DATA_PATH)
+    """The data file, plus your own choices from the Studio (re-read when either file changes)."""
+    mtime = (os.path.getmtime(DATA_PATH), _choices.mtime() if _choices else None)
     if _cache["mtime"] != mtime:
         with open(DATA_PATH, encoding="utf-8") as f:
-            _cache["data"] = json.load(f)
+            data = json.load(f)
+        _cache["data"] = _choices.merge_cameras(data, _choices.load_choices()) if _choices and mtime[1] else data
         _cache["mtime"] = mtime
     return _cache["data"]
 
