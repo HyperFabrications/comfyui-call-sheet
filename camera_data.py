@@ -18,6 +18,7 @@ LENS = re.compile(r"\b(\d+\s?mm|lens|phone camera look|deep focus|depth of field
 FIN = re.compile(r"\b(grain|grainy|film|finish|grade|grading|matte|print border)\b", re.I)
 FLASH = re.compile(r"\bflash\b", re.I)
 LIGHTW = re.compile(r"\b(light|lights|daylight|lit|lighting|flash|glow|glowing|sunlight|sun|shadow|shadows|backlit|backlight|lamp|lamps|neon|candlelight|highlights|overcast|sky|rim)\b", re.I)
+COLOR = re.compile(r"\b(red|brick|camel|amber|charcoal|evergreen|ivory|cream|rust|navy|sage|stone|olive|honey|gold|golden|blush|peach|burgundy|emerald|slate|oatmeal|mint|copper|tawny|white|black|gray|grey|brown|pink|blue|green|teal|beige|tan|sand|ochre|mustard|coral|lilac|lavender|plum|wine|umber|brass|bronze|silver|yellow|orange|purple|violet|magenta|cyan|crimson|scarlet|maroon|khaki|taupe|mauve|rose|denim|chocolate|caramel|terracotta|turquoise|indigo|lemon|lime|ink)s?$", re.I)
 PAL = re.compile(r"\b(palette|tones|colou?rs?|monochrome|black and white|sepia)\b", re.I)
 REAL = re.compile(r"\b(photo|photograph|photographic|photorealistic|realistic|real|skin texture)\b", re.I)
 PHOTO_NOUN = re.compile(r"\b(photos?|photographs?|portraits?|shoot|snapshots?|selfies?|self|camera|pictures?|image|still|shot|mirror|phone)\b", re.I)
@@ -132,20 +133,25 @@ def _bits(s):
     return [b for b in re.split(r",\s*", re.sub(r"\.+$", "", s)) if b]
 
 
-def _swap(s, c, prot, test, add):
-    """Drop the bits that pass test from sentences after c (never the protected ones), and put add where the first one was."""
+def _swap(s, c, prot, test, add, lst=False):
+    """Drop the bits that pass test from sentences after c (never the protected ones), and put add where the first one was.
+    With lst on, the short color words that lead into a hit go too ("Camel, brass and stone palette")."""
     done = not add
     i = c + 1
     while i < len(s):
         bits = _bits(s[i])
-        hit = lambda b: b not in prot and test(b)
-        at = next((j for j, b in enumerate(bits) if hit(b)), -1)
+        hits = [b not in prot and bool(test(b)) for b in bits]
+        if lst:
+            for j in range(len(bits) - 2, -1, -1):
+                if hits[j + 1] and not hits[j] and bits[j] not in prot and len(bits[j].split()) <= 3 and COLOR.search(bits[j]) and not LIGHTW.search(bits[j]):
+                    hits[j] = True
+        at = hits.index(True) if True in hits else -1
         if at < 0:
             i += 1
             continue
-        kept = [b for b in bits if not hit(b)]
+        kept = [b for j, b in enumerate(bits) if not hits[j]]
         if not done:
-            kept.insert(len([b for b in bits[:at] if not hit(b)]), add)
+            kept.insert(len([h for h in hits[:at] if not h]), add)
             done = True
         if kept:
             s[i] = _cap(", ".join(kept)) + "."
@@ -178,7 +184,7 @@ def apply(text, p):
                 frm -= 1
         else:
             frm = 0
-        if not _swap(s, frm, prot, lambda b: PAL.search(b) or FIN.search(b) or REAL.search(b), p["grade"]):
+        if not _swap(s, frm, prot, lambda b: PAL.search(b) or FIN.search(b) or REAL.search(b), p["grade"], True):
             s.append(_cap(p["grade"]) + ".")
         return " ".join(s)
     if p["cam"] or p["look"]:
@@ -214,7 +220,7 @@ def apply(text, p):
             s.insert(at, p["lookLight"])
             guard(p["lookLight"])
         if p["grade"]:
-            if not _swap(s, c, prot, lambda b: PAL.search(b) or (not p["cam"] and FIN.search(b)), p["grade"]):
+            if not _swap(s, c, prot, lambda b: PAL.search(b) or (not p["cam"] and FIN.search(b)), p["grade"], True):
                 s.append(_cap(p["grade"]) + ".")
             guard(p["grade"])
         if p["cam"] and not _swap(s, c, prot, lambda b: FIN.search(b), p["finish"]):
