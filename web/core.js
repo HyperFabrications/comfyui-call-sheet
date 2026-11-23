@@ -87,7 +87,9 @@ export const withEdit = (frame, edits) => edits && typeof edits[frame.id] === "s
 // A linked camera goes on after the style switch, so its film and grain words stay even with style off.
 export function promptFor(frame, { trigger = "", person = "", style = true, edits = null, camera = null } = {}) {
   const t = withCamera(base(withEdit(frame, edits), style), camera)[0];
-  return fill(isMale(person) ? toMale(t) : t, subject(trigger, person));
+  // With a person set, a prompt's own bare "a woman" right after [trigger] gives way to the person.
+  const u = person ? t.replace(/\[trigger\],?\s+(?:a|an|the)\s+(?:woman|man|person|girl|guy|lady)\b/gi, "[trigger]") : t;
+  return fill(isMale(person) ? toMale(u) : u, subject(trigger, person));
 }
 
 export function loadEdits() {

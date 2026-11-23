@@ -8,7 +8,7 @@ const cases = [
   ["1. A young woman leaning on a railing at sunset.\n- \"Close up portrait laughing in the rain.\"",
     [["Leaning on a railing at sunset", "[trigger], a young woman leaning on a railing at sunset."], ["Close up portrait laughing", "[trigger], close up portrait laughing in the rain."]]],
   ["[trigger] sitting on the floor,\nlegs crossed, looking up.\n\nPrompts", [["Sitting on the floor", "[trigger] sitting on the floor, legs crossed, looking up."]]],
-  ["A woman in a cafe\nsitting by the window with a coffee.", [["In a cafe sitting", "[trigger], a woman in a cafe sitting by the window with a coffee."]]],
+  ["A woman in a cafe\nsitting by the window with a coffee.", [["In a cafe sitting", "[trigger] in a cafe sitting by the window with a coffee."]]],
   ["A stunning redhead woman with freckles sitting on a bench in a park.", [["With freckles sitting on a bench", "[trigger], a stunning redhead woman with freckles sitting on a bench in a park."]]],
   ["", []],
 ];

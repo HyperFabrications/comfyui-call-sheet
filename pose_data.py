@@ -135,6 +135,9 @@ def to_male(t):
 def prompt_for(frame, trigger="", person="", style=True, edits=None, camera=None):
     # A linked camera goes on after the style switch, so its film and grain words stay even with style off.
     t = with_camera(base(with_edit(frame, edits), style), camera)[0]
+    # With a person set, a prompt's own bare "a woman" right after [trigger] gives way to the person.
+    if person:
+        t = re.sub(r"\[trigger\],?\s+(?:a|an|the)\s+(?:woman|man|person|girl|guy|lady)\b", "[trigger]", t, flags=re.I)
     return fill(to_male(t) if is_male(person) else t, subject(trigger, person))
 
 

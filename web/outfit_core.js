@@ -6,7 +6,7 @@ export const WEARING = /^(wearing|she wears|she is wearing)\b/i;
 export const SLOTS = ["outer", "one", "top", "bottom", "legs", "shoes", "acc", "face"];
 // What each piece of a frame's clothing line is. The first match wins, so the order matters.
 const KINDS = [
-  ["shoes", /\b(shoes|boots?|heels|sneakers|trainers|loafers|sandals|mules|pumps|flats|slippers|stilettos|espadrilles|clogs|oxfords|feet|platforms)\b/i],
+  ["shoes", /\b(shoes|boots?|heels|sneakers|trainers|loafers|sandals|mules|pumps|flats|slippers|stilettos|espadrilles|clogs|oxfords|feet|platforms|slides|flip flops|flip-flops|wedges|moccasins|slingbacks)\b/i],
   ["legs", /\b(tights|stockings|socks|leg warmers|thigh highs|garters?|hosiery|fishnets)\b/i],
   ["one", /\b(dress|sundress|gown|jumpsuit|romper|playsuit|bodysuit|swimsuit|bikini|leotard|catsuit|overalls|coveralls|suit|slip|kimono|robe|teddy|babydoll|nightgown|chemise)\b/i],
   ["outer", /\b(coat|peacoat|raincoat|overcoat|jacket|bomber|blazer|cardigan|parka|puffer|trench|shawl|cape|poncho|gilet|shacket|overshirt)\b/i],
@@ -21,7 +21,14 @@ export const kindOf = s => { for (const [k, re] of KINDS) if (re.test(s)) return
 export function pieces(line) {
   const body = line.replace(WEARING, "").replace(/^[\s,]+/, "").replace(/[\s.]+$/, "");
   const out = [];
-  const push = t => { t = t.trim(); if (t) out.push({ slot: kindOf(t), text: t }); };
+  // "white socks with slides" is two pieces, so the shoes can change and the socks stay.
+  const push = t => {
+    t = t.trim();
+    if (!t) return;
+    const w = t.match(/^(.+?)\s+with\s+(.+)$/);
+    if (w && kindOf(w[1]) === "legs" && kindOf(w[2]) === "shoes") { out.push({ slot: "legs", text: w[1] }, { slot: "shoes", text: w[2] }); return; }
+    out.push({ slot: kindOf(t), text: t });
+  };
   for (const chunk of body.split(/,\s*/)) {
     const c = chunk.replace(/^and\s+/, ""), ov = c.split(/\s+over\s+/);
     for (const part0 of ov.length > 1 && ov.every(b => kindOf(b)) ? ov : [c]) {
