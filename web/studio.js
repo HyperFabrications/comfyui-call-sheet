@@ -642,13 +642,15 @@ export function openStudio({ env, ctx, tab = "frame" }) {
     if (st.armed && !t.closest("[data-sdel]")) st.armed = null;
     const pick = t.closest("[data-g]");
     if (pick) {
-      const G = groupsFor(st.layer), g = G.find(x => x.k === pick.dataset.g);
+      // Search results are frames from every tab, so any frame group can pick them.
+      const G = groupsFor(st.layer), search = pick.dataset.g === "search";
+      const g = search ? G.find(x => x.k.startsWith("tab:")) : G.find(x => x.k === pick.dataset.g);
       if (!g) return;
       const v = pick.dataset.v;
       if (!v) g.set(g.multi ? null : "");
       else if (!g.multi && st.layer !== "frame" && isOn(g, v)) g.set("");
       else g.set(v);
-      st.cur[st.layer] = g.k;
+      if (!search) st.cur[st.layer] = g.k;
       if (st.layer === "frame") { renderAll(); return; }
       return changed();
     }
