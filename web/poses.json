@@ -4,6 +4,10 @@
   "changelog": [
     {
       "date": "2026-11-23",
+      "text": "Body details moved from Suggestive to SFW (now S197 to S205)."
+    },
+    {
+      "date": "2026-11-23",
       "text": "31 new Boudoir prompts in four new sets: Gingham, Projector, Black bodysuit and Daylight studio."
     },
     {
@@ -80,7 +84,8 @@
         "Fashion",
         "Places",
         "Everyday",
-        "Forest"
+        "Forest",
+        "Details"
       ]
     },
     {
@@ -90,8 +95,7 @@
         "Flirt",
         "Mirror",
         "Knit",
-        "Flannel",
-        "Details"
+        "Flannel"
       ]
     },
     {
@@ -2408,8 +2412,8 @@
       "added": "2026-11-23"
     },
     {
-      "id": "D1",
-      "tab": "suggestive",
+      "id": "S197",
+      "tab": "sfw",
       "set": "Details",
       "title": "Sprig between the knees",
       "text": "[trigger] in a quiet detail photograph, seated with knees together, hands clasped loosely on her knees holding a sprig of dried baby's breath that dangles between her legs, the frame cropped from waist to shins. Wearing a fuzzy black mohair cardigan with long sleeves, bare legs and thin gold rings. A beige upholstered sofa. Close crop at seat height, 50mm lens feel, shallow depth of field. Soft window light, muted taupe and black palette, matte film finish.",
@@ -2417,8 +2421,8 @@
       "added": "2026-11-23"
     },
     {
-      "id": "D2",
-      "tab": "suggestive",
+      "id": "S198",
+      "tab": "sfw",
       "set": "Details",
       "title": "Hand over the sofa back",
       "text": "[trigger] in a quiet detail photograph, one hand draped over the top edge of a sofa back, a sprig of dried baby's breath laced between the fingers, thin gold rings. A beige ribbed upholstered sofa against a dark gray wall. Close crop on the hand, 50mm lens feel, shallow depth of field. Soft window light from above, muted taupe and charcoal palette, matte film finish.",
@@ -2426,8 +2430,8 @@
       "added": "2026-11-23"
     },
     {
-      "id": "D3",
-      "tab": "suggestive",
+      "id": "S199",
+      "tab": "sfw",
       "set": "Details",
       "title": "Sprig on the shoulder",
       "text": "[trigger] in a quiet detail photograph, seen from the side, a sprig of dried baby's breath resting on her bare shoulder beside a thin camisole strap, chin just at the top of the frame. Wearing a white lace trimmed camisole under a fuzzy black mohair cardigan. Soft blurred dim room behind. Close crop on the shoulder, 85mm lens feel, shallow depth of field. Soft window light, muted taupe and black palette, matte film finish.",
@@ -2435,8 +2439,8 @@
       "added": "2026-11-23"
     },
     {
-      "id": "D4",
-      "tab": "suggestive",
+      "id": "S200",
+      "tab": "sfw",
       "set": "Details",
       "title": "Back turned on the stool",
       "text": "[trigger] in a quiet window photograph, seated on a low stool with her back to the camera, a fuzzy cardigan slipping down one shoulder, gazing out of the window. Wearing a fuzzy black mohair cardigan. A cream boucle stool, gray curtains, a small round table and a balcony railing outside, a dark wall edge in the foreground. Medium shot at eye level, 35mm lens feel. Soft overcast window light, muted gray and cream palette, matte film finish.",
@@ -2444,8 +2448,8 @@
       "added": "2026-11-23"
     },
     {
-      "id": "D5",
-      "tab": "suggestive",
+      "id": "S201",
+      "tab": "sfw",
       "set": "Details",
       "title": "Sprig hanging from the sleeve",
       "text": "[trigger] in a quiet detail photograph, a hand emerging from a long fuzzy sleeve and holding a sprig of dried baby's breath upside down by its stem. Wearing a fuzzy black mohair cardigan and thin gold rings. A pale warm gray surface fills the frame. Overhead crop, 50mm lens feel. Soft even window light, pale taupe and black palette, matte film finish.",
@@ -2453,8 +2457,8 @@
       "added": "2026-11-23"
     },
     {
-      "id": "D6",
-      "tab": "suggestive",
+      "id": "S202",
+      "tab": "sfw",
       "set": "Details",
       "title": "Hands clasped at the collarbone",
       "text": "[trigger] in a quiet detail photograph, the frame cropped from her lips to her chest, hands clasped together at her collarbone holding a sprig of dried baby's breath against her neck. Wearing a white lace trimmed camisole under an open fuzzy black mohair cardigan and thin gold rings. Dim blurred room behind. Close crop at eye level, 85mm lens feel, shallow depth of field. Soft window light, muted taupe and black palette, matte film finish.",
@@ -2462,8 +2466,8 @@
       "added": "2026-11-23"
     },
     {
-      "id": "D7",
-      "tab": "suggestive",
+      "id": "S203",
+      "tab": "sfw",
       "set": "Details",
       "title": "Sprig across the collarbone",
       "text": "[trigger] in a quiet detail photograph, a single sprig of dried baby's breath laid across her collarbone, a lace edge and fuzzy cardigan at the edges of the frame. Wearing a white lace trimmed camisole and a fuzzy black mohair cardigan. Tight crop on the collarbone from slightly above, 85mm lens feel, shallow depth of field. Soft window light, warm skin and black palette, matte film finish.",
@@ -2471,8 +2475,8 @@
       "added": "2026-11-23"
     },
     {
-      "id": "D8",
-      "tab": "suggestive",
+      "id": "S204",
+      "tab": "sfw",
       "set": "Details",
       "title": "Sprig along the forearm",
       "text": "[trigger] in a quiet detail photograph, a bare forearm lying flat on a pale surface with a sprig of dried baby's breath laid along it from wrist to elbow. A smooth pale warm gray tabletop. Close crop from slightly above, 50mm lens feel, shallow depth of field. Soft window light raking from the side, pale taupe palette, matte film finish.",
@@ -2480,8 +2484,8 @@
       "added": "2026-11-23"
     },
     {
-      "id": "D9",
-      "tab": "suggestive",
+      "id": "S205",
+      "tab": "sfw",
       "set": "Details",
       "title": "Sprig over the crossed ankles",
       "text": "[trigger] in a quiet detail photograph, bare legs extended and crossed at the ankles, a sprig of dried baby's breath resting across her shins, the hem of a fuzzy cardigan at the edge of the frame. A pale warm gray wall and floor. Side crop at leg height, 50mm lens feel, shallow depth of field. Soft window light, muted taupe palette, matte film finish.",
