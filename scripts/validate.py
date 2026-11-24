@@ -70,9 +70,9 @@ except (OSError, json.JSONDecodeError) as e:
 
 # Privacy: the repo is public, so no links to real people's social posts, local paths or PC names.
 PRIVATE_LINK = re.compile(r"https?://(?:[a-z0-9-]+\.)*(?:instagram\.com|instagr\.am|facebook\.com|tiktok\.com|threads\.net|x\.com|twitter\.com|pinterest\.[a-z.]+|reddit\.com|onlyfans\.com|patreon\.com)\b", re.I)
-LOCAL_BITS = re.compile(r"(?<![A-Za-z])[A-Za-z]:\\\\|/home/[a-z]|/Users/[A-Za-z]|\bDESKTOP-[A-Z0-9]{5,}\b|\b(?:ghp|gho|github_pat|sk|hf)_[A-Za-z0-9_]{16,}")
+LOCAL_BITS = re.compile(r"file:///|(?<![A-Za-z])[A-Za-z]:\\\\|/home/[a-z]|/Users/[A-Za-z]|\bDESKTOP-[A-Z0-9]{5,}\b|\b(?:ghp|gho|github_pat|sk|hf)_[A-Za-z0-9_]{16,}")
 root = path.parent.parent
-for f in sorted(list(root.glob("*.py")) + list(root.glob("*.toml")) + list(root.glob("*.md")) + list((root / "web").glob("*")) + list((root / "site").glob("*")) + list((root / "scripts").glob("*"))):
+for f in sorted(list(root.glob("*.py")) + list(root.glob("*.toml")) + list(root.glob("*.md")) + list((root / "web").glob("*")) + list((root / "site").glob("*")) + list((root / "scripts").glob("*")) + [f for f in (root / "docs").rglob("*") if f.suffix in (".md", ".txt", ".html")]):
     if not f.is_file() or f.name == "validate.py":
         continue
     body = f.read_text(encoding="utf-8", errors="ignore")
