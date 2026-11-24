@@ -4,7 +4,7 @@
 // openStudio({ env, ctx, tab }). Changes apply as you make them (ctx.save(state)).
 import { promptFor, withEdit, personText, frameNo } from "./core.js";
 import { withOutfit, outfitText, parts as outfitParts, locked as outfitLocked, garmentOf } from "./outfit_core.js";
-import { withScene, parts as sceneParts, locked as sceneLocked, propOf } from "./scene_core.js";
+import { withScene, parts as sceneParts, locked as sceneLocked, propOf, poseOnly } from "./scene_core.js";
 import { parts as camParts, labelOf as camLabel } from "./camera_core.js";
 import { traitOrder, shortPerson } from "./builder.js";
 import { SWATCH, figureSVG } from "./figure.js";
@@ -62,8 +62,9 @@ export function layersOf(env, st, wired = {}) {
 // The prompt for one frame, plus the pieces of it each layer wrote (for the colored underlines).
 export function shotOf(env, frame, st, { trigger = "", style = true, wired = {} } = {}) {
   const L = layersOf(env, st, wired);
-  let f = withEdit(frame, st.edits || {});
-  const applied = { outfit: false, scene: false };
+  const edited = !!(st.edits && typeof st.edits[frame.id] === "string" && st.edits[frame.id].trim());
+  let f = st.poseOnly && !edited ? poseOnly(frame, env.poseLines) : withEdit(frame, st.edits || {});
+  const applied = { outfit: false, scene: false, pose: !!f.poseOnly };
   if (L.outfit && env.outfits) { const [t, ch] = withOutfit(env.outfits, f, L.outfit, st.outfitOverrides || []); if (ch) { f = { ...f, text: t, bare: undefined }; applied.outfit = true; } }
   if (L.scene && env.scenes) { const [t, ch] = withScene(env.scenes, f, L.scene, st.sceneOverrides || []); if (ch) { f = { ...f, text: t, bare: undefined }; applied.scene = true; } }
   const text = promptFor(f, { trigger, person: L.person, style, camera: L.camera });
@@ -166,7 +167,9 @@ export function openStudio({ env, ctx, tab = "frame" }) {
   // A group: { k, label, card?, multi?, noAny?, opts: [{ v, n, sw?, d?, bg?, img?, mine?, title? }], get(), set(v), extra?(), add?: {...}, note? }
   function frameGroups() {
     const data = env.data, favs = new Set(lsList("kps:favs")), recent = lsList("kps:recent");
-    const frames = data.frames;
+    const lines = env.poseLines || {}, pose = !!st.s.poseOnly;
+    // Pose only shows just the frames that have a pose line (your own prompts stay).
+    const frames = pose ? data.frames.filter(f => f.tab === "custom" || lines[f.id]) : data.frames;
     const opt = f => ({ v: f.id, n: f.title, f, mine: f.tab === "custom" ? f.id : null });
     const g = (k, label, list, extra = {}) => ({ k, label, card: "frame", noAny: true, opts: list.map(opt), get: () => ctx.frame()?.id, set: v => { const f = frames.find(x => x.id === v); if (f) { ctx.setFrame(f); markUsed(f.id); } }, ...extra });
     const out = [];
@@ -381,7 +384,7 @@ export function openStudio({ env, ctx, tab = "frame" }) {
     const L = st.layer;
     let h = "";
     if (L !== "frame" && isWired(L)) h += `<div class="kst-banner">${ICON.link}<span>Using the linked ${NODE_NAME[L]}. Unlink it to use this tab.</span></div>`;
-    const f = ctx.frame();
+    const f0 = ctx.frame(), f = f0 && st.s.poseOnly && !(st.s.edits && st.s.edits[f0.id]) ? poseOnly(f0, env.poseLines) : f0;
     if (L === "outfit" && f && env.outfits && outfitLocked(env.outfits, f, st.s.outfitOverrides || [])) {
       const over = (st.s.outfitOverrides || []).includes(f.id);
       h += `<div class="kst-banner is-lock">${ICON.lock}<span>This frame keeps its own clothes: the pose uses ${esc(garmentOf(env.outfits, f))}.</span><button type="button" class="kq-ghost kq-tight" data-override="outfit">${over ? "Keep its own" : "Use outfit anyway"}</button></div>`;
@@ -394,14 +397,17 @@ export function openStudio({ env, ctx, tab = "frame" }) {
     }
     if (L === "outfit") { const sw = st.s.outfit.swap === "pick" ? "pick" : "whole";
       h += `<div class="kst-segs" role="group" aria-label="What the outfit replaces"><button type="button" data-swap="whole" aria-pressed="${sw === "whole"}">Whole outfit</button><button type="button" data-swap="pick" aria-pressed="${sw === "pick"}">Just what I pick</button></div>`; }
-    if (L === "frame") h += `<input type="search" class="kst-search" data-search placeholder="Search all ${env.data.frames.length} frames" aria-label="Search frames" value="${esc(st.q)}">`;
+    if (L === "frame") { const po = !!st.s.poseOnly;
+      h += `<div class="kst-segs" role="group" aria-label="What the frame gives"><button type="button" data-posemode="full" aria-pressed="${!po}">Full frame</button><button type="button" data-posemode="pose" aria-pressed="${po}">Pose only</button></div>`; }
+    if (L === "frame") h += `<input type="search" class="kst-search" data-search placeholder="Search all ${st.s.poseOnly ? env.data.frames.filter(f => f.tab === "custom" || (env.poseLines || {})[f.id]).length : env.data.frames.length} frames" aria-label="Search frames" value="${esc(st.q)}">`;
     return h;
   }
   function midHTML(G) {
     const top = topHTML();
     if (st.layer === "frame" && st.q.trim()) {
       const words = st.q.toLowerCase().split(/\s+/).filter(Boolean);
-      const hits = env.data.frames.filter(f => { const hay = (f.title + " " + f.text + " " + (env.data.sets[f.set] || "")).toLowerCase(); return words.every(w => hay.includes(w)); });
+      const lines = env.poseLines || {};
+      const hits = env.data.frames.filter(f => !st.s.poseOnly || f.tab === "custom" || lines[f.id]).filter(f => { const hay = (f.title + " " + f.text + " " + (env.data.sets[f.set] || "")).toLowerCase(); return words.every(w => hay.includes(w)); });
       const g = { ...G.find(x => x.k.startsWith("tab:")), k: "search", label: `${hits.length} ${hits.length === 1 ? "frame" : "frames"}`, add: null, opts: hits.map(f => ({ v: f.id, n: f.title, f, mine: null })) };
       st.exp.add("frame:search");
       return top + (hits.length ? groupHTML(g, false) : `<p class="kq-dim kst-empty">No frames match. Try fewer words, or add your own in Custom.</p>`);
@@ -431,9 +437,10 @@ export function openStudio({ env, ctx, tab = "frame" }) {
       const tabName = (env.data.tabs.find(t => t.id === f.tab) || {}).name || "";
       const sl = env.scenes ? sceneLocked(env.scenes, f, []) : false, ol = env.outfits ? outfitLocked(env.outfits, f, []) : false;
       const edited = !!(st.s.edits && st.s.edits[f.id]);
+      const po = !!st.s.poseOnly && !edited && !!(env.poseLines || {})[f.id];
       return `<div class="kst-fbig">${thumbHTML(f, ctx.thumbs())}</div>
         <div><div class="kst-ftitle"><span class="kps-no">${frameNo(f.id)}</span> ${esc(f.title)}${edited ? ' <span class="kst-badge">Edited</span>' : ""}</div><div class="kq-dim">${esc(tabName)} · ${esc(env.data.sets[f.set] || "")}</div></div>
-        <div class="kst-tags"><span class="${sl ? "is-lock" : ""}">${sl ? ICON.lock + " Keeps its location" : "Works with scenes"}</span><span class="${ol ? "is-lock" : ""}">${ol ? ICON.lock + " Keeps its clothes" : "Works with outfits"}</span></div>
+        <div class="kst-tags">${po ? `<span>Pose only</span>` : `<span class="${sl ? "is-lock" : ""}">${sl ? ICON.lock + " Keeps its location" : "Works with scenes"}</span><span class="${ol ? "is-lock" : ""}">${ol ? ICON.lock + " Keeps its clothes" : "Works with outfits"}</span>`}</div>
         <label class="kst-row"><span>Mode</span><span class="kq-grow"></span><select data-mode>${["single frame", "whole set", "whole tab"].map(m => `<option ${m === ctx.mode() ? "selected" : ""}>${m}</option>`).join("")}</select></label>
         <label class="kst-row"><span>Trigger</span><span class="kq-grow"></span><input data-trigger value="${esc(ctx.trigger())}" placeholder="LoRA trigger" spellcheck="false"></label>
         <div class="kst-row"><span>Style words</span><span class="kq-grow"></span><button type="button" class="kq-switch" data-style aria-pressed="${ctx.style()}" aria-label="Style words"><span></span></button></div>
@@ -474,7 +481,8 @@ export function openStudio({ env, ctx, tab = "frame" }) {
     const r = shotOf(env, f, st.s, { trigger: ctx.trigger(), style: ctx.style(), wired: wired() });
     q(".kst-ptext").innerHTML = st.settings.colors ? markHTML(r.text, r.marks) : esc(r.text);
     q(".kst-ptext").classList.toggle("no-colors", !st.settings.colors);
-    const mode = ctx.mode(), n = mode === "whole set" ? env.data.frames.filter(x => x.set === f.set).length : mode === "whole tab" ? env.data.frames.filter(x => x.tab === f.tab).length : 1;
+    const lines = env.poseLines || {}, inRun = x => !st.s.poseOnly || lines[x.id] || x.id === f.id;
+    const mode = ctx.mode(), n = mode === "whole set" ? env.data.frames.filter(x => x.set === f.set && inRun(x)).length : mode === "whole tab" ? env.data.frames.filter(x => x.tab === f.tab && inRun(x)).length : 1;
     const notes = [];
     if (n > 1) notes.push(`This frame, and ${n - 1} more in the ${mode === "whole set" ? "set" : "tab"}.`);
     if (r.layers.outfit && r.layers.outfit.on && r.layers.outfit.pieces.length && !r.applied.outfit) notes.push("This frame keeps its own clothes.");
@@ -670,6 +678,8 @@ export function openStudio({ env, ctx, tab = "frame" }) {
     if (t.closest("[data-pickfile]")) { t.closest("form").querySelector("[data-listfile]").click(); return; }
     const col = t.closest("[data-color]");
     if (col) { const [k, c] = col.dataset.color.split(":"); st.s.outfit[k + "C"] = c; st.s.outfit.on = true; return changed(); }
+    const pm = t.closest("[data-posemode]");
+    if (pm) { st.s.poseOnly = pm.dataset.posemode === "pose"; return changed(); }
     const sw = t.closest("[data-swap]");
     if (sw) { st.s.outfit.swap = sw.dataset.swap; st.s.outfit.on = true; return changed(); }
     const ov = t.closest("[data-override]");

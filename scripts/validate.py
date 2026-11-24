@@ -53,6 +53,17 @@ try:
 except (OSError, json.JSONDecodeError) as e:
     errors.append(f"scenes.json could not be read: {e}")
 
+poses_path = path.parent / "poselines.json"
+try:
+    ids = {f.get("id") for f in data.get("frames", [])}
+    for k, v in json.loads(poses_path.read_text(encoding="utf-8")).get("frames", {}).items():
+        if k not in ids:
+            errors.append(f"poselines.json: {k} is not a frame.")
+        elif not isinstance(v, str) or not v.strip() or "[trigger]" in v or v.strip().endswith("."):
+            errors.append(f"poselines.json: {k} needs just the action, with no [trigger] and no final period.")
+except (OSError, json.JSONDecodeError) as e:
+    errors.append(f"poselines.json could not be read: {e}")
+
 outfits_path = path.parent / "outfits.json"
 try:
     outfits = json.loads(outfits_path.read_text(encoding="utf-8"))

@@ -174,6 +174,7 @@ const app = await getApp();
 const data = await loadData(new URL("poses.json", HERE).href);
 await mergeCustom(data);
 const scenes = await loadData(new URL("scenes.json", HERE).href).catch(() => null);
+const poseLines = (await loadData(new URL("poselines.json", HERE).href).catch(() => null))?.frames || {};
 let myPlaces = (await loadPlaces()) || [];
 const allPlaces = () => scenes ? placeList(scenes, data.frames, myPlaces) : [];
 const SCENE_TYPE = "KreaPoseScene";
@@ -548,7 +549,7 @@ function wiredOf(node) {
   if (c) { const x = c.type === CAMERA_TYPE && cams ? cameraParts(cams, cameraState(c)) : null; w.camera = x && x.on && (x.cam || x.look || x.skin) ? x : null; }
   return w;
 }
-const studioEnv = { data, scenes, outfits, cams, places: allPlaces, items: () => myItems, choices: () => myChoices };
+const studioEnv = { data, scenes, outfits, cams, poseLines, places: allPlaces, items: () => myItems, choices: () => myChoices };
 
 function studioCtx(node) {
   const w = n => node.widgets?.find(x => x.name === n);

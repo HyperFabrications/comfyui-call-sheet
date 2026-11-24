@@ -186,7 +186,7 @@ def apply(text, p):
 
 
 def locked(frame, overrides=()):
-    if frame["id"] in overrides:
+    if frame["id"] in overrides or frame.get("poseOnly"):
         return False
     if frame.get("tab") == "custom":
         s = split(frame["text"])

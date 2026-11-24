@@ -6,6 +6,7 @@ import os
 import re
 
 DATA_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "web", "scenes.json")
+POSES_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "web", "poselines.json")
 
 CAM = re.compile(r"\b(shot|lens|close[- ]?up|top down|eye level|depth of field|full length|low angle|high angle|from above|from below|framing|framed(?=\s+(?:from|tight|tightly|wide|close|low|high|at)\b))\b", re.I)
 LIGHT = re.compile(r"\b(light|lights|daylight|lit|lighting|flash|glow|glowing|sunlight|sun|shadow|shadows|backlit|backlight|lamp|lamps|neon|candlelight|highlights|fill)\b", re.I)
@@ -35,6 +36,33 @@ def load():
         _cache["data"] = _choices.merge_scenes(data, _choices.load_choices()) if _choices and mtime[1] else data
         _cache["mtime"] = mtime
     return _cache["data"]
+
+
+_pcache = {"mtime": None, "data": {}}
+
+
+def pose_lines():
+    """Pose only lines: just the action for each frame, so the Person, Outfit and Scene fill in the rest."""
+    try:
+        mtime = os.path.getmtime(POSES_PATH)
+    except OSError:
+        return {}
+    if _pcache["mtime"] != mtime:
+        with open(POSES_PATH, encoding="utf-8") as f:
+            _pcache["data"] = json.load(f).get("frames", {})
+        _pcache["mtime"] = mtime
+    return _pcache["data"]
+
+
+def pose_only(frame, lines=None):
+    """The frame as just its pose plus its own framing, or the frame unchanged if it has no pose line."""
+    line = (lines if lines is not None else pose_lines()).get(frame["id"], "")
+    if not line:
+        return frame
+    s = split(frame["text"])
+    c, _, _ = layout(s)
+    text = "[trigger], " + line.strip().rstrip(".") + "." + (" " + s[c] if c < len(s) else "")
+    return {**frame, "text": text, "bare": None, "poseOnly": True}
 
 
 def split(text):
@@ -169,7 +197,7 @@ def plate(text, p=None):
 
 def locked(frame, overrides=()):
     """Location-bound frames keep their own setting unless you chose to use the scene anyway."""
-    if frame["id"] in overrides:
+    if frame["id"] in overrides or frame.get("poseOnly"):
         return False
     if frame.get("tab") == "custom":
         return not frame.get("portable")

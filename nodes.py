@@ -108,17 +108,23 @@ class KreaPosePrompt:
         return _build(frame, mode, trigger, style, person or "", edit_map, scene, _ids(scene_overrides), outfit, _ids(outfit_overrides), camera)
 
 
-def _build(frame, mode, trigger, style, person, edit_map, scene, overrides, outfit, wear, camera):
+def _build(frame, mode, trigger, style, person, edit_map, scene, overrides, outfit, wear, camera, pose_only=False):
     """The prompts for a frame (or its set or tab), with the outfit, scene, person and camera applied."""
     f = _find(frame)
+    lines = S.pose_lines() if pose_only else {}
     if mode == "whole set":
         picked = [x for x in _frames() if x["set"] == f["set"]]
     elif mode == "whole tab":
         picked = [x for x in _frames() if x["tab"] == f["tab"]]
     else:
         picked = [f]
+    if pose_only and len(picked) > 1:
+        # Pose only runs just the frames that have a pose line (and the one you picked).
+        picked = [x for x in picked if x["id"] in lines or x["id"] == f["id"]]
     prompts = []
     for x in picked:
+        if pose_only and not (isinstance(edit_map.get(x["id"]), str) and edit_map[x["id"]].strip()):
+            x = S.pose_only(x, lines)
         x = P.with_edit(x, edit_map)
         text, changed = O.with_outfit(x, outfit, wear)
         if changed:
@@ -284,7 +290,7 @@ class KreaCallSheet:
             camera = C.parts(st["camera"])
         edits = st.get("edits") if isinstance(st.get("edits"), dict) else {}
         return _build(frame, mode, trigger, style, person, edits, scene, _ids(json.dumps(st.get("sceneOverrides") or [])),
-                      outfit, _ids(json.dumps(st.get("outfitOverrides") or [])), camera)
+                      outfit, _ids(json.dumps(st.get("outfitOverrides") or [])), camera, st.get("poseOnly") is True)
 
 
 NODE_CLASS_MAPPINGS = {

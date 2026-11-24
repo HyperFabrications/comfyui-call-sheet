@@ -115,7 +115,7 @@ export function apply(text, p) {
 // Frames whose pose relies on a garment keep their own clothes unless you chose to use the outfit anyway.
 // Your own prompts work with outfits when they have a "Wearing" line.
 export function locked(outfits, frame, overrides = []) {
-  if (overrides.includes(frame.id)) return false;
+  if (overrides.includes(frame.id) || frame.poseOnly) return false;
   if (frame.tab === "custom") return !split(frame.text).some((x, j) => j >= 1 && WEARING.test(x));
   const v = outfits.frames[frame.id];
   return v === undefined || v !== "";

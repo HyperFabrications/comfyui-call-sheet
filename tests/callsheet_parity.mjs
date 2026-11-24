@@ -7,7 +7,8 @@ import { places as placeList } from "../web/scene_core.js";
 import { frameKey } from "../web/core.js";
 const read = f => JSON.parse(fs.readFileSync(new URL(f, import.meta.url)));
 const data = read("../web/poses.json"), scenes = read("../web/scenes.json"), outfits = read("../web/outfits.json"), cams = read("../web/cameras.json");
-const env = { data, scenes, outfits, cams, places: () => placeList(scenes, data.frames, []), items: () => [], choices: () => [] };
+const poseLines = read("../web/poselines.json").frames;
+const env = { data, scenes, outfits, cams, poseLines, places: () => placeList(scenes, data.frames, []), items: () => [], choices: () => [] };
 
 let seed = 7;
 const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
@@ -17,8 +18,10 @@ const optOf = (cats, key) => (cats.find(c => c.key === key) || { options: [] }).
 
 const cases = [];
 for (let i = 0; i < 600; i++) {
-  const f = pick(data.frames);
   const st = {};
+  if (rnd() < .3) st.poseOnly = true;
+  const lined = data.frames.filter(x => poseLines[x.id]);
+  const f = st.poseOnly && lined.length && rnd() < .6 ? pick(lined) : pick(data.frames);
   const picks = {};
   for (const t of data.traits) { const v = maybe(.4, () => pick(t.options.map(o => o.value).filter(Boolean))); if (v) picks[t.key] = v; }
   st.person = { picks, on: rnd() > .1, ...(rnd() < .1 ? { text: "a tall woman with silver hair" } : {}) };

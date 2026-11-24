@@ -22,6 +22,14 @@ export function layout(s) {
   return [c, setting, light];
 }
 
+// Pose only: just the frame's action plus its own framing, so the Person, Outfit and Scene fill in the rest.
+export function poseOnly(frame, lines) {
+  const line = lines && lines[frame.id];
+  if (!line) return frame;
+  const s = split(frame.text), c = layout(s)[0];
+  return { ...frame, text: "[trigger], " + line.trim().replace(/\.+$/, "") + "." + (c < s.length ? " " + s[c] : ""), bare: undefined, poseOnly: true };
+}
+
 export const settingOf = text => { const s = split(text); return layout(s)[1].map(i => s[i]).join(" "); };
 export const lightOf = text => { const s = split(text), li = layout(s)[2]; return li >= 0 ? s[li] : ""; };
 
@@ -112,7 +120,7 @@ export function plate(text, p = null) {
 
 // Location-bound frames keep their own setting unless you chose to use the scene anyway.
 export function locked(scenes, frame, overrides = []) {
-  if (overrides.includes(frame.id)) return false;
+  if (overrides.includes(frame.id) || frame.poseOnly) return false;
   if (frame.tab === "custom") return !frame.portable;
   const v = scenes.frames[frame.id];
   return v === undefined || v !== "";
