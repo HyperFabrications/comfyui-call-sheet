@@ -4,6 +4,10 @@
   "changelog": [
     {
       "date": "2026-11-24",
+      "text": "74 new frames from saved posts in 12 new sets: 60 SFW and 14 Suggestive."
+    },
+    {
+      "date": "2026-11-24",
       "text": "Reworded 3 frames that rendered wrong: two in Film studio and one in Olive room."
     },
     {
@@ -157,7 +161,17 @@
         "IronGazebo",
         "PinkRose",
         "FilmStudio",
-        "OliveRoom"
+        "OliveRoom",
+        "FauxFur",
+        "ConcreteSun",
+        "SubwayRush",
+        "Tangerines",
+        "WindAndCloth",
+        "FrostLake",
+        "Spotlight",
+        "RustDress",
+        "BeautyClose",
+        "Cattails"
       ]
     },
     {
@@ -169,7 +183,9 @@
         "Knit",
         "Flannel",
         "StairwellS",
-        "SunStripes"
+        "SunStripes",
+        "SheerChiffon",
+        "BretonStripe"
       ]
     },
     {
@@ -200,6 +216,18 @@
     }
   ],
   "sets": {
+    "FauxFur": "Faux fur",
+    "ConcreteSun": "Concrete sun",
+    "SubwayRush": "Subway rush",
+    "Tangerines": "Tangerines",
+    "WindAndCloth": "Wind and cloth",
+    "FrostLake": "Frost lake",
+    "Spotlight": "Spotlight",
+    "RustDress": "Rust dress",
+    "BeautyClose": "Beauty close",
+    "Cattails": "Cattails",
+    "SheerChiffon": "Sheer chiffon",
+    "BretonStripe": "Breton stripe",
     "OliveRoom": "Olive room",
     "FilmStudio": "Film studio",
     "LaceBlindfold": "Lace blindfold",
@@ -5357,6 +5385,598 @@
       "set": "OliveRoom",
       "title": "Hugging knees in the armchair",
       "text": "[trigger] in a moody fine art portrait, curled up in a black leather armchair hugging her knees to her chest, cheek resting on them. Wearing a fitted cream ribbed knit camisole and loose cream knit trousers, barefoot. A dim old room with dark worn parquet floors, an olive green wall, a white radiator under a tall window, a mustard yellow shell chair and a black leather armchair. Full length shot at eye level, 35mm lens feel. Soft low window light from one side falling off quickly into deep shadow. Muted olive, cream and dark walnut palette, quiet moody film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S408",
+      "tab": "sfw",
+      "set": "FauxFur",
+      "title": "Legs crossed against the wall",
+      "text": "[trigger] in a clean fashion test shoot, sitting on the floor with her back to the wall and her legs crossed long in front of her, hands resting on the fur, a calm gaze into the lens. Wearing a shaggy white faux fur jacket over a short black dress, with silver strappy heels. A plain pale gray studio wall meeting a smooth gray floor. Full length shot at eye level, 50mm lens feel. Soft even studio light from a large source to one side, gentle shadows. Cool gray, white and black palette, crisp editorial film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S409",
+      "tab": "sfw",
+      "set": "FauxFur",
+      "title": "Deep crouch, hugging knees",
+      "text": "[trigger] in a clean fashion test shoot, crouching low on her heels with her arms wrapped around her knees, head tilted, eyes on the lens. Wearing a short black ruffled mini dress and black pointed patent heels. A plain pale gray studio wall meeting a smooth gray floor. Full length shot at eye level, 50mm lens feel. Soft even studio light from a large source to one side, gentle shadows. Cool gray, white and black palette, crisp editorial film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S410",
+      "tab": "sfw",
+      "set": "FauxFur",
+      "title": "One knee raised",
+      "text": "[trigger] in a clean fashion test shoot, standing on one leg with the other knee lifted high, the fur jacket hanging loose, chin down. Wearing a shaggy white faux fur jacket over a short black dress, with silver strappy heels. A plain pale gray studio wall meeting a smooth gray floor. Full length shot at eye level, 35mm lens feel. Soft even studio light from a large source to one side, gentle shadows. Cool gray, white and black palette, crisp editorial film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S411",
+      "tab": "sfw",
+      "set": "FauxFur",
+      "title": "Fur framing the face",
+      "text": "[trigger] in a clean fashion test shoot, looking up with the fur collar pulled high so it frames her face, lips softly closed. Wearing a shaggy white faux fur jacket over a short black dress, with silver strappy heels. A plain pale gray studio wall meeting a smooth gray floor. Close up from above, 85mm lens feel, shallow depth of field. Soft even studio light from a large source to one side, gentle shadows. Cool gray, white and black palette, crisp editorial film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S412",
+      "tab": "sfw",
+      "set": "FauxFur",
+      "title": "Veil and white flower",
+      "text": "[trigger] in a clean fashion test shoot, gazing past the lens with a sheer veil falling over her face and a large white flower pinned in her hair, shoulders bare. Wearing a sheer ivory tulle veil, a large white silk flower pinned in her hair, bare shoulders. A plain pale gray studio wall meeting a smooth gray floor. Close up at eye level, 85mm lens feel, very shallow depth of field. Soft even studio light from a large source to one side, gentle shadows. Cool gray, white and black palette, crisp editorial film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S413",
+      "tab": "sfw",
+      "set": "FauxFur",
+      "title": "Trench on the shoulders in a lounge chair",
+      "text": "[trigger] in a clean fashion test shoot, sitting back in a low black leather lounge chair with a tan trench coat draped over her shoulders and her legs crossed. Wearing a tan trench coat draped over a short black mini dress, with black pointed patent heels. A plain pale gray studio wall meeting a smooth gray floor. Full length shot at eye level, 35mm lens feel. Soft even studio light from a large source to one side, gentle shadows. Cool gray, white and black palette, crisp editorial film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S414",
+      "tab": "sfw",
+      "set": "FauxFur",
+      "title": "Hand at the temple",
+      "text": "[trigger] in a clean fashion test shoot, standing with one hand raised to her temple and her head tilted, the fur jacket wrapped around her, a steady gaze. Wearing a shaggy white faux fur jacket over a short black dress, with silver strappy heels. A plain pale gray studio wall meeting a smooth gray floor. Medium shot at eye level, 85mm lens feel, shallow depth of field. Soft even studio light from a large source to one side, gentle shadows. Cool gray, white and black palette, crisp editorial film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S415",
+      "tab": "sfw",
+      "set": "ConcreteSun",
+      "title": "Twist with a glance down",
+      "text": "[trigger] in a sunlit urban fashion portrait, twisting at the waist with one hand on her opposite shoulder, glancing down past the lens. Wearing a black strapless peplum bustier top, dark slim trousers and a chunky gold and pearl necklace, with dark red lipstick. A modern gray concrete facade under a slatted glass canopy. Medium shot from a low angle, 35mm lens feel. Bright low sun behind her, glowing through the canopy with warm backlight and soft flare. Cool concrete gray and warm gold palette, polished editorial finish with light grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S416",
+      "tab": "sfw",
+      "set": "ConcreteSun",
+      "title": "Fingertips at the lips",
+      "text": "[trigger] in a sunlit urban fashion portrait, resting her fingertips at her lips and gazing up and away, chin lifted. Wearing a black strapless peplum bustier top, dark slim trousers and a chunky gold and pearl necklace, with dark red lipstick. A modern gray concrete facade under a slatted glass canopy. Medium shot from a low angle, 50mm lens feel, shallow depth of field. Bright low sun behind her, glowing through the canopy with warm backlight and soft flare. Cool concrete gray and warm gold palette, polished editorial finish with light grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S417",
+      "tab": "sfw",
+      "set": "ConcreteSun",
+      "title": "Hand raked into the hair",
+      "text": "[trigger] in a sunlit urban fashion portrait, raking one hand back through her hair with lips parted, eyes on the lens. Wearing a black strapless peplum bustier top, dark slim trousers and a chunky gold and pearl necklace, with dark red lipstick. A modern gray concrete facade under a slatted glass canopy. Medium shot from a low angle, 35mm lens feel. Bright low sun behind her, glowing through the canopy with warm backlight and soft flare. Cool concrete gray and warm gold palette, polished editorial finish with light grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S418",
+      "tab": "sfw",
+      "set": "ConcreteSun",
+      "title": "Leaning back on the wall",
+      "text": "[trigger] in a sunlit urban fashion portrait, leaning her back against the concrete with one hand at her waist, a relaxed smile. Wearing a black strapless peplum bustier top, dark slim trousers and a chunky gold and pearl necklace, with dark red lipstick. A modern gray concrete facade under a slatted glass canopy. Medium full shot at eye level, 35mm lens feel. Bright low sun behind her, glowing through the canopy with warm backlight and soft flare. Cool concrete gray and warm gold palette, polished editorial finish with light grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S419",
+      "tab": "sfw",
+      "set": "ConcreteSun",
+      "title": "Hand at the chin",
+      "text": "[trigger] in a sunlit urban fashion portrait, folding one arm across her body and resting her chin on the other hand, a steady gaze into the lens. Wearing a black strapless peplum bustier top, dark slim trousers and a chunky gold and pearl necklace, with dark red lipstick. A modern gray concrete facade under a slatted glass canopy. Medium shot from a low angle, 50mm lens feel, shallow depth of field. Bright low sun behind her, glowing through the canopy with warm backlight and soft flare. Cool concrete gray and warm gold palette, polished editorial finish with light grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S420",
+      "tab": "sfw",
+      "set": "ConcreteSun",
+      "title": "Backlit hair lifting",
+      "text": "[trigger] in a sunlit urban fashion portrait, standing into the sun with her hair lifting in the breeze and one hand at her neck, lips parted. Wearing a black strapless peplum bustier top, dark slim trousers and a chunky gold and pearl necklace, with dark red lipstick. A modern gray concrete facade under a slatted glass canopy. Medium close shot from a low angle, 35mm lens feel, flare across the frame. Bright low sun behind her, glowing through the canopy with warm backlight and soft flare. Cool concrete gray and warm gold palette, polished editorial finish with light grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S421",
+      "tab": "sfw",
+      "set": "SubwayRush",
+      "title": "Glance back as the train passes",
+      "text": "[trigger] in a candid film street portrait, turning to glance back over her shoulder as a train blurs past behind her. Wearing an oversized black wool coat over a black knit. A busy subway platform with a train streaking past and commuters in a blur behind her. Medium shot at eye level, 50mm lens feel, slow shutter motion blur. Cool fluorescent platform light mixed with warm signage glow. Deep black, steel blue and warm orange palette, gritty 35mm film finish with grain and a thin white border.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S422",
+      "tab": "sfw",
+      "set": "SubwayRush",
+      "title": "Bare shoulder, looking back",
+      "text": "[trigger] in a candid film street portrait, looking back over one bare shoulder with a calm, direct gaze. Wearing a black off the shoulder knit top. A busy subway platform with a train streaking past and commuters in a blur behind her. Medium close shot at eye level, 50mm lens feel, shallow depth of field. Cool fluorescent platform light mixed with warm signage glow. Deep black, steel blue and warm orange palette, gritty 35mm film finish with grain and a thin white border.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S423",
+      "tab": "sfw",
+      "set": "SubwayRush",
+      "title": "Hair whipping in the train wind",
+      "text": "[trigger] in a candid film street portrait, standing still as the train wind whips her hair across her face, eyes on the lens. Wearing an oversized black wool coat over a black knit. A busy subway platform with a train streaking past and commuters in a blur behind her. Medium shot at eye level, 35mm lens feel, motion blur behind her. Cool fluorescent platform light mixed with warm signage glow. Deep black, steel blue and warm orange palette, gritty 35mm film finish with grain and a thin white border.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S424",
+      "tab": "sfw",
+      "set": "SubwayRush",
+      "title": "Chin on hand on the train bench",
+      "text": "[trigger] in a candid film street portrait, sitting on a train bench with her chin resting on her hand, a tired soft gaze. Wearing an oversized black wool coat over a black knit. The inside of a subway car with worn bench seats and windows onto a dark tunnel. Medium shot at seat height, 35mm lens feel. Cool fluorescent platform light mixed with warm signage glow. Deep black, steel blue and warm orange palette, gritty 35mm film finish with grain and a thin white border.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S425",
+      "tab": "sfw",
+      "set": "SubwayRush",
+      "title": "Fringe and gold chain",
+      "text": "[trigger] in a candid film street portrait, standing close in a crowded carriage, heavy fringe over her eyes, a thin gold chain at her neck. Wearing a black crew neck knit and a thin gold chain necklace. The inside of a crowded subway car with blurred passengers behind her. Close up at eye level, 50mm lens feel, shallow depth of field. Cool fluorescent platform light mixed with warm signage glow. Deep black, steel blue and warm orange palette, gritty 35mm film finish with grain and a thin white border.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S426",
+      "tab": "sfw",
+      "set": "SubwayRush",
+      "title": "Chin in the collar",
+      "text": "[trigger] in a candid film street portrait, tucking her chin down into the high collar of her coat, eyes up into the lens. Wearing an oversized black wool coat over a black knit. A busy subway platform with a train streaking past and commuters in a blur behind her. Close up at eye level, 85mm lens feel, shallow depth of field. Cool fluorescent platform light mixed with warm signage glow. Deep black, steel blue and warm orange palette, gritty 35mm film finish with grain and a thin white border.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S427",
+      "tab": "sfw",
+      "set": "SubwayRush",
+      "title": "Walking through the crowd",
+      "text": "[trigger] in a candid film street portrait, walking through the crowd along the platform, turning her head in profile to glance back. Wearing an oversized black wool coat over a black knit. A busy subway platform with a train streaking past and commuters in a blur behind her. Medium shot at eye level, 50mm lens feel, commuters soft in the foreground. Cool fluorescent platform light mixed with warm signage glow. Deep black, steel blue and warm orange palette, gritty 35mm film finish with grain and a thin white border.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S428",
+      "tab": "sfw",
+      "set": "Tangerines",
+      "title": "On the floor against the sofa",
+      "text": "[trigger] in a cozy winter lifestyle photo, sitting on the floor with her back against the sofa and her legs stretched out, one hand pushed into her hair. Wearing an oversized chunky charcoal knit sweater, short light shorts and white crew socks. A warm room with honey wood paneling, a mustard velvet bubble sofa, fresh pine branches on the floor, tangerines scattered about and fringed table lamps. Full length shot at eye level, 35mm lens feel. Warm tungsten lamp light with soft window daylight from one side. Warm mustard, orange and pine green palette, cozy film finish with soft grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S429",
+      "tab": "sfw",
+      "set": "Tangerines",
+      "title": "Sleeve over the hand",
+      "text": "[trigger] in a cozy winter lifestyle photo, sitting on the floor with her knees up, tugging one sweater sleeve down over her hand, a shy look. Wearing an oversized chunky charcoal knit sweater, short light shorts and white crew socks. A warm room with honey wood paneling, a mustard velvet bubble sofa, fresh pine branches on the floor, tangerines scattered about and fringed table lamps. Full length shot at eye level, 35mm lens feel. Warm tungsten lamp light with soft window daylight from one side. Warm mustard, orange and pine green palette, cozy film finish with soft grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S430",
+      "tab": "sfw",
+      "set": "Tangerines",
+      "title": "Lying back on the sofa",
+      "text": "[trigger] in a cozy winter lifestyle photo, lying back along the sofa with her knees bent up and one arm thrown over her head. Wearing an oversized chunky charcoal knit sweater, short light shorts and white crew socks. A warm room with honey wood paneling, a mustard velvet bubble sofa, fresh pine branches on the floor, tangerines scattered about and fringed table lamps. Medium full shot at sofa height, 35mm lens feel. Warm tungsten lamp light with soft window daylight from one side. Warm mustard, orange and pine green palette, cozy film finish with soft grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S431",
+      "tab": "sfw",
+      "set": "Tangerines",
+      "title": "Perched on the dresser",
+      "text": "[trigger] in a cozy winter lifestyle photo, perched on a low pink dresser with one arm raised against the wall and her legs dangling. Wearing an oversized chunky charcoal knit sweater, short light shorts and white crew socks. A warm room with honey wood paneling, a mustard velvet bubble sofa, fresh pine branches on the floor, tangerines scattered about and fringed table lamps. Full length shot at eye level, 35mm lens feel. Warm tungsten lamp light with soft window daylight from one side. Warm mustard, orange and pine green palette, cozy film finish with soft grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S432",
+      "tab": "sfw",
+      "set": "Tangerines",
+      "title": "Hugging knees, chin on hand",
+      "text": "[trigger] in a cozy winter lifestyle photo, sitting on the floor hugging her knees with her chin propped on one hand, eyes on the lens. Wearing an oversized chunky charcoal knit sweater, short light shorts and white crew socks. A warm room with honey wood paneling, a mustard velvet bubble sofa, fresh pine branches on the floor, tangerines scattered about and fringed table lamps. Full length shot at eye level, 50mm lens feel. Warm tungsten lamp light with soft window daylight from one side. Warm mustard, orange and pine green palette, cozy film finish with soft grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S433",
+      "tab": "sfw",
+      "set": "Tangerines",
+      "title": "Tangerines at the chest",
+      "text": "[trigger] in a cozy winter lifestyle photo, holding a few tangerines against her chest with both hands, gazing off to the side. Wearing an oversized chunky charcoal knit sweater, short light shorts and white crew socks. A warm room with honey wood paneling, a mustard velvet bubble sofa, fresh pine branches on the floor, tangerines scattered about and fringed table lamps. Close up at eye level, 85mm lens feel, shallow depth of field. Warm tungsten lamp light with soft window daylight from one side. Warm mustard, orange and pine green palette, cozy film finish with soft grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S434",
+      "tab": "sfw",
+      "set": "Tangerines",
+      "title": "Head on a mustard cushion",
+      "text": "[trigger] in a cozy winter lifestyle photo, lying on the floor with her head on a mustard cushion, tangerines and pine around her, looking up. Wearing an oversized chunky charcoal knit sweater, short light shorts and white crew socks. A warm room with honey wood paneling, a mustard velvet bubble sofa, fresh pine branches on the floor, tangerines scattered about and fringed table lamps. Overhead medium full shot looking straight down, 35mm lens feel. Warm tungsten lamp light with soft window daylight from one side. Warm mustard, orange and pine green palette, cozy film finish with soft grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S435",
+      "tab": "sfw",
+      "set": "Tangerines",
+      "title": "Standing on the sofa",
+      "text": "[trigger] in a cozy winter lifestyle photo, standing up on the sofa seat with one knee raised, hands loose at her sides, laughing. Wearing an oversized chunky charcoal knit sweater, short light shorts and white crew socks. A warm room with honey wood paneling, a mustard velvet bubble sofa, fresh pine branches on the floor, tangerines scattered about and fringed table lamps. Full length shot at eye level, 35mm lens feel. Warm tungsten lamp light with soft window daylight from one side. Warm mustard, orange and pine green palette, cozy film finish with soft grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S436",
+      "tab": "sfw",
+      "set": "Tangerines",
+      "title": "Cheek on the dresser",
+      "text": "[trigger] in a cozy winter lifestyle photo, resting her cheek on her folded arms on top of the dresser beside a lamp and a pile of tangerines. Wearing an oversized chunky charcoal knit sweater, short light shorts and white crew socks. A warm room with honey wood paneling, a mustard velvet bubble sofa, fresh pine branches on the floor, tangerines scattered about and fringed table lamps. Medium shot at dresser height, 50mm lens feel, shallow depth of field. Warm tungsten lamp light with soft window daylight from one side. Warm mustard, orange and pine green palette, cozy film finish with soft grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S437",
+      "tab": "sfw",
+      "set": "Tangerines",
+      "title": "Peeling a tangerine",
+      "text": "[trigger] in a cozy winter lifestyle photo, sitting at the dresser peeling a tangerine, eyes down on her hands. Wearing an oversized chunky charcoal knit sweater, short light shorts and white crew socks. A warm room with honey wood paneling, a mustard velvet bubble sofa, fresh pine branches on the floor, tangerines scattered about and fringed table lamps. Medium shot at eye level, 50mm lens feel, shallow depth of field. Warm tungsten lamp light with soft window daylight from one side. Warm mustard, orange and pine green palette, cozy film finish with soft grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "G6",
+      "tab": "suggestive",
+      "set": "SheerChiffon",
+      "title": "Upside down, hands framing the face",
+      "text": "[trigger] in a warm intimate portrait, lying on her back on the floor with her head toward the camera, both hands framing her face, eyes on the lens. Wearing a sheer brown chiffon blouse hanging open over a black bra and loose black satin wide leg trousers, barefoot. A warm apartment with honey wood floors, a gray sofa, a large leafy plant and a painting hung on the wall. Overhead close medium shot looking straight down, 50mm lens feel. Warm low lamplight with a soft haze, gentle shadows. Warm amber, chocolate and black palette, soft film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "G7",
+      "tab": "suggestive",
+      "set": "SheerChiffon",
+      "title": "Hands in the hair through a haze",
+      "text": "[trigger] in a warm intimate portrait, raising both hands into her hair, a soft knowing look into the lens. Wearing a sheer brown chiffon blouse hanging open over a black bra and loose black satin wide leg trousers, barefoot. A warm apartment with honey wood floors, a gray sofa, a large leafy plant and a painting hung on the wall. Close up at eye level, 85mm lens feel, a sheer curtain blurred in the foreground. Warm low lamplight with a soft haze, gentle shadows. Warm amber, chocolate and black palette, soft film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "G8",
+      "tab": "suggestive",
+      "set": "SheerChiffon",
+      "title": "Cross legged before the sofa",
+      "text": "[trigger] in a warm intimate portrait, sitting cross legged on the floor in front of the sofa with one hand in her hair. Wearing a sheer brown chiffon blouse hanging open over a black bra and loose black satin wide leg trousers, barefoot. A warm apartment with honey wood floors, a gray sofa, a large leafy plant and a painting hung on the wall. Full length shot at eye level, 35mm lens feel. Warm low lamplight with a soft haze, gentle shadows. Warm amber, chocolate and black palette, soft film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "G9",
+      "tab": "suggestive",
+      "set": "SheerChiffon",
+      "title": "Hands cupping the face",
+      "text": "[trigger] in a warm intimate portrait, sitting with both hands cupping her face, head tilted, a soft gaze. Wearing a sheer brown chiffon blouse hanging open over a black bra and loose black satin wide leg trousers, barefoot. A warm apartment with honey wood floors, a gray sofa, a large leafy plant and a painting hung on the wall. Medium close shot at eye level, 85mm lens feel, shallow depth of field. Warm low lamplight with a soft haze, gentle shadows. Warm amber, chocolate and black palette, soft film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "G10",
+      "tab": "suggestive",
+      "set": "SheerChiffon",
+      "title": "Perched on the sofa edge",
+      "text": "[trigger] in a warm intimate portrait, perched on the front edge of the sofa with her knees apart and her hands clasped between them. Wearing a sheer brown chiffon blouse hanging open over a black bra and loose black satin wide leg trousers, barefoot. A warm apartment with honey wood floors, a gray sofa, a large leafy plant and a painting hung on the wall. Full length shot at eye level, 35mm lens feel. Warm low lamplight with a soft haze, gentle shadows. Warm amber, chocolate and black palette, soft film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "G11",
+      "tab": "suggestive",
+      "set": "SheerChiffon",
+      "title": "Sprawled on the floor",
+      "text": "[trigger] in a warm intimate portrait, lying on the floor with her legs bent to one side and one arm flung above her head. Wearing a sheer brown chiffon blouse hanging open over a black bra and loose black satin wide leg trousers, barefoot. A warm apartment with honey wood floors, a gray sofa, a large leafy plant and a painting hung on the wall. Overhead full length shot looking straight down, 28mm lens feel. Warm low lamplight with a soft haze, gentle shadows. Warm amber, chocolate and black palette, soft film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "G12",
+      "tab": "suggestive",
+      "set": "SheerChiffon",
+      "title": "Smiling by the plant",
+      "text": "[trigger] in a warm intimate portrait, resting her chin on one hand beside the big plant, smiling off to the side. Wearing a sheer brown chiffon blouse hanging open over a black bra and loose black satin wide leg trousers, barefoot. A warm apartment with honey wood floors, a gray sofa, a large leafy plant and a painting hung on the wall. Medium shot at eye level, 50mm lens feel, shallow depth of field. Warm low lamplight with a soft haze, gentle shadows. Warm amber, chocolate and black palette, soft film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "G13",
+      "tab": "suggestive",
+      "set": "SheerChiffon",
+      "title": "Blouse off the shoulder on the sofa arm",
+      "text": "[trigger] in a warm intimate portrait, perched on the sofa arm with the chiffon blouse slipping off one shoulder, a small smile. Wearing a sheer brown chiffon blouse hanging open over a black bra and loose black satin wide leg trousers, barefoot. A warm apartment with honey wood floors, a gray sofa, a large leafy plant and a painting hung on the wall. Medium full shot at eye level, 50mm lens feel. Warm low lamplight with a soft haze, gentle shadows. Warm amber, chocolate and black palette, soft film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S438",
+      "tab": "sfw",
+      "set": "WindAndCloth",
+      "title": "Hair sweeping across the face",
+      "text": "[trigger] in a cinematic motion portrait, turning her shoulder to the camera as her hair sweeps across her face. Wearing a loose ivory linen blouse with wide billowing sleeves. A dark studio with a deep shadowed background. Close up at eye level, 50mm lens feel, slow shutter blur. Warm backlight rimming her hair and the fabric, with deep shadow in front. Warm amber, ivory and deep black palette, cinematic film finish with motion blur and grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S439",
+      "tab": "sfw",
+      "set": "WindAndCloth",
+      "title": "Sleeves swept back",
+      "text": "[trigger] in a cinematic motion portrait, sweeping both arms back so the wide sleeves billow behind her, a direct gaze. Wearing a loose ivory linen blouse with wide billowing sleeves. A dark studio with a deep shadowed background. Medium shot at eye level, 50mm lens feel, motion blur in the fabric. Warm backlight rimming her hair and the fabric, with deep shadow in front. Warm amber, ivory and deep black palette, cinematic film finish with motion blur and grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S440",
+      "tab": "sfw",
+      "set": "WindAndCloth",
+      "title": "Profile behind moving fabric",
+      "text": "[trigger] in a cinematic motion portrait, turned away in profile with a sweep of blurred fabric passing in front of her, hair in a low bun. Wearing a loose ivory linen blouse with wide billowing sleeves. A dark studio with a deep shadowed background. Medium shot at eye level, 85mm lens feel, fabric soft in the foreground. Warm backlight rimming her hair and the fabric, with deep shadow in front. Warm amber, ivory and deep black palette, cinematic film finish with motion blur and grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S441",
+      "tab": "sfw",
+      "set": "WindAndCloth",
+      "title": "Head thrown back, hair flying",
+      "text": "[trigger] in a cinematic motion portrait, throwing her head back with her eyes closed and her hair flying out. Wearing a sheer dark chiffon top. A dark studio with a deep shadowed background. Medium close shot from slightly below, 35mm lens feel, motion blur. Warm backlight rimming her hair and the fabric, with deep shadow in front. Warm amber, ivory and deep black palette, cinematic film finish with motion blur and grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S442",
+      "tab": "sfw",
+      "set": "WindAndCloth",
+      "title": "Direct gaze through blowing hair",
+      "text": "[trigger] in a cinematic motion portrait, holding a still direct gaze into the lens while her hair blows across the frame. Wearing a sheer dark chiffon top. A dark studio with a deep shadowed background. Close up at eye level, 85mm lens feel, shallow depth of field. Warm backlight rimming her hair and the fabric, with deep shadow in front. Warm amber, ivory and deep black palette, cinematic film finish with motion blur and grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S443",
+      "tab": "sfw",
+      "set": "FrostLake",
+      "title": "Chin to the sky, roses at the chest",
+      "text": "[trigger] in a painterly winter portrait, tipping her chin up to the sky with her eyes closed, a bunch of dried roses held at her chest. Wearing a deep burgundy velvet wrap dress with long sleeves. A frosted lakeshore at sunrise with mist over the water and frost on the dry reeds. Medium shot at eye level, 50mm lens feel, shallow depth of field. Soft low sunrise light with a warm glow on the frost and cool mist behind. Burgundy, frost white and pale blue palette, painterly film finish with soft grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S444",
+      "tab": "sfw",
+      "set": "FrostLake",
+      "title": "Direct gaze, roses low",
+      "text": "[trigger] in a painterly winter portrait, looking straight into the lens with dried roses held low in both hands. Wearing a deep burgundy velvet wrap dress with long sleeves. A frosted lakeshore at sunrise with mist over the water and frost on the dry reeds. Close up at eye level, 85mm lens feel, very shallow depth of field. Soft low sunrise light with a warm glow on the frost and cool mist behind. Burgundy, frost white and pale blue palette, painterly film finish with soft grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S445",
+      "tab": "sfw",
+      "set": "FrostLake",
+      "title": "Head back in profile",
+      "text": "[trigger] in a painterly winter portrait, standing in profile with her head tipped back and her eyes closed, breathing in the cold air. Wearing a deep burgundy velvet wrap dress with long sleeves. A frosted lakeshore at sunrise with mist over the water and frost on the dry reeds. Medium shot at eye level, 85mm lens feel, shallow depth of field. Soft low sunrise light with a warm glow on the frost and cool mist behind. Burgundy, frost white and pale blue palette, painterly film finish with soft grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S446",
+      "tab": "sfw",
+      "set": "FrostLake",
+      "title": "Over the shoulder, hair across",
+      "text": "[trigger] in a painterly winter portrait, turning her head down over one shoulder with loose hair falling across her face, roses at her side. Wearing a deep burgundy velvet wrap dress with long sleeves. A frosted lakeshore at sunrise with mist over the water and frost on the dry reeds. Medium shot at eye level, 50mm lens feel, shallow depth of field. Soft low sunrise light with a warm glow on the frost and cool mist behind. Burgundy, frost white and pale blue palette, painterly film finish with soft grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S447",
+      "tab": "sfw",
+      "set": "FrostLake",
+      "title": "Eyes on the roses",
+      "text": "[trigger] in a painterly winter portrait, standing in profile with her eyes lowered to the dried roses held in both hands. Wearing a deep burgundy velvet wrap dress with long sleeves. A frosted lakeshore at sunrise with mist over the water and frost on the dry reeds. Medium shot at eye level, 85mm lens feel, shallow depth of field. Soft low sunrise light with a warm glow on the frost and cool mist behind. Burgundy, frost white and pale blue palette, painterly film finish with soft grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S448",
+      "tab": "sfw",
+      "set": "Spotlight",
+      "title": "Arm over the backrest beside her shadow",
+      "text": "[trigger] in a black and white studio portrait, sitting sideways on the director chair with one arm over the backrest, in profile beside her own shadow. Wearing a black sleeveless knit midi dress, sheer black tights and large statement earrings, hair in a low bun. A dark studio wall with a hard round pool of light behind her and a black folding director chair. Full length shot at eye level, 35mm lens feel. A single hard spotlight casting a crisp round pool and a sharp shadow of her on the wall. Black and white with deep blacks and bright highlights, fine art film finish with grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S449",
+      "tab": "sfw",
+      "set": "Spotlight",
+      "title": "Legs crossed, hand at the lips",
+      "text": "[trigger] in a black and white studio portrait, sitting with her legs crossed and one hand at her lips, face in profile. Wearing a black sleeveless knit midi dress, sheer black tights and large statement earrings, hair in a low bun. A dark studio wall with a hard round pool of light behind her and a black folding director chair. Full length shot at eye level, 35mm lens feel. A single hard spotlight casting a crisp round pool and a sharp shadow of her on the wall. Black and white with deep blacks and bright highlights, fine art film finish with grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S450",
+      "tab": "sfw",
+      "set": "Spotlight",
+      "title": "Fingertips at the brow",
+      "text": "[trigger] in a black and white studio portrait, resting her fingertips at her brow with her eyes lowered. Wearing a black sleeveless knit midi dress, sheer black tights and large statement earrings, hair in a low bun. A dark studio wall with a hard round pool of light behind her and a black folding director chair. Close up at eye level, 85mm lens feel, shallow depth of field. A single hard spotlight casting a crisp round pool and a sharp shadow of her on the wall. Black and white with deep blacks and bright highlights, fine art film finish with grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S451",
+      "tab": "sfw",
+      "set": "Spotlight",
+      "title": "Reaching for her shadow",
+      "text": "[trigger] in a black and white studio portrait, sitting with one knee drawn up and her hand reaching toward her shadow on the wall. Wearing a black sleeveless knit midi dress, sheer black tights and large statement earrings, hair in a low bun. A dark studio wall with a hard round pool of light behind her and a black folding director chair. Full length shot at eye level, 35mm lens feel. A single hard spotlight casting a crisp round pool and a sharp shadow of her on the wall. Black and white with deep blacks and bright highlights, fine art film finish with grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S452",
+      "tab": "sfw",
+      "set": "Spotlight",
+      "title": "Finger at the lips, eyes closed",
+      "text": "[trigger] in a black and white studio portrait, holding one finger to her lips with her eyes closed, face in profile. Wearing a black sleeveless knit midi dress, sheer black tights and large statement earrings, hair in a low bun. A dark studio wall with a hard round pool of light behind her and a black folding director chair. Close up at eye level, 85mm lens feel, shallow depth of field. A single hard spotlight casting a crisp round pool and a sharp shadow of her on the wall. Black and white with deep blacks and bright highlights, fine art film finish with grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S453",
+      "tab": "sfw",
+      "set": "Spotlight",
+      "title": "Facing her own shadow",
+      "text": "[trigger] in a black and white studio portrait, standing with her back to the camera, facing her shadow inside the pool of light. Wearing a black sleeveless knit midi dress, sheer black tights and large statement earrings, hair in a low bun. A dark studio wall with a hard round pool of light behind her and a black folding director chair. Medium full shot from behind at eye level, 35mm lens feel. A single hard spotlight casting a crisp round pool and a sharp shadow of her on the wall. Black and white with deep blacks and bright highlights, fine art film finish with grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S454",
+      "tab": "sfw",
+      "set": "Spotlight",
+      "title": "Leaning back mid gesture",
+      "text": "[trigger] in a black and white studio portrait, leaning back in the chair with her legs crossed and one hand raised mid gesture. Wearing a black sleeveless knit midi dress, sheer black tights and large statement earrings, hair in a low bun. A dark studio wall with a hard round pool of light behind her and a black folding director chair. Full length shot at eye level, 35mm lens feel. A single hard spotlight casting a crisp round pool and a sharp shadow of her on the wall. Black and white with deep blacks and bright highlights, fine art film finish with grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S455",
+      "tab": "sfw",
+      "set": "RustDress",
+      "title": "Hand at the hip in tall grass",
+      "text": "[trigger] in a moody autumn landscape portrait, standing in tall grass with one hand at her hip and a direct gaze into the lens. Wearing a long rust red knit maxi dress with wide sleeves. A late autumn prairie of dry tall grass under a heavy slate sky, with a thicket of rust leaved shrubs at the edge. Full length shot at eye level, 50mm lens feel. Flat cool overcast daylight with a faint warm glow on the horizon. Rust, wheat and slate palette, moody painterly finish with soft grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S456",
+      "tab": "sfw",
+      "set": "RustDress",
+      "title": "Turning away mid step",
+      "text": "[trigger] in a moody autumn landscape portrait, turning away mid step through the grass, glancing down over her shoulder. Wearing a long rust red knit maxi dress with wide sleeves. A late autumn prairie of dry tall grass under a heavy slate sky, with a thicket of rust leaved shrubs at the edge. Full length shot at eye level, 50mm lens feel. Flat cool overcast daylight with a faint warm glow on the horizon. Rust, wheat and slate palette, moody painterly finish with soft grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S457",
+      "tab": "sfw",
+      "set": "RustDress",
+      "title": "Branches either side of the face",
+      "text": "[trigger] in a moody autumn landscape portrait, standing among bare branches with both hands raised, gripping thin branches either side of her face. Wearing a long rust red knit maxi dress with wide sleeves. A late autumn prairie of dry tall grass under a heavy slate sky, with a thicket of rust leaved shrubs at the edge. Medium shot at eye level, 50mm lens feel, branches soft in the foreground. Flat cool overcast daylight with a faint warm glow on the horizon. Rust, wheat and slate palette, moody painterly finish with soft grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S458",
+      "tab": "sfw",
+      "set": "RustDress",
+      "title": "Walking out of the thicket",
+      "text": "[trigger] in a moody autumn landscape portrait, walking out of the thicket through the tall grass toward the camera. Wearing a long rust red knit maxi dress with wide sleeves. A late autumn prairie of dry tall grass under a heavy slate sky, with a thicket of rust leaved shrubs at the edge. Wide full length shot at eye level, 35mm lens feel. Flat cool overcast daylight with a faint warm glow on the horizon. Rust, wheat and slate palette, moody painterly finish with soft grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S459",
+      "tab": "sfw",
+      "set": "BeautyClose",
+      "title": "Chin over a bare shoulder",
+      "text": "[trigger] in a beauty portrait, looking back with her chin resting on her bare shoulder, eyes on the lens. Wearing a white ribbed tank top and chunky gold earrings. A plain pale blue gray studio backdrop. Close up at eye level, 85mm lens feel, very shallow depth of field. Soft window light from one side, clean and gentle. Soft blue gray and warm gold palette, clean beauty finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S460",
+      "tab": "sfw",
+      "set": "BeautyClose",
+      "title": "Chin dipped, eyes lowered",
+      "text": "[trigger] in a beauty portrait, dipping her chin with her eyes lowered, a still and dramatic expression. Wearing a simple black top. A plain dark backdrop. Close up at eye level, 85mm lens feel, shallow depth of field. Hard light from directly above carving deep shadows. Black and white with rich tones, fine art film finish with grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S461",
+      "tab": "sfw",
+      "set": "BeautyClose",
+      "title": "Ringed hand at the cheek",
+      "text": "[trigger] in a beauty portrait, pressing one hand with chunky gold rings against her cheek, a steady gaze into the lens. Wearing a black top, chunky gold rings and gold earrings. A deep teal studio backdrop. Close up at eye level, 85mm lens feel, very shallow depth of field. Soft window light from one side, clean and gentle. Soft blue gray and warm gold palette, clean beauty finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S462",
+      "tab": "sfw",
+      "set": "BeautyClose",
+      "title": "Cheek on the arm",
+      "text": "[trigger] in a beauty portrait, lying with her cheek resting on her folded arm, eyes on the lens. Wearing a simple black top. A plain pale backdrop. Close up at eye level, 85mm lens feel, shallow depth of field. Soft window light from one side. Black and white with soft tones, fine art film finish with grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S463",
+      "tab": "sfw",
+      "set": "BeautyClose",
+      "title": "Straight on, red backdrop",
+      "text": "[trigger] in a beauty portrait, facing the camera straight on with a direct, unblinking stare, loose wisps of hair across her face. Wearing a black turtleneck. A deep red studio backdrop. Close up at eye level, 85mm lens feel, shallow depth of field. Soft window light from one side, clean and gentle. Soft blue gray and warm gold palette, clean beauty finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S464",
+      "tab": "sfw",
+      "set": "Cattails",
+      "title": "Arms through the grass",
+      "text": "[trigger] in a soft autumn landscape portrait, sitting in the dry grass with her arms spread out through the stalks, a soft gaze. Wearing an oversized brown wool coat over a rust knit sweater. A marshy lakeshore with dry tall grass and brown cattails, pale water behind. Full length shot at eye level, 35mm lens feel. Soft pale overcast daylight, gentle and even. Brown, wheat and pale blue palette, soft film finish with grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S465",
+      "tab": "sfw",
+      "set": "Cattails",
+      "title": "Lying back in the grass",
+      "text": "[trigger] in a soft autumn landscape portrait, lying back in the dry grass with one knee up and a hand at her collar, looking up. Wearing an oversized brown wool coat over a rust knit sweater. A marshy lakeshore with dry tall grass and brown cattails, pale water behind. Overhead full length shot looking straight down, 35mm lens feel. Soft pale overcast daylight, gentle and even. Brown, wheat and pale blue palette, soft film finish with grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S466",
+      "tab": "sfw",
+      "set": "Cattails",
+      "title": "Coat wrapped by the water",
+      "text": "[trigger] in a soft autumn landscape portrait, standing by the water with the coat wrapped tightly around her, a direct gaze. Wearing an oversized brown wool coat over a rust knit sweater. A marshy lakeshore with dry tall grass and brown cattails, pale water behind. Medium shot at eye level, 50mm lens feel, shallow depth of field. Soft pale overcast daylight, gentle and even. Brown, wheat and pale blue palette, soft film finish with grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S467",
+      "tab": "sfw",
+      "set": "Cattails",
+      "title": "Among the cattails",
+      "text": "[trigger] in a soft autumn landscape portrait, standing among the cattails clutching the coat at her chest, head tilted. Wearing an oversized brown wool coat over a rust knit sweater. A marshy lakeshore with dry tall grass and brown cattails, pale water behind. Medium full shot at eye level, 50mm lens feel. Soft pale overcast daylight, gentle and even. Brown, wheat and pale blue palette, soft film finish with grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "G14",
+      "tab": "suggestive",
+      "set": "BretonStripe",
+      "title": "Arms crossed overhead",
+      "text": "[trigger] in a minimal studio portrait, crossing both arms over her head so the sweater rides up over her midriff, chin down. Wearing an oversized boxy black and white striped sweater and black high waisted briefs, hair in a messy high bun. A gray seamless studio backdrop with a soft gradient. Medium full shot at eye level, 50mm lens feel. Hard side light from one direction with a soft falloff into shadow. Black, white and cool gray palette, crisp editorial film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "G15",
+      "tab": "suggestive",
+      "set": "BretonStripe",
+      "title": "Tugging the hem down",
+      "text": "[trigger] in a minimal studio portrait, tugging the hem of the sweater down with both hands, eyes lowered. Wearing an oversized boxy black and white striped sweater and black high waisted briefs, hair in a messy high bun. A gray seamless studio backdrop with a soft gradient. Medium shot at eye level, 50mm lens feel. Hard side light from one direction with a soft falloff into shadow. Black, white and cool gray palette, crisp editorial film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "G16",
+      "tab": "suggestive",
+      "set": "BretonStripe",
+      "title": "Cuff at the lips",
+      "text": "[trigger] in a minimal studio portrait, holding a sleeve cuff at her lips, gazing off to the side. Wearing an oversized boxy black and white striped sweater and black high waisted briefs, hair in a messy high bun. A gray seamless studio backdrop with a soft gradient. Close up at eye level, 85mm lens feel, shallow depth of field. Hard side light from one direction with a soft falloff into shadow. Black, white and cool gray palette, crisp editorial film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "G17",
+      "tab": "suggestive",
+      "set": "BretonStripe",
+      "title": "Arms looped over the head",
+      "text": "[trigger] in a minimal studio portrait, looping both arms over her head with her eyes closed, head tipped. Wearing an oversized boxy black and white striped sweater and black high waisted briefs, hair in a messy high bun. A gray seamless studio backdrop with a soft gradient. Medium shot at eye level, 50mm lens feel. Hard side light from one direction with a soft falloff into shadow. Black, white and cool gray palette, crisp editorial film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "G18",
+      "tab": "suggestive",
+      "set": "BretonStripe",
+      "title": "Arms folded at the hem",
+      "text": "[trigger] in a minimal studio portrait, folding her arms low at the hem with her head turned aside. Wearing an oversized boxy black and white striped sweater and black high waisted briefs, hair in a messy high bun. A gray seamless studio backdrop with a soft gradient. Medium shot at eye level, 50mm lens feel. Hard side light from one direction with a soft falloff into shadow. Black, white and cool gray palette, crisp editorial film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "G19",
+      "tab": "suggestive",
+      "set": "BretonStripe",
+      "title": "One arm up, laughing",
+      "text": "[trigger] in a minimal studio portrait, raising one arm over her head and laughing, weight on one hip. Wearing an oversized boxy black and white striped sweater and black high waisted briefs, hair in a messy high bun. A gray seamless studio backdrop with a soft gradient. Medium full shot at eye level, 35mm lens feel. Hard side light from one direction with a soft falloff into shadow. Black, white and cool gray palette, crisp editorial film finish with fine grain.",
       "added": "2026-11-24"
     },
     {
