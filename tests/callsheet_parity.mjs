@@ -38,6 +38,7 @@ for (let i = 0; i < 600; i++) {
   if (rnd() < .15) st.outfitOverrides = [f.id];
   if (rnd() < .15) st.sceneOverrides = [f.id];
   if (rnd() < .05) st.edits = { [f.id]: "[trigger] standing by a window, one hand on the frame. Wearing a white tee. A bright kitchen behind her. Medium shot at eye level. Soft daylight." };
+  if (rnd() < .08) st.finals = { [f.id]: "  ohwx woman leaning on a balcony rail, laughing, one hand in her hair. Wearing a red slip dress. Night city lights behind her.  ", other: "ignored" };
   const trigger = rnd() < .5 ? "" : "ohwx woman", style = rnd() > .2;
   cases.push({ frame: frameKey(f), trigger, style, studio: JSON.stringify(st), expect: shotOf(env, f, st, { trigger, style }).text });
 }

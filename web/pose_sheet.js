@@ -613,7 +613,7 @@ function addCallSheetCard(nodeType) {
       const ctx = studioCtx(node);
       if (f) {
         const shot = shotOf(studioEnv, f, st, { trigger: ctx.trigger(), style: ctx.style(), wired });
-        const ed = st.edits && st.edits[f.id];
+        const ed = (st.edits && st.edits[f.id]) || shot.final;
         face.innerHTML = `${thumbHTML(f, thumbs)}<span class="kpn-text"><span class="kpn-title"><span class="kps-no">${frameNo(f.id)}</span> ${esc(f.title)}${ed ? ' <span class="kps-badge kps-upd">Edited</span>' : ""}</span>
           <span class="kpg-set">${esc(data.tabs.find(t => t.id === f.tab)?.name || "")} · ${esc(data.sets[f.set] || "")}${ctx.mode() !== "single frame" ? " · " + esc(ctx.mode()) : ""}</span><span class="kpn-snip">${esc(shot.text)}</span></span>`;
       } else face.innerHTML = `<span class="kpn-text"><span class="kpn-title">Pick a frame</span></span>`;

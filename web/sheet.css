@@ -648,6 +648,9 @@
 .kst-seg:not(.kst-l-frame) { color: var(--q-ink); text-decoration: underline; text-decoration-color: var(--lc); text-decoration-thickness: 2px; text-underline-offset: 4px; }
 .kst-pbar { display: flex; align-items: center; gap: 8px; min-height: 28px; }
 .kst-pnote { font-size: 12px; }
+.kst-pbox { width: 100%; box-sizing: border-box; min-height: 96px; max-height: 220px; resize: vertical; padding: 8px 10px; border-radius: 8px; border: 1px solid var(--q-line2); background: rgba(0,0,0,.25); color: var(--q-ink); font: 13px/1.6 var(--q-sans); outline: none; }
+.kst-pbox:focus { border-color: var(--q-accent); }
+.kst-pedit { display: inline-flex; gap: 4px; margin-left: auto; }
 
 .kst-gear-wrap, .kst-saved-wrap { position: relative; }
 .kst-menu { position: absolute; top: calc(100% + 6px); right: 0; z-index: 5; width: 300px; padding: 10px; border-radius: 12px; background: #151518; box-shadow: 0 0 0 1px var(--q-line2), 0 16px 40px rgba(0,0,0,.5); display: flex; flex-direction: column; gap: 4px; }

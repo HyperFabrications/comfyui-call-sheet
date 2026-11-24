@@ -68,6 +68,9 @@ export function shotOf(env, frame, st, { trigger = "", style = true, wired = {} 
   if (L.outfit && env.outfits) { const [t, ch] = withOutfit(env.outfits, f, L.outfit, st.outfitOverrides || []); if (ch) { f = { ...f, text: t, bare: undefined }; applied.outfit = true; } }
   if (L.scene && env.scenes) { const [t, ch] = withScene(env.scenes, f, L.scene, st.sceneOverrides || []); if (ch) { f = { ...f, text: t, bare: undefined }; applied.scene = true; } }
   const text = promptFor(f, { trigger, person: L.person, style, camera: L.camera });
+  // Your own edit of the finished prompt wins until you reset it.
+  const fin = st.finals && typeof st.finals[frame.id] === "string" ? st.finals[frame.id].trim() : "";
+  if (fin) return { text: fin, built: text, marks: [], layers: L, applied, final: true };
   const marks = [];
   if (L.person) marks.push(["person", L.person]);
   if (applied.outfit) marks.push(["outfit", outfitText(L.outfit)]);
@@ -153,7 +156,7 @@ export function openStudio({ env, ctx, tab = "frame" }) {
       <section class="kst-mid"></section>
       <aside class="kst-side"></aside>
     </div>
-    <footer class="kst-prompt"><div class="kst-ptext"></div><div class="kst-pbar"><span class="kq-dim kst-pnote"></span><span class="kq-grow"></span><button type="button" class="kq-ghost kq-tight" data-x="copy">${ICON.copy}<span>Copy</span></button></div></footer>
+    <footer class="kst-prompt"><div class="kst-ptext"></div><div class="kst-pbar"><span class="kq-dim kst-pnote"></span><span class="kq-grow"></span><span class="kst-pedit"></span><button type="button" class="kq-ghost kq-tight" data-x="copy">${ICON.copy}<span>Copy</span></button></div></footer>
   </div>`;
   document.body.appendChild(el);
   const q = s => el.querySelector(s);
@@ -479,6 +482,16 @@ export function openStudio({ env, ctx, tab = "frame" }) {
     const f = ctx.frame();
     if (!f) { q(".kst-ptext").textContent = "Pick a frame to see the prompt."; q(".kst-pnote").textContent = ""; return; }
     const r = shotOf(env, f, st.s, { trigger: ctx.trigger(), style: ctx.style(), wired: wired() });
+    if (st.editing === f.id) {
+      q(".kst-ptext").innerHTML = `<textarea class="kst-pbox" aria-label="Edit the finished prompt" spellcheck="true">${esc(r.text)}</textarea>`;
+      q(".kst-pedit").innerHTML = `<button type="button" class="kq-ghost kq-tight" data-x="pcancel">Cancel</button><button type="button" class="kq-primary kq-sm" data-x="psave">Save</button>`;
+      q(".kst-pnote").textContent = "Edit the finished prompt. The node uses your words for this frame.";
+      q(".kst-prompt").dataset.text = r.text;
+      const box = q(".kst-pbox"); box.focus(); box.setSelectionRange(box.value.length, box.value.length);
+      return;
+    }
+    q(".kst-pedit").innerHTML = r.final ? `<button type="button" class="kq-ghost kq-tight" data-x="pedit">Edit</button><button type="button" class="kq-ghost kq-tight" data-x="preset">Reset</button>`
+      : `<button type="button" class="kq-ghost kq-tight" data-x="pedit">Edit</button>`;
     q(".kst-ptext").innerHTML = st.settings.colors ? markHTML(r.text, r.marks) : esc(r.text);
     q(".kst-ptext").classList.toggle("no-colors", !st.settings.colors);
     const lines = env.poseLines || {}, inRun = x => !st.s.poseOnly || lines[x.id] || x.id === f.id;
@@ -487,6 +500,7 @@ export function openStudio({ env, ctx, tab = "frame" }) {
     if (n > 1) notes.push(`This frame, and ${n - 1} more in the ${mode === "whole set" ? "set" : "tab"}.`);
     if (r.layers.outfit && r.layers.outfit.on && r.layers.outfit.pieces.length && !r.applied.outfit) notes.push("This frame keeps its own clothes.");
     if (r.layers.scene && r.layers.scene.on && !r.applied.scene) notes.push("This frame keeps its own location.");
+    if (r.final) notes.unshift("Your edited prompt. Reset brings back the built one.");
     q(".kst-pnote").textContent = notes.join(" ");
     q(".kst-prompt").dataset.text = r.text;
   }
@@ -620,6 +634,19 @@ export function openStudio({ env, ctx, tab = "frame" }) {
     if (x === "close" || x === "done") return close();
     if (x === "gear") { const m = q(".kst-menu"); m.hidden = !m.hidden; t.closest("button").setAttribute("aria-expanded", String(!m.hidden)); if (!m.hidden) settingsHTML(); return; }
     if (x === "saved") { st.savedOpen = !st.savedOpen; savedHTML(); return; }
+    if (x === "pedit") { st.editing = ctx.frame()?.id || null; promptHTML(); return; }
+    if (x === "pcancel") { st.editing = null; promptHTML(); return; }
+    if (x === "psave" || x === "preset") {
+      const f = ctx.frame(); if (!f) return;
+      const box = q(".kst-pbox"), txt = x === "psave" && box ? box.value.trim() : "";
+      st.editing = null;
+      const finals = { ...(st.s.finals || {}) };
+      delete finals[f.id];
+      const built = shotOf(env, f, { ...st.s, finals }, { trigger: ctx.trigger(), style: ctx.style(), wired: wired() }).text;
+      if (txt && txt !== built) finals[f.id] = txt;
+      st.s.finals = finals;
+      return changed();
+    }
     if (x === "copy") { const txt = q(".kst-prompt").dataset.text || ""; navigator.clipboard?.writeText(txt).then(() => { const s = q('[data-x="copy"] span'); s.textContent = "Copied"; setTimeout(() => s.textContent = "Copy", 1400); }, () => {}); return; }
     if (x === "reset") {
       if (st.layer === "frame") { if (st.s.edits) delete st.s.edits[ctx.frame()?.id]; }
