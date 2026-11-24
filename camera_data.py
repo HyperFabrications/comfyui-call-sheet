@@ -13,11 +13,11 @@ except ImportError:  # run as a plain module (tests)
 
 DATA_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "web", "cameras.json")
 
-CAM = re.compile(r"\b(shot|lens|close[- ]?up|top down|eye level|depth of field|full length|low angle|high angle|from above|from below|framing|framed)\b", re.I)
+CAM = re.compile(r"\b(shot|lens|close[- ]?up|top down|eye level|depth of field|full length|low angle|high angle|from above|from below|framing|framed(?=\s+(?:from|tight|tightly|wide|close|low|high|at)\b))\b", re.I)
 LENS = re.compile(r"\b(\d+\s?mm|lens|phone camera look|deep focus|depth of field|background blur|focus falloff|bokeh)\b", re.I)
 FIN = re.compile(r"\b(grain|grainy|film|finish|grade|grading|matte|print border)\b", re.I)
 FLASH = re.compile(r"\bflash\b", re.I)
-LIGHTW = re.compile(r"\b(light|lights|daylight|lit|lighting|flash|glow|glowing|sunlight|sun|shadow|shadows|backlit|backlight|lamp|lamps|neon|candlelight|highlights|overcast|sky|rim)\b", re.I)
+LIGHTW = re.compile(r"\b(light|lights|daylight|lit|lighting|flash|glow|glowing|sunlight|sun|shadow|shadows|backlit|backlight|lamp|lamps|neon|candlelight|highlights|overcast|sky|rim|spotlight|softbox)\b", re.I)
 COLOR = re.compile(r"\b(red|brick|camel|amber|charcoal|evergreen|ivory|cream|rust|navy|sage|stone|olive|honey|gold|golden|blush|peach|burgundy|emerald|slate|oatmeal|mint|copper|tawny|white|black|gray|grey|brown|pink|blue|green|teal|beige|tan|sand|ochre|mustard|coral|lilac|lavender|plum|wine|umber|brass|bronze|silver|yellow|orange|purple|violet|magenta|cyan|crimson|scarlet|maroon|khaki|taupe|mauve|rose|denim|chocolate|caramel|terracotta|turquoise|indigo|lemon|lime|ink)s?$", re.I)
 PAL = re.compile(r"\b(palette|tones|colou?rs?|monochrome|black and white|sepia)\b", re.I)
 REAL = re.compile(r"\b(photo|photograph|photographic|photorealistic|realistic|real|skin texture)\b", re.I)
@@ -211,11 +211,14 @@ def apply(text, p):
                 kept = kept + [p["frame"]]
             s[c] = _cap(", ".join(kept)) + "."
         at = c + 1
+        # The camera's own light (its flash) takes over from the frame's or the scene's light line.
         if p["light"] and not any(FLASH.search(x) for x in s[c + 1:]):
+            _swap(s, c, prot, lambda b: LIGHTW.search(b) and not PAL.search(b), "")
             s.insert(at, p["light"])
             guard(p["light"])
             at += 1
-        if p["lookLight"]:
+        # A camera that brings its own flash keeps it: the look gives its color, not a second light.
+        if p["lookLight"] and not p["light"]:
             _swap(s, c, prot, lambda b: LIGHTW.search(b) and not PAL.search(b), "")
             s.insert(at, p["lookLight"])
             guard(p["lookLight"])
@@ -227,6 +230,20 @@ def apply(text, p):
             s.append(_cap(p["finish"]) + ".")
         if p["flaws"]:
             s.append(p["flaws"])
+        # Say each finish word once ("fine grain" from both the camera and the look).
+        seen = set()
+        i = c + 1
+        while i < len(s):
+            kept = []
+            for b in _bits(s[i]):
+                if b.lower() not in seen:
+                    seen.add(b.lower())
+                    kept.append(b)
+            if kept:
+                s[i] = _cap(", ".join(kept)) + "."
+                i += 1
+            else:
+                s.pop(i)
     if p["skin"]:
         s.append(p["skin"])
     return " ".join(s)

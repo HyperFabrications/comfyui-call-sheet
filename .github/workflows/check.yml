@@ -35,3 +35,5 @@ jobs:
         run: node tests/callsheet_parity.mjs
       - name: Prompt list import
         run: node tests/custom_import.mjs
+      - name: Full prompts follow the Krea 2 order
+        run: node tests/krea_structure.mjs

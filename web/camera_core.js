@@ -4,11 +4,11 @@
 // (tests/camera_parity.mjs checks them).
 import { split } from "./scene_core.js";
 
-const CAM = /\b(shot|lens|close[- ]?up|top down|eye level|depth of field|full length|low angle|high angle|from above|from below|framing|framed)\b/i;
+const CAM = /\b(shot|lens|close[- ]?up|top down|eye level|depth of field|full length|low angle|high angle|from above|from below|framing|framed(?=\s+(?:from|tight|tightly|wide|close|low|high|at)\b))\b/i;
 const LENS = /\b(\d+\s?mm|lens|phone camera look|deep focus|depth of field|background blur|focus falloff|bokeh)\b/i;
 const FIN = /\b(grain|grainy|film|finish|grade|grading|matte|print border)\b/i;
 const FLASH = /\bflash\b/i;
-const LIGHTW = /\b(light|lights|daylight|lit|lighting|flash|glow|glowing|sunlight|sun|shadow|shadows|backlit|backlight|lamp|lamps|neon|candlelight|highlights|overcast|sky|rim)\b/i;
+const LIGHTW = /\b(light|lights|daylight|lit|lighting|flash|glow|glowing|sunlight|sun|shadow|shadows|backlit|backlight|lamp|lamps|neon|candlelight|highlights|overcast|sky|rim|spotlight|softbox)\b/i;
 const COLOR = /\b(red|brick|camel|amber|charcoal|evergreen|ivory|cream|rust|navy|sage|stone|olive|honey|gold|golden|blush|peach|burgundy|emerald|slate|oatmeal|mint|copper|tawny|white|black|gray|grey|brown|pink|blue|green|teal|beige|tan|sand|ochre|mustard|coral|lilac|lavender|plum|wine|umber|brass|bronze|silver|yellow|orange|purple|violet|magenta|cyan|crimson|scarlet|maroon|khaki|taupe|mauve|rose|denim|chocolate|caramel|terracotta|turquoise|indigo|lemon|lime|ink)s?$/i;
 const PAL = /\b(palette|tones|colou?rs?|monochrome|black and white|sepia)\b/i;
 const REAL = /\b(photo|photograph|photographic|photorealistic|realistic|real|skin texture)\b/i;
@@ -129,8 +129,10 @@ export function apply(text, p) {
       s[c] = cap(kept.join(", ")) + ".";
     }
     let at = c + 1;
-    if (p.light && !s.slice(c + 1).some(x => FLASH.test(x))) { s.splice(at, 0, p.light); guard(p.light); at++; }
-    if (p.lookLight) {
+    // The camera's own light (its flash) takes over from the frame's or the scene's light line.
+    if (p.light && !s.slice(c + 1).some(x => FLASH.test(x))) { swap(s, c, prot, b => LIGHTW.test(b) && !PAL.test(b), ""); s.splice(at, 0, p.light); guard(p.light); at++; }
+    // A camera that brings its own flash keeps it: the look gives its color, not a second light.
+    if (p.lookLight && !p.light) {
       swap(s, c, prot, b => LIGHTW.test(b) && !PAL.test(b), "");
       s.splice(at, 0, p.lookLight); guard(p.lookLight);
     }
@@ -140,6 +142,12 @@ export function apply(text, p) {
     }
     if (p.cam && !swap(s, c, prot, b => FIN.test(b), p.finish)) s.push(cap(p.finish) + ".");
     if (p.flaws) s.push(p.flaws);
+    // Say each finish word once ("fine grain" from both the camera and the look).
+    const seen = new Set();
+    for (let i = c + 1; i < s.length; i++) {
+      const kept = bitsOf(s[i]).filter(b => { const k = b.toLowerCase(); if (seen.has(k)) return false; seen.add(k); return true; });
+      if (!kept.length) { s.splice(i, 1); i--; } else s[i] = cap(kept.join(", ")) + ".";
+    }
   }
   if (p.skin) s.push(p.skin);
   return s.join(" ");
