@@ -69,14 +69,16 @@ except (OSError, json.JSONDecodeError) as e:
     errors.append(f"outfits.json could not be read: {e}")
 
 # Privacy: the repo is public, so no links to real people's social posts, local paths or PC names.
-PRIVATE_LINK = re.compile(r"https?://(?:[a-z0-9-]+\.)*(?:instagram\.com|instagr\.am|facebook\.com|tiktok\.com|threads\.net|x\.com|twitter\.com|pinterest\.[a-z.]+|reddit\.com|onlyfans\.com|patreon\.com)\b", re.I)
+PRIVATE_LINK = re.compile(r"(?:https?://)?(?:[a-z0-9-]+\.)*(?<![a-z0-9-])(?:instagram\.com|instagr\.am|facebook\.com|tiktok\.com|threads\.net|x\.com|twitter\.com|pinterest\.[a-z.]+|reddit\.com|onlyfans\.com|patreon\.com)\b", re.I)
+# A post path like /p/Df9jrzejOo2 or /reel/... is a social post even without the host.
+POST_PATH = re.compile(r"/(?:p|reel|reels|tv|stories)/[A-Za-z0-9_-]{8,}")
 LOCAL_BITS = re.compile(r"file:///|(?<![A-Za-z])[A-Za-z]:\\\\|/home/[a-z]|/Users/[A-Za-z]|\bDESKTOP-[A-Z0-9]{5,}\b|\b(?:ghp|gho|github_pat|sk|hf)_[A-Za-z0-9_]{16,}")
 root = path.parent.parent
 for f in sorted(list(root.glob("*.py")) + list(root.glob("*.toml")) + list(root.glob("*.md")) + list((root / "web").glob("*")) + list((root / "site").glob("*")) + list((root / "scripts").glob("*")) + [f for f in (root / "docs").rglob("*") if f.suffix in (".md", ".txt", ".html")]):
     if not f.is_file() or f.name == "validate.py":
         continue
     body = f.read_text(encoding="utf-8", errors="ignore")
-    for rx, what in ((PRIVATE_LINK, "a link to a social media post"), (LOCAL_BITS, "a local path, PC name or key")):
+    for rx, what in ((PRIVATE_LINK, "a link to a social media post"), (POST_PATH, "a social media post path"), (LOCAL_BITS, "a local path, PC name or key")):
         m = rx.search(body)
         if m:
             line = body.count("\n", 0, m.start()) + 1

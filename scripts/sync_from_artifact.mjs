@@ -18,7 +18,8 @@ const o = ctx.__out;
 const keys = ["id", "tab", "set", "title", "text", "bare", "note", "src", "ex", "added", "upd"];
 // Links to social media posts point at real people, so they stay in the artifact and never ship in the plugin.
 const PRIVATE_HOST = /(^|\.)(instagram\.com|instagr\.am|facebook\.com|tiktok\.com|threads\.net|x\.com|twitter\.com|pinterest\.[a-z.]+|reddit\.com|onlyfans\.com|patreon\.com)$/i;
-const isPrivateLink = u => { try { return PRIVATE_HOST.test(new URL(u).hostname); } catch (e) { return false; } };
+// Only a full web address on a public site ships. A bare post code or a link without https:// is dropped too.
+const isPrivateLink = u => { try { const x = new URL(u); return !/^https?:$/.test(x.protocol) || PRIVATE_HOST.test(x.hostname); } catch (e) { return true; } };
 const frames = o.DATA.map(d => Object.fromEntries(keys.filter(k => d[k] !== undefined && !((k === "src" || k === "ex") && isPrivateLink(d[k]))).map(k => [k, d[k]])));
 const tabs = Object.keys(o.TABNAME).map(id => ({ id, name: o.TABNAME[id], sets: o.ORDER[id] }));
 // Traits that only the plugin has (like Age) are kept, at the end, so the Person node's dropdowns keep their order.
