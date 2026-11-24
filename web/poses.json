@@ -4,6 +4,10 @@
   "changelog": [
     {
       "date": "2026-11-24",
+      "text": "43 new frames from reference carousels in 6 new sets: 37 SFW and 6 Suggestive."
+    },
+    {
+      "date": "2026-11-24",
       "text": "10 new remixes in Made By Claude: a pose from one set moved into the setting of another. Each card says which two it mixes."
     },
     {
@@ -186,7 +190,12 @@
         "BeautyClose",
         "Cattails",
         "VintageFlat",
-        "StudioPortrait"
+        "StudioPortrait",
+        "WoodFloor",
+        "UnderTheBridge",
+        "Candlelight",
+        "TowerBlocks",
+        "LaceScarf"
       ]
     },
     {
@@ -200,7 +209,8 @@
         "StairwellS",
         "SunStripes",
         "SheerChiffon",
-        "BretonStripe"
+        "BretonStripe",
+        "BlackCoat"
       ]
     },
     {
@@ -231,6 +241,12 @@
     }
   ],
   "sets": {
+    "WoodFloor": "Wood floor",
+    "UnderTheBridge": "Under the bridge",
+    "Candlelight": "Candlelight",
+    "TowerBlocks": "Tower blocks",
+    "LaceScarf": "Lace scarf",
+    "BlackCoat": "Black coat",
     "WindAndClothB": "Wind and cloth",
     "VintageFlat": "Vintage flat",
     "StudioPortrait": "Gray studio portrait",
@@ -6189,6 +6205,350 @@
       "title": "Leaning on one arm in teal light",
       "text": "[trigger] in a moody boudoir photo, sitting on the floor with her legs folded to one side, leaning on one straight arm, head tilted toward the light. Wearing a black long sleeve bodysuit and sheer black tights. A dark seamless studio with a black backdrop and a floor washed in teal green light. Full length shot from a low angle, 35mm lens feel. Dramatic side light with a teal rim light and deep shadows. Black, deep teal and warm amber palette, mysterious cinematic fine art finish with fine grain.",
       "note": "Remix of the Swivel chair floor pose (78) and the Lace blindfold studio (92). The teal floor glow turns a simple seated pose dramatic.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S481",
+      "tab": "sfw",
+      "set": "WoodFloor",
+      "title": "Head back against the chair seat",
+      "text": "[trigger] in a quiet movement study, kneeling on the floor and leaning back against the seat of a mustard chair, head tipped back over the edge, eyes closed. Wearing a fitted white ribbed tank top and loose white linen trousers, barefoot. A bare studio room with dark worn wooden floorboards, a pale wall, an old radiator and a tall window. Medium shot at floor level, 35mm lens feel. Soft overcast daylight from the window, low and gentle with deep shadows across the floor. Muted brown, cream and gray palette, quiet natural film finish with soft grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S482",
+      "tab": "sfw",
+      "set": "WoodFloor",
+      "title": "Folded forward from above",
+      "text": "[trigger] in a quiet movement study, kneeling folded forward over her knees with her forehead low and both hands holding her shoulders. Wearing a fitted white ribbed tank top and loose white linen trousers, barefoot. A bare studio room with dark worn wooden floorboards, a pale wall, an old radiator and a tall window. Top down shot from directly above, 35mm lens feel. Soft overcast daylight from the window, low and gentle with deep shadows across the floor. Muted brown, cream and gray palette, quiet natural film finish with soft grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S483",
+      "tab": "sfw",
+      "set": "WoodFloor",
+      "title": "Flat on the floorboards",
+      "text": "[trigger] in a quiet movement study, lying flat on her back on the floorboards with both hands resting at her collarbone, eyes on the lens. Wearing a fitted white ribbed tank top and loose white linen trousers, barefoot. A bare studio room with dark worn wooden floorboards, a pale wall, an old radiator and a tall window. Full length shot from directly overhead, 35mm lens feel. Soft overcast daylight from the window, low and gentle with deep shadows across the floor. Muted brown, cream and gray palette, quiet natural film finish with soft grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S484",
+      "tab": "sfw",
+      "set": "WoodFloor",
+      "title": "Arm overhead, face to the ceiling",
+      "text": "[trigger] in a quiet movement study, lying back on the floor with one arm folded above her head, chin lifted and face turned up toward the ceiling. Wearing a fitted white ribbed tank top and loose white linen trousers, barefoot. A bare studio room with dark worn wooden floorboards, a pale wall, an old radiator and a tall window. Close up from just above, 50mm lens feel, shallow depth of field. Soft overcast daylight from the window, low and gentle with deep shadows across the floor. Muted brown, cream and gray palette, quiet natural film finish with soft grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S485",
+      "tab": "sfw",
+      "set": "WoodFloor",
+      "title": "Leaning back on her hands by the radiator",
+      "text": "[trigger] in a quiet movement study, sitting on the floor and leaning back on both hands, chest lifted and head tipped back, eyes half closed. Wearing a fitted white ribbed tank top and loose white linen trousers, barefoot. A bare studio room with dark worn wooden floorboards, a pale wall, an old radiator and a tall window. Medium full shot at floor level, 35mm lens feel. Soft overcast daylight from the window, low and gentle with deep shadows across the floor. Muted brown, cream and gray palette, quiet natural film finish with soft grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S486",
+      "tab": "sfw",
+      "set": "WoodFloor",
+      "title": "Stretched out on her side",
+      "text": "[trigger] in a quiet movement study, lying on her side on the floorboards with both arms stretched out past her head, hair spilling across the wood. Wearing a fitted white ribbed tank top and loose white linen trousers, barefoot. A bare studio room with dark worn wooden floorboards, a pale wall, an old radiator and a tall window. Full length shot from directly above, 35mm lens feel. Soft overcast daylight from the window, low and gentle with deep shadows across the floor. Muted brown, cream and gray palette, quiet natural film finish with soft grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S487",
+      "tab": "sfw",
+      "set": "WoodFloor",
+      "title": "Hugging knees in the leather armchair",
+      "text": "[trigger] in a quiet movement study, sitting curled in a black leather armchair with her arms wrapped around her knees, gazing up and away. Wearing a fitted white ribbed tank top and loose white linen trousers, barefoot. A dim corner with a deep olive green wall and dark wooden floorboards. Full length shot at eye level, 35mm lens feel. Soft overcast daylight from the window, low and gentle with deep shadows across the floor. Muted brown, cream and gray palette, quiet natural film finish with soft grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S488",
+      "tab": "sfw",
+      "set": "UnderTheBridge",
+      "title": "Under the girders, eyes on the lens",
+      "text": "[trigger] in a moody cinematic portrait, standing still under the bridge girders with her arms loose at her sides, a calm, direct gaze into the lens. Wearing a long loose olive green knit dress with long sleeves. The underside of a huge steel river bridge with heavy concrete pillars, dark water and a gray overcast sky. Medium full shot at eye level, 28mm lens feel, the girders leading into the distance. Flat overcast daylight, cool and soft, with no direct sun. Deep teal, olive and steel gray palette, cinematic film finish with lifted blacks and grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S489",
+      "tab": "sfw",
+      "set": "UnderTheBridge",
+      "title": "Peering past the pillar",
+      "text": "[trigger] in a moody cinematic portrait, standing in profile beside a steel pillar, chin lifted, looking past it out over the water. Wearing a long loose olive green knit dress with long sleeves. The underside of a huge steel river bridge with heavy concrete pillars, dark water and a gray overcast sky. Medium shot at eye level, 35mm lens feel, the pillar soft in the foreground. Flat overcast daylight, cool and soft, with no direct sun. Deep teal, olive and steel gray palette, cinematic film finish with lifted blacks and grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S490",
+      "tab": "sfw",
+      "set": "UnderTheBridge",
+      "title": "Hand high on the pillar",
+      "text": "[trigger] in a moody cinematic portrait, leaning against a concrete pillar with one hand raised high on it, head tipped back. Wearing a long loose olive green knit dress with long sleeves. The underside of a huge steel river bridge with heavy concrete pillars, dark water and a gray overcast sky. Full length shot from a low angle, 28mm lens feel. Flat overcast daylight, cool and soft, with no direct sun. Deep teal, olive and steel gray palette, cinematic film finish with lifted blacks and grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S491",
+      "tab": "sfw",
+      "set": "UnderTheBridge",
+      "title": "Wide angle, hand at the cheek",
+      "text": "[trigger] in a moody cinematic portrait, leaning toward the lens with her head tilted and one hand pressed to her cheek, a soft, wary gaze. Wearing a long loose olive green knit dress with long sleeves. The underside of a huge steel river bridge with heavy concrete pillars, dark water and a gray overcast sky. Close up from slightly above, 24mm lens feel, wide angle distortion. Flat overcast daylight, cool and soft, with no direct sun. Deep teal, olive and steel gray palette, cinematic film finish with lifted blacks and grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S492",
+      "tab": "sfw",
+      "set": "UnderTheBridge",
+      "title": "Seated on the river steps, chin on hand",
+      "text": "[trigger] in a moody cinematic portrait, sitting on worn concrete steps beside an iron handrail with her chin resting on her hand, looking off to the side. Wearing a long loose olive green knit dress with long sleeves. Worn concrete river steps under a bridge with an iron handrail and a stained wall. Full length shot from a low angle, 35mm lens feel. Flat overcast daylight, cool and soft, with no direct sun. Deep teal, olive and steel gray palette, cinematic film finish with lifted blacks and grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S493",
+      "tab": "sfw",
+      "set": "Candlelight",
+      "title": "Pearls at the lips",
+      "text": "[trigger] in a candlelit baroque portrait, holding a strand of pearls up to her lips with one hand, eyes lowered. Wearing a cream ruffled poet blouse with long full sleeves, a long ivory silk skirt and a long strand of pearls. A dark set draped in crumpled brown fabric, with dozens of lit pillar candles and an old fallen chandelier on the floor. Close up at eye level, 85mm lens feel, shallow depth of field. Warm candlelight with a soft dim key from one side, deep shadows around her. Warm brown, cream and amber palette, painterly film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S494",
+      "tab": "sfw",
+      "set": "Candlelight",
+      "title": "Circled by candles from above",
+      "text": "[trigger] in a candlelit baroque portrait, sitting on the draped floor surrounded by small lit candles, hands in her lap, looking up. Wearing a cream ruffled poet blouse with long full sleeves, a long ivory silk skirt and a long strand of pearls. A dark set draped in crumpled brown fabric, with dozens of lit pillar candles and an old fallen chandelier on the floor. Full length shot from high above, 35mm lens feel. Warm candlelight with a soft dim key from one side, deep shadows around her. Warm brown, cream and amber palette, painterly film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S495",
+      "tab": "sfw",
+      "set": "Candlelight",
+      "title": "Hand at the pearls, gaze away",
+      "text": "[trigger] in a candlelit baroque portrait, turning her face away with one hand resting on the pearls at her neck, lips softly parted. Wearing a cream ruffled poet blouse with long full sleeves, a long ivory silk skirt and a long strand of pearls. A dark set draped in crumpled brown fabric, with dozens of lit pillar candles and an old fallen chandelier on the floor. Close up at eye level, 85mm lens feel, shallow depth of field. Warm candlelight with a soft dim key from one side, deep shadows around her. Warm brown, cream and amber palette, painterly film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S496",
+      "tab": "sfw",
+      "set": "Candlelight",
+      "title": "Behind the fallen chandelier",
+      "text": "[trigger] in a candlelit baroque portrait, sitting behind a fallen white chandelier with one hand resting on its arms, a steady gaze over it. Wearing a cream ruffled poet blouse with long full sleeves, a long ivory silk skirt and a long strand of pearls. A dark set draped in crumpled brown fabric, with dozens of lit pillar candles and an old fallen chandelier on the floor. Medium shot at floor level, 50mm lens feel. Warm candlelight with a soft dim key from one side, deep shadows around her. Warm brown, cream and amber palette, painterly film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S497",
+      "tab": "sfw",
+      "set": "Candlelight",
+      "title": "Candles in the foreground",
+      "text": "[trigger] in a candlelit baroque portrait, sitting low behind a row of lit candles, looking off past the lens. Wearing a cream ruffled poet blouse with long full sleeves, a long ivory silk skirt and a long strand of pearls. A dark set draped in crumpled brown fabric, with dozens of lit pillar candles and an old fallen chandelier on the floor. Medium close shot at eye level, 50mm lens feel, candle flames soft in the foreground. Warm candlelight with a soft dim key from one side, deep shadows around her. Warm brown, cream and amber palette, painterly film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S498",
+      "tab": "sfw",
+      "set": "Candlelight",
+      "title": "Holding the candelabra",
+      "text": "[trigger] in a candlelit baroque portrait, sitting cross legged on the floor holding a lit silver candelabra upright in front of her. Wearing a cream ruffled poet blouse with long full sleeves, a long ivory silk skirt and a long strand of pearls. A dark set draped in crumpled brown fabric, with dozens of lit pillar candles and an old fallen chandelier on the floor. Full length shot at eye level, 35mm lens feel. Warm candlelight with a soft dim key from one side, deep shadows around her. Warm brown, cream and amber palette, painterly film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S499",
+      "tab": "sfw",
+      "set": "Candlelight",
+      "title": "Hands framing the face",
+      "text": "[trigger] in a candlelit baroque portrait, cupping her face lightly in both hands, head tilted, a soft direct gaze. Wearing a cream ruffled poet blouse with long full sleeves, a long ivory silk skirt and a long strand of pearls. A dark set draped in crumpled brown fabric, with dozens of lit pillar candles and an old fallen chandelier on the floor. Close up at eye level, 85mm lens feel, very shallow depth of field. Warm candlelight with a soft dim key from one side, deep shadows around her. Warm brown, cream and amber palette, painterly film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S500",
+      "tab": "sfw",
+      "set": "Candlelight",
+      "title": "Perched beneath the chandelier",
+      "text": "[trigger] in a candlelit baroque portrait, perched on a low stool beneath a hanging chandelier with her legs crossed and one arm draped over her knee. Wearing a cream ruffled poet blouse with long full sleeves, a long ivory silk skirt and a long strand of pearls. A dark set draped in crumpled brown fabric, with dozens of lit pillar candles and an old fallen chandelier on the floor. Full length shot at eye level, 35mm lens feel. Warm candlelight with a soft dim key from one side, deep shadows around her. Warm brown, cream and amber palette, painterly film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "G20",
+      "tab": "suggestive",
+      "set": "BlackCoat",
+      "title": "Bare back, glance over the shoulder",
+      "text": "[trigger] in an intimate fashion study, standing with her back to the lens, the coat slipped low down her back, glancing back over one shoulder. Wearing only an oversized long black wool coat slipped down off her shoulders, with black pointed heels. A plain dusty mauve gray seamless backdrop with a soft gradient. Medium shot at eye level, 50mm lens feel. Soft diffused key light from the front with a gentle falloff into the backdrop. Dusty mauve, gray and black palette, faded vintage film finish with soft grain and a slight haze.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "G21",
+      "tab": "suggestive",
+      "set": "BlackCoat",
+      "title": "Reclined on the floor, legs long",
+      "text": "[trigger] in an intimate fashion study, reclining on the floor propped on one elbow with her legs stretched long and the coat pooled around her, gazing away. Wearing only an oversized long black wool coat slipped down off her shoulders, with black pointed heels. A plain dusty mauve gray seamless backdrop with a soft gradient. Full length shot at floor level, 35mm lens feel. Soft diffused key light from the front with a gentle falloff into the backdrop. Dusty mauve, gray and black palette, faded vintage film finish with soft grain and a slight haze.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "G22",
+      "tab": "suggestive",
+      "set": "BlackCoat",
+      "title": "Stepping through the slit",
+      "text": "[trigger] in an intimate fashion study, standing with her back turned and one leg stepping forward through the coat's open front, ponytail high. Wearing only an oversized long black wool coat slipped down off her shoulders, with black pointed heels. A plain dusty mauve gray seamless backdrop with a soft gradient. Full length shot at eye level, 35mm lens feel. Soft diffused key light from the front with a gentle falloff into the backdrop. Dusty mauve, gray and black palette, faded vintage film finish with soft grain and a slight haze.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "G23",
+      "tab": "suggestive",
+      "set": "BlackCoat",
+      "title": "Sitting with knees up",
+      "text": "[trigger] in an intimate fashion study, sitting on the floor with her knees drawn up and the coat falling open at her shoulders, head bowed. Wearing only an oversized long black wool coat slipped down off her shoulders, with black pointed heels. A plain dusty mauve gray seamless backdrop with a soft gradient. Full length shot at eye level, 35mm lens feel. Soft diffused key light from the front with a gentle falloff into the backdrop. Dusty mauve, gray and black palette, faded vintage film finish with soft grain and a slight haze.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "G24",
+      "tab": "suggestive",
+      "set": "BlackCoat",
+      "title": "Coat clutched to the chest",
+      "text": "[trigger] in an intimate fashion study, holding the coat closed against her chest with both hands, head turned down in profile. Wearing only an oversized long black wool coat slipped down off her shoulders, with black pointed heels. A plain dusty mauve gray seamless backdrop with a soft gradient. Medium shot at eye level, 85mm lens feel, shallow depth of field. Soft diffused key light from the front with a gentle falloff into the backdrop. Dusty mauve, gray and black palette, faded vintage film finish with soft grain and a slight haze.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "G25",
+      "tab": "suggestive",
+      "set": "BlackCoat",
+      "title": "Head bowed, coat held closed",
+      "text": "[trigger] in an intimate fashion study, standing facing the lens with the coat held closed at her chest and her head bowed, hair falling forward. Wearing only an oversized long black wool coat slipped down off her shoulders, with black pointed heels. A plain dusty mauve gray seamless backdrop with a soft gradient. Full length shot at eye level, 50mm lens feel. Soft diffused key light from the front with a gentle falloff into the backdrop. Dusty mauve, gray and black palette, faded vintage film finish with soft grain and a slight haze.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S501",
+      "tab": "sfw",
+      "set": "TowerBlocks",
+      "title": "Squatting, hair across the face",
+      "text": "[trigger] in a gritty urban street portrait, squatting low on the sidewalk with her forearms on her knees as the wind blows her hair across her face, eyes on the lens. Wearing a loose white long sleeve top with thumbholes and dark faded jeans. Old concrete apartment towers and cracked sidewalks on a gray, windy day. Medium shot at eye level, 35mm lens feel. Flat cool overcast daylight, soft and even. Teal, slate and pale gray palette, gritty desaturated film finish with grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S502",
+      "tab": "sfw",
+      "set": "TowerBlocks",
+      "title": "Perched on the rusty railing",
+      "text": "[trigger] in a gritty urban street portrait, sitting on a rusty roadside railing with one foot on the low wall, looking down at the street. Wearing a loose white long sleeve top with thumbholes and dark faded jeans. Old concrete apartment towers and cracked sidewalks on a gray, windy day. Full length shot at eye level, 35mm lens feel. Flat cool overcast daylight, soft and even. Teal, slate and pale gray palette, gritty desaturated film finish with grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S503",
+      "tab": "sfw",
+      "set": "TowerBlocks",
+      "title": "Hand in the hair under the tower",
+      "text": "[trigger] in a gritty urban street portrait, standing beneath a tall tower block with one hand raking through her hair and her head tipped back. Wearing a loose white long sleeve top with thumbholes and dark faded jeans. Old concrete apartment towers and cracked sidewalks on a gray, windy day. Medium shot from a very low angle, 24mm lens feel, the tower soaring behind her. Flat cool overcast daylight, soft and even. Teal, slate and pale gray palette, gritty desaturated film finish with grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S504",
+      "tab": "sfw",
+      "set": "TowerBlocks",
+      "title": "Leaning over the handrail",
+      "text": "[trigger] in a gritty urban street portrait, leaning out over a steel handrail against the sky, one arm reaching down, hair hanging. Wearing a loose white long sleeve top with thumbholes and dark faded jeans. Old concrete apartment towers and cracked sidewalks on a gray, windy day. Medium shot from a low angle, 24mm lens feel, tilted frame. Flat cool overcast daylight, soft and even. Teal, slate and pale gray palette, gritty desaturated film finish with grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S505",
+      "tab": "sfw",
+      "set": "TowerBlocks",
+      "title": "Spinning in the underpass",
+      "text": "[trigger] in a gritty urban street portrait, spinning in a dark concrete underpass so her hair whips out around her. Wearing a loose white long sleeve top with thumbholes and dark faded jeans. A dark concrete underpass with stained walls and a metal staircase above. Full length shot at eye level, 35mm lens feel, motion blur in the hair. Flat cool overcast daylight, soft and even. Teal, slate and pale gray palette, gritty desaturated film finish with grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S506",
+      "tab": "sfw",
+      "set": "TowerBlocks",
+      "title": "Hands in pockets, hair blown over",
+      "text": "[trigger] in a gritty urban street portrait, standing with her hands in her jeans pockets as the wind blows her hair completely over her face. Wearing a loose white long sleeve top with thumbholes and dark faded jeans. Old concrete apartment towers and cracked sidewalks on a gray, windy day. Medium shot at eye level, 50mm lens feel. Flat cool overcast daylight, soft and even. Teal, slate and pale gray palette, gritty desaturated film finish with grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S507",
+      "tab": "sfw",
+      "set": "TowerBlocks",
+      "title": "Sleeves at the face",
+      "text": "[trigger] in a gritty urban street portrait, raising both hands to her face with the sleeves pulled down over them, a tower block rising behind. Wearing a loose white long sleeve top with thumbholes and dark faded jeans. Old concrete apartment towers and cracked sidewalks on a gray, windy day. Medium shot at eye level, 35mm lens feel. Flat cool overcast daylight, soft and even. Teal, slate and pale gray palette, gritty desaturated film finish with grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S508",
+      "tab": "sfw",
+      "set": "TowerBlocks",
+      "title": "Hands on hips in the road",
+      "text": "[trigger] in a gritty urban street portrait, standing in the middle of a quiet road with both hands on her hips, a flat direct stare. Wearing a loose white long sleeve top with thumbholes and dark faded jeans. Old concrete apartment towers and cracked sidewalks on a gray, windy day. Medium full shot at eye level, 35mm lens feel. Flat cool overcast daylight, soft and even. Teal, slate and pale gray palette, gritty desaturated film finish with grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S509",
+      "tab": "sfw",
+      "set": "TowerBlocks",
+      "title": "Arms out, looking back",
+      "text": "[trigger] in a gritty urban street portrait, stretching both arms out wide with her back to the lens, glancing back over her shoulder. Wearing a loose white long sleeve top with thumbholes and dark faded jeans. Old concrete apartment towers and cracked sidewalks on a gray, windy day. Medium shot at eye level, 35mm lens feel. Flat cool overcast daylight, soft and even. Teal, slate and pale gray palette, gritty desaturated film finish with grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S510",
+      "tab": "sfw",
+      "set": "LaceScarf",
+      "title": "Sideways on the bentwood chair",
+      "text": "[trigger] in a minimal studio fashion portrait, sitting sideways on a wooden bentwood chair with her legs crossed, glancing back over her shoulder. Wearing a short white cotton shift dress with long sleeves and an open back, a white lace headscarf tied under the chin, barefoot. A plain black backdrop meeting a pale gray floor, with a simple bentwood chair. Full length shot at eye level, 35mm lens feel. Soft directional window light from one side, deep shadow on the other. Black, white and soft gray palette, clean editorial film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S511",
+      "tab": "sfw",
+      "set": "LaceScarf",
+      "title": "Chin on hand, knee up",
+      "text": "[trigger] in a minimal studio fashion portrait, sitting with one knee drawn up and her chin resting on her hand, head tilted, a cool direct gaze. Wearing a short white cotton shift dress with long sleeves and an open back, a white lace headscarf tied under the chin, barefoot. A plain black backdrop meeting a pale gray floor, with a simple bentwood chair. Medium close shot at eye level, 50mm lens feel, shallow depth of field. Soft directional window light from one side, deep shadow on the other. Black, white and soft gray palette, clean editorial film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S512",
+      "tab": "sfw",
+      "set": "LaceScarf",
+      "title": "Tying the scarf",
+      "text": "[trigger] in a minimal studio fashion portrait, standing and pulling the ribbon ties of the scarf at her chin, eyes on the lens. Wearing a short white cotton shift dress with long sleeves and an open back, a white lace headscarf tied under the chin, barefoot. A plain black backdrop meeting a pale gray floor, with a simple bentwood chair. Medium shot at eye level, 50mm lens feel. Soft directional window light from one side, deep shadow on the other. Black, white and soft gray palette, clean editorial film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S513",
+      "tab": "sfw",
+      "set": "LaceScarf",
+      "title": "Seated on the floor, back to the lens",
+      "text": "[trigger] in a minimal studio fashion portrait, sitting on the floor with her back to the lens and the open back of the dress showing, looking over one shoulder. Wearing a short white cotton shift dress with long sleeves and an open back, a white lace headscarf tied under the chin, barefoot. A plain black backdrop meeting a pale gray floor, with a simple bentwood chair. Full length shot at eye level, 35mm lens feel. Soft directional window light from one side, deep shadow on the other. Black, white and soft gray palette, clean editorial film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S514",
+      "tab": "sfw",
+      "set": "LaceScarf",
+      "title": "Back turned, barefoot",
+      "text": "[trigger] in a minimal studio fashion portrait, standing barefoot with her back to the lens, one heel lifted, head turned over her shoulder. Wearing a short white cotton shift dress with long sleeves and an open back, a white lace headscarf tied under the chin, barefoot. A plain black backdrop meeting a pale gray floor, with a simple bentwood chair. Full length shot at eye level, 35mm lens feel. Soft directional window light from one side, deep shadow on the other. Black, white and soft gray palette, clean editorial film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S515",
+      "tab": "sfw",
+      "set": "LaceScarf",
+      "title": "Leaning on one hand, legs to the side",
+      "text": "[trigger] in a minimal studio fashion portrait, sitting on the floor leaning on one straight arm with her legs folded to the side, gazing past the lens. Wearing a short white cotton shift dress with long sleeves and an open back, a white lace headscarf tied under the chin, barefoot. A plain black backdrop meeting a pale gray floor, with a simple bentwood chair. Full length shot at floor level, 35mm lens feel. Soft directional window light from one side, deep shadow on the other. Black, white and soft gray palette, clean editorial film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S516",
+      "tab": "sfw",
+      "set": "LaceScarf",
+      "title": "Arms crossed on the chair seat",
+      "text": "[trigger] in a minimal studio fashion portrait, sitting on the floor beside the bentwood chair with her arms crossed on its seat and her head resting near them. Wearing a short white cotton shift dress with long sleeves and an open back, a white lace headscarf tied under the chin, barefoot. A plain black backdrop meeting a pale gray floor, with a simple bentwood chair. Medium full shot at floor level, 35mm lens feel. Soft directional window light from one side, deep shadow on the other. Black, white and soft gray palette, clean editorial film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S517",
+      "tab": "sfw",
+      "set": "LaceScarf",
+      "title": "One knee lifted behind",
+      "text": "[trigger] in a minimal studio fashion portrait, standing on one leg with the other knee bent back behind her, both hands held at her chest. Wearing a short white cotton shift dress with long sleeves and an open back, a white lace headscarf tied under the chin, barefoot. A plain black backdrop meeting a pale gray floor, with a simple bentwood chair. Full length shot at eye level, 35mm lens feel. Soft directional window light from one side, deep shadow on the other. Black, white and soft gray palette, clean editorial film finish with fine grain.",
       "added": "2026-11-24"
     },
     {
