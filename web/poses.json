@@ -4,6 +4,10 @@
   "changelog": [
     {
       "date": "2026-11-24",
+      "text": "9 new SFW frames in a new Olive room set."
+    },
+    {
+      "date": "2026-11-24",
       "text": "13 new SFW frames in a new Film studio set."
     },
     {
@@ -148,7 +152,8 @@
         "MountainLake",
         "IronGazebo",
         "PinkRose",
-        "FilmStudio"
+        "FilmStudio",
+        "OliveRoom"
       ]
     },
     {
@@ -191,6 +196,7 @@
     }
   ],
   "sets": {
+    "OliveRoom": "Olive room",
     "FilmStudio": "Film studio",
     "LaceBlindfold": "Lace blindfold",
     "PinkRose": "Pink rose",
@@ -5272,6 +5278,78 @@
       "set": "FilmStudio",
       "title": "Gloved hands at the hem",
       "text": "[trigger] in a quiet film studio portrait, standing against a black panel with her gloved fingers tugging at the hem of her sweater, head tilted, a cool gaze. Wearing a chunky olive green knit sweater, a black sequin midi skirt and black leather opera gloves. A bright minimal loft studio with white walls, a gray concrete floor, tall factory windows and a few pieces of mid century furniture. Medium shot at eye level, 50mm lens feel, shallow depth of field. Soft diffused daylight from the tall windows, even and gentle with soft shadows. Muted white, gray and olive palette, natural 35mm film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S399",
+      "tab": "sfw",
+      "set": "OliveRoom",
+      "title": "Head on the shell chair",
+      "text": "[trigger] in a moody fine art portrait, lying on the floor with her head resting in the seat of a mustard yellow shell chair, eyes closed, one hand at her chest. Wearing a fitted cream ribbed knit camisole and loose cream knit trousers, barefoot. A dim old room with dark worn parquet floors, an olive green wall, a white radiator under a tall window, a mustard yellow shell chair and a black leather armchair. Overhead medium shot looking straight down, 35mm lens feel. Soft low window light from one side falling off quickly into deep shadow. Muted olive, cream and dark walnut palette, quiet moody film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S400",
+      "tab": "sfw",
+      "set": "OliveRoom",
+      "title": "Bowed forward on all fours",
+      "text": "[trigger] in a moody fine art portrait, on her hands and knees with her head dropped low between her arms and her hair falling toward the floor. Wearing a fitted cream ribbed knit camisole and loose cream knit trousers, barefoot. A dim old room with dark worn parquet floors, an olive green wall, a white radiator under a tall window, a mustard yellow shell chair and a black leather armchair. Full length shot at floor level, 35mm lens feel. Soft low window light from one side falling off quickly into deep shadow. Muted olive, cream and dark walnut palette, quiet moody film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S401",
+      "tab": "sfw",
+      "set": "OliveRoom",
+      "title": "Fingers reaching to the window",
+      "text": "[trigger] in a moody fine art portrait, lying on her back with one arm raised and her fingers spread toward the window, as if catching the light. Wearing a fitted cream ribbed knit camisole and loose cream knit trousers, barefoot. A dim old room with dark worn parquet floors, an olive green wall, a white radiator under a tall window, a mustard yellow shell chair and a black leather armchair. Medium shot at floor level, 50mm lens feel, shallow depth of field. Soft low window light from one side falling off quickly into deep shadow. Muted olive, cream and dark walnut palette, quiet moody film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S402",
+      "tab": "sfw",
+      "set": "OliveRoom",
+      "title": "Curled up, forehead to the floor",
+      "text": "[trigger] in a moody fine art portrait, folded forward into a tight curl with her forehead resting on the floor and her arms tucked in. Wearing a fitted cream ribbed knit camisole and loose cream knit trousers, barefoot. A dim old room with dark worn parquet floors, an olive green wall, a white radiator under a tall window, a mustard yellow shell chair and a black leather armchair. Full length shot from slightly above, 35mm lens feel. Soft low window light from one side falling off quickly into deep shadow. Muted olive, cream and dark walnut palette, quiet moody film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S403",
+      "tab": "sfw",
+      "set": "OliveRoom",
+      "title": "Kneeling, head tipped back",
+      "text": "[trigger] in a moody fine art portrait, kneeling and sitting back on her heels with straight arms planted between her knees, head tipped back and eyes closed. Wearing a fitted cream ribbed knit camisole and loose cream knit trousers, barefoot. A dim old room with dark worn parquet floors, an olive green wall, a white radiator under a tall window, a mustard yellow shell chair and a black leather armchair. Full length shot at eye level, 35mm lens feel. Soft low window light from one side falling off quickly into deep shadow. Muted olive, cream and dark walnut palette, quiet moody film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S404",
+      "tab": "sfw",
+      "set": "OliveRoom",
+      "title": "Arms crossed overhead on the floor",
+      "text": "[trigger] in a moody fine art portrait, lying on her back on the parquet with both arms crossed above her head and her legs stretched long. Wearing a fitted cream ribbed knit camisole and loose cream knit trousers, barefoot. A dim old room with dark worn parquet floors, an olive green wall, a white radiator under a tall window, a mustard yellow shell chair and a black leather armchair. Overhead full length shot looking straight down, 28mm lens feel. Soft low window light from one side falling off quickly into deep shadow. Muted olive, cream and dark walnut palette, quiet moody film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S405",
+      "tab": "sfw",
+      "set": "OliveRoom",
+      "title": "Head back on the leather chair",
+      "text": "[trigger] in a moody fine art portrait, leaning her head back against a black leather armchair with her chin lifted and her eyes closed. Wearing a fitted cream ribbed knit camisole and loose cream knit trousers, barefoot. A dim old room with dark worn parquet floors, an olive green wall, a white radiator under a tall window, a mustard yellow shell chair and a black leather armchair. Close up in profile at eye level, 85mm lens feel, very shallow depth of field. Soft low window light from one side falling off quickly into deep shadow. Muted olive, cream and dark walnut palette, quiet moody film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S406",
+      "tab": "sfw",
+      "set": "OliveRoom",
+      "title": "On her side, arm outstretched",
+      "text": "[trigger] in a moody fine art portrait, lying on her side on the floor with one arm stretched out past her head, eyes half closed. Wearing a fitted cream ribbed knit camisole and loose cream knit trousers, barefoot. A dim old room with dark worn parquet floors, an olive green wall, a white radiator under a tall window, a mustard yellow shell chair and a black leather armchair. Full length shot at floor level, 35mm lens feel. Soft low window light from one side falling off quickly into deep shadow. Muted olive, cream and dark walnut palette, quiet moody film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S407",
+      "tab": "sfw",
+      "set": "OliveRoom",
+      "title": "Hugging knees in the armchair",
+      "text": "[trigger] in a moody fine art portrait, curled up in a black leather armchair hugging her knees to her chest, cheek resting on them. Wearing a fitted cream ribbed knit camisole and loose cream knit trousers, barefoot. A dim old room with dark worn parquet floors, an olive green wall, a white radiator under a tall window, a mustard yellow shell chair and a black leather armchair. Full length shot at eye level, 35mm lens feel. Soft low window light from one side falling off quickly into deep shadow. Muted olive, cream and dark walnut palette, quiet moody film finish with fine grain.",
       "added": "2026-11-24"
     },
     {
