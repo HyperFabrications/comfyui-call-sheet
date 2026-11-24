@@ -1,12 +1,12 @@
 // Scenes: swap a frame's setting for one you build, or make a clean plate with nobody in it.
 // scene_data.py mirrors these functions for the Python nodes; keep the two in step (tests/parity.mjs checks them).
 
-const CAM = /\b(shot|lens|close[- ]?up|top down|eye level|depth of field|full length|low angle|high angle|from above|from below|framing|framed)\b/i;
+const CAM = /\b(shot|lens|close[- ]?up|top down|eye level|depth of field|full length|low angle|high angle|from above|from below|framing|framed(?=\s+(?:from|tight|tightly|wide|close|low|high|at)\b))\b/i;
 const LIGHT = /\b(light|lights|daylight|lit|lighting|flash|glow|glowing|sunlight|sun|shadow|shadows|backlit|backlight|lamp|lamps|neon|candlelight|highlights|fill)\b/i;
 const FINISH = /\b(palette|finish|grain|film|tones|contrast)\b/i;
 const WEARING = /^(wearing|she wears|she is wearing)\b/i;
 const PERSONAL = /\b(her|she|hers|herself|his|him|he|face|skin|body|subject)\b/i;
-const FRAMING = /\b(shot|close[- ]?up|crop|cropped|framing|framed|negative space|full length)\b/i;
+const FRAMING = /\b(shot|close[- ]?up|crop|cropped|framing|framed(?=\s+(?:from|tight|tightly|wide|close|low|high|at)\b)|negative space|full length)\b/i;
 export const PLATE_END = "No people anywhere in the frame.";
 
 export const split = text => (text.match(/[^.]+(?:\.|$)/g) || []).map(s => s.trim()).filter(Boolean);
