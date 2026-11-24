@@ -4,6 +4,10 @@
   "changelog": [
     {
       "date": "2026-11-24",
+      "text": "10 new remixes in Made By Claude: a pose from one set moved into the setting of another. Each card says which two it mixes."
+    },
+    {
+      "date": "2026-11-24",
       "text": "Moved the two sheer chiffon Wind and cloth frames from SFW to Boudoir."
     },
     {
@@ -6095,6 +6099,96 @@
       "set": "StudioPortrait",
       "title": "Hand at the collar, over the shoulder",
       "text": "[trigger] in a clean studio beauty portrait, turning her shoulder to the lens with one hand curled at her collar, eyes on the lens. Wearing a fitted black ribbed knit top with long sleeves and a thin silver chain. A plain warm gray seamless backdrop. Medium close shot at eye level, 85mm lens feel, shallow depth of field. Soft directional key light from one side with a gentle fill. Warm gray, black and silver palette, polished editorial finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "C13",
+      "tab": "claude",
+      "set": "CS",
+      "title": "Finger to lips on the moor",
+      "text": "[trigger] in a gothic fashion portrait, holding one finger to her lips with her eyes closed, face in profile against the sky. Wearing a long black wool coat over a high necked black knit dress. An open moor of dry grass and heather under a heavy dusk sky, with low hills on the horizon. Medium close shot at eye level, 85mm lens feel, shallow depth of field. Dim blue dusk light with a faint glow low on the horizon. Deep black, slate and muted plum palette, moody gothic film finish with soft grain.",
+      "note": "Remix of the Spotlight profile (S452) and the Gothic moor setting (S308). The hushed gesture reads stronger against an empty dusk sky.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "C14",
+      "tab": "claude",
+      "set": "CS",
+      "title": "Rose on the frosted shore",
+      "text": "[trigger] in a painterly winter portrait, standing in full profile at the edge of the water with her chin lifted, a single pink rose held up near her shoulder. Wearing a long burgundy wool coat over a cream knit sweater. A frosted lakeshore at sunrise with mist over the water and frost on the dry reeds. Medium shot at eye level, 85mm lens feel, shallow depth of field. Soft low sunrise light with a warm glow on the frost and cool mist behind. Burgundy, frost white and pale pink palette, painterly film finish with soft grain.",
+      "note": "Remix of the Pink rose profile (S380) and the Frost lake sunrise (S445). A warm flower against cold mist gives the frame one clear point of color.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "C15",
+      "tab": "claude",
+      "set": "CS",
+      "title": "Chair on the center line",
+      "text": "[trigger] in a moody cinematic fashion photo, sitting on an old wooden chair set on the road with both boots up on the seat and her arms wrapped around her knees, looking into the lens. Wearing a long charcoal wool coat, a black turtleneck and black leather boots. The center line of a wet two lane road running through a dense dark pine forest, with fog in the distance. Full length shot at eye level, 50mm lens feel. Flat overcast daylight, cool and soft with no shadows. Cool charcoal, deep green and slate palette, moody cinematic film finish with fine grain.",
+      "note": "Remix of the Meadow chair pose (S261) and the Forest road setting (S344). A lone chair on an empty road makes an odd, cinematic still.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "C16",
+      "tab": "claude",
+      "set": "CS",
+      "title": "Knees up on the black sand",
+      "text": "[trigger] in a windswept editorial photo, lying on her back on the dark sand with her knees bent up and hands folded on her stomach, eyes up into the lens. Wearing a long white pointelle knit dress with fitted long sleeves, barefoot. A black volcanic sand beach with gray surf rolling in and a low wooded headland far behind. Full length shot from directly overhead, 35mm lens feel. Flat overcast daylight under a heavy gray sky, soft and shadowless. Muted slate, ivory and charcoal palette, moody editorial film finish with fine grain.",
+      "note": "Remix of the Boardwalk floor pose (S280) and the Black sand beach (S223). Shot from overhead, the white dress pops against the dark sand.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "C17",
+      "tab": "claude",
+      "set": "CS",
+      "title": "Gazing up from the velvet sofa",
+      "text": "[trigger] in a cozy winter lifestyle photo, perched on the arm of a velvet sofa resting her fingertips at her lips, gazing up and away with her chin lifted. Wearing an oversized cream cable knit sweater and soft wool trousers. A warm room with honey wood paneling, a mustard velvet bubble sofa, fresh pine branches on the floor, tangerines scattered about and fringed table lamps. Medium shot at eye level, 50mm lens feel, shallow depth of field. Warm tungsten lamp light with soft window daylight from one side. Warm mustard, orange and pine green palette, cozy film finish with soft grain.",
+      "note": "Remix of the Concrete sun gesture (S416) and the Tangerines room (S432). An editorial pose in a cozy room keeps it from feeling like a plain snapshot.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "C18",
+      "tab": "claude",
+      "set": "CS",
+      "title": "Hair flip in the rain",
+      "text": "[trigger] in a playful rainy day photo, turned away from the camera and tossing her hair mid flip, droplets flying. Wearing a pale blue cotton sundress and white canvas sneakers. A green park lawn scattered with daisies, with a mossy boulder, old brick steps and an ivy covered wall. Full length shot at eye level, 35mm lens feel, fast shutter freezing the motion. Soft gray rainy daylight, wet and even with gentle sheen on the leaves. Fresh green, pale blue and brick palette, gentle film finish with soft grain.",
+      "note": "Remix of the Iron gazebo hair flip (S372) and the Rainy lawn (S329). Motion plus rain gives a playful, frozen moment.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "C19",
+      "tab": "claude",
+      "set": "CB",
+      "title": "Blindfold in the morning sun",
+      "text": "[trigger] in a soft boudoir photo, sitting on a low upholstered bench and leaning back on both hands, knees bent together, chin lifted, a black lace blindfold over her eyes. Wearing a white lace bralette and matching high waisted briefs. A bright window nook with sheer cream curtains and a low upholstered bench beneath the sill. Full length shot from the side at eye level, 35mm lens feel. Warm morning light filtering through the curtains in dappled patches across her and the bench. Creamy ivory, honey and black lace palette, airy film finish with fine grain.",
+      "note": "Remix of the Lace blindfold pose (92) and the Sheer curtain window nook (70). The dark lace flips from mysterious to soft in warm daylight.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "C20",
+      "tab": "claude",
+      "set": "CB",
+      "title": "Director chair in the spotlight",
+      "text": "[trigger] in a black and white boudoir portrait, sitting on a black folding director chair with one knee drawn up and her chin resting on her wrist over the knee, eyes on the lens. Wearing a black satin slip with thin straps. A dark studio wall with a hard round pool of light behind her. Full length shot at eye level, 50mm lens feel. A single hard spotlight casting a crisp round pool and a sharp shadow of her on the wall. Black and white with deep blacks and bright highlights, fine art film finish with grain.",
+      "note": "Remix of the Swivel chair knee pose (76) and the Spotlight studio (S448). The hard shadow on the wall doubles the shape of the pose.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "C21",
+      "tab": "claude",
+      "set": "CB",
+      "title": "Window light on the wood floor",
+      "text": "[trigger] in an intimate boudoir photo, lying back on the floor with one arm folded over her head, a patch of window light falling across her face, eyes half closed. Wearing an oversized white button up shirt worn open over a nude bralette. A bare apartment with warm wood floors, white walls and a tall black steel window. Full length shot from directly overhead, 35mm lens feel. Soft cool daylight from the tall window with gentle falloff into shadow. Quiet cream, warm wood and soft gray palette, intimate film finish with fine grain.",
+      "note": "Remix of the Sheer curtain reclining pose (71) and the Swivel chair apartment (75). Moving the pose to the floor and shooting from above makes it feel candid.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "C22",
+      "tab": "claude",
+      "set": "CB",
+      "title": "Leaning on one arm in teal light",
+      "text": "[trigger] in a moody boudoir photo, sitting on the floor with her legs folded to one side, leaning on one straight arm, head tilted toward the light. Wearing a black long sleeve bodysuit and sheer black tights. A dark seamless studio with a black backdrop and a floor washed in teal green light. Full length shot from a low angle, 35mm lens feel. Dramatic side light with a teal rim light and deep shadows. Black, deep teal and warm amber palette, mysterious cinematic fine art finish with fine grain.",
+      "note": "Remix of the Swivel chair floor pose (78) and the Lace blindfold studio (92). The teal floor glow turns a simple seated pose dramatic.",
       "added": "2026-11-24"
     },
     {
