@@ -4,6 +4,10 @@
   "changelog": [
     {
       "date": "2026-11-24",
+      "text": "13 new SFW frames in two new sets: Vintage flat and Gray studio portrait."
+    },
+    {
+      "date": "2026-11-24",
       "text": "74 new frames from saved posts in 12 new sets: 60 SFW and 14 Suggestive."
     },
     {
@@ -171,7 +175,9 @@
         "Spotlight",
         "RustDress",
         "BeautyClose",
-        "Cattails"
+        "Cattails",
+        "VintageFlat",
+        "StudioPortrait"
       ]
     },
     {
@@ -216,6 +222,8 @@
     }
   ],
   "sets": {
+    "VintageFlat": "Vintage flat",
+    "StudioPortrait": "Gray studio portrait",
     "FauxFur": "Faux fur",
     "ConcreteSun": "Concrete sun",
     "SubwayRush": "Subway rush",
@@ -5977,6 +5985,110 @@
       "set": "BretonStripe",
       "title": "One arm up, laughing",
       "text": "[trigger] in a minimal studio portrait, raising one arm over her head and laughing, weight on one hip. Wearing an oversized boxy black and white striped sweater and black high waisted briefs, hair in a messy high bun. A gray seamless studio backdrop with a soft gradient. Medium full shot at eye level, 35mm lens feel. Hard side light from one direction with a soft falloff into shadow. Black, white and cool gray palette, crisp editorial film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S468",
+      "tab": "sfw",
+      "set": "VintageFlat",
+      "title": "Lamp glow on the face",
+      "text": "[trigger] in a warm vintage apartment portrait, leaning in beside a glowing table lamp with one hand resting on the shade, eyes lowered. Wearing a cream cotton midi dress with soft puff sleeves and a square neckline. An old European apartment with cream walls, a tall gilded mirror, a tiled antique stove, worn herringbone parquet and a fringed table lamp. Close up at eye level, 50mm lens feel, shallow depth of field. Warm glow from the lamp lighting one side of her face, the rest of the room falling into shadow. Warm cream, brass and deep brown palette, nostalgic film finish with soft grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S469",
+      "tab": "sfw",
+      "set": "VintageFlat",
+      "title": "Leaning in the tall mirror frame",
+      "text": "[trigger] in a warm vintage apartment portrait, standing inside the frame of a tall floor mirror with one hand raised high on the edge, gaze down. Wearing a cream cotton midi dress with soft puff sleeves and a square neckline. A dim bedroom with an unmade white bed and a small lamp seen behind her. Full length shot at eye level, 35mm lens feel. Warm tungsten lamp light mixed with soft gray window daylight. Warm cream, brass and deep brown palette, nostalgic film finish with soft grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S470",
+      "tab": "sfw",
+      "set": "VintageFlat",
+      "title": "Sitting against the gilded mirror",
+      "text": "[trigger] in a warm vintage apartment portrait, sitting on the floor with her back against a gilded mirror, knees drawn up and arms wrapped around them, head turned toward the glass. Wearing a black floral tea dress with a midi hem and short sleeves. An old European apartment with cream walls, a tall gilded mirror, a tiled antique stove, worn herringbone parquet and a fringed table lamp. Full length shot from a low angle, 35mm lens feel. Warm tungsten lamp light mixed with soft gray window daylight. Warm cream, brass and deep brown palette, nostalgic film finish with soft grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S471",
+      "tab": "sfw",
+      "set": "VintageFlat",
+      "title": "Stretched along the sofa from above",
+      "text": "[trigger] in a warm vintage apartment portrait, lying back along a caramel sofa with one knee bent up and an arm resting over her head, looking up. Wearing a black floral tea dress with a midi hem and short sleeves. An old European apartment with cream walls, a tall gilded mirror, a tiled antique stove, worn herringbone parquet and a fringed table lamp. Full length shot from directly overhead, 35mm lens feel. Warm tungsten lamp light mixed with soft gray window daylight. Warm cream, brass and deep brown palette, nostalgic film finish with soft grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S472",
+      "tab": "sfw",
+      "set": "VintageFlat",
+      "title": "Leaning on the tiled stove",
+      "text": "[trigger] in a warm vintage apartment portrait, leaning one forearm on the ledge of a tall dark tiled stove, the other hand at her collarbone, eyes on the lens. Wearing a black floral tea dress with a midi hem and short sleeves. An old European apartment with cream walls, a tall gilded mirror, a tiled antique stove, worn herringbone parquet and a fringed table lamp. Full length shot at eye level, 35mm lens feel. Warm tungsten lamp light mixed with soft gray window daylight. Warm cream, brass and deep brown palette, nostalgic film finish with soft grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S473",
+      "tab": "sfw",
+      "set": "VintageFlat",
+      "title": "Draped over the armchair arm",
+      "text": "[trigger] in a warm vintage apartment portrait, lying forward over the arm of a velvet armchair with her chin on her folded hands, a soft direct gaze. Wearing a cream cotton midi dress with soft puff sleeves and a square neckline. An old European apartment with cream walls, a tall gilded mirror, a tiled antique stove, worn herringbone parquet and a fringed table lamp. Medium shot at chair height, 50mm lens feel, shallow depth of field. Warm tungsten lamp light mixed with soft gray window daylight. Warm cream, brass and deep brown palette, nostalgic film finish with soft grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S474",
+      "tab": "sfw",
+      "set": "VintageFlat",
+      "title": "Kneeling before the mirror",
+      "text": "[trigger] in a warm vintage apartment portrait, kneeling on a woven rug in front of a tall gilded mirror, hands resting on her thighs, head tilted toward the lens. Wearing a cream cotton midi dress with soft puff sleeves and a square neckline. An old European apartment with cream walls, a tall gilded mirror, a tiled antique stove, worn herringbone parquet and a fringed table lamp. Full length shot at eye level, 35mm lens feel. Warm tungsten lamp light mixed with soft gray window daylight. Warm cream, brass and deep brown palette, nostalgic film finish with soft grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S475",
+      "tab": "sfw",
+      "set": "VintageFlat",
+      "title": "Seated by the fire, legs to one side",
+      "text": "[trigger] in a warm vintage apartment portrait, sitting on the parquet beside a lit fireplace with her legs folded to one side, one hand on the floor, gazing into the flames. Wearing a cream cotton midi dress with soft puff sleeves and a square neckline. An old European apartment with cream walls, a tall gilded mirror, a tiled antique stove, worn herringbone parquet and a fringed table lamp. Full length shot at eye level, 35mm lens feel. Warm firelight on her face with soft gray window daylight filling the room. Warm cream, brass and deep brown palette, nostalgic film finish with soft grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S476",
+      "tab": "sfw",
+      "set": "VintageFlat",
+      "title": "Standing on the bed",
+      "text": "[trigger] in a warm vintage apartment portrait, standing barefoot on a rumpled white bed with one hand pushed into her hair, chin lifted. Wearing a black floral tea dress with a midi hem and short sleeves. An old European apartment with cream walls, a tall gilded mirror, a tiled antique stove, worn herringbone parquet and a fringed table lamp. Full length shot from a low angle, 24mm lens feel. Warm tungsten lamp light mixed with soft gray window daylight. Warm cream, brass and deep brown palette, nostalgic film finish with soft grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S477",
+      "tab": "sfw",
+      "set": "VintageFlat",
+      "title": "Head back in the armchair",
+      "text": "[trigger] in a warm vintage apartment portrait, sinking into a cream armchair with one arm folded above her head, eyes half closed. Wearing a cream cotton midi dress with soft puff sleeves and a square neckline. An old European apartment with cream walls, a tall gilded mirror, a tiled antique stove, worn herringbone parquet and a fringed table lamp. Medium full shot at eye level, 35mm lens feel. Warm tungsten lamp light mixed with soft gray window daylight. Warm cream, brass and deep brown palette, nostalgic film finish with soft grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S478",
+      "tab": "sfw",
+      "set": "StudioPortrait",
+      "title": "Arms folded over the head against the wall",
+      "text": "[trigger] in a clean studio beauty portrait, leaning her shoulder on the backdrop with both arms folded over her head, chin down, a steady gaze. Wearing a fitted black ribbed knit top with long sleeves and a thin silver chain. A plain warm gray seamless backdrop. Medium shot at eye level, 50mm lens feel. Soft directional key light from one side with a gentle fill. Warm gray, black and silver palette, polished editorial finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S479",
+      "tab": "sfw",
+      "set": "StudioPortrait",
+      "title": "Chin lifted, looking down the lens",
+      "text": "[trigger] in a clean studio beauty portrait, lifting her chin and looking down into the lens with a calm, cool expression. Wearing a fitted black ribbed knit top with long sleeves and a thin silver chain. A plain warm gray seamless backdrop. Close up from a slightly low angle, 85mm lens feel, very shallow depth of field. Soft directional key light from one side with a gentle fill. Warm gray, black and silver palette, polished editorial finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S480",
+      "tab": "sfw",
+      "set": "StudioPortrait",
+      "title": "Hand at the collar, over the shoulder",
+      "text": "[trigger] in a clean studio beauty portrait, turning her shoulder to the lens with one hand curled at her collar, eyes on the lens. Wearing a fitted black ribbed knit top with long sleeves and a thin silver chain. A plain warm gray seamless backdrop. Medium close shot at eye level, 85mm lens feel, shallow depth of field. Soft directional key light from one side with a gentle fill. Warm gray, black and silver palette, polished editorial finish with fine grain.",
       "added": "2026-11-24"
     },
     {
