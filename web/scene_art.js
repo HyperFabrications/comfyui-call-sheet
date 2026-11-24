@@ -114,7 +114,7 @@ function view(s, kind, time, on, plate) {
     const sheenOpacity = w === "rain" && !indoor ? 0.22 : 0;
     // lighting
     const L = s.lighting || "";
-    const GLOW = { neon: ["#ff4fa8", 120, 210, 160, 0.7], backlit: [time === "night" ? "#ffd89a" : "#ffcf86", 200, 250, 170, 0.75], candle: ["#ffb35a", 110, 300, 140, 0.6], window: ["#fff2d6", 300, 180, 150, 0.55], hard: ["#fff6dc", sunX, sunY, 120, 0.5], softbox: ["#ffffff", 90, 150, 140, 0.45], natural: ["#fff6e6", 200, 120, 220, 0.25] };
+    const GLOW = { neon: ["#ff4fa8", 120, 210, 160, 0.7], backlit: [time === "night" ? "#ffd89a" : "#ffcf86", 200, 250, 170, 0.75], candle: ["#ffb35a", 110, 300, 140, 0.6], window: ["#fff2d6", 300, 180, 150, 0.55], hard: ["#fff6dc", sunX, sunY, 120, 0.5], softbox: ["#ffffff", 90, 150, 140, 0.45], natural: ["#fff6e6", 200, 120, 220, 0.25], golden: ["#ffc46b", sunX, sunY, 160, 0.6], overcast: ["#eef1f5", 200, 100, 240, 0.2], highkey: ["#ffffff", 200, 150, 240, 0.5], blinds: ["#fff0cc", 300, 160, 140, 0.55], dappled: ["#fff3c8", 200, 120, 180, 0.4], hardkey: ["#fff6dc", 80, 150, 120, 0.55], tungsten: ["#ffb35a", 90, 250, 130, 0.6], spot: ["#ffffff", 200, 60, 110, 0.7], bluehour: ["#9fb4ff", 200, 150, 200, 0.4] };
     const g = GLOW[L] || ["#ffffff", 200, 200, 10, 0];
     if (dark && kind === "city") { /* lit windows */ }
     const lightsOn = dark || kind === "garage";

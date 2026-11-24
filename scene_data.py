@@ -61,8 +61,31 @@ def pose_only(frame, lines=None):
         return frame
     s = split(frame["text"])
     c, _, _ = layout(s)
-    text = "[trigger], " + line.strip().rstrip(".") + "." + (" " + s[c] if c < len(s) else "")
-    return {**frame, "text": text, "bare": None, "poseOnly": True}
+    m = re.search(r"\b(photograph|photo|portrait|snapshot|selfie)\b", s[0].split(",")[0]) if s else None
+    text = "[trigger] in a " + (m.group(1).lower() if m else "photo") + ", " + line.strip().rstrip(".") + "." + (" " + s[c] if c < len(s) else "")
+    tail = [x for x in (_light_only(s, c), _finish_only(s, c)) if x]
+    return {**frame, "text": " ".join([text] + tail), "bare": None, "poseOnly": True}
+
+
+def _finish_only(s, c):
+    """The frame's film finish and grain, without its palette colors."""
+    keep = []
+    for i in range(c + 1, len(s)):
+        if FINISH.search(s[i]):
+            keep += [x for x in re.split(r",\s*", s[i].rstrip(".")) if re.search(r"\b(finish|grain|film)\b", x, re.I) and not _OFF_LIGHT.search(x) and not LIGHT.search(x)]
+    return cap(", ".join(keep)) + "." if keep else ""
+
+
+_OFF_LIGHT = re.compile(r"\b(palette|tones?|muted|greens|browns|whites|blues|pinks|reds|golds|creams|grays|greys|blacks|ambers|neutrals|pastels|snow|snowfall|rain|raindrops|fog|mist|haze)\b", re.I)
+
+
+def _light_only(s, c):
+    """The frame's light, without its palette or film finish, so Pose only keeps the light that made the shot."""
+    for i in range(c + 1, len(s)):
+        if LIGHT.search(s[i]):
+            keep = [x for x in re.split(r",\s*", s[i].rstrip(".")) if x and not FINISH.search(x) and not _OFF_LIGHT.search(x)]
+            return cap(", ".join(keep)) + "." if keep and LIGHT.search(", ".join(keep)) else ""
+    return ""
 
 
 def split(text):

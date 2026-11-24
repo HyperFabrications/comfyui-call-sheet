@@ -27,7 +27,25 @@ export function poseOnly(frame, lines) {
   const line = lines && lines[frame.id];
   if (!line) return frame;
   const s = split(frame.text), c = layout(s)[0];
-  return { ...frame, text: "[trigger], " + line.trim().replace(/\.+$/, "") + "." + (c < s.length ? " " + s[c] : ""), bare: undefined, poseOnly: true };
+  const m = s.length ? s[0].split(",")[0].match(/\b(photograph|photo|portrait|snapshot|selfie)\b/i) : null;
+  const text = "[trigger] in a " + (m ? m[1].toLowerCase() : "photo") + ", " + line.trim().replace(/\.+$/, "") + "." + (c < s.length ? " " + s[c] : "");
+  return { ...frame, text: [text, lightOnly(s, c), finishOnly(s, c)].filter(Boolean).join(" "), bare: undefined, poseOnly: true };
+}
+// The frame's film finish and grain, without its palette colors.
+function finishOnly(s, c) {
+  const keep = [];
+  for (let i = c + 1; i < s.length; i++) if (FINISH.test(s[i]))
+    keep.push(...s[i].replace(/\.$/, "").split(/,\s*/).filter(x => /\b(finish|grain|film)\b/i.test(x) && !OFF_LIGHT.test(x) && !LIGHT.test(x)));
+  return keep.length ? cap(keep.join(", ")) + "." : "";
+}
+// The frame's light, without its palette or film finish, so Pose only keeps the light that made the shot.
+const OFF_LIGHT = /\b(palette|tones?|muted|greens|browns|whites|blues|pinks|reds|golds|creams|grays|greys|blacks|ambers|neutrals|pastels|snow|snowfall|rain|raindrops|fog|mist|haze)\b/i;
+function lightOnly(s, c) {
+  for (let i = c + 1; i < s.length; i++) if (LIGHT.test(s[i])) {
+    const keep = s[i].replace(/\.$/, "").split(/,\s*/).filter(x => x && !FINISH.test(x) && !OFF_LIGHT.test(x));
+    return keep.length && LIGHT.test(keep.join(", ")) ? cap(keep.join(", ")) + "." : "";
+  }
+  return "";
 }
 
 export const settingOf = text => { const s = split(text); return layout(s)[1].map(i => s[i]).join(" "); };

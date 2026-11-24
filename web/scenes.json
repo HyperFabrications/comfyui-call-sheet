@@ -211,6 +211,51 @@
      "value": "softbox",
      "name": "Studio softbox",
      "text": "Clean, even softbox light."
+    },
+    {
+     "value": "golden",
+     "name": "Golden side light",
+     "text": "Low golden hour sun from the side, a warm glow on her skin and long soft shadows."
+    },
+    {
+     "value": "overcast",
+     "name": "Soft overcast",
+     "text": "Flat overcast daylight, soft and even with gentle shadows."
+    },
+    {
+     "value": "highkey",
+     "name": "Bright high key",
+     "text": "Soft high key light, bright and nearly shadowless."
+    },
+    {
+     "value": "blinds",
+     "name": "Light through blinds",
+     "text": "Hard sun through blinds throwing sharp stripes of light and shadow across her and the wall."
+    },
+    {
+     "value": "dappled",
+     "name": "Dappled sun",
+     "text": "Dappled sunlight through leaves, soft patches of light across her."
+    },
+    {
+     "value": "hardkey",
+     "name": "Hard key",
+     "text": "Hard key light from one side with deep shadows on the other."
+    },
+    {
+     "value": "tungsten",
+     "name": "Single lamp",
+     "text": "A single warm tungsten lamp from one side, deep falloff into shadow."
+    },
+    {
+     "value": "spot",
+     "name": "Spotlight",
+     "text": "A single hard spotlight from above, a pool of light around her and darkness beyond."
+    },
+    {
+     "value": "bluehour",
+     "name": "Blue hour glow",
+     "text": "Cool blue hour ambient light with warm lamps glowing nearby."
     }
    ]
   },
