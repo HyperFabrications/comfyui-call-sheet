@@ -27,9 +27,14 @@ def _default_frame():
     return P.frame_key(f) if f else _frame_options()[0]
 
 
+# Frames that moved to another tab get a new id. Saved workflows still find them by the old one.
+MOVED = {"S441": "100", "S442": "101"}
+
+
 def _find(frame_value):
     # Match on the id before " · " so a renamed title still finds its frame.
     fid = frame_value.split(" · ", 1)[0].strip()
+    fid = MOVED.get(fid, fid)
     for f in _frames():
         if f["id"] == fid:
             return f

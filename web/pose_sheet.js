@@ -228,9 +228,11 @@ function sceneLook(s) {
   return { kind: pl ? kindOf(pl.title + " " + pl.bg) : loc ? loc.kind : "none", time: pl ? timeOf(pl.light + " " + pl.bg) : "" };
 }
 // Looked up live, so prompts you add in the Custom tab are found too.
+// Frames that moved to another tab get a new id. Saved workflows still find them by the old one (nodes.py MOVED too).
+const MOVED = { S441: "100", S442: "101" };
 const frameOf = value => {
-  const v = String(value || "");
-  return data.frames.find(f => frameKey(f) === v) || data.frames.find(f => f.id === v.split(" · ")[0].trim()) || null;
+  const v = String(value || ""), id = v.split(" · ")[0].trim();
+  return data.frames.find(f => frameKey(f) === v) || data.frames.find(f => f.id === (MOVED[id] || id)) || null;
 };
 
 const savedPicks = () => { try { return JSON.parse(localStorage.getItem("kps:person") || "{}") || {}; } catch (e) { return {}; } };

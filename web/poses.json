@@ -4,6 +4,10 @@
   "changelog": [
     {
       "date": "2026-11-24",
+      "text": "Moved the two sheer chiffon Wind and cloth frames from SFW to Boudoir."
+    },
+    {
+      "date": "2026-11-24",
       "text": "13 new SFW frames in two new sets: Vintage flat and Gray studio portrait."
     },
     {
@@ -120,7 +124,8 @@
         "SheerCurtain",
         "SwivelChair",
         "ParkingGarage",
-        "LaceBlindfold"
+        "LaceBlindfold",
+        "WindAndClothB"
       ]
     },
     {
@@ -222,6 +227,7 @@
     }
   ],
   "sets": {
+    "WindAndClothB": "Wind and cloth",
     "VintageFlat": "Vintage flat",
     "StudioPortrait": "Gray studio portrait",
     "FauxFur": "Faux fur",
@@ -5724,17 +5730,17 @@
       "added": "2026-11-24"
     },
     {
-      "id": "S441",
-      "tab": "sfw",
-      "set": "WindAndCloth",
+      "id": "100",
+      "tab": "boudoir",
+      "set": "WindAndClothB",
       "title": "Head thrown back, hair flying",
       "text": "[trigger] in a cinematic motion portrait, throwing her head back with her eyes closed and her hair flying out. Wearing a sheer dark chiffon top. A dark studio with a deep shadowed background. Medium close shot from slightly below, 35mm lens feel, motion blur. Warm backlight rimming her hair and the fabric, with deep shadow in front. Warm amber, ivory and deep black palette, cinematic film finish with motion blur and grain.",
       "added": "2026-11-24"
     },
     {
-      "id": "S442",
-      "tab": "sfw",
-      "set": "WindAndCloth",
+      "id": "101",
+      "tab": "boudoir",
+      "set": "WindAndClothB",
       "title": "Direct gaze through blowing hair",
       "text": "[trigger] in a cinematic motion portrait, holding a still direct gaze into the lens while her hair blows across the frame. Wearing a sheer dark chiffon top. A dark studio with a deep shadowed background. Close up at eye level, 85mm lens feel, shallow depth of field. Warm backlight rimming her hair and the fabric, with deep shadow in front. Warm amber, ivory and deep black palette, cinematic film finish with motion blur and grain.",
       "added": "2026-11-24"
