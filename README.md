@@ -3,6 +3,18 @@
 A Krea 2 shot builder for ComfyUI. Pick a pose, choose who is in the shot, what they wear and where it happens, and Call Sheet writes the prompt. Everything runs inside ComfyUI: a sidebar, a frame picker, and nodes you can find by typing **call sheet** in the node search.
 
 
+<table class="gallery">
+<tr><td width="33%" valign="top"><img src="docs/images/examples/01-crosswalk.jpg" alt="Woman, 20s, slim, long wavy copper red hair, light freckles. Frame: Crosswalk mid stride. Camera: Phone snapshot."><br><sub>Woman, 20s, slim, long wavy copper red hair, light freckles. Frame: Crosswalk mid stride. Camera: Phone snapshot.</sub></td><td width="33%" valign="top"><img src="docs/images/examples/02-terracotta-wall.jpg" alt="Man, 30s, athletic, very short jet black hair, medium brown skin. Frame: Foot on the wall."><br><sub>Man, 30s, athletic, very short jet black hair, medium brown skin. Frame: Foot on the wall.</sub></td><td width="33%" valign="top"><img src="docs/images/examples/03-station-stairs.jpg" alt="Woman, 40s, curvy, sleek platinum bob, porcelain skin. Frame: Station staircase. Look: Kodachrome."><br><sub>Woman, 40s, curvy, sleek platinum bob, porcelain skin. Frame: Station staircase. Look: Kodachrome.</sub></td></tr>
+<tr><td width="33%" valign="top"><img src="docs/images/examples/04-front-steps.jpg" alt="Man, 60s, broad shouldered, silver gray hair, blue eyes. Frame: Front steps with coffee. Outfit: gray hoodie, jeans, sneakers."><br><sub>Man, 60s, broad shouldered, silver gray hair, blue eyes. Frame: Front steps with coffee. Outfit: gray hoodie, jeans, sneakers.</sub></td><td width="33%" valign="top"><img src="docs/images/examples/05-greenhouse.jpg" alt="Androgynous, 20s, lanky, pastel pink pixie cut, olive skin. Frame: Greenhouse bench. Outfit: white shirt, sage trousers, loafers."><br><sub>Androgynous, 20s, lanky, pastel pink pixie cut, olive skin. Frame: Greenhouse bench. Outfit: white shirt, sage trousers, loafers.</sub></td><td width="33%" valign="top"><img src="docs/images/examples/06-beach-jump.jpg" alt="Woman, 30s, full figured, long curly dark brown hair, deep brown skin. Frame: Jump on the beach. Camera: 90s disposable."><br><sub>Woman, 30s, full figured, long curly dark brown hair, deep brown skin. Frame: Jump on the beach. Camera: 90s disposable.</sub></td></tr>
+<tr><td width="33%" valign="top"><img src="docs/images/examples/07-snowy-street.jpg" alt="Woman, 50s, average build, wavy auburn hair, hazel eyes. Frame: Snowy village street."><br><sub>Woman, 50s, average build, wavy auburn hair, hazel eyes. Frame: Snowy village street.</sub></td><td width="33%" valign="top"><img src="docs/images/examples/08-record-store.jpg" alt="Man, 20s, plus size, long locs, ebony skin. Frame: Record store crates. Camera: 2000s digicam."><br><sub>Man, 20s, plus size, long locs, ebony skin. Frame: Record store crates. Camera: 2000s digicam.</sub></td><td width="33%" valign="top"><img src="docs/images/examples/09-studio-walk-rooftop.jpg" alt="Woman, 20s, tall, toned, very long honey blonde hair. Frame: Studio walk, hand in pocket. Scene: Rooftop at golden hour."><br><sub>Woman, 20s, tall, toned, very long honey blonde hair. Frame: Studio walk, hand in pocket. Scene: Rooftop at golden hour.</sub></td></tr>
+</table>
+
+<sub>Each of these came from a Call Sheet prompt set up in a few clicks, rendered with Krea 2 at CFG 1 and 8 steps. The [tutorial](docs/TUTORIAL.md) shows how.</sub>
+
+## Tutorial
+
+New to Call Sheet? The [tutorial](docs/TUTORIAL.md) walks through the Studio, every tab and the single nodes, with screenshots and example renders. There is also a [PDF version](docs/Call-Sheet-Tutorial.pdf) you can download.
+
 ## Install
 
 **ComfyUI Manager:** click **Install via Git URL**, paste `https://github.com/HyperFabrications/comfyui-call-sheet`, then restart ComfyUI.
@@ -19,6 +31,8 @@ Restart ComfyUI. There are no extra Python packages to install.
 ## Getting updates
 
 In ComfyUI Manager, click **Update** on Call Sheet (or run `git pull` in its folder), then restart ComfyUI and hard refresh the browser. Installs from before the rename keep updating, because GitHub forwards the old address. The folder name in `custom_nodes` doesn't matter.
+
+If you installed before November 23, 2026 (v1.20.4) and Update fails, the history was rebuilt then. Back up your `custom_*.json` files and the `thumbs` folder, delete the plugin folder, install again and copy them back. The [tutorial](docs/TUTORIAL.md#15-tips-and-common-questions) has the steps.
 
 ## The nodes
 
