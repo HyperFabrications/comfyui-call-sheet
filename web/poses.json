@@ -1,14 +1,18 @@
 {
   "version": 1,
-  "updated": "2026-11-23",
+  "updated": "2026-11-24",
   "changelog": [
     {
-      "date": "2026-11-23",
-      "text": "8 new Boudoir frames in a new Lace blindfold set: teal lit dark studio poses."
+      "date": "2026-11-24",
+      "text": "13 new SFW frames in a new Film studio set."
     },
     {
       "date": "2026-11-23",
-      "text": "8 new SFW frames in a new Pink rose set: soft studio portraits holding a single pink rose."
+      "text": "8 new Boudoir frames from Taylor in a new Lace blindfold set: teal lit dark studio poses."
+    },
+    {
+      "date": "2026-11-23",
+      "text": "8 new SFW frames from Taylor in a new Pink rose set: soft studio portraits holding a single pink rose."
     },
     {
       "date": "2026-11-23",
@@ -24,7 +28,7 @@
     },
     {
       "date": "2026-11-23",
-      "text": "1 new Boudoir frame: curled on a white windowsill in daylight."
+      "text": "1 new Boudoir frame from Taylor: curled on a white windowsill in daylight."
     },
     {
       "date": "2026-11-23",
@@ -143,7 +147,8 @@
         "SeventiesVan",
         "MountainLake",
         "IronGazebo",
-        "PinkRose"
+        "PinkRose",
+        "FilmStudio"
       ]
     },
     {
@@ -186,6 +191,7 @@
     }
   ],
   "sets": {
+    "FilmStudio": "Film studio",
     "LaceBlindfold": "Lace blindfold",
     "PinkRose": "Pink rose",
     "SkybridgeStreet": "Skybridge street",
@@ -5163,6 +5169,110 @@
       "title": "Head bowed in the rim light",
       "text": "[trigger] in a fine art studio portrait, head bowed in near profile, a black lace blindfold over her eyes. Wearing a black long sleeve bodysuit, sheer black polka dot tights and black high heels. A dark seamless studio with a black backdrop and a floor washed in teal green light. Close up at eye level, 85mm lens feel, shallow depth of field. A teal rim light tracing the profile against deep shadow. Black, deep teal and warm amber palette, mysterious cinematic fine art finish with fine grain.",
       "added": "2026-11-23"
+    },
+    {
+      "id": "S386",
+      "tab": "sfw",
+      "set": "FilmStudio",
+      "title": "Lying back, hair fanned",
+      "text": "[trigger] in a quiet film studio portrait, lying on her back on the floor with both arms folded above her head and her hair fanned out around her, a soft direct gaze up into the lens. Wearing a long black ribbed knit slip dress with thin straps, barefoot. A bright minimal loft studio with white walls, a gray concrete floor, tall factory windows and a few pieces of mid century furniture. Overhead medium shot looking straight down, 50mm lens feel. Soft diffused daylight from the tall windows, even and gentle with soft shadows. Muted white, gray and olive palette, natural 35mm film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S387",
+      "tab": "sfw",
+      "set": "FilmStudio",
+      "title": "Gloved hands at the window",
+      "text": "[trigger] in a quiet film studio portrait, leaning back against a low window ledge with her gloved hands crossed at her waist, chin dipped, eyes on the lens. Wearing a chunky olive green knit sweater, a black sequin midi skirt and black leather opera gloves. A bright minimal loft studio with white walls, a gray concrete floor, tall factory windows and a few pieces of mid century furniture. Medium full shot at eye level, 50mm lens feel, shallow depth of field. Soft diffused daylight from the tall windows, even and gentle with soft shadows. Muted white, gray and olive palette, natural 35mm film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S388",
+      "tab": "sfw",
+      "set": "FilmStudio",
+      "title": "Holding up a glowing bulb",
+      "text": "[trigger] in a quiet film studio portrait, standing in profile holding a large glowing globe bulb above her face with both hands, gazing up into it. Wearing a fitted black ribbed turtleneck and a short black mini skirt with sheer black tights. A bright minimal loft studio with white walls, a gray concrete floor, tall factory windows and a few pieces of mid century furniture. Medium shot at eye level, 50mm lens feel, shallow depth of field. Soft diffused daylight from the tall windows, even and gentle with soft shadows. Muted white, gray and olive palette, natural 35mm film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S389",
+      "tab": "sfw",
+      "set": "FilmStudio",
+      "title": "Reflection, hands overhead",
+      "text": "[trigger] in a quiet film studio portrait, standing in front of a tall mirror with both hands raised above her head, her reflection gazing back through the glass. Wearing a fitted black ribbed turtleneck and a short black mini skirt with sheer black tights. A bright minimal loft studio with white walls, a gray concrete floor, tall factory windows and a few pieces of mid century furniture. Medium shot over the mirror edge at eye level, 35mm lens feel. Soft diffused daylight from the tall windows, even and gentle with soft shadows. Muted white, gray and olive palette, natural 35mm film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S390",
+      "tab": "sfw",
+      "set": "FilmStudio",
+      "title": "On her stomach, chin on the arm",
+      "text": "[trigger] in a quiet film studio portrait, lying on her stomach on the concrete floor with her cheek resting on one folded gloved arm, legs stretched out behind her, looking into the lens. Wearing a chunky olive green knit sweater, a black sequin midi skirt and black leather opera gloves. A bright minimal loft studio with white walls, a gray concrete floor, tall factory windows and a few pieces of mid century furniture. Full length shot at floor level, 35mm lens feel. Soft diffused daylight from the tall windows, even and gentle with soft shadows. Muted white, gray and olive palette, natural 35mm film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S391",
+      "tab": "sfw",
+      "set": "FilmStudio",
+      "title": "Standing barefoot, arms down",
+      "text": "[trigger] in a quiet film studio portrait, standing straight and still against a white wall, arms relaxed at her sides, a calm direct gaze. Wearing a long black ribbed knit slip dress with thin straps, barefoot. A bright minimal loft studio with white walls, a gray concrete floor, tall factory windows and a few pieces of mid century furniture. Full length shot at eye level, 50mm lens feel. Soft diffused daylight from the tall windows, even and gentle with soft shadows. Muted white, gray and olive palette, natural 35mm film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S392",
+      "tab": "sfw",
+      "set": "FilmStudio",
+      "title": "Under the hanging bulb",
+      "text": "[trigger] in a quiet film studio portrait, sitting on a low white plinth with her legs folded to one side, hands resting on her ankles, head tipped back toward a bare bulb hanging above her. Wearing a fitted black ribbed turtleneck and a short black mini skirt with sheer black tights. A bright minimal loft studio with white walls, a gray concrete floor, tall factory windows and a few pieces of mid century furniture. Full length shot at eye level, 35mm lens feel. Soft diffused daylight from the tall windows, even and gentle with soft shadows. Muted white, gray and olive palette, natural 35mm film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S393",
+      "tab": "sfw",
+      "set": "FilmStudio",
+      "title": "Glance over the shoulder",
+      "text": "[trigger] in a quiet film studio portrait, turned away with her face over one shoulder, lips softly parted, looking straight into the lens. Wearing a simple white camisole with thin straps. A bright minimal loft studio with white walls, a gray concrete floor, tall factory windows and a few pieces of mid century furniture. Close up at eye level, 85mm lens feel, very shallow depth of field. Soft diffused daylight from the tall windows, even and gentle with soft shadows. Muted white, gray and olive palette, natural 35mm film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S394",
+      "tab": "sfw",
+      "set": "FilmStudio",
+      "title": "Draped across the plinth",
+      "text": "[trigger] in a quiet film studio portrait, lying back across a long white plinth with one arm hanging over the edge and her head turned toward the lens. Wearing a long black ribbed knit slip dress with thin straps, barefoot. A bright minimal loft studio with white walls, a gray concrete floor, tall factory windows and a few pieces of mid century furniture. Medium full shot at plinth level, 35mm lens feel. Soft diffused daylight from the tall windows, even and gentle with soft shadows. Muted white, gray and olive palette, natural 35mm film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S395",
+      "tab": "sfw",
+      "set": "FilmStudio",
+      "title": "Leaning back in a metal chair",
+      "text": "[trigger] in a quiet film studio portrait, sitting back in a slim metal chair with her legs crossed long in front of her and one arm hooked over the backrest. Wearing a chunky olive green knit sweater, a black sequin midi skirt and black leather opera gloves. A bright minimal loft studio with white walls, a gray concrete floor, tall factory windows and a few pieces of mid century furniture. Full length shot at eye level, 35mm lens feel. Soft diffused daylight from the tall windows, even and gentle with soft shadows. Muted white, gray and olive palette, natural 35mm film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S396",
+      "tab": "sfw",
+      "set": "FilmStudio",
+      "title": "Temple against the rail",
+      "text": "[trigger] in a quiet film studio portrait, resting her temple against a black handrail on the wall, gazing up past the lens with her hair falling over the knit. Wearing a chunky olive green knit sweater, a black sequin midi skirt and black leather opera gloves. A bright minimal loft studio with white walls, a gray concrete floor, tall factory windows and a few pieces of mid century furniture. Close up from slightly below, 85mm lens feel, shallow depth of field. Soft diffused daylight from the tall windows, even and gentle with soft shadows. Muted white, gray and olive palette, natural 35mm film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S397",
+      "tab": "sfw",
+      "set": "FilmStudio",
+      "title": "Knees up in the red lounge chair",
+      "text": "[trigger] in a quiet film studio portrait, sinking back into a red leather lounge chair with her knees drawn up and one arm across them, head resting on the seat back. Wearing a fitted black ribbed turtleneck and a short black mini skirt with sheer black tights. A bright minimal loft studio with white walls, a gray concrete floor, tall factory windows and a few pieces of mid century furniture. Medium full shot at seat height, 35mm lens feel. Soft diffused daylight from the tall windows, even and gentle with soft shadows. Muted white, gray and olive palette, natural 35mm film finish with fine grain.",
+      "added": "2026-11-24"
+    },
+    {
+      "id": "S398",
+      "tab": "sfw",
+      "set": "FilmStudio",
+      "title": "Gloved hands at the hem",
+      "text": "[trigger] in a quiet film studio portrait, standing against a black panel with her gloved fingers tugging at the hem of her sweater, head tilted, a cool gaze. Wearing a chunky olive green knit sweater, a black sequin midi skirt and black leather opera gloves. A bright minimal loft studio with white walls, a gray concrete floor, tall factory windows and a few pieces of mid century furniture. Medium shot at eye level, 50mm lens feel, shallow depth of field. Soft diffused daylight from the tall windows, even and gentle with soft shadows. Muted white, gray and olive palette, natural 35mm film finish with fine grain.",
+      "added": "2026-11-24"
     },
     {
       "id": "R1",
