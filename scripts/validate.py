@@ -68,6 +68,20 @@ try:
 except (OSError, json.JSONDecodeError) as e:
     errors.append(f"outfits.json could not be read: {e}")
 
+# Privacy: the repo is public, so no links to real people's social posts, local paths or PC names.
+PRIVATE_LINK = re.compile(r"https?://(?:[a-z0-9-]+\.)*(?:instagram\.com|instagr\.am|facebook\.com|tiktok\.com|threads\.net|x\.com|twitter\.com|pinterest\.[a-z.]+|reddit\.com|onlyfans\.com|patreon\.com)\b", re.I)
+LOCAL_BITS = re.compile(r"(?<![A-Za-z])[A-Za-z]:\\\\|/home/[a-z]|/Users/[A-Za-z]|\bDESKTOP-[A-Z0-9]{5,}\b|\b(?:ghp|gho|github_pat|sk|hf)_[A-Za-z0-9_]{16,}")
+root = path.parent.parent
+for f in sorted(list(root.glob("*.py")) + list(root.glob("*.toml")) + list(root.glob("*.md")) + list((root / "web").glob("*")) + list((root / "site").glob("*")) + list((root / "scripts").glob("*"))):
+    if not f.is_file() or f.name == "validate.py":
+        continue
+    body = f.read_text(encoding="utf-8", errors="ignore")
+    for rx, what in ((PRIVATE_LINK, "a link to a social media post"), (LOCAL_BITS, "a local path, PC name or key")):
+        m = rx.search(body)
+        if m:
+            line = body.count("\n", 0, m.start()) + 1
+            errors.append(f"{f.relative_to(root)} line {line}: {what} ({m.group(0)[:40]}). Keep it out of the public repo.")
+
 if errors:
     print("\n".join(errors))
     sys.exit(1)
