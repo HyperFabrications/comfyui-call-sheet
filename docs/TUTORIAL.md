@@ -20,7 +20,7 @@ Every image here came from a Call Sheet prompt with a few clicks in the Studio, 
 1. [Install](#1-install)
 2. [Your first prompt](#2-your-first-prompt)
 3. [The Studio](#3-the-studio)
-4. [Frame tab](#4-frame-tab)
+4. [Pose tab](#4-pose-tab)
 5. [Person tab](#5-person-tab)
 6. [Outfit tab](#6-outfit-tab)
 7. [Scene tab](#7-scene-tab)
@@ -84,17 +84,17 @@ Every tab in the Studio is laid out the same way:
 
 At the top right are **Reset** (clears the tab you're on, nothing else), the gear for [settings](#11-studio-settings) and **Done**. Your changes are saved as you make them, so Done only closes the Studio.
 
-## 4. Frame tab
+## 4. Pose tab
 
 A frame is a ready-made shot: a pose, clothes, a setting, a camera angle, light and a look, already written the way Krea 2 likes. The other four tabs change parts of it.
 
-![The Frame tab of the Studio, with the SFW group open and a frame selected](images/02-studio-frame.png)
+![The Pose tab of the Studio, with the SFW group open and a frame selected](images/02-studio-frame.png)
 
 Frames are grouped into tabs, such as SFW, Boudoir, Pin Up and Light & Angle, and then into sets. Click a group on the left to jump to it. Long groups show their first few frames and a **+N more** button. To find something specific, type in **Search all frames** at the top (for example "crosswalk", "window" or "overhead").
 
 Click a frame to use it. The prompt at the bottom changes right away.
 
-The right side of the Frame tab holds the settings for the whole node:
+The right side of the Pose tab holds the settings for the whole node:
 
 - **Mode.** `single frame` gives you one prompt. `whole set` gives you every frame in the same set, and `whole tab` gives you every frame in the tab. In the set and tab modes the `prompt` output has all the prompts one per line, and `prompt_list` sends them as a list, so ComfyUI runs the rest of the graph once per prompt. Use `prompt_list` when you want to render a whole set in one go.
 - **Trigger.** If you use a character or style LoRA, type its trigger word here. It goes where the frame says `[trigger]`. Leave it empty if you don't use a LoRA.
@@ -110,7 +110,7 @@ In the Edit prompt box, faint labels mark each sentence: subject, pose, clothes,
 
 ## 5. Person tab
 
-The Person tab describes who is in the shot. Use it when you don't have a character LoRA.
+The Person tab describes who is in the shot. Use it when you don't have a character LoRA. It opens on the four picks that change a picture most: gender, age, hair color and hair length. Body type, height, hair type, eyes, skin and complexion are under **More details**, and any you set stay open. If you have saved people, they show at the top as a place to start.
 
 ![The Person tab with a woman in her 20s, long wavy copper red hair, slim build, light freckles and fair skin](images/03-studio-person.png)
 
@@ -185,7 +185,7 @@ Your choices are saved on your computer in `custom_choices.json` in the plugin f
 
 ## 10. Your own prompts and importing a list
 
-You can add your own prompts as frames. They live in the **Custom** group on the Frame tab, and the Person, Outfit, Scene and Camera tabs work on them like any other frame.
+You can add your own prompts as frames. They live in the **Custom** group on the Pose tab, and the Person, Outfit, Scene and Camera tabs work on them like any other frame.
 
 **New prompt** lets you write one. Put `[trigger]` where the person (or your LoRA trigger) should go.
 
@@ -323,7 +323,7 @@ The sidebar is handy when you already have your own workflow and just want to dr
 
 **The prompt is too long.** It's fine. Krea 2 handles long prompts well, and the frames are written to be detailed. Cut whatever you don't care about with Edit prompt.
 
-**Can I use my own LoRA?** Yes. Type its trigger in the Trigger box on the Frame tab, turn Person off (the LoRA already knows who it is), and turn Style words off if the LoRA has its own look.
+**Can I use my own LoRA?** Yes. Type its trigger in the Trigger box on the Pose tab, turn Person off (the LoRA already knows who it is), and turn Style words off if the LoRA has its own look.
 
 **Where are my things saved?** Everything you add yourself stays on your computer, in the plugin folder: `custom_prompts.json`, `custom_choices.json`, `custom_places.json` and `custom_outfit_items.json`, plus your preview images in `thumbs`. Saved people, outfits and scenes, stars and Studio settings are stored in your browser. Nothing is uploaded, and updates don't touch any of it.
 
