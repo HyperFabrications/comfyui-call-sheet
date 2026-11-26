@@ -22,15 +22,19 @@ const ICON = {
   check: `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>`,
   link: `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>`,
   lock: `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>`,
+  down: `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>`,
   copy: `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>`,
 };
 export const LAYERS = [
-  { key: "frame", label: "Frame" },
+  { key: "frame", label: "Pose" },
   { key: "person", label: "Person" },
   { key: "outfit", label: "Outfit" },
   { key: "scene", label: "Scene" },
   { key: "camera", label: "Camera" },
 ];
+// The Person tab opens on the four picks that change a picture most. The rest wait under More details,
+// so a new user makes four choices, not ten (Hick's law); a detail you've set always stays in view.
+const ESSENTIAL = ["gender", "age", "hcolor", "length"];
 const NODE_NAME = { person: "Person node", outfit: "Outfit node", scene: "Scene node", camera: "Camera node" };
 
 // ---- settings (per browser) ----
@@ -192,7 +196,8 @@ export function openStudio({ env, ctx, tab = "frame" }) {
 
   function personGroups() {
     const P = st.s.person;
-    return traitsAll(env).map(t => ({
+    const T = traitsAll(env), rank = t => ESSENTIAL.includes(t.key) ? 0 : 1;
+    return [...T].sort((a, b) => rank(a) - rank(b)).map(t => ({
       k: t.key, label: t.label,
       opts: t.options.map(o => ({ v: o.value, n: o.name, sw: (SWATCH[t.key] && SWATCH[t.key][o.value]) || o.hex || null, mine: o.mine || null })),
       get: () => P.picks[t.key] || "", set: v => { if (v) P.picks[t.key] = v; else delete P.picks[t.key]; P.text = ""; P.on = true; },
@@ -386,6 +391,9 @@ export function openStudio({ env, ctx, tab = "frame" }) {
   function topHTML() {
     const L = st.layer;
     let h = "";
+    // Nothing picked yet: offer your saved people first, so you can start from one and adjust.
+    const saved = L === "person" && !isWired(L) && !Object.keys(st.s.person.picks || {}).length && !st.s.person.text ? lsList(PRESETS.person) : [];
+    if (saved.length) h += `<div class="kst-start"><span class="kq-dim">Start from</span>${saved.slice(0, 6).map((p, i) => `<button type="button" class="kst-c" data-load="${i}"><span>${esc(p.name || "Untitled")}</span></button>`).join("")}</div>`;
     if (L !== "frame" && isWired(L)) h += `<div class="kst-banner">${ICON.link}<span>Using the linked ${NODE_NAME[L]}. Unlink it to use this tab.</span></div>`;
     const f0 = ctx.frame(), f = f0 && st.s.poseOnly && !(st.s.edits && st.s.edits[f0.id]) ? poseOnly(f0, env.poseLines) : f0;
     if (L === "outfit" && f && env.outfits && outfitLocked(env.outfits, f, st.s.outfitOverrides || [])) {
@@ -405,6 +413,7 @@ export function openStudio({ env, ctx, tab = "frame" }) {
     if (L === "frame") h += `<input type="search" class="kst-search" data-search placeholder="Search all ${st.s.poseOnly ? env.data.frames.filter(f => f.tab === "custom" || (env.poseLines || {})[f.id]).length : env.data.frames.length} frames" aria-label="Search frames" value="${esc(st.q)}">`;
     return h;
   }
+  const detailsOpen = rest => st.exp.has("person:details") || (!st.exp.has("person:nodetails") && rest.some(g => g.get()));
   function midHTML(G) {
     const top = topHTML();
     if (st.layer === "frame" && st.q.trim()) {
@@ -414,6 +423,12 @@ export function openStudio({ env, ctx, tab = "frame" }) {
       const g = { ...G.find(x => x.k.startsWith("tab:")), k: "search", label: `${hits.length} ${hits.length === 1 ? "frame" : "frames"}`, add: null, opts: hits.map(f => ({ v: f.id, n: f.title, f, mine: null })) };
       st.exp.add("frame:search");
       return top + (hits.length ? groupHTML(g, false) : `<p class="kq-dim kst-empty">No frames match. Try fewer words, or add your own in Custom.</p>`);
+    }
+    if (st.settings.layout === "all" && st.layer === "person") {
+      const core = G.filter(g => ESSENTIAL.includes(g.k)), rest = G.filter(g => !ESSENTIAL.includes(g.k));
+      const open = detailsOpen(rest), set = rest.filter(g => g.get()).length;
+      const toggle = `<button type="button" class="kst-details" data-details aria-expanded="${open}"><span>${open ? "Fewer details" : "More details"}${set ? ` · ${set} set` : ""}</span><small>${esc(rest.map(g => g.label).join(", "))}</small></button>`;
+      return top + core.map(g => groupHTML(g, false)).join("") + toggle + (open ? rest.map(g => groupHTML(g, false)).join("") : "");
     }
     if (st.settings.layout === "all") return top + G.map(g => groupHTML(g, false)).join("");
     let i = G.findIndex(g => g.k === st.cur[st.layer]);
@@ -522,7 +537,7 @@ export function openStudio({ env, ctx, tab = "frame" }) {
     const k = PRESETS[st.layer];
     if (!k) { q(".kst-saved-wrap").innerHTML = ""; return; }
     const list = lsList(k), noun = { person: "people", outfit: "outfits", scene: "scenes" }[st.layer];
-    q(".kst-saved-wrap").innerHTML = `<button type="button" class="kq-ghost" data-x="saved" aria-expanded="${!!st.savedOpen}">Saved ${noun} ▾</button>
+    q(".kst-saved-wrap").innerHTML = `<button type="button" class="kq-ghost" data-x="saved" aria-expanded="${!!st.savedOpen}">Saved ${noun} ${ICON.down}</button>
       <div class="kst-menu kst-saved" ${st.savedOpen ? "" : "hidden"}>
         ${list.length ? list.map((p, i) => `<div class="kst-srow"><button type="button" class="kst-sload" data-load="${i}">${esc(p.name || "Untitled")}</button><button type="button" class="kst-del is-inline${st.armed === "saved|" + i ? " is-armed" : ""}" data-sdel="${i}" aria-label="Delete ${esc(p.name || "")}">${st.armed === "saved|" + i ? "Delete?" : "×"}</button></div>`).join("") : `<p class="kq-dim kst-foot">Nothing saved yet.</p>`}
         <div class="kst-sep"></div>
@@ -556,7 +571,7 @@ export function openStudio({ env, ctx, tab = "frame" }) {
   function resetHTML() {
     const b = q('[data-x="reset"]'), L = LAYERS.find(l => l.key === st.layer);
     if (!b || !L) return;
-    b.textContent = st.layer === "frame" ? "Reset frame edit" : `Reset ${L.label}`;
+    b.textContent = st.layer === "frame" ? "Reset pose edit" : `Reset ${L.label}`;
     b.disabled = !resettable();
     b.title = st.layer === "frame" ? "Go back to this frame's own words" : `Clear every ${L.label} pick`;
   }
@@ -675,7 +690,7 @@ export function openStudio({ env, ctx, tab = "frame" }) {
     if (x === "reset") {
       if (!resettable()) return;
       const before = JSON.stringify(st.s), L = LAYERS.find(l => l.key === st.layer);
-      setTimeout(() => toast(st.layer === "frame" ? "Frame edit reset." : `${L.label} reset.`, { before, layer: st.layer }), 0);
+      setTimeout(() => toast(st.layer === "frame" ? "Pose edit reset." : `${L.label} reset.`, { before, layer: st.layer }), 0);
       if (st.layer === "frame") { if (st.s.edits) delete st.s.edits[ctx.frame()?.id]; }
       else if (st.layer === "person") st.s.person = { picks: {}, on: st.s.person.on };
       else st.s[st.layer] = { on: st.s[st.layer].on };
@@ -690,7 +705,13 @@ export function openStudio({ env, ctx, tab = "frame" }) {
     if (x === "rewording") { st.s.person.text = ""; return changed(); }
     const tab = t.closest("[data-layer]");
     if (tab) { st.layer = tab.dataset.layer; st.add = null; st.notice = null; st.armed = null; st.savedOpen = false; mid.scrollTop = 0; renderAll(); mid.scrollTop = 0; return; }
+    if (t.closest("[data-details]")) {
+      const open = detailsOpen(groupsFor("person").filter(g => !ESSENTIAL.includes(g.k)));
+      st.exp.delete(open ? "person:details" : "person:nodetails"); st.exp.add(open ? "person:nodetails" : "person:details");
+      return renderAll();
+    }
     const jump = t.closest("[data-jump]");
+    if (jump && st.layer === "person" && !ESSENTIAL.includes(jump.dataset.jump)) { st.exp.delete("person:nodetails"); st.exp.add("person:details"); renderAll(); }
     if (jump) {
       st.cur[st.layer] = jump.dataset.jump;
       if (st.settings.layout === "all" && !st.q) { const gEl = mid.querySelector(`[data-group="${CSS.escape(jump.dataset.jump)}"]`); listHTML(groupsFor(st.layer)); if (gEl) mid.scrollTo({ top: gEl.offsetTop - mid.offsetTop - 12, behavior: "smooth" }); }
