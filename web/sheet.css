@@ -1,3 +1,7 @@
+/* Instrument Sans ships with the extension (SIL Open Font License, see fonts/). */
+@font-face { font-family: "Instrument Sans"; font-weight: 400; font-display: swap; src: url("./fonts/instrument-sans-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Instrument Sans"; font-weight: 500; font-display: swap; src: url("./fonts/instrument-sans-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Instrument Sans"; font-weight: 600; font-display: swap; src: url("./fonts/instrument-sans-latin-600-normal.woff2") format("woff2"); }
 /* Krea Pose Sheet styles. Hosts set the --kps-* tokens; defaults are the light web palette. */
 .kps {
   --k-bg: var(--kps-bg, #eceae6);
@@ -84,7 +88,7 @@
   --q-line: rgba(255,255,255,.06); --q-line2: rgba(255,255,255,.09); --q-hover: rgba(255,255,255,.05); --q-press: rgba(255,255,255,.07);
   --q-ink: #ededef; --q-soft: #b4b4bc; --q-dim: #8b8b93; --q-faint: #5d5d66;
   --q-accent: #8b9cf7; --q-accent-ink: #c3cbff; --q-accent-bg: rgba(139,156,247,.12);
-  --q-sans: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --q-sans: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --q-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   position: fixed; inset: 0; z-index: 10000; background: rgba(0,0,0,.55); display: flex; align-items: center; justify-content: center; padding: 24px;
   font: 13px/1.45 var(--q-sans); color: var(--q-ink); -webkit-font-smoothing: antialiased;
