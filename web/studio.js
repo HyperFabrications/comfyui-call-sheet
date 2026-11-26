@@ -543,9 +543,32 @@ export function openStudio({ env, ctx, tab = "frame" }) {
     mid.innerHTML = midHTML(G);
     mid.scrollTop = keep;
     q(".kst-side").innerHTML = sideHTML(G);
-    savedHTML(); promptHTML();
+    savedHTML(); promptHTML(); resetHTML();
   }
   function changed() { save(); renderAll(); }
+
+  // Reset names the layer it clears and greys out when there's nothing to clear. After a reset, Undo puts it back.
+  function resettable() {
+    if (st.layer === "frame") return !!(st.s.edits && ctx.frame() && st.s.edits[ctx.frame().id]);
+    if (st.layer === "person") return !!(Object.keys(st.s.person.picks || {}).length || st.s.person.text);
+    return Object.keys(st.s[st.layer] || {}).some(k => k !== "on");
+  }
+  function resetHTML() {
+    const b = q('[data-x="reset"]'), L = LAYERS.find(l => l.key === st.layer);
+    if (!b || !L) return;
+    b.textContent = st.layer === "frame" ? "Reset frame edit" : `Reset ${L.label}`;
+    b.disabled = !resettable();
+    b.title = st.layer === "frame" ? "Go back to this frame's own words" : `Clear every ${L.label} pick`;
+  }
+  function toast(msg, undo) {
+    el.querySelector(".kst-toast")?.remove();
+    const t = document.createElement("div");
+    t.className = "kst-toast"; t.setAttribute("role", "status");
+    t.innerHTML = `<span>${esc(msg)}</span>${undo ? `<button type="button" data-x="undo">Undo</button>` : ""}`;
+    st.undo = undo || null;
+    q(".kq-box").appendChild(t);
+    setTimeout(() => { t.remove(); if (st.undo === undo) st.undo = null; }, undo ? 7000 : 3000);
+  }
 
   // ---------- events ----------
   function countImport(form) {
@@ -648,7 +671,11 @@ export function openStudio({ env, ctx, tab = "frame" }) {
       return changed();
     }
     if (x === "copy") { const txt = q(".kst-prompt").dataset.text || ""; navigator.clipboard?.writeText(txt).then(() => { const s = q('[data-x="copy"] span'); s.textContent = "Copied"; setTimeout(() => s.textContent = "Copy", 1400); }, () => {}); return; }
+    if (x === "undo") { const u = st.undo; if (!u) return; st.undo = null; el.querySelector(".kst-toast")?.remove(); st.s = JSON.parse(u.before); st.layer = u.layer; return changed(); }
     if (x === "reset") {
+      if (!resettable()) return;
+      const before = JSON.stringify(st.s), L = LAYERS.find(l => l.key === st.layer);
+      setTimeout(() => toast(st.layer === "frame" ? "Frame edit reset." : `${L.label} reset.`, { before, layer: st.layer }), 0);
       if (st.layer === "frame") { if (st.s.edits) delete st.s.edits[ctx.frame()?.id]; }
       else if (st.layer === "person") st.s.person = { picks: {}, on: st.s.person.on };
       else st.s[st.layer] = { on: st.s[st.layer].on };

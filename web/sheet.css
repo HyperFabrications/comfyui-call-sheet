@@ -684,3 +684,11 @@
 .kpcs-chip small { font-size: 11px; color: var(--k-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .kpcs-chip.is-off { opacity: .55; }
 .kpcs .kpn-snip { -webkit-line-clamp: 3; }
+
+/* Laws of UX pass: Reset can be undone (peak-end), and small delete targets are easier to hit (Fitts's law). */
+.kst-toast { position: absolute; left: 50%; bottom: 108px; transform: translateX(-50%); z-index: 5; display: flex; align-items: center; gap: 14px; padding: 9px 16px; border-radius: 10px; background: var(--q-raise); border: 1px solid var(--q-line2); box-shadow: 0 12px 32px rgba(0,0,0,.5); font-size: 12.5px; color: var(--q-ink); }
+.kst-toast button { border: 0; background: none; padding: 0; color: var(--q-accent-ink); font-weight: 600; font-size: 12.5px; cursor: pointer; }
+.kst-toast button:hover { text-decoration: underline; }
+.kst .kq-box { position: relative; }
+.kq-ghost:disabled { opacity: .4; cursor: default; background: transparent; }
+.kst-del { height: 26px; min-width: 26px; }
